@@ -1,0 +1,19 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: likecomment-provider
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.1.139:3306/knowstars78?useUnicode=true&characterEncoding=utf-8
+    username: erzhu
+    password: 123
+
+
+
+mybatis:
+  mapper-locations: mapper/*.xml
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
