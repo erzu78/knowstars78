@@ -16,6 +16,15 @@ public class User {
     private String userintro;//个人简介
     private Integer profession;//职业
     private Integer trade;//行业
+    private String account;//用户登录名
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
 
     public Integer getUid() {
         return uid;
@@ -25,12 +34,12 @@ public class User {
         this.uid = uid;
     }
 
-    public String getUername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUername(String uername) {
-        this.username = uername;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
