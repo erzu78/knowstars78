@@ -1,0 +1,15 @@
+
+server:
+  port: 8012
+
+spring:
+  application:
+    name: information-provider
+
+mybatis:
+  mapper-locations: mapper/*.xml
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
