@@ -1,0 +1,20 @@
+server:
+  port: 8082
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: video-provider
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.1.139/talented_study_610?useUnicode=true&characterEncoding=utf8
+    username: erzhu
+    password: 123
+  mybatis:
+      mapper-locations: mapper/*.xml
+
+
