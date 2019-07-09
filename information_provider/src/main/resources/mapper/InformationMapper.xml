@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.InformationMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.pojo.Information" >
+    <id column="infId" property="infid" jdbcType="INTEGER" />
+    <result column="infTitle" property="inftitle" jdbcType="VARCHAR" />
+    <result column="authorid" property="authorid" jdbcType="INTEGER" />
+    <result column="releasetime" property="releasetime" jdbcType="TIMESTAMP" />
+    <result column="articleinformation" property="articleinformation" jdbcType="VARCHAR" />
+    <result column="articleimg" property="articleimg" jdbcType="VARCHAR" />
+    <result column="tyid" property="tyid" jdbcType="INTEGER" />
+    <result column="topicid" property="topicid" jdbcType="INTEGER" />
+    <result column="subtitle" property="subtitle" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    infId, infTitle, authorid, releasetime, articleinformation, articleimg, tyid, topicid, 
+    subtitle
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_information
+    where infId = #{infid,jdbcType=INTEGER}
+  </select>
+  <select id="infoList" resultMap="BaseResultMap">
+    select i.*,p.topicname topicname,ty.tname tname,s.staffname staffname from t_information i,t_staff s,info_type ty,t_topic p where i.topicid=p.topicid and i.authorid=s.sid and i.tyid=ty.tid
+    limit #{start},#{rows}
+  </select>
+  <select id="queryCount" resultType="long">
+    select count(*) from t_information
+  </select>
+
+
+
+
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_information
+    where infId = #{infid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jk.pojo.Information" >
+    insert into t_information (infId, infTitle, authorid, 
+      releasetime, articleinformation, articleimg, 
+      tyid, topicid, subtitle
+      )
+    values (#{infid,jdbcType=INTEGER}, #{inftitle,jdbcType=VARCHAR}, #{authorid,jdbcType=INTEGER}, 
+      #{releasetime,jdbcType=TIMESTAMP}, #{articleinformation,jdbcType=VARCHAR}, #{articleimg,jdbcType=VARCHAR}, 
+      #{tyid,jdbcType=INTEGER}, #{topicid,jdbcType=INTEGER}, #{subtitle,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jk.pojo.Information" >
+    insert into t_information
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="infid != null" >
+        infId,
+      </if>
+      <if test="inftitle != null" >
+        infTitle,
+      </if>
+      <if test="authorid != null" >
+        authorid,
+      </if>
+      <if test="releasetime != null" >
+        releasetime,
+      </if>
+      <if test="articleinformation != null" >
+        articleinformation,
+      </if>
+      <if test="articleimg != null" >
+        articleimg,
+      </if>
+      <if test="tyid != null" >
+        tyid,
+      </if>
+      <if test="topicid != null" >
+        topicid,
+      </if>
+      <if test="subtitle != null" >
+        subtitle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="infid != null" >
+        #{infid,jdbcType=INTEGER},
+      </if>
+      <if test="inftitle != null" >
+        #{inftitle,jdbcType=VARCHAR},
+      </if>
+      <if test="authorid != null" >
+        #{authorid,jdbcType=INTEGER},
+      </if>
+      <if test="releasetime != null" >
+        #{releasetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articleinformation != null" >
+        #{articleinformation,jdbcType=VARCHAR},
+      </if>
+      <if test="articleimg != null" >
+        #{articleimg,jdbcType=VARCHAR},
+      </if>
+      <if test="tyid != null" >
+        #{tyid,jdbcType=INTEGER},
+      </if>
+      <if test="topicid != null" >
+        #{topicid,jdbcType=INTEGER},
+      </if>
+      <if test="subtitle != null" >
+        #{subtitle,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jk.pojo.Information" >
+    update t_information
+    <set >
+      <if test="inftitle != null" >
+        infTitle = #{inftitle,jdbcType=VARCHAR},
+      </if>
+      <if test="authorid != null" >
+        authorid = #{authorid,jdbcType=INTEGER},
+      </if>
+      <if test="releasetime != null" >
+        releasetime = #{releasetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="articleinformation != null" >
+        articleinformation = #{articleinformation,jdbcType=VARCHAR},
+      </if>
+      <if test="articleimg != null" >
+        articleimg = #{articleimg,jdbcType=VARCHAR},
+      </if>
+      <if test="tyid != null" >
+        tyid = #{tyid,jdbcType=INTEGER},
+      </if>
+      <if test="topicid != null" >
+        topicid = #{topicid,jdbcType=INTEGER},
+      </if>
+      <if test="subtitle != null" >
+        subtitle = #{subtitle,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where infId = #{infid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jk.pojo.Information" >
+    update t_information
+    set infTitle = #{inftitle,jdbcType=VARCHAR},
+      authorid = #{authorid,jdbcType=INTEGER},
+      releasetime = #{releasetime,jdbcType=TIMESTAMP},
+      articleinformation = #{articleinformation,jdbcType=VARCHAR},
+      articleimg = #{articleimg,jdbcType=VARCHAR},
+      tyid = #{tyid,jdbcType=INTEGER},
+      topicid = #{topicid,jdbcType=INTEGER},
+      subtitle = #{subtitle,jdbcType=VARCHAR}
+    where infId = #{infid,jdbcType=INTEGER}
+  </update>
+</mapper>

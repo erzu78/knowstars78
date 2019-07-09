@@ -1,6 +1,6 @@
 package com.jk.service;
 
-import com.jk.mapper.InfMapper;
+import com.jk.mapper.InformationMapper;
 import com.jk.pojo.Information;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,16 +12,21 @@ import java.util.List;
 public class InfServicePImpl implements InfServiceP {
 
     @Autowired
-    private InfMapper infMapper;
+    private InformationMapper infMapper;
+
 
     @Override
-    public HashMap<String, Object> queryInf() {
+    public List<Information> infoList(Integer start, Integer rows) {
+        return infMapper.infoList(start,rows);
+    }
 
-        List<Information> list = infMapper.queryInf();
+    @Override
+    public long queryCount() {
+        return infMapper.queryCount();
+    }
 
-        HashMap<String,Object> map = new HashMap<>();
-        map.put("rows",list);
-
-        return map;
+    @Override
+    public void deleteInfo(Integer infid) {
+        infMapper.deleteByPrimaryKey(infid);
     }
 }
