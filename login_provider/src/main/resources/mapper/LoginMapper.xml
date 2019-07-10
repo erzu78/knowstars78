@@ -9,4 +9,9 @@
         limit #{start},#{pageSize}
     </select>
 
+    <select id="findStaff" resultType="com.jk.pojo.Staff">
+        select * from t_staff
+        limit #{start},#{pageSize}
+    </select>
+
 </mapper>

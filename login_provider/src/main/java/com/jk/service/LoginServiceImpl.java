@@ -1,6 +1,7 @@
 package com.jk.service;
 
 import com.jk.mapper.LoginMapper;
+import com.jk.pojo.Staff;
 import com.jk.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,7 +35,7 @@ public class LoginServiceImpl implements LoginService {
         loginMapper.delOne(uid);
     }
 
-    @RequestMapping(value="login")
+    @RequestMapping(value="loginuser")
     @Override
     public User login(@RequestBody User loginuser) {
         return loginMapper.findUserByNamePWD(loginuser);
@@ -54,5 +55,38 @@ public class LoginServiceImpl implements LoginService {
             str = "2";
         }
         return str;
+    }
+
+    @RequestMapping(value="loginstaff")
+    @Override
+    public User loginstaff(@RequestBody Staff loginstaff) {
+        return loginMapper.findStaffByNamePWD(loginstaff);
+    }
+
+    @RequestMapping(value="addLoginStaff")
+    @Override
+    public String addLoginStaff(@RequestBody Staff loginstaff) {
+        String str = "";
+        //1 代表 失败 用户名相同  2代表成功
+        Integer count = loginMapper.findStaffByName(loginstaff.getStaffname());
+        if (count != null && count > 0) {
+            str = "1";
+            System.out.println("已经存在相同用户名");
+        } else {
+            loginMapper.addLoginStaff(loginstaff);
+            str = "2";
+        }
+        return str;
+    }
+
+    @RequestMapping("findStaff")
+    @Override
+    public HashMap<String, Object> findStaff(Integer start, Integer pageSize) {
+        HashMap<String,Object> hashMap=new HashMap<>();
+        List<User> list=loginMapper.findStaff(start,pageSize);
+        Long UserSum=loginMapper.StaffSum();
+        hashMap.put("rows",list);
+        hashMap.put("total",UserSum);
+        return hashMap;
     }
 }
