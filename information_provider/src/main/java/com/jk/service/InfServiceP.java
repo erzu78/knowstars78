@@ -9,4 +9,8 @@ public interface InfServiceP {
     List<Information> infoList(Integer start, Integer rows);
     long queryCount();
     void deleteInfo(Integer infid);
+    void add(Information information);
+    Information queryInfoById(Integer infid);
+    void upInfo(Information information);
+    void deleteAllInfo(String ids);
 }

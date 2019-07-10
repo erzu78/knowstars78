@@ -52,8 +52,8 @@
         <option value="3">其他</option>
     </select>-->
 
-    <button type="button" class="btn btn-warning" onclick="dialogInfo('addDialogInfo','addInfo','新增')">添加资讯</button>
-    <button type="button" class="btn btn-primary" onclick="hrefCoupon()">批量删除</button>
+    <button type="button" class="btn btn-warning" onclick="dialogInfo('addDialogInfo','http://localhost:8013/addInfo','新增')">添加资讯</button>
+    <button type="button" class="btn btn-primary" onclick="delAll()">批量删除</button>
 </div>
 
 <table id="infData"></table>
@@ -102,7 +102,10 @@
                 {field: 'staffname', title: '作者名称', width: 30},
                 {field: 'releasetime', title: '发布时间', width: 30},
                 {field: 'articleinformation', title: '文章内容', width: 30},
-                {field: 'articleimg', title: '文章封面', width: 30},
+                {field: 'articleimg', title: '文章封面', width: 30,
+                    formatter: function (value, row, index) {
+                        return "<img src='"+row.articleimg+"' width='100px' height='80px'>"
+                    }},
                 {field: 'tname', title: '文章类型', width: 30},
                 {field: 'topicname', title: '文章主题', width: 30},
                 {field: 'subtitle', title: '二级标题', width: 30},
@@ -148,22 +151,36 @@
     function search() {
 
         $("#infData").bootstrapTable("refresh");
-
-
     }
 
 
-    hrefCoupon = function(){
-
-        location.href="toCouponList";
-
+    delAll = function(){
+        var temp = "";
+        var count=0;
+        $("[name='chk']:checked").each(function(){
+            temp+=","+$(this).val();
+            count++;                               });
+        var ids = temp.substr(1);
+        if(confirm("您确定删除这"+count+"信息吗?")){
+            $.ajax({
+                url:"http://localhost:8013/deleteAllInfo",
+                type:'post',
+                data:{ids:ids},
+                success:function(){
+                    bootbox.alert("删除成功");
+                    $("#infData").bootstrapTable("refresh");
+                },
+                error:function(){
+                    bootbox.alert("失败");
+                }
+            });
+        }
     }
-
     $("input[name='chk']:checked")
 
 
     //弹框
-    dialogDoctor = function (HTMLurl, submitUrl, title) {
+    dialogInfo = function (HTMLurl, submitUrl, title) {
 
         var dialog = bootbox.dialog({
             title: title,
@@ -177,7 +194,7 @@
                         $.ajax({
                             url: submitUrl,
                             type: 'post',
-                            data: $("#doctorForm").serialize(),
+                            data: $("#addform").serialize(),
                             success: function () {
                                 bootbox.alert("保存成功");
                                 $("#infData").bootstrapTable("refresh");
@@ -220,11 +237,76 @@
         });
         return jspHtml;
     }
+    //修改的 弹框
+    function  dialogCurr(HTMLurl,submitUrl,title,infid){
 
+        var dialog = bootbox.dialog({
+            title: title,
+            message: getJspHtml(HTMLurl),   //调用方法
+            buttons:{
+                "save":{
+                    label: '保存',
+                    //自定义样式
+                    className: "btn-success",
+                    callback: function() {
+                        $.ajax({
+                            url:submitUrl,
+                            type:'post',
+                            data:$("#upform").serialize(),
+                            success:function(data){
+                                bootbox.alert("保存成功");
+                                $("#infData").bootstrapTable('refresh');
+                            },
+                            error:function(){
+                                bootbox.alert("ajax失败");
+                            }
+                        });
+                    }
+                },
+                "unSave":{
+                    label: '取消',
+                    //自定义样式
+                    className: "btn-info",
+                    callback: function() {
+                        // return false;  //dialog不关闭
+                    }
+                }
+            }
+        });
 
-    updDoctor = function(doctorId){
+        $.ajax({
+            url:"http://localhost:8013/queryInfoById",
+            type:'post',
+            data:{infid:infid},
+            success:function(data){
+                $("#infid").val(data.infid);
+                $("#inftitle").val(data.inftitle);
+                $("#subtitle").val(data.subtitle);
+                $("#releasetime").val(data.releasetime);
+                $("#articleinformation").val(data.articleinformation);
+                $("#articleimg").val(data.articleimg);
+                $("#tyid option").each(function(){
+                    if($(this).val() == data.tyid){
+                        $(this).attr("selected", true);
+                    }
+                });
 
-        dialogDoctor("updDialogDoctor?doctorId="+doctorId,"addDoctor","修改");
+                $("#topicid option").each(function(){
+                    if($(this).val() == data.topicid){
+                        $(this).attr("selected", true);
+                    }
+                });
+
+            },
+            error:function(){
+                bootbox.alert("失败");
+            }
+        });
+    }
+
+    upInfo = function(infid){
+
+        dialogCurr('updDialogInfo','http://localhost:8013/upInfo',"修改",infid);
 
     }
 

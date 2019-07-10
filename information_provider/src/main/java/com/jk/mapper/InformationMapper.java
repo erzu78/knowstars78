@@ -20,4 +20,6 @@ public interface InformationMapper {
 
     List<Information> infoList(@Param("start") Integer start, @Param("rows") Integer rows);
     long queryCount();
+
+    void delAll(@Param("ids") String ids);
 }

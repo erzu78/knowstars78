@@ -34,18 +34,21 @@
 
 
 
-
+  <delete id="delAll">
+    delete from t_information
+    where infId in (${ids})
+  </delete>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_information
     where infId = #{infid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.jk.pojo.Information" >
-    insert into t_information (infId, infTitle, authorid, 
+    insert into t_information ( infTitle, authorid,
       releasetime, articleinformation, articleimg, 
       tyid, topicid, subtitle
       )
-    values (#{infid,jdbcType=INTEGER}, #{inftitle,jdbcType=VARCHAR}, #{authorid,jdbcType=INTEGER}, 
+    values ( #{inftitle,jdbcType=VARCHAR}, #{authorid,jdbcType=INTEGER},
       #{releasetime,jdbcType=TIMESTAMP}, #{articleinformation,jdbcType=VARCHAR}, #{articleimg,jdbcType=VARCHAR}, 
       #{tyid,jdbcType=INTEGER}, #{topicid,jdbcType=INTEGER}, #{subtitle,jdbcType=VARCHAR}
       )

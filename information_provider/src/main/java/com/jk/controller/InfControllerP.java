@@ -32,4 +32,24 @@ public class InfControllerP implements InfService {
     public void deleteInfo(Integer infid) {
         infServiceP.deleteInfo(infid);
     }
+
+    @Override
+    public void add(Information information) {
+        infServiceP.add(information);
+    }
+
+    @Override
+    public Information queryInfoById(Integer infid) {
+        return infServiceP.queryInfoById(infid);
+    }
+
+    @Override
+    public void upInfo(Information information) {
+        infServiceP.upInfo(information);
+    }
+
+    @Override
+    public void deleteAllInfo(String ids) {
+        infServiceP.deleteAllInfo(ids);
+    }
 }

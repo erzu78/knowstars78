@@ -5,6 +5,69 @@
     <title>Title</title>
 </head>
 <body>
+<form id="addform" method="post">
+<div class="form-group">
+    <label for="articleimg">资讯封面</label>
+    <input type="text" id="articleimg" name="articleimg"/>
+    <input type="file" class="projectfile" name="imgg" id="headImg">
+</div>
+    资讯大标题：<input type="text" class="form-control" id="inftitle" name="inftitle" style="width: 300px"><br/>
+    资讯小标题: <input type="text" class="form-control" id="subtitle" name="subtitle" style="width: 300px"><br/>
+    发布时间：  <input type="date" class="form-control" id="releasetime" style="width: 300px" name="releasetime"><br/>
+    文章内容: <input type="text" class="form-control" id="articleinformation" name="articleinformation" style="width: 300px"><br/>
+    资讯类型：<select id="tyid" name="tyid" class="form-control" style="width: 300px" >
+              <option value="">全部</option>
+              <option value="1">最新</option>
+              <option value="2">推荐</option>
+              <option value="3">创投</option>
+</select><br/>
+    资讯主题：<select id="topicid" name="topicid" class="form-control" style="width: 300px" >
+    <option value="">全部</option>
+    <option value="1">创投新闻</option>
+    <option value="2">未来地产</option>
+</select><br/>
+</form>
+<script>
+    var ip = "http://192.168.1.128";
 
+    $(function () {
+        uploadImg();
+    })
+
+    function uploadImg(url) {
+        $('#headImg').fileinput({
+            language: 'zh', //设置语言
+            uploadUrl: ip + ':8013/updaloadImg', //上传的地址
+            allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+            showUpload: true, //是否显示上传按钮
+            showCaption: false,//是否显示标题
+            browseClass: "btn btn-primary", //按钮样式
+            dropZoneEnabled: false,//是否显示拖拽区域
+            //minImageWidth: 50, //图片的最小宽度
+            //minImageHeight: 50,//图片的最小高度
+            //maxImageWidth: 1000,//图片的最大宽度
+            //maxImageHeight: 1000,//图片的最大高度
+            //maxFileSize: 0,//单位为kb，如果为0表示不限制文件大小
+            //minFileCount: 0,
+            maxFileCount: 2, //表示允许同时上传的最大文件个数
+            enctype: 'multipart/form-data',
+            validateInitialCount: true,
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+
+        }).on('fileuploaded', function (event, data, previewId, index) {
+            alert(data.response.imngName);
+
+            var imgval = $('#articleimg').val();
+
+            if (imgval == null || imgval == "" || imgval == undefined) {
+                imgval = data.response.imngName;
+            }/*else{
+         imgval += ","+"http://<%= request.getServerName()%>:<%=request.getServerPort()%><%=request.getContextPath()%>/"+data.response;
+      }*/
+            $('#articleimg').val(imgval);
+        });
+    }
+</script>
 </body>
 </html>
