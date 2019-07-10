@@ -2,11 +2,14 @@ package com.jk.controller;
 
 import com.jk.pojo.User;
 import com.jk.service.UserinfoServiceFeign;
+import com.jk.util.OSSClientUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Administrator
@@ -23,10 +26,39 @@ public class UserinfoController {
 
     //个人信息查询
     @RequestMapping("findUserinfo")
-    public User findUserinfo(){
-        Integer userId = 1;
+    @ResponseBody
+    public User findUserinfo(Integer userId){
+
         User userinfo = userinfoServiceFeign.findUserinfo(userId);
         return userinfo;
 
+    }
+
+    //个人信息修改
+
+    @PostMapping("saveUser")
+    public void saveUser(User user){
+        userinfoServiceFeign.saveUser(user);
+    }
+
+    /**
+     * OSS阿里云上传图片
+     */
+    @RequestMapping("updaloadImg")
+    @ResponseBody
+    public HashMap<String, Object> uploadImg(MultipartFile imgg) throws IOException {
+        if (imgg == null || imgg.getSize() <= 0) {
+
+            throw new IOException("file不能为空");
+        }
+        OSSClientUtil ossClient = new OSSClientUtil();
+        String name = ossClient.uploadImg2Oss(imgg);
+        String imgUrl = ossClient.getImgUrl(name);
+        String[] split = imgUrl.split("\\?");
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("imngName", split[0]);
+
+        return (HashMap<String, Object>) map;
     }
 }
