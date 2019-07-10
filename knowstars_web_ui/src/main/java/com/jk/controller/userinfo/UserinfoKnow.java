@@ -1,4 +1,4 @@
-package com.jk.controller;
+package com.jk.controller.userinfo;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

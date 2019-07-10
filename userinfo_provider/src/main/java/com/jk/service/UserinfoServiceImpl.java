@@ -26,4 +26,9 @@ public class UserinfoServiceImpl implements UserinfoService{
     public User findUserinfo(@RequestBody Integer userId) {
         return userinfoMapper.findUserinfo(userId);
     }
+
+    @Override
+    public void saveUser(@RequestBody User user) {
+        userinfoMapper.saveUser(user);
+    }
 }
