@@ -7,8 +7,51 @@
     <meta property="og:url" content="https://36kr.com/"><meta property="og:type" content="article"><meta property="og:title" content="36氪 | 让创业更简单"><meta property="og:description" content=""><meta property="og:image" content="https://pic.36krcnd.com/201602/24094427/3butngz6peklnpft.jpg"><meta name="renderer" content="webkit"><meta name="baidu-site-verification" content="ET7tYDCqIv"><meta name="apple-mobile-web-app-title" content="Title"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"> <meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="applicable-device" content="pc,mobile"><meta name="format-detection" content="telephone=no"><meta name="keywords" content="创业,互联网创业,互联网创业项目"><meta name="description" content="36氪为您提供创业资讯、科技新闻、投融资对接、股权投资、极速融资等创业服务，致力成为创业者可以依赖的创业服务平台，为创业者提供最好的产品和服务。">
     <title>36氪_让一部分人先看到未来</title>
 
+
     <link href="sta.36krcnd.com\36krx2018-front\static\app.3d4278b5.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="sta.36krcnd.com\36krx2018-front\static\usercenter.b851f7c9.css"><link href="https://36kr.com/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+
+
+
+    <!-- 引入bootstrap的css -->
+    <link href="../js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入bootstrap-treeview的css -->
+    <link href="../js/treeview/bootstrap-treeview.min.css" rel="stylesheet">
+    <!-- 引入bootstrap-addTabs的css -->
+    <link href="../js/addTabs/addTabs.css" rel="stylesheet">
+    <!-- 引入bootstrap-table的css -->
+    <link href="../js/table/bootstrap-table.min.css" rel="stylesheet">
+    <!-- 引入fileinput的css -->
+    <link type="text/css" rel="stylesheet" href="../js/fileinput/css/fileinput.min.css"/>
+
+
+
+
+
+    <!-- 引入jquery -->
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <!-- 引入my97 -->
+    <script type="text/javascript" src="../js/my97/WdatePicker.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/treeview/bootstrap-treeview.min.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/addTabs/addTabs.js"></script>
+    <!-- 引入bootstrap-table的js-->
+    <script type="text/javascript" src="../js/table/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../js/table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- 引入bootbox.js -->
+    <script type="text/javascript" src="../js/bootbox/bootbox.js"></script>
+    <!-- 引入fileinput的js -->
+    <script type="text/javascript" src="../js/fileinput/js/fileinput.min.js"></script>
+    <!--  引入fileinput的js -->
+    <script type="text/javascript" src="../js/fileinput/js/locales/zh.js"></script>
+
+
+    <script type="text/javascript" src="../js/fileinput/themes/fa/theme.js"></script>
+
+
 
     <script charset="utf-8" src="./36氪_让一部分人先看到未来_files/v.js.下载"></script>
     <script type="text/javascript" async="" src="./36氪_让一部分人先看到未来_files/cmp.api"></script>
@@ -454,60 +497,107 @@
                 <li><div class="kr-header-search-entry clearfloat"><div class="search-button"><span class="search-icon"></span><span class="search-text weight-bold">搜索</span></div></div>
                 </li></ul></div></div></div><div class="kr-layout-content"><div class="kr-usercenter">
             <div class="usercenter-main"><div class="usercenter-tab"><div class="tabPane tabPaneSelected">基本资料</div>
-                <div class="tabPane ">账号和密码</div><div class="tabPane ">我的收藏</div></div><div class="content">
-                <div class="basicinfo"><div class="usercenter-upload"><div class="upload-info">头像</div>
-                    <div class="upload-main"><img src="./36氪_让一部分人先看到未来_files/oi8rg1khm1lfqk0a!480" alt="">
-                        <div class="shadow">修改头像</div>
-                    </div>
-                </div>
-                    <div class="usercenter-input clearfloat">
-                    <div class="input-info">昵称</div>
-                    <div class="input-main">
-                        <div class="input-content ">
-                            <input type="text" placeholder="请填写昵称" id="usernameId" class="placeholder" value="">
+                <div class="tabPane ">账号和密码</div><div class="tabPane ">我的收藏</div></div>
+                <form id="userFormId">
+                <div class="content">
+                <div class="basicinfo">
+                    <div class="usercenter-upload" style="height:400px">
+                        <div class="form-group">
+                    <div class="upload-info">头像</div>
+
+                        <div class="col-lg-4 " >
+                        <!--<img src="./36氪_让一部分人先看到未来_files/oi8rg1khm1lfqk0a!480" alt="">-->
+                        <input type="hidden" id="testimg" name="userhead" />
+                        <input type="file" class="projectfile" name="imgg" id="headImg" >
                         </div>
-                    <div class="error-tip"></div>
                     </div>
                 </div>
+                    <div class="usercenter-date clearfloat">
+                    <div class="form-group">
+
+
+                        <div class="input-info">昵称</div>
+                        <div class="col-lg-4">
+                        <input type="text" class="form-control"  name="username"  id="usernameId"  placeholder="请填写昵称">
+                        </div>
+
+                    </div>
+                    </div>
+
                     <div class="usercenter-radio">
                         <div class="radio-info">性别</div>
+
                         <div class="radio-option">
+
                         <div class="single">
-                            <span class="outer outer-selected"><span class="inner inner-selected"></span></span>
-                            <span class="single-info">男</span>
+
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="usersex" value="1" id="radionan">男
+
                         </div>
                             <div class="single">
-                                <span class="outer "><span class="inner "></span></span>
-                        <span class="single-info">女</span>
+
+                                <input type="radio" name="usersex" value="2" id="radionv">女
+
                             </div>
+
                         </div></div>
                     <div class="usercenter-date clearfloat">
                         <div class="input-info">生日</div>
-                        <div class="input-main "><input type="text" class="placeholder" placeholder="请选择生日" readonly="" value="2000-01-01">
+                        <div class="form-group">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control"  name="birthday" id="birthdayId" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" placeholder="请选择生日">
                             <div class="calendar"></div>
                         </div>
+                        </div>
+
                     </div>
                     <div class="usercenter-input clearfloat">
                         <div class="input-info">个人简介</div>
-                        <div class="input-main">
-                            <div class="input-content textarea-main "><textarea maxlength="30" placeholder="请填写个人简介" class="placeholder">一如既往.</textarea>
+
+                            <div class="form-group">
+                                <div class="col-lg-4">
+                            <textarea  id="userintroId" name="userintro" placeholder="请填写个人简介" class="form-control"></textarea>
+                                </div>
                             </div>
                             <div class="error-tip"></div>
-                        </div>
+
                     </div>
                     <div class="usercenter-select"><div class="select">
                         <div class="select-info">职业</div>
-                        <input class="select-main " readonly="" value="其他" style="color: rgb(38, 38, 38);">
+                        <div class="col-sm-3">
+                        <select  name="profession" id="professionId" class="form-control">
+                            <option value="1">学生</option>
+                            <option value="2">白领</option>
+                            <option value="3">中层管理者</option>
+                            <option value="4">企业老板</option>
+                            <option value="5">创业者</option>
+                            <option value="6">其他</option>
+                        </select>
+                        </div>
                     </div>
                         <div class="option" style="display: none;"></div>
                     </div><div class="usercenter-select">
                         <div class="select"><div class="select-info">行业</div>
-                        <input class="select-main " readonly="" value="IT" style="color: rgb(38, 38, 38);"></div>
-                        <div class="option" style="display: none;"></div>
-                    </div><button class="usercenter-button">保存</button>
+                            <div class="col-sm-3">
+                                <select  name="trade" id="tradeId" class="form-control">
+                                    <option value="1">互联网</option>
+                                    <option value="2">IT</option>
+                                    <option value="3">制造业</option>
+                                    <option value="4">金融</option>
+                                    <option value="5">医药</option>
+                                    <option value="6">其他</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div><button class="usercenter-button" onclick="saveUser()">保存</button>
+                    <input type="hidden" name="uid" id="uidId">
                 </div>
             </div>
+                </form>
             </div>
+
         </div>
         </div>
         </div>
@@ -525,27 +615,135 @@
 
 </body>
 <script>
+var Myip ="http://192.168.1.126:8087";
 
-    $(function(){
-
+    $(function () {
+        uploadImg();
+var userId = 1;
         $.ajax({
-            url:"http://192.168.1.126:8087/findUserinfo",
+            url:Myip+"/findUserinfo",
             type:'post',
-            //data:{orderId:orderId},
+            dataType:'json',
+            data:{userId:userId},
             success:function(data){
 
+
+                $("#uidId").val(data.uid);
                 $("#usernameId").val(data.username);
-                /*$("#entryFee").val(data.entryFee);
-                $("#orderId").val(data.orderId);*/
+                $("#userintroId").val(data.userintro);
+                $("#birthdayId").val(data.birthday);
+
+                if(data.profession==1){
+                    $("#professionId").val(data.profession);
+                }
+                if(data.profession==2){
+                    $("#professionId").val(data.profession);
+                }
+                if(data.profession==3){
+                    $("#professionId").val(data.profession);
+                }
+                if(data.profession==4){
+                    $("#professionId").val(data.profession);
+                }
+                if(data.profession==5){
+                    $("#professionId").val(data.profession);
+                }
+                if(data.profession==6){
+                    $("#professionId").val(data.profession);
+                }
+
+                if(data.trade==1){
+                    $("#tradeId").val(data.trade);
+                }
+                if(data.trade==2){
+                    $("#tradeId").val(data.trade);
+                }
+                if(data.trade==3){
+                    $("#tradeId").val(data.trade);
+                }
+                if(data.trade==4){
+                    $("#tradeId").val(data.trade);
+                }
+                if(data.trade==5){
+                    $("#tradeId").val(data.trade);
+                }
+                if(data.trade==6){
+                    $("#tradeId").val(data.trade);
+                }
+
+                if(data.usersex==1){
+
+                    $("#radionan").prop("checked",true);
+
+                }
+                if(data.usersex==2){
+                    $("#radionv").prop("checked",true);
+
+                }
+
+
             },
             error:function(){
 
-            }
-        });
 
+            }
+        })
 
     })
 
+    function saveUser() {
+        $.ajax({
+            url:Myip+"/saveUser",
+            type:'post',
+            data:$("#userFormId").serialize(),
+            success:function(data){
+
+                bootbox.alert("保存成功");
+                $("#userFormId").bootstrapTable('refresh');
+
+            },
+            error:function(){
+                bootbox.alert("ajax失败");
+            }
+        });
+    }
+
+
+
+function uploadImg(url) {
+    $('#headImg').fileinput({
+        language: 'zh', //设置语言
+        uploadUrl: Myip + ':8087/updaloadImg', //上传的地址
+        allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+        showUpload: true, //是否显示上传按钮
+        showCaption: false,//是否显示标题
+        browseClass: "btn btn-primary", //按钮样式
+        dropZoneEnabled: false,//是否显示拖拽区域
+        //minImageWidth: 50, //图片的最小宽度
+        //minImageHeight: 50,//图片的最小高度
+        //maxImageWidth: 10,//图片的最大宽度
+        //maxImageHeight: 10,//图片的最大高度
+        //maxFileSize: 0,//单位为kb，如果为0表示不限制文件大小
+        //minFileCount: 0,
+        maxFileCount: 2, //表示允许同时上传的最大文件个数
+        enctype: 'multipart/form-data',
+        validateInitialCount: true,
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+        msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+
+    }).on('fileuploaded', function (event, data, previewId, index) {
+        alert(data.response.imngName);
+
+        var imgval = $('#testimg').val();
+
+        if (imgval == null || imgval == "" || imgval == undefined) {
+            imgval = data.response.imngName;
+        }/*else{
+         imgval += ","+"http://<%= request.getServerName()%>:<%=request.getServerPort()%><%=request.getContextPath()%>/"+data.response;
+      }*/
+        $('#testimg').val(imgval);
+    });
+}
 </script>
 
 </html>

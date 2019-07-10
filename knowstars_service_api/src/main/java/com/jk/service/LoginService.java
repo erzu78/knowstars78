@@ -1,5 +1,6 @@
 package com.jk.service;
 
+import com.jk.pojo.Staff;
 import com.jk.pojo.User;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public interface LoginService  {
 
-    @RequestMapping(value="login")
+    @RequestMapping(value="loginuser")
     User login(User loginuser);
 
     @RequestMapping(value="addLoginUser")
@@ -21,4 +22,13 @@ public interface LoginService  {
 
     @RequestMapping("delOne")
     void delOne(@RequestParam("uid")Integer uid);
+
+    @RequestMapping(value="loginstaff")
+    User loginstaff(Staff loginstaff);
+
+    @RequestMapping(value="addLoginStaff")
+    String addLoginStaff(Staff loginstaff);
+
+    @RequestMapping("findStaff")
+    HashMap<String, Object> findStaff(@RequestParam("start") Integer start, @RequestParam("pageSize") Integer pageSize);
 }

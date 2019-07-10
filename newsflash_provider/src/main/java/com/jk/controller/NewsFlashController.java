@@ -4,6 +4,7 @@ import com.jk.pojo.NewsFlash;
 import com.jk.service.NewsFlashService;
 import com.jk.service.NewsFlashServiceApi;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,5 +27,27 @@ public class NewsFlashController  implements NewsFlashServiceApi {
 
     public long queryCount() {
         return newsFlashService.queryCount();
+    }
+
+    @Override
+    public void delById(@RequestParam(value="flashid")Integer flashid) {
+        newsFlashService.delById(flashid);
+    }
+
+    @Override
+    public void addNewsFlash(@RequestBody NewsFlash newsFlash) {
+        System.out.println(newsFlash.getFlashinfo());
+        System.out.println(newsFlash.getFlashtitle());
+        newsFlashService.addNewsFlash(newsFlash);
+    }
+
+    @Override
+    public NewsFlash queryNewsById(@RequestParam(value="flashid")Integer flashid) {
+        return newsFlashService.queryNewsById(flashid);
+    }
+
+    @Override
+    public void UpdNews(@RequestBody NewsFlash newsFlash) {
+        newsFlashService.UpdNews(newsFlash);
     }
 }

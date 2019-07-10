@@ -1,15 +1,19 @@
 package com.jk.pojo;
 
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 /**
  * 快讯表
  */
-public class NewsFlash {
+public class NewsFlash  implements Serializable {
     private Integer flashid; //快讯id
 
     private String flashtitle; //快讯标题
+    SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    private Date creattime;   //快讯创建时间
+
+    private String creattime;   //快讯创建时间
 
     private String flashinfo;   //快讯内容
 
@@ -29,13 +33,7 @@ public class NewsFlash {
         this.flashtitle = flashtitle == null ? null : flashtitle.trim();
     }
 
-    public Date getCreattime() {
-        return creattime;
-    }
 
-    public void setCreattime(Date creattime) {
-        this.creattime = creattime;
-    }
 
     public String getFlashinfo() {
         return flashinfo;
@@ -43,5 +41,13 @@ public class NewsFlash {
 
     public void setFlashinfo(String flashinfo) {
         this.flashinfo = flashinfo == null ? null : flashinfo.trim();
+    }
+
+    public String getCreattime() {
+        return creattime;
+    }
+
+    public void setCreattime(String creattime) {
+        this.creattime = creattime;
     }
 }

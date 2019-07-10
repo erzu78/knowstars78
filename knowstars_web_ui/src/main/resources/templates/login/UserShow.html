@@ -3,9 +3,9 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>用户查询</title>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>用户查询</title>
     <!-- 引入bootstrap的css -->
     <link  href="../js/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
     <!-- 引入bootstrap-treeview的css -->
@@ -51,9 +51,9 @@
 
 
     $(function(){
-        findStaff();
+        findUser();
     })
-    function findStaff(){
+    function findUser(){
         $("#bootTab").bootstrapTable({
             url:"http://localhost:8088/findUser",
             method:"post",

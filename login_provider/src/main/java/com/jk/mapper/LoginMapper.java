@@ -1,5 +1,6 @@
 package com.jk.mapper;
 
+import com.jk.pojo.Staff;
 import com.jk.pojo.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -29,4 +30,18 @@ public interface LoginMapper {
 
     @Delete("delete  from t_user where uid=#{uid}")
     void delOne(Integer uid);
+
+    @Select("select * from t_staff where staffname=#{staffname} and staffpassword=#{staffpassword}")
+    User findStaffByNamePWD(Staff loginstaff);
+
+    @Select("select count(*) from t_staff where staffname=#{staffname}")
+    Integer findStaffByName(String staffname);
+
+    @Insert("insert into t_staff(staffname,staffpassword) values(#{staffname},#{staffpassword})")
+    void addLoginStaff(Staff loginstaff);
+
+    List<User> findStaff(Integer start, Integer pageSize);
+
+    @Select("select count(*) from t_staff ")
+    Long StaffSum();
 }
