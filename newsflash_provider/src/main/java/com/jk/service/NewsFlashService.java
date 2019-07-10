@@ -8,4 +8,12 @@ public interface NewsFlashService {
     List<NewsFlash> NewsFlashList(Integer start, Integer rows);
 
     long queryCount();
+
+    void delById(Integer flashid);
+
+    void addNewsFlash(NewsFlash newsFlash);
+
+    NewsFlash queryNewsById(Integer flashid);
+
+    void UpdNews(NewsFlash newsFlash);
 }

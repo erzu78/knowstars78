@@ -47,12 +47,23 @@
     delete from t_newsflash
     where flashid = #{flashid,jdbcType=INTEGER}
   </delete>
+
+
   <insert id="insert" parameterType="com.jk.pojo.NewsFlash" >
-    insert into t_newsflash (flashid, flashtitle, creattime, 
+    insert into t_newsflash ( flashtitle,
       flashinfo)
-    values (#{flashid,jdbcType=INTEGER}, #{flashtitle,jdbcType=VARCHAR}, #{creattime,jdbcType=TIMESTAMP}, 
+    values ( #{flashtitle,jdbcType=VARCHAR},
       #{flashinfo,jdbcType=LONGVARCHAR})
   </insert>
+
+
+
+  <select id="queryNewsById" resultMap = "BaseResultMap">
+    select * from t_newsflash where flashid=#{flashid}
+  </select>
+
+
+
   <insert id="insertSelective" parameterType="com.jk.pojo.NewsFlash" >
     insert into t_newsflash
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -108,8 +119,19 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jk.pojo.NewsFlash" >
     update t_newsflash
-    set flashtitle = #{flashtitle,jdbcType=VARCHAR},
-      creattime = #{creattime,jdbcType=TIMESTAMP}
+    set flashtitle = #{flashtitle,jdbcType=VARCHAR}, flashinfo = #{flashinfo,jdbcType=LONGVARCHAR}
+
     where flashid = #{flashid,jdbcType=INTEGER}
   </update>
+
+
+
+
+  <delete id="delById" parameterType="java.lang.Integer" >
+    delete from t_newsflash
+    where flashid = ${id}
+  </delete>
+
+
+
 </mapper>
