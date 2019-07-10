@@ -6,11 +6,11 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface NewsFlashMapper {
-    int deleteByPrimaryKey(Integer flashid);
+    int deleteByPrimaryKey(@Param("flashid")Integer  flashid);
 
-    int insert(NewsFlash record);
+    int insert(NewsFlash newsFlash);
 
-    int insertSelective(NewsFlash record);
+    int insertSelective(NewsFlash newsFlash);
 
     NewsFlash selectByPrimaryKey(Integer flashid);
 
@@ -23,4 +23,8 @@ public interface NewsFlashMapper {
     List<NewsFlash> NewsFlashList(@Param("start") Integer start, @Param("rows") Integer rows);
 
     long queryCount();
+
+    void delById(@Param("flashid") Integer flashid);
+
+    NewsFlash queryNewsById(@Param("flashid") Integer flashid);
 }

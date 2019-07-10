@@ -14,4 +14,31 @@ public class LocationHref {
         return "/NewsFlash/shownews";
     }
 
+    @RequestMapping("/addDialogNews")
+
+    public String addDialogNews(){
+
+        return "/NewsFlash/addnews";
+    }
+
+
+    @RequestMapping("/updDialogNews")
+
+    public String updDialogNews(){
+
+        return "/NewsFlash/updatenews";
+    }
+
+
+
+
+
+    @RequestMapping("/toEditor")
+
+    public String toEditor(){
+
+        return "/NewsFlash/ueditor";
+    }
+
+
 }
