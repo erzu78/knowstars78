@@ -11,7 +11,7 @@ spring:
     name: video-provider
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.1.139/talented_study_610?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://192.168.1.139/knowstars78?useUnicode=true&characterEncoding=utf8
     username: erzhu
     password: 123
   mybatis:

@@ -13,6 +13,18 @@ public class VideoController {
           return "video/homeVideo";
       }
 
+    //去后台视频展示页面
+    @RequestMapping("toVideoShow")
+    public String tologin(){
+        return "video/videoShow";
+    }
+
+    //打开后台新增弹框
+    @RequestMapping("toAddVideoDialog")
+    public String toAddVideoDialog(){
+          return "video/addVideoDialog";
+    }
+
 
 
 }
