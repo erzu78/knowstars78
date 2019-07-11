@@ -1,4 +1,4 @@
-package com.jk.controller;
+package com.jk.controller.likecomment;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,7 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LikeComment {
     @RequestMapping("toCouponList")
     public String toCouponList(){
-        return "likecomment";
+        return "likecomment/likecomment";
+    }
+
+    @RequestMapping("toShowDiscuss")
+    public String toShowDiscuss(){
+        return "likecomment/likecomment";
     }
 
 }

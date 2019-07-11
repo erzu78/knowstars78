@@ -29,4 +29,24 @@ public class InfServicePImpl implements InfServiceP {
     public void deleteInfo(Integer infid) {
         infMapper.deleteByPrimaryKey(infid);
     }
+
+    @Override
+    public void add(Information information) {
+        infMapper.insert(information);
+    }
+
+    @Override
+    public Information queryInfoById(Integer infid) {
+        return infMapper.selectByPrimaryKey(infid);
+    }
+
+    @Override
+    public void upInfo(Information information) {
+        infMapper.updateByPrimaryKey(information);
+    }
+
+    @Override
+    public void deleteAllInfo(String ids) {
+        infMapper.delAll(ids);
+    }
 }
