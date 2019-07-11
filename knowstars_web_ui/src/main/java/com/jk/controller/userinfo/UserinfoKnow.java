@@ -18,4 +18,19 @@ public class UserinfoKnow {
 
         return "userinfo/userinfoShow";
     }
+
+    //跳转账号和密码页面
+
+    @RequestMapping("toAccPass")
+    public String toAccPass(){
+
+        return "userinfo/accPassShow";
+    }
+
+
+    @RequestMapping("toUpPassDialog")
+    public String toUpPassDialog(){
+
+        return "userinfo/upPassDialog";
+    }
 }
