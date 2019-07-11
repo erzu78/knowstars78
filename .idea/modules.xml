@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/knowstars78.iml" filepath="$PROJECT_DIR$/knowstars78.iml" />
+      <module fileurl="file://$PROJECT_DIR$/knowstars_common/knowstars_common.iml" filepath="$PROJECT_DIR$/knowstars_common/knowstars_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/knowstars_config/knowstars_config.iml" filepath="$PROJECT_DIR$/knowstars_config/knowstars_config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/knowstars_eureka/knowstars_eureka.iml" filepath="$PROJECT_DIR$/knowstars_eureka/knowstars_eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/knowstars_service_api/knowstars_service_api.iml" filepath="$PROJECT_DIR$/knowstars_service_api/knowstars_service_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/knowstars_util/knowstars_util.iml" filepath="$PROJECT_DIR$/knowstars_util/knowstars_util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/knowstars_web_ui/knowstars_web_ui.iml" filepath="$PROJECT_DIR$/knowstars_web_ui/knowstars_web_ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/login_consumer/login_consumer.iml" filepath="$PROJECT_DIR$/login_consumer/login_consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/login_provider/login_provider.iml" filepath="$PROJECT_DIR$/login_provider/login_provider.iml" />
+    </modules>
+  </component>
+</project>

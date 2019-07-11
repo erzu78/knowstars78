@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="knowstars_common" />
+        <module name="knowstars_config" />
+        <module name="knowstars_eureka" />
+        <module name="knowstars_service_api" />
+        <module name="knowstars_util" />
+        <module name="knowstars_web_ui" />
+        <module name="login_consumer" />
+        <module name="login_provider" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="knowstars78" target="1.5" />
+      <module name="knowstars_common" target="1.7" />
+      <module name="knowstars_config" target="1.8" />
+      <module name="knowstars_eureka" target="1.8" />
+      <module name="knowstars_service_api" target="1.7" />
+      <module name="knowstars_util" target="1.7" />
+      <module name="knowstars_web_ui" target="1.8" />
+      <module name="login_consumer" target="1.8" />
+      <module name="login_provider" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="knowstars_config" options="-parameters" />
+      <module name="knowstars_eureka" options="-parameters" />
+      <module name="knowstars_web_ui" options="-parameters" />
+      <module name="login_consumer" options="-parameters" />
+      <module name="login_provider" options="-parameters" />
+    </option>
+  </component>
+</project>
