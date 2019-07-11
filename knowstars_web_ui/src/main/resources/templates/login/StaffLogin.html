@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>后台管理人员登陆</title>
+    <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+    <meta name="author" content="Vincent Garreau" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" media="screen" href="../css/login.css">
+
     <!-- 引入bootstrap的css -->
     <link  href="../js/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
     <!-- 引入bootstrap-treeview的css -->
@@ -37,28 +39,74 @@
     <script type="text/javascript" src="../js/fileinput/js/locales/zh.js"></script>
     <script type="text/javascript" src="../js/fileinput/themes/fa/theme.js"></script>
 
+    <!--头部样式-->
+    <link href="../css/demo.css" rel="stylesheet" media="all" />
 </head>
-<body>
+<body id="by">
+
+<div id="switcher">
+    <div class="center">
+        <ul>
+
+
+            <li class="logoTop">
+                knowstar酷炫的登录页面
+                <script type="text/javascript">
+                    jQuery('#output').qrcode({width:150,height: 150,text: window.location.href});
+                </script>
+            <li class="remove_frame"><a href="http://localhost:8280/toindex" title="移除框架"></a></li>
+        </ul>
+    </div>
+</div>
+<!-- particles.js container -->
+<div id="particles-js" style="display: flex;align-items: center;justify-content: center">
+</div>
 <form id="loginff">
-    <center><h1><b>登录系统</b></h1></center>
-    <br/>
-    <div class="input-group" style="margin-left:650px">
-        <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-user"></i></span>
-        <input type="text" style="width:200px" class="form-control" name="staffname" placeholder="请输入账号" aria-describedby="basic-addon1">
-    </div>
-    <br/>
-    <div class="input-group" style="margin-left:650px">
-        <span class="input-group-addon" id="basic-addon2"><i class="glyphicon glyphicon-lock"></i></span>
-        <input type="password" style="width:200px" class="form-control" name="staffpassword" placeholder="请输入密码" aria-describedby="basic-addon2">
-    </div>
-    <br/>
-    <div class="btn-group" role="group" aria-label="..." style="margin-left:740px">
-        <button type="button" onclick="login()" class="btn btn-default">登录</button>&nbsp;&nbsp;&nbsp;&nbsp;
-        <button type="button" onclick="editTable()" class="btn btn-default">注册</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="login-page">
+        <div class="login-content">
+            <div class="login-tit">登录</div>
+            <div class="login-input">
+                <input type="text" name="staffname" placeholder="用户名/手机号">
+            </div>
+            <div class="login-input">
+                <input type="password" name="staffpassword" placeholder="密码">
+            </div>
+
+
+<div>
+
+
+
+            <div class="login-btn">
+                <div class="login-btn-left">
+                    <button type="button" class="btn btn-primary" onclick="login()" >登录</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-primary" onclick="editTable()" >注册</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                </div>
+                <div class="login-btn-right" onClick="changeImg()">
+                    <!--<img src="../img/check.png" alt="" id="picture"> 记住密码-->
+                </div>
+            </div>
+        </div>
     </div>
 </form>
-</body>
-<script type="text/javascript">
+
+<!-- scripts -->
+<script src="../js/particles.js"></script>
+<script src="../js/app.js"></script>
+<script>
+    function changeImg(){
+        let pic = document.getElementById('picture');
+        console.log(pic.src)
+        if(pic.getAttribute("src",2) =="../img/check.png"){
+            pic.src ="../img/checked.png"
+        }else{
+            pic.src ="../img/check.png"
+        }
+    }
+
+
     function login(){
         $.ajax({
             url:"http://localhost:8088/loginstaff",
@@ -121,7 +169,7 @@
                         $.ajax({
                             url:submitUrl,
                             type:'post',
-                            data:$("#addLoginStaffForm").serialize(),
+                            data:$("#addLoginUserForm").serialize(),
                             success:function(data){
                                 if(data==1){
                                     bootbox.alert("已经存在相同用户名");
@@ -149,5 +197,26 @@
         });
     }
 
+
+    function sendPhoneCode(){
+        var phone=$("#phoneId").val();
+        alert(phone);
+        $.ajax({
+            url:"http://localhost:8088/sendPhoneCode",
+            data:{phoneName:phone},
+            success:function(data){
+                if(data==1){
+                    alert("发送成功")
+                }else if(data==2){
+                    alert("发送失败")
+                }
+            },error:function(){
+
+            }
+        })
+    }
+
+
 </script>
+</body>
 </html>
