@@ -35,13 +35,18 @@ public class VideoServiceImpl implements VideoService {
     @Override
     @PostMapping("saveVideo")
     public void saveVideo(@RequestBody Video video) {
-        videoMapper.saveVideo(video);
+        videoMapper.addVideo(video);
     }
 
     @Override
     @GetMapping("queryAboutVideo")
     public List<Video> queryAboutVideo() {
         return videoMapper.queryAboutVideo();
+    }
+
+    @Override
+    public Video querySingleVideo(Integer videoId) {
+        return videoMapper.querySingleVideo(videoId);
     }
 
 

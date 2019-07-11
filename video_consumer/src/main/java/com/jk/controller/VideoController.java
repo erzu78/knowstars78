@@ -67,6 +67,13 @@ public class VideoController {
                       return list;
                   }
 
+                  //根据视频Id查询对应的单个视频信息
+                  @GetMapping("querySingleVideo")
+                  public Video querySingleVideo(Integer videoId){
+
+                      return videoServiceFeign.querySingleVideo(videoId);
+                  }
+
 
 
 }
