@@ -52,7 +52,7 @@
         <option value="3">其他</option>
     </select>-->
 
-    <button type="button" class="btn btn-warning" onclick="dialogInfo('addDialogInfo','http://localhost:8013/addInfo','新增')">添加资讯</button>
+    <button type="button" class="btn btn-warning" onclick="dialogInfo()">添加资讯</button>
     <button type="button" class="btn btn-primary" onclick="delAll()">批量删除</button>
 </div>
 
@@ -180,9 +180,10 @@
 
 
     //弹框
-    dialogInfo = function (HTMLurl, submitUrl, title) {
+    dialogInfo = function () {
+        location.href="/addDialogInfo"
 
-        var dialog = bootbox.dialog({
+      /*var dialog = bootbox.dialog({
             title: title,
             message: getJspHtml(HTMLurl),   //调用方法
             buttons: {
@@ -215,7 +216,7 @@
                     }
                 }
             }
-        });
+        });*/
     }
 
 
@@ -282,6 +283,7 @@
                 $("#infid").val(data.infid);
                 $("#inftitle").val(data.inftitle);
                 $("#subtitle").val(data.subtitle);
+                $("#showImg").attr("src",data.articleimg);
                 $("#releasetime").val(data.releasetime);
                 $("#articleinformation").val(data.articleinformation);
                 $("#articleimg").val(data.articleimg);
