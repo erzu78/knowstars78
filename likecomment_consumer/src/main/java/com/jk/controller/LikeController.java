@@ -37,70 +37,38 @@ public class LikeController {
 
         return increment;
     }
+    @RequestMapping("zizeng")
+    public Long incrzi(String heartId, long liveTime) {
+        RedisAtomicLong redisAtomicLong = new RedisAtomicLong("infzhan"+heartId, redisTemplate.getConnectionFactory());
+        Long incrt = redisAtomicLong.getAndIncrement();
+
+        if ((null == incrt || incrt.longValue() == 0) && liveTime > 0) {//初始设置过期时间
+            redisAtomicLong.expire(liveTime, TimeUnit.SECONDS);
+        }
+
+        return incrt;
+    }
 /**
      * @Description: 初始化自增长值
      * @param key key
      * @param liveTime 当前值
     */
-    @RequestMapping("zeng")
+   /* @RequestMapping("zeng")
     public void setIncr(String infId, long liveTime) {
               RedisAtomicLong counter = new RedisAtomicLong("infzhan"+infId, redisTemplate.getConnectionFactory());
               counter.set(liveTime);
               counter.expire(0, TimeUnit.SECONDS);
 }
 
-   /* @GetMapping("add")
-    public void addOne(){
-        redisTemplate.opsForValue().set("liveTime","1");
+    @RequestMapping("zengzeng")
+    public void setIncrzeng(String heartId, long liveTime) {
+        RedisAtomicLong counter = new RedisAtomicLong("infzhan"+heartId, redisTemplate.getConnectionFactory());
+        counter.set(liveTime);
+        counter.expire(0, TimeUnit.SECONDS);
     }
+*/
 
-    @GetMapping("findredisTest")
-    public String findredisTest(){
-        String str = (String) redisTemplate.opsForValue().get("liveTime");
-        return str;
-    }*/
 
-    @PostMapping("like/{ziid}")
-    public void addUp(@PathVariable("ziid") String ziid){
-        String userId = "123";
-        RedisConnection redis = redisTemplate.getConnectionFactory().getConnection();
-        //根据key值获取value
-        byte[] bytes = redis.get(ziid.getBytes());
-        String s = new String(bytes);
-        //判断当前评论是否有点赞内容
-        if("".equals(s)){
-            Map<String, String> upMap = new HashMap<String, String>();
-            upMap.put(userId,"1");
-            //把点赞map集合转成json字符串存入redis
-            String json = JSON.toJSONString(upMap);
-            redis.set(ziid.getBytes(),json.getBytes());
-        }else{
-            Map<String,String> map = JSON.parseObject(s, Map.class);
-            //在map集合中判断当前用户是否已经点赞
-            String userVal = map.get(userId);
-            if(userVal != null){
-                map.remove(userId);
-            }else{
-                map.put(userId,"1");
-            }
-            String json = JSON.toJSONString(map);
-            redis.set(ziid.getBytes(),json.getBytes());
-        }
-    }
-
-    public Integer getUpCount(Integer ziid){
-        RedisConnection redis = redisTemplate.getConnectionFactory().getConnection();
-        byte[] bytes = redis.get(ziid.toString().getBytes());
-        String s = new String(bytes);
-        //判断当前评论有没有点过赞
-        if("".equals(s)){
-            return 0;
-        }else{
-            //如果当前redis获取的值不为空 则证明当前评论被点过赞
-            Map<String,String> map = JSON.parseObject(s, Map.class);
-            return map.size();
-        }
-    }
 
 
     @GetMapping("queryZhan")
@@ -110,7 +78,11 @@ public class LikeController {
 
         return zhanCount;
     }
+    @GetMapping("queryshou")
+    public String queryshou(String heartId){
 
+        String shouCount = (String) redisTemplate.opsForValue().get("infzhan"+heartId);
 
-
+        return shouCount;
+    }
 }
