@@ -6,7 +6,7 @@ package com.jk.pojo;
 public class Video {
      private Integer videoId;        // Id
      private String headline;        //大标题
-     private String subtitle;        //小标题
+     //private String subtitle;        //小标题
      private String issuer;          //发布人
      private String issueTime;       //发布时间
      private String introduction;    //介绍
@@ -28,14 +28,6 @@ public class Video {
 
     public void setHeadline(String headline) {
         this.headline = headline;
-    }
-
-    public String getSubtitle() {
-        return subtitle;
-    }
-
-    public void setSubtitle(String subtitle) {
-        this.subtitle = subtitle;
     }
 
     public String getIssuer() {

@@ -402,11 +402,12 @@
 </body>
 
 <script>
+
+           var ip="http://192.168.1.120";
+
                            $(function(){
                                queryAboutVideo();
                            })
-
-                           var ip="http://192.168.1.120";
 
                            function queryAboutVideo(){
                                $.ajax({
@@ -417,7 +418,7 @@
                                       // commonality(data);
                                       var aboutVideo = "";
                                          for (var i = 0 ; i < data.length ;i++){
-                                             aboutVideo +='<div class="flow-item"><div class="kr-shadow-wrapper"><div class="kr-shadow-wrapper-card" style="width:355px;height:333px;top:-10px;left:-10px"></div><div class="kr-shadow-content"><a class="flow-item-pic" href="/video/49698" target="_blank" rel="noopener noreferrer"><img class="scaleBig" src="'+data[i].videoImg+'" alt="'+data[i].headline+'"><span class="video-icon"></span><span class="video-time-length">6:18</span></a><div class="flow-item-detail"><a class="flow-item-title weight-bold ellipsis-2" href="/video/49698" target="_blank" rel="noopener noreferrer">'+data[i].headline+'</a><a class="flow-item-description ellipsis-2" href="/video/49698" target="_blank" rel="noopener noreferrer">'+data[i].subtitle+'</a></div><div class="kr-flow-bar"><a class="kr-flow-bar-author" href="/user/1547419282" target="_blank" rel="noopener noreferrer">'+data[i].issuer+'</a><span class="kr-flow-bar-time" style="float:right"><i class="kr-flow-bar-time-icon"></i>'+data[i].issueTime+'</span></div></div></div></div>';
+                                             aboutVideo +='<div class="flow-item"><div class="kr-shadow-wrapper"><div class="kr-shadow-wrapper-card" style="width:355px;height:333px;top:-10px;left:-10px"></div><div class="kr-shadow-content"><a class="flow-item-pic" href="toSingleVideo?viId='+data[i].videoId+'" target="_blank" rel="noopener noreferrer"><img class="scaleBig" src="'+data[i].videoImg+'" alt="'+data[i].headline+'"><span class="video-icon"></span><span class="video-time-length">6:18</span></a><div class="flow-item-detail"><a class="flow-item-title weight-bold ellipsis-2" href="/video/49698" target="_blank" rel="noopener noreferrer">'+data[i].headline+'</a><a class="flow-item-description ellipsis-2" href="/video/49698" target="_blank" rel="noopener noreferrer">'+data[i].introduction+'</a></div><div class="kr-flow-bar"><a class="kr-flow-bar-author" href="/user/1547419282" target="_blank" rel="noopener noreferrer">'+data[i].issuer+'</a><span class="kr-flow-bar-time" style="float:right"><i class="kr-flow-bar-time-icon"></i>'+data[i].issueTime+'</span></div></div></div></div>';
                                          }
 
                                          $("#videoId").html(aboutVideo);
