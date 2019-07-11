@@ -1,0 +1,984 @@
+<!doctype html>
+<html data-path="/" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link th:href="@{/js/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet">
+    <link th:href="@{/js/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/js/bootstrap-treeview/dist/bootstrap-treeview.min.css}" rel="stylesheet">
+    <link th:href="@{/js/bootStrap-addTabs/bootstrap.addtabs.css}" rel="stylesheet">
+    <link th:href="@{/js/bootstrap-table/dist/bootstrap-table.css}" rel="stylesheet">
+    <link th:href="@{/js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css}" rel="stylesheet">
+    <link th:href="@{/js/bootstrap-dialog/dist/css/bootstrap-dialog.css}" rel="stylesheet">
+    <link th:href="@{/js/bootstrap-fileinput/css/fileinput.css}" rel="stylesheet">
+    <style type="text/css">
+        .navbar{
+            height: 60px;
+            background: black;
+        }
+        .layout{
+            padding-top: 60px;
+            position: relative;
+        }
+    </style>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/bootstrap-treeview/dist/bootstrap-treeview.min.js}"></script>
+    <script th:src="@{/js/bootStrap-addTabs/bootstrap.addtabs.js}"></script>
+    <script th:src="@{/js/bootstrap-table/dist/bootstrap-table.js}"></script>
+    <script th:src="@{/js/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js}"></script>
+    <script th:src="@{/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js}"></script>
+    <script th:src="@{/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js}"></script>
+    <script th:src="@{/js/bootstrap-dialog/dist/js/bootstrap-dialog.js}"></script>
+    <script th:src="@{/js/bootstrap-fileinput/js/fileinput.js}"></script>
+    <script th:src="@{/js/bootstrap-fileinput/js/locales/zh.js}"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta property="og:url" content="https://36kr.com/" /><meta property="og:type" content="article" /><meta property="og:title" content="36氪 | 让创业更简单" /><meta property="og:description" content="" /><meta property="og:image" content="https://pic.36krcnd.com/201602/24094427/3butngz6peklnpft.jpg" /><meta name="renderer" content="webkit"/><meta name="baidu-site-verification" content="ET7tYDCqIv"/><meta name="apple-mobile-web-app-title" content="Title"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black"/> <meta name="HandheldFriendly" content="True"/><meta name="MobileOptimized" content="320"/><meta name="applicable-device" content="pc,mobile"/><meta name="format-detection" content="telephone=no"/><meta name="keywords" content="创业,互联网创业,互联网创业项目"><meta name="description" content="36氪为您提供创业资讯、科技新闻、投融资对接、股权投资、极速融资等创业服务，致力成为创业者可以依赖的创业服务平台，为创业者提供最好的产品和服务。">
+    <title data-react-helmet="true">首页_36氪</title>
+    <link href="sta.36krcnd.com/36krx2018-front/static/app.3d4278b5.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="sta.36krcnd.com/36krx2018-front/static/home~information~motif-detail.b90f8244.css"><link rel="stylesheet" type="text/css" href="sta.36krcnd.com/36krx2018-front/static/home.59ca202f.css"><link href="//36kr.com/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
+
+    <script></script>
+    <script>
+        //百度统计代码
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement('script');
+            hm.src = 'hm.baidu.com/hm.js?713123c60a0e86982326bae1a51083e1';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    <script>
+        // sem 统计代码
+        var _hmt= _hmt||[];
+        (function(){
+            var hm = document.createElement("script");
+            hm.src = "https:hm.baidu.com/hm.js?1684191ccae0314c6254306a8333d090";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm,s);
+        })();
+    </script>
+    <!-- 神策手动埋点抽离出的代码 -->
+    <script>
+        function sensorsManual ( element_target ) {
+            const data = { platform: 'web' };
+            // 此处只采集a标签的跳转
+            if (element_target.tagName.toLowerCase() === 'a') {
+                const attributes = element_target.attributes;
+                const classObj = attributes.class || {};
+                const className = classObj.value || "";
+                const hrefObj = attributes.href || {};
+                const hrefValue = hrefObj.value || "";
+                const hrefUrlArr = hrefValue.split('/').filter(x => x !== "");
+                // 当前的浏览器地址 Array
+                const localPath = window.location.pathname;
+                const localPathArr = localPath.split('/').filter(x => x !== "");;
+                if (/(http|ftp|https):\/\//.test(hrefValue)) {
+                    // 若为外链，记录外链url
+                    data.media_content_id = hrefValue;
+                    // 文章详情含有跳转链接
+                    if (localPathArr[0] === 'p') {
+                        if (!isNaN(Number(localPathArr[1]))) {
+                            data.media_source = 'article';
+                        }
+                    }
+                    if (localPathArr[0] === 'newsflashes') {
+                        // 快讯详情 中 含有跳转链接
+                        if (!isNaN(Number(localPathArr[1]))) {
+                            data.media_source = 'newsflash';
+                        } else {
+                            data.media_source = 'page_newsflashes';
+                        }
+                    }
+                    if (localPathArr[0] === 'topics') {
+                        // 专题详情页含有外链
+                        if (!isNaN(Number(localPathArr[1]))) {
+                            data.media_source = 'topics';
+                        }
+                    }
+                    // 首页进外链，添加media_source
+                    if (localPath === '/') {
+                        data.media_source = 'page_home';
+                    }
+                    if(!isNaN(Number(localPathArr[1]))){
+                        // 详情页中（当前地址包含ID），含有外链，发送source_id
+                        data.source_id = localPathArr[1];
+                    }
+                } else {
+                    /* 聚合页跳转id */
+                    if(localPathArr[1] && !isNaN(Number(localPathArr[1])) &&
+                        hrefUrlArr[1] && !isNaN(Number(hrefUrlArr[1]))){
+                        data.source_id = localPathArr[1];
+                    }
+                    /* 搜索结果及资讯 */
+                    if (localPathArr[0] === 'search' && !isNaN(Number(hrefUrlArr[1]))) {
+                        // 搜索
+                        if (localPathArr[1] === 'articles') {
+                            // 文章
+                            data.media_event_value = 'search_articles';
+                        } else if (localPathArr[1] === 'newsflashes') {
+                            // 快讯
+                            data.media_event_value = 'search_flashnews';
+                        } else if (localPathArr[1] === 'video') {
+                            // 视频
+                            data.media_event_value = 'search_videos';
+                        } else if (localPathArr[1] === 'monographic') {
+                            // 专题
+                            data.media_event_value = 'search_topics';
+                        } else if (localPathArr[1] === 'user') {
+                            // 作者
+                            data.media_event_value = 'search_writer';
+                        }
+                    } else if (localPathArr[0] === 'information' && !isNaN(Number(hrefUrlArr[1]))) {
+                        // 资讯
+                        if (localPathArr[1] === 'web_news') {
+                            // 最新
+                            data.media_event_value = 'web_news';
+                        } else if (localPathArr[1] === 'contact') {
+                            // 创投
+                            data.media_event_value = 'contact';
+                        } else if (localPathArr[1] === 'enterpriseservice') {
+                            // 企服
+                            data.media_event_value = 'enterpriseservice';
+                        } else if (localPathArr[1] === 'happy_life') {
+                            // 生活
+                            data.media_event_value = 'happy_life';
+                        } else if (localPathArr[1] === 'travel') {
+                            // 出行
+                            data.media_event_value = 'travel';
+                        } else if (localPathArr[1] === 'real_estate') {
+                            // 房产
+                            data.media_event_value = 'real_estate';
+                        } else if (localPathArr[1] === 'web_recommend') {
+                            // 推荐
+                            data.media_event_value = 'web_recommend';
+                        } else if (localPathArr[1] === 'technology') {
+                            // 科技
+                            data.media_event_value = 'technology';
+                        } else if (localPathArr[1] === 'zhichang') {
+                            // 职场
+                            data.media_event_value = 'web_zhichang';
+                        } else if (localPathArr[1] === 'innovate') {
+                            // 创新
+                            data.media_event_value = 'innovate';
+                        }
+                    } else if (localPathArr[0] === 'local' && !isNaN(Number(hrefUrlArr[1]))) {
+                        // 城市
+                        data.media_event_value = 'local_' + localPathArr[1];
+                    }
+
+                    /* 不同页面，进入详情页 */
+                    // 文章详情含有跳转链接
+                    if (localPathArr[0] === 'p' && !isNaN(Number(localPathArr[1])) &&
+                        !isNaN(Number(hrefUrlArr[1]))) {
+                        data.media_source = 'article';
+                    }
+                    if (localPath === '/') {
+                        // 首页进入详情页
+                        // 判断_:url/:id_是数字ID
+                        // 不包含热榜和精选主题
+                        if (!isNaN(Number(hrefUrlArr[1]))
+                        // && !className.includes('hotlist-item') &&
+                        // !className.includes('recommend-motif-item')
+                        ) {
+                            data.media_source = 'page_home';
+                        }
+                    } else if (localPathArr[0] === 'newsflashes') {
+                        if (!isNaN(Number(localPathArr[1]))) {
+                            // 判断_:url/:id_是数字ID
+                            // 不包含热榜和精选主题
+                            // if (!isNaN(Number(hrefUrlArr[1]))
+                            // && !className.includes('hotlist-item') &&
+                            // !className.includes('recommend-motif-item')
+                            // ) {
+                            data.media_source = 'newsflash';
+                            // }
+                        } else {
+                            // 快讯列表页跳转内容详情
+                            data.media_source = 'page_newsflashes';
+                        }
+                    } else if (localPathArr[0] === 'information') {
+                        // 资讯列表页跳转内容详情
+                        // 不包含热榜和精选主题
+                        if (!isNaN(Number(hrefUrlArr[1]))
+                        // && !className.includes('hotlist-item') &&
+                        // !className.includes('recommend-motif-item')
+                        ) {
+                            data.media_source = 'page_information';
+                        }
+                    } else if (localPath === '/video') {
+                        // 视频列表页跳转内容详情
+                        // 不包含推荐作者
+                        if (!isNaN(Number(hrefUrlArr[1]))
+                        // && !className.includes('hot-author')
+                        ) {
+                            data.media_source = 'page_video';
+                        }
+                    } else if (localPath === '/topics') {
+                        // 专题列表页跳转内容详情
+                        // 不包含推荐作者
+                        if (!isNaN(Number(hrefUrlArr[1]))
+                        // && !className.includes('hot-author')
+                        ) {
+                            data.media_source = 'page_topics';
+                        }
+                    } else if (localPathArr[0] === 'search') {
+                        // 搜索结果列表页跳转内容详情
+                        if (!isNaN(Number(hrefUrlArr[1]))) {
+                            data.media_source = 'page_search';
+                        }
+                    } else if (localPathArr[0] === 'Calendar') {
+                        // 历史日签页跳转内容详情
+                        if (!isNaN(Number(hrefUrlArr[1]))) {
+                            data.media_source = 'calendar';
+                        }
+                    } else if (localPathArr[0] === 'user') {
+                        // 用户详情页跳转内容详情
+                        if (!isNaN(Number(hrefUrlArr[1]))) {
+                            data.media_source = 'user';
+                        }
+                    } else if (localPathArr[0] === 'motif') {
+                        // 主题列表页跳转内容详情
+                        if (!isNaN(Number(hrefUrlArr[1]))) {
+                            data.media_source = 'motif';
+                        }
+                    } else if (localPathArr[0] === 'topics') {
+                        // 专题详情页跳转内容详情
+                        if (!isNaN(Number(hrefUrlArr[1]))) {
+                            data.media_source = 'topics';
+                        }
+                    } else if (localPathArr[0] === 'video' && localPathArr[1]) {
+                        // 视频详情页点击最近视频进入视频详情页
+                        if (!isNaN(Number(hrefUrlArr[1]))) {
+                            data.media_source = 'video';
+                        }
+                    } else if (localPathArr[0] === 'video' && localPathArr[1]) {
+                        // 视频详情页点击最近视频进入视频详情页
+                        if (!isNaN(Number(hrefUrlArr[1]))) {
+                            data.media_source = 'video';
+                        }
+                    }
+
+                    /* 添加media_conten_type 针对相应页面添加属性 */
+                    if (hrefUrlArr[0] === 'p') {
+                        // 文章详情页
+                        data.media_content_type = 'article';
+                        // 路由后跟:id的情况
+                        if (hrefUrlArr[1]) {
+                            data.media_content_id = hrefUrlArr[1];
+                        }
+                    } else if (hrefUrlArr[0] === 'newsflashes' && !isNaN(Number(hrefUrlArr[1]))) {
+                        // 快讯
+                        data.media_content_type = 'flashnews';
+                        // 路由后跟:id的情况
+                        if (hrefUrlArr[1]) {
+                            data.media_content_id = hrefUrlArr[1];
+                        } else {
+                            data.operation_list = 'page_flow';
+                        }
+                    } else if (hrefUrlArr[0] === 'video' && !isNaN(Number(hrefUrlArr[1]))) {
+                        // 视频
+                        data.media_content_type = 'video';
+                        if (hrefUrlArr[1]) {
+                            // video 详情页
+                            data.media_content_id = hrefUrlArr[1];
+                        } else {
+                            // video 列表
+                            data.operation_list = 'video_recommend';
+                        }
+                    } else if (hrefUrlArr[0] === 'v-video' && !isNaN(Number(hrefUrlArr[1]))) {
+                        // 竖版视频
+                        data.media_content_type = 'video_portrait';
+                        if (hrefUrlArr[1]) {
+                            // 竖版视频详情页
+                            data.media_content_id = hrefUrlArr[1];
+                        }
+                    } else if (hrefUrlArr[0] === 'topics' && !isNaN(Number(hrefUrlArr[1]))) {
+                        // 专题
+                        data.media_content_type = 'topic';
+                        if (hrefUrlArr[1]) {
+                            // 专题详情页
+                            data.media_content_id = hrefUrlArr[1];
+                        } else {
+                            // 专题列表
+                            data.operation_list = 'specialtopic_recommend';
+                        }
+                    } else if (hrefUrlArr[0] === 'motif' && !isNaN(Number(hrefUrlArr[1]))) {
+                        if (
+                            (localPathArr[0] === 'motif-catalog' && localPathArr[1] === 'recomend') ||
+                            className.includes('businessMotifHome-main-item-top-a')
+                        ) {
+                            // 商业主题
+                            data.media_content_type = 'business_motif';
+                            if (hrefUrlArr[1]) {
+                                // 商业主题详情页
+                                data.media_content_id = hrefUrlArr[1];
+                            }
+                        } else {
+                            // 普通主题
+                            data.media_content_type = 'motif';
+                            if (hrefUrlArr[1]) {
+                                // 普通主题详情页
+                                data.media_content_id = hrefUrlArr[1];
+                            }
+                        }
+                    } else if (hrefUrlArr[0] === 'user' && !isNaN(Number(hrefUrlArr[1]))) {
+                        // 用户
+                        data.media_content_type = 'user';
+                        if (hrefUrlArr[1]) {
+                            // 用户主页
+                            data.media_content_id = hrefUrlArr[1];
+                        }
+                    }
+                }
+            }
+            return data;
+        }
+    </script>
+    <script>
+        // 神策统计代码
+        (function(para) {
+            var p = para.sdk_url, n = para.name, w = window, d = document, s = 'script',x = null,y = null;
+            w['sensorsDataAnalytic201505'] = n;
+            w[n] = w[n] || function(a) {return function() {(w[n]._q = w[n]._q || []).push([a, arguments]);}};
+            var ifs = ['track','quick','register','registerPage','registerOnce','trackSignup', 'trackAbtest', 'setProfile','setOnceProfile','appendProfile', 'incrementProfile', 'deleteProfile', 'unsetProfile', 'identify','login','logout','trackLink','clearAllRegister','getAppStatus'];
+            for (var i = 0; i < ifs.length; i++) {
+                w[n][ifs[i]] = w[n].call(null, ifs[i]);
+            }
+            if (!w[n]._t) {
+                x = d.createElement(s), y = d.getElementsByTagName(s)[0];
+                x.async = 1;
+                x.src = p;
+                x.setAttribute('charset','UTF-8');
+                y.parentNode.insertBefore(x, y);
+                w[n].para = para;
+            }
+        })({
+            sdk_url: 'https:static.sensorsdata.cn/sdk/1.12.5/sensorsdata.min.js',
+            heatmap_url: 'https://static.sensorsdata.cn/sdk/1.12.5/heatmap.min.js',
+            name: 'sa',
+            web_url: 'https:data.corp.36kr.com/',
+            server_url: 'https:36kr.com/global/sensors/sa/sa',
+            heatmap:{
+                scroll_notice_map:'not_collect',
+                custom_property:function( element_target ){
+                    return sensorsManual(element_target);
+                },
+            },
+            show_log: false,
+        });
+        (function(){
+            const cookies = {};
+            document.cookie.split('; ').forEach((c) => {
+                const key = c.split('=')[0];
+            const value = c.split('=')[1];
+            cookies[key] = value;
+        });
+            const userid = cookies["kr_plus_id"];
+            const cid = cookies["kr_stat_uuid"];
+            if (userid) {
+                sa.login(userid);
+            } else {
+                sa.login(cid);
+            }
+
+            sa.quick('autoTrack');
+        })();
+    </script>
+
+    <script>
+        // 给百度seo主动推送,  文明确认
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https:zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http:push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+
+        // 36氪全局统计代码
+        (function (i, s, o, g, r, a, m) {
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '36kr.com/global/stat.js', 'krtracker');
+        krtracker('trackPageView', window.location.pathname + window.location.search);
+
+        // 优路
+        !function(a,b,c){var d=b.getElementsByTagName(c)[0],e=b.createElement(c);e.async=!0,e.src="https:recom.qipus.cn/api/sc/j/dcda692e.js",d.parentNode.insertBefore(e,d)}(window,document,"script");
+    </script>
+</head>
+<body>
+<div id="app">
+    <div class="kr-layout" data-reactroot="">
+        <div class="kr-layout-main clearfloat">
+            <div class="main-left"><div class="kr-sider ">
+                <a href="/" class="go-home clearfloat">
+                    <div class="logo"></div>
+                </a>
+                <div class="kr-sider-shadow-wrapper clearfloat">
+                    <div class="line"></div>
+                    <ul class="kr-channel-nav">
+                        <li class="channel-item">
+                            <div class="sub-title">
+                                <a class="name weight-bold active" href="/">首页</a>
+                            </div>
+                        </li>
+                        <li class="channel-item">
+                            <div class="sub-title">
+                                <a class="name weight-bold " href="/newsflashes">快讯</a>
+                            </div>
+                        </li>
+                        <li class="channel-item">
+                            <div class="sub-title">
+                                <span class="open-icon "></span>
+                                <a class="name weight-bold " href="/information/web_news">资讯</a>
+                            </div>
+                            <div class="sub-list open">
+                                <ul class="sub-list-right">
+                                    <li class="sub-item">
+                                        <a href="/information/web_recommend" class="">推荐</a>
+                                    </li>
+                                    <li class="sub-item">
+                                        <a href="/information/travel" class="">汽车</a>
+                                    </li>
+                                    <li class="sub-item">
+                                        <a href="/information/enterpriseservice" class="">企服</a>
+                                    </li>
+                                    <li class="sub-item">
+                                        <a href="/information/web_zhichang" class="">职场</a>
+                                    </li>
+                                    <li class="sub-item"><a class="">城市</a></li>
+                                </ul>
+                                <ul class="sub-list-left">
+                                    <li class="sub-item">
+                                        <a href="/information/web_news" class="">最新</a></li>
+                                    <li class="sub-item">
+                                        <a href="/information/contact" class="">创投</a>
+                                        <span class="hot"></span>
+                                    </li>
+                                    <li class="sub-item">
+                                        <a href="/information/technology" class="">科技</a>
+                                    </li>
+                                    <li class="sub-item">
+                                        <a href="/information/happy_life" class="">生活</a>
+                                    </li>
+                                    <li class="sub-item">
+                                        <a href="/information/innovate" class="">创新</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="channel-item">
+                            <div class="sub-title">
+                                <a class="name weight-bold " href="/video">视频</a>
+                            </div>
+                        </li>
+                        <li class="channel-item">
+                            <div class="sub-title">
+                                <a class="name weight-bold " href="/topics">专题</a>
+                            </div>
+                        </li>
+                        <li class="channel-item">
+                            <div class="sub-title">
+                                <a class="name weight-bold " href="https://chuang.36kr.com/huodong#/report/recent" target="_target" rel="noopener noreferrer">活动</a>
+                            </div>
+                        </li>
+                        <div class="local-list" style="display:none;top:;left:">
+                            <div class="triangle"></div>
+                        </div>
+                    </ul>
+                    <div class="kr-search-entry clearfloat">
+                        <div class="search-button">
+                            <span class="search-icon"></span>
+                            <span class="search-text weight-bold">搜索</span>
+                        </div>
+                    </div>
+                    <a href="/seek-report" class="seek-report" target="_blank" rel="noopener noreferrer nofollow">
+                        <span class="seek-report-icon"></span>
+                        <span class="seek-report-text">寻求报道</span>
+                    </a>
+                    <div>
+                        <div class="i-want-contribution">
+                            <span class="i-want-contribution-icon"></span>
+                            <span class="i-want-contribution-text">我要投稿</span>
+                        </div>
+                    </div>
+                    <a class="seek-finance-entry" href="http://vclub-36kr.mikecrm.com/r3yRAwz " target="_blank" rel="noopener noreferrer nofollow">
+                        <span class="seek-finance-entry-icon"></span>
+                        <span class="seek-finance-entry-text">寻求融资</span>
+                    </a>
+                </div>
+            </div>
+            </div>
+            <div class="main-right">
+                <div class="kr-header ">
+                    <div class="kr-header-main">
+                        <div class="kr-header-content">
+                            <div class="user-login" style="display:none">
+                                <img src="https://static.36krcnd.com/v1/20181105/YfPuR3I-qGKsl3V5g1nfMA906f68a624074dbe88c3b3b768a3ff22" alt="" class="user-pic"/>
+                                <div class="pull-down">
+                                    <a class="ellipsis-1 user-name" title="" href="/usercenter/basicinfo" target="_blank" rel="noopener noreferrer"></a>
+                                    <a class="ellipsis-1 " title="账号设置" href="/usercenter/account-password" target="_blank" rel="noopener noreferrer">账号设置</a>
+                                    <a class="ellipsis-1 " title="我的收藏" href="/usercenter/favorite" target="_blank" rel="noopener noreferrer">我的收藏</a>
+                                    <a class="ellipsis-1 " title="退出登录" target="_blank" rel="noopener noreferrer">退出登录</a>
+                                </div>
+                            </div>
+                            <div class="kr-header-passport" style="display:inline-block">
+                                <a class="login">
+                                    <span>登录</span></a>
+                                <a class="line">|</a>
+                                <a class="resgister"><span>注册</span></a>
+                            </div>
+                            <ul class="business-line">
+                                <li>
+                                    <a href="https://auto-time.36kr.com" target="_blank" rel="noopener noreferrer">未来汽车日报</a>
+                                </li>
+                                <li>
+                                    <a href="/ranking" target="_blank" rel="noopener noreferrer">氪榜</a>
+                                </li>
+                                <li>
+                                    <a href="https://36kr.com/subscribe?ktm_source=kaike_pclandingpage" target="_blank" rel="noopener noreferrer">开氪</a>
+                                </li>
+                                <li><a href="/organization" target="_blank" rel="noopener noreferrer">VClub投资机构</a></li>
+                                <li>
+                                    <div class="kr-header-search-entry clearfloat">
+                                        <div class="search-button">
+                                            <span class="search-icon"></span>
+                                            <span class="search-text weight-bold">搜索</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="kr-layout-content">
+                    <div class="kr-home">
+                        <div class="kr-home-banner clearfloat">
+                            <div class="kr-home-banner-left">
+                                <div class="kr-carousel-container" style="width:100%;height:100%;overflow:hidden;position:relative">
+                                    <div class="carousel-content" style="height:100%;margin-left:-100%;position:absolute;top:0;width:800%;left:0">
+                                        <div class="carousel-item-wrapper" style="height:100%;float:left;width:12.5%">
+                                            <div class="banner-left-item">
+                                                <div class="banner-left-item-article">
+                                                    <a href="https://36kr.com/p/5223619" target="_blank" rel="noopener noreferrer">
+                                                        <div class="kr-default-img-have-logo banner-left-item-pic scaleBig"></div>
+                                                    </a>
+                                                    <a class="banner-left-item-info" href="https:36kr.com/p/5223619" target="_blank" rel="noopener noreferrer">
+                                                        <p class="banner-left-item-title ellipsis-1 weight-bold">罗静被拘，超34亿元供应链贷款爆雷，累及诺亚财富、湘财证券、云南信托</p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+      <!--以下13行是轮播图-->
+    <!-- <div class="carousel-item-wrapper" style="height:100%;float:left;width:12.5%">
+         <div class="banner-left-item">
+                <div class="banner-left-item-article" >
+                    <img src="homePagePicture/319191.JPG" id="oo">
+
+                    <a href="homePagePicture/319191.JPG" target="_blank" rel="noopener noreferrer">
+                    <div class="kr-default-img-have-logo banner-left-item-pic scaleBig"></div>
+                   </a>
+
+                   <a class="banner-left-item-info" href="homePagePicture/319191.JPG"  target="_blank"  rel="noopener noreferrer">
+               <p class="banner-left-item-title ellipsis-1 weight-bold">智氪分析 | 轮播图111？</p>
+                   </a>
+                </div>
+         </div>
+     </div>-->
+       <div id="myCarousel" class="carousel slide"style="height:100%;float:left;width:12.5%">
+           <ol class="carousel-indicators" >
+              <div id="liid"></div>
+               <li data-target="#myCarousel" data-slide-to="1"></li>
+               <li data-target="#myCarousel" data-slide-to="2"></li>
+           </ol>
+            <div class="carousel-inner" id="main">
+                <div class='item active' align='center'  data-ride='carousel' data-interval='1000'>
+                    <img src='homePagePicture/319191.JPG'  height='400px' alt='First slide'></div>
+                <div class='item ' align='center'  data-ride='carousel' data-interval='1000'>
+                    <img src='homePagePicture/88.jpg'  height='400px' alt='First slide'></div>
+            </div>
+          <a class="carousel-control left" href="#myCarousel" data-slide="next">
+                   <span _ngcontent-c3="" aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+            <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                 <span _ngcontent-c3="" aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+       </div>
+
+      <!-- <div class="carousel-item-wrapper" style="height:100%;float:left;width:12.5%">
+            <div class="banner-left-item">
+               <div class="banner-left-item-article">
+                   <a href="https://36kr.com/p/5223123" target="_blank" rel="noopener noreferrer">
+                      <div class="kr-default-img-have-logo banner-left-item-pic scaleBig"></div>
+                   </a>
+                   <a class="banner-left-item-info" href="https:36kr.com/p/5223123" target="_blank" rel="noopener noreferrer">
+                     <p class="banner-left-item-title ellipsis-1 weight-bold">焦点分析 | 轮播图1112？</p>
+                   </a>
+               </div>
+            </div>
+        </div>-->
+
+
+
+
+      <!--  <div class="carousel-item-wrapper" style="height:100%;float:left;width:12.5%">
+                                            <div class="banner-left-item">
+                                                <div class="banner-left-item-article">
+                                                    <a href="https:36kr.com/p/5220463" target="_blank" rel="noopener noreferrer">
+                                                        <div class="kr-default-img-have-logo banner-left-item-pic scaleBig"></div>
+                                                    </a>
+                                                    <a class="banner-left-item-info" href="https:36kr.com/p/5220463" target="_blank" rel="noopener noreferrer">
+                                                        <p class="banner-left-item-title ellipsis-1 weight-bold">智氪分析 |第二次出现111？</p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>-->
+         </div>
+                                    <div class="pre">
+
+                                    </div>
+                                    <div class="next">
+
+                                    </div>
+                                    <ul class="banner-left-control-list clearfloat">
+                                        <li class="banner-left-control-item">
+                                            <span class="bg-line"></span>
+                                            <span class="pending-bg active"></span>
+                                        </li>
+                                        <li class="banner-left-control-item">
+                                        <span class="bg-line"></span>
+                                        <span class="pending-bg"></span>
+                                        </li>
+                                        <li class="banner-left-control-item">
+                                            <span class="bg-line"></span>
+                                            <span class="pending-bg"></span>
+                                        </li>
+                                        <li class="banner-left-control-item">
+                                            <span class="bg-line"></span>
+                                            <span class="pending-bg"></span>
+                                        </li>
+                                        <li class="banner-left-control-item">
+                                            <span class="bg-line"></span>
+                                            <span class="pending-bg"></span>
+                                        </li>
+                                        <li class="banner-left-control-item">
+                                            <span class="bg-line"></span>
+                                            <span class="pending-bg">
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="kr-home-banner-right">
+                                <ul class="banner-right-list">
+                                    <li class="banner-right-item">
+                                        <a href="https:36kr.com/p/5222249" target="_blank" rel="noopener noreferrer">
+                                            <div class="banner-right-item-article">
+                                                <div class="kr-default-img-no-logo banner-right-item-pic"></div>
+                                                <div class="banner-right-item-info">
+                                                    <p class="ellipsis-2 weight-bold">「雪浪数制」
+                                                        互联网通用平台</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="banner-right-item">
+                                        <a href="https:36kr.com/p/5222859" target="_blank" rel="noopener noreferrer">
+                                            <div class="banner-right-item-article">
+                                                <div class="kr-default-img-no-logo banner-right-item-pic"></div>
+                                                <div class="banner-right-item-info">
+                                                    <p class="ellipsis-2 weight-bold">主攻智能获客赛道，「百炼智能」获5000万元Pre-A轮融资</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="banner-right-item">
+                                        <a href="https://36kr.com/p/5223193" target="_blank" rel="noopener noreferrer">
+                                            <div class="banner-right-item-article">
+                                                <div class="kr-default-img-no-logo banner-right-item-pic"></div>
+                                                <div class="banner-right-item-info">
+                                                <p class="ellipsis-2 weight-bold">线下是不可替代的流量入口，何突破瓶颈？</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="kr-home-main clearfloat">
+                            <div class="kr-home-flow">
+                                <div class="kr-home-flow-title weight-bold">最新文章</div><div class="kr-home-flow-list"><div class="kr-home-flow-item"><div class="kr-flow-article-item"><div class="kr-shadow-wrapper"><div class="kr-shadow-wrapper-card" style="width:720px;height:173px;top:-15px;left:-10px"></div><div class="kr-shadow-content"><div class="article-item-pic-wrapper"><a href="/information/contact" class="article-item-channel">创投</a><a class="article-item-pic" href="/p/5222747" target="_blank" rel="noopener noreferrer"><div class="kr-default-img-no-logo scaleBig"></div></a></div><div class="article-item-info clearfloat"><p class="title-wrapper ellipsis-2"><a class="article-item-title weight-bold" href="/p/5222747" target="_blank" rel="noopener noreferrer">主粮创业一定是好方向，但考验创业者的功力和战略 | 36氪宠物经济专题</a></p><a class="article-item-description ellipsis-2" href="/p/5222747" target="_blank" rel="noopener noreferrer">从粮食销售的趋势可以倒推出现在养宠人群中的一个趋势：猫的增长很明显是大于狗</a><div class="kr-flow-bar"><span class="kr-flow-bar-motif">来自主题：<a href="/motif/341" target="_blank" rel="noopener noreferrer">创投新闻</a>|</span><a class="kr-flow-bar-author" href="/user/1028371076" target="_blank" rel="noopener noreferrer">思齐</a><span class="kr-flow-bar-time" style="float:right"><i class="kr-flow-bar-time-icon"></i>13分钟前</span></div></div></div></div></div></div><div class="kr-home-flow-item"><div class="kr-flow-article-item"><div class="kr-shadow-wrapper"><div class="kr-shadow-wrapper-card" style="width:720px;height:173px;top:-15px;left:-10px"></div><div class="kr-shadow-content"><div class="article-item-pic-wrapper"><a href="/information/contact" class="article-item-channel">创投</a><a class="article-item-pic" href="/p/5223750" target="_blank" rel="noopener noreferrer"><div class="kr-default-img-no-logo scaleBig"></div></a></div><div class="article-item-info clearfloat"><p class="title-wrapper ellipsis-2"><a class="article-item-title weight-bold" href="/p/5223750" target="_blank" rel="noopener noreferrer">超大型品牌也有“流量难题”，「爽游科技」想用跨平台工具帮品牌商做好自有流量</a></p><a class="article-item-description ellipsis-2" href="/p/5223750" target="_blank" rel="noopener noreferrer">流量成本居高不下，淘宝、京东的获客成本已经高于 250 元，社交电商拼多多的获客成本也已达 140 元。</a><div class="kr-flow-bar"><span class="kr-flow-bar-motif">来自主题：<a href="/motif/342" target="_blank" rel="noopener noreferrer">好项目在这里</a>|</span><a class="kr-flow-bar-author" href="/user/728" target="_blank" rel="noopener noreferrer">苑伶</a><span class="kr-flow-bar-time" style="float:right"><i class="kr-flow-bar-time-icon"></i>16分钟前</span></div></div></div></div></div></div><div class="kr-home-flow-item"><div class="kr-flow-article-item"><div class="kr-shadow-wrapper"><div class="kr-shadow-wrapper-card" style="width:720px;height:173px;top:-15px;left:-10px"></div><div class="kr-shadow-content"><div class="article-item-pic-wrapper"><a href="/information/web_recommend" class="article-item-channel">推荐</a><a class="article-item-pic" href="/p/5221427" target="_blank" rel="noopener noreferrer"><div class="kr-default-img-no-logo scaleBig"></div></a></div><div class="article-item-info clearfloat"><p class="title-wrapper ellipsis-2"><a class="article-item-title weight-bold" href="/p/5221427" target="_blank" rel="noopener noreferrer">被喜茶、瑞幸“取代”的王老吉，时隔9年商战再起波澜</a></p><a class="article-item-description ellipsis-2" href="/p/5221427" target="_blank" rel="noopener noreferrer">八点档连续剧“红罐凉茶”之争以及它们所错过的</a><div class="kr-flow-bar"><span class="kr-flow-bar-motif">来自主题：<a href="/motif/336" target="_blank" rel="noopener noreferrer">商业历史</a>|</span><a class="kr-flow-bar-author" href="/user/18259766" target="_blank" rel="noopener noreferrer">邹黄晶</a><span class="kr-flow-bar-time" style="float:right"><i class="kr-flow-bar-time-icon"></i>27分钟前</span></div></div></div></div></div></div><div class="kr-home-flow-item"><div class="kr-flow-article-item"><div class="kr-shadow-wrapper"><div class="kr-shadow-wrapper-card" style="width:720px;height:173px;top:-15px;left:-10px"></div><div class="kr-shadow-content"><div class="article-item-pic-wrapper"><a href="/information/contact" class="article-item-channel">创投</a><a class="article-item-pic" href="/p/5223464" target="_blank" rel="noopener noreferrer"><div class="kr-default-img-no-logo scaleBig"></div></a></div><div class="article-item-info clearfloat"><p class="title-wrapper ellipsis-2"><a class="article-item-title weight-bold" href="/p/5223464" target="_blank" rel="noopener noreferrer">未来球赛能怎么看？「猜猜科技」用 AI 赋能球赛数据分析、升级观赛体验</a></p><a class="article-item-description ellipsis-2" href="/p/5223464" target="_blank" rel="noopener noreferrer">猜猜，未来球赛能怎么看？</a><div class="kr-flow-bar"><span class="kr-flow-bar-motif">来自主题：<a href="/motif/342" target="_blank" rel="noopener noreferrer">好项目在这里</a>|</span><a class="kr-flow-bar-author" href="/user/767581499" target="_blank" rel="noopener noreferrer">程木各</a><span class="kr-flow-bar-time" style="float:right"><i class="kr-flow-bar-time-icon"></i>31分钟前</span></div></div></div></div></div></div>
+                                <div class="kr-home-flow-item">
+                                    <div class="flow-item-specialtopic-recommend">
+                                        <div class="specialtopic-recommend-title">
+                                            <span class="name weight-bold">专题推荐</span>
+                                            <a class="see-more" href="/topics" target="_blank" rel="noopener noreferrer">查看更多</a>
+                                        </div>
+                                        <ul class="specialtopic-recommend-list">
+                                            <li class="specialtopic-recommend-item">
+                                                <a class="specialtopic-recommend-item-main" href="/topics/3172" target="_blank" rel="noopener noreferrer">
+                                                    <div class="kr-shadow-wrapper">
+                                                        <div class="kr-shadow-wrapper-card" style="width:236px;height:238px;top:-10px;left:-10px"></div>
+                                                        <div class="kr-shadow-content">
+                                                            <div class="specialtopic-recommend-item-pic">
+                                                                <div class="kr-default-img-no-logo scaleBig"></div>
+                                                                <div class="specialtopic-recommend-item-title">
+                                                                    <p class="ellipsis-2 weight-bold">斗鱼终于99业988989吗？</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="specialtopic-recommend-item-description">
+                                                                <p class="ellipsis-3 weight-bold">斗鱼曾.？上市</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="kr-home-flow-item">
+                                    <div class="kr-flow-article-item">
+                                        <div class="kr-shadow-wrapper">
+                                            <div class="kr-shadow-wrapper-card" style="width:720px;height:173px;top:-15px;left:-10px"></div>
+                                            <div class="kr-shadow-content">
+                                                <div class="article-item-pic-wrapper">
+                                                    <a href="/information/other" class="article-item-channel">其他</a>
+                                                    <a class="article-item-pic" href="/p/5223573" target="_blank" rel="noopener noreferrer">
+                                                        <div class="kr-default-img-no-logo scaleBig"></div>
+                                                    </a>
+                                                </div>
+                                                <div class="article-item-info clearfloat">
+                                                    <p class="title-wrapper ellipsis-2">
+                                                        <a class="article-item-title weight-bold" href="/p/5223573" target="_blank" rel="noopener noreferrer">三星黑科技背后：受市场认可只是水到渠成</a>
+                                                    </p>
+                                                    <a class="article-item-description ellipsis-2" href="/p/5223573" target="_blank" rel="noopener noreferrer">硬核黑科技加持，S10成三星年度诚意之作。</a>
+                                                    <div class="kr-flow-bar">
+                                                        <span class="kr-flow-bar-motif">来自主题：<a href="/motif/540" target="_blank" rel="noopener noreferrer">10代，先于时代</a>|
+                                                    </span>
+                                                        <a class="kr-flow-bar-author" href="/user/1895115459" target="_blank" rel="noopener noreferrer">36氪品牌</a>
+                                                        <span class="kr-flow-bar-time" style="float:right">
+                                                            <i class="kr-flow-bar-time-icon"></i>31分钟前
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kr-home-flow-item">
+                                    <div class="flow-item-video-recommend">
+                                        <div class="video-recommend-title">
+                                            <span class="name weight-bold">视频推荐</span>
+                                            <a class="see-more" href="/video" target="_blank" rel="noopener noreferrer">查看更多</a>
+                                        </div>
+                                        <ul class="video-recommend-list">
+                                            <li class="video-recommend-item">
+                                                <div class="kr-shadow-wrapper">
+                                                    <div class="kr-shadow-wrapper-card" style="width:177px;height:202px;top:-10px;left:-10px"></div>
+                                                    <div class="kr-shadow-content">
+                                                        <a href="/video/49551" target="_blank" rel="noopener noreferrer">
+                                                            <div class="video-recommend-item-pic">
+                                                                <div class="kr-default-img-no-logo scaleBig"></div>
+                                                                <span class="video-recommend-item-icon"></span>
+                                                                <span class="video-recommend-item-time">1:12</span>
+                                                            </div>
+                                                            <div class="video-recommend-item-title" href="/video/49551">
+                                                                <p class="ellipsis-3 weight-bold">OPPO的折叠屏要来了？全新商标Enco曝光</p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="video-recommend-item"><div class="kr-shadow-wrapper"><div class="kr-shadow-wrapper-card" style="width:177px;height:202px;top:-10px;left:-10px"></div><div class="kr-shadow-content"><a href="/video/49360" target="_blank" rel="noopener noreferrer"><div class="video-recommend-item-pic"><div class="kr-default-img-no-logo scaleBig"></div><span class="video-recommend-item-icon"></span><span class="video-recommend-item-time">2:03</span></div><div class="video-recommend-item-title" href="/video/49360"><p class="ellipsis-3 weight-bold">轻便通勤滑板车：电力驱动一键折叠，比传统电动车小10倍</p></div></a></div></div></li>
+                                            <li class="video-recommend-item"><div class="kr-shadow-wrapper"><div class="kr-shadow-wrapper-card" style="width:177px;height:202px;top:-10px;left:-10px"></div><div class="kr-shadow-content"><a href="/video/49514" target="_blank" rel="noopener noreferrer"><div class="video-recommend-item-pic"><div class="kr-default-img-no-logo scaleBig"></div><span class="video-recommend-item-icon"></span></div><div class="video-recommend-item-title" href="/video/49514"><p class="ellipsis-3 weight-bold">以次充好：江淮汽车收1.7亿“天价罚单”，股价4年跌超7成</p></div></a></div></div></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="kr-home-flow-item">
+                                    <div class="kr-flow-article-item">
+                                        <div class="kr-shadow-wrapper">
+                                            <div class="kr-shadow-wrapper-card" style="width:720px;height:173px;top:-15px;left:-10px"></div>
+                                            <div class="kr-shadow-content">
+                                                <div class="article-item-pic-wrapper">
+                                                    <a href="/information/web_recommend" class="article-item-channel">推荐</a>
+                                                    <a class="article-item-pic" href="/p/5223731" target="_blank" rel="noopener noreferrer">
+                                                        <div class="kr-default-img-no-logo scaleBig"></div>
+                                                    </a>
+                                                </div>
+                                                <div class="article-item-info clearfloat">
+                                                    <p class="title-wrapper ellipsis-2">
+                                                        <a class="article-item-title weight-bold" href="/p/5223731" target="_blank" rel="noopener noreferrer">揭秘AI创业江湖里的“师徒帮”：同门师兄弟搭档，导师坐镇后方</a></p><a class="article-item-description ellipsis-2" href="/p/5223731" target="_blank" rel="noopener noreferrer">“AI圈就是一个江湖”。</a><div class="kr-flow-bar"><span class="kr-flow-bar-motif">来自主题：<a href="/motif/465" target="_blank" rel="noopener noreferrer">商业人物追踪</a>|</span><a class="kr-flow-bar-author" href="/user/375349" target="_blank" rel="noopener noreferrer">36氪的朋友们</a><span class="kr-flow-bar-time" style="float:right"><i class="kr-flow-bar-time-icon"></i>1小时前</span></div></div></div></div></div>
+                                </div>
+
+
+
+                                <div class="kr-home-flow-item"><div class="kr-flow-article-item"><div class="kr-shadow-wrapper"><div class="kr-shadow-wrapper-card" style="width:720px;height:173px;top:-15px;left:-10px"></div><div class="kr-shadow-content"><div class="article-item-pic-wrapper"><a href="/information/technology" class="article-item-channel">科技</a><a class="article-item-pic" href="/p/5223674" target="_blank" rel="noopener noreferrer"><div class="kr-default-img-no-logo scaleBig"></div></a></div><div class="article-item-info clearfloat"><p class="title-wrapper ellipsis-2"><a class="article-item-title weight-bold" href="/p/5223674" target="_blank" rel="noopener noreferrer">横跨68年：大陆二十城造芯记</a></p><a class="article-item-description ellipsis-2" href="/p/5223674" target="_blank" rel="noopener noreferrer">以这十六省二十一市为代表的中国“芯”事还在持续上演。</a><div class="kr-flow-bar"><span class="kr-flow-bar-motif">来自主题：<a href="/motif/485" target="_blank" rel="noopener noreferrer">芯片领域新鲜事</a>|</span><a class="kr-flow-bar-author" href="/user/453363432" target="_blank" rel="noopener noreferrer">智东西</a><span class="kr-flow-bar-time" style="float:right"><i class="kr-flow-bar-time-icon"></i>2小时前</span></div></div></div></div></div></div>
+                            </div>
+                                <div class="kr-white-space" style="height:30px;width:100%;visibility:hidden"></div><a class="kr-home-flow-see-more" href="/information/web_news?anchor=58734">查看更多资讯</a>
+                                <div class="kr-white-space" style="height:40px;width:100%;visibility:hidden"></div>
+                            </div>
+                            <div class="kr-home-column">
+                                <div class="daily-word-wrapper no-hover-shadow home-page-daily" style="background-image:linear-gradient(-45deg, #fabc61 0%, #f76b1c 100%)"><section class="top-part">
+                                    <div class="calendar-date"><span class="capital-date">09</span>
+                                        <div class="italic-icon"></div><span class="week-year-month">
+                                            <div>周二</div><div>2019<!-- -->年<!-- -->07<!-- -->月</div></span></div>
+                                    <a href="/Calendar" class="history-label" target="_blank" rel="noopener noreferrer">历史日签</a></section>
+                                    <section class="bottom-part">
+                                        <div class="daily-word-title"><div class="ellipsis-2"><span>换电是门大生意<i></i></span></div>
+
+                                        </div>
+                                    </section>
+                                    <a href="/p/5220836" class="card-decoration" target="_blank" rel="noopener noreferrer">
+                                        <img src="//sta.36krcnd.com/36krx2018-front/static/decoration_bg@3x.7c5833e3.png" alt="decoration"/></a></div>
+                                <div class="kr-home-column-newsflash">
+                                    <div class="kr-column-title">
+                                        <span class="kr-column-title-icon"></span>
+                                        <span class="kr-column-title-text weight-bold">最新快讯</span>
+                                    </div>
+                                    <div class="column-newsflash-main">
+                                        <div class="column-newsflash-vertiacl-line"></div>
+                                          <div class="column-newsflash-item">
+                                            <div class="column-newsflash-item-head">
+                                                <span class="column-newsflash-item-icon"></span>
+                                                <div class="column-newsflash-item-title ellipsis-2 weight-bold ">商务部：推动便利店品牌化连锁化发展</div>
+                                                <div class="column-newsflash-item-time">5分钟前</div>
+                                            </div>
+                                            <div class="column-newsflash-item-detail  ">
+                                                <p>商务部办公厅印发关于推发展的工作通知，发照“。（证券时报）</p>
+                                                <div class="kr-default-img-no-logo "></div>
+                                            </div>
+                                          </div>
+
+                                        <a class="column-newsflash-see-more" href="/newsflashes" target="_blank" rel="noopener noreferrer">查看更多</a></div>
+                                </div>
+                                <div class="kr-white-space" style="height:40px;width:100%;visibility:hidden"></div>
+                                 <div>
+                                     <div class="kr-businessMotifHome">
+                                         <div class="kr-column-title">
+                                             <span class="kr-column-title-icon"></span>
+                                             <span class="kr-column-title-text weight-bold">推荐主题</span>
+                                             <a class="go-more" href="/motif-catalog/recomend" target="_blank" rel="noopener noreferrer">更多主题</a>
+                                         </div>
+                                         <div class="businessMotifHome-main">
+                                             <div class="businessMotifHome-main-item">
+                                                 <div class="businessMotifHome-main-item-top">
+                                                     <div class="kr-default-img-no-logo buess-mitif-logo business-motif-top-item-float"></div>
+                                                     <div class="buess-mitif-name business-motif-top-item-float">观察+</div>
+                                                     <a class="businessMotifHome-main-item-top-a business-motif-top-item-float-right" href="/motif/526" target="_blank" rel="noopener noreferrer">查看更多</a>
+                                                 </div>
+                                                 <div class="kr-white-space" style="height:10px;width:100%;visibility:hidden"></div>
+                                                 <div class="businessMotifHome-main-item-cover">
+                                                     <a class="businessMotifHome-main-item-cover-pic" href="/p/5223422" target="_blank" rel="noopener noreferrer">
+                                                         <div class="kr-default-img-no-logo buess-mitif-cover scaleBig"></div>
+                                                     </a>
+                                                 </div>
+                                                 <div class="kr-white-space" style="height:10px;width:100%;visibility:hidden"></div>
+                                                 <a class="businessMotifHome-main-item-title" href="/p/5223422" target="_blank" rel="noopener noreferrer"><p class="ellipsis-2 weight-bold">红利见顶，利润下滑，B2C出口电商的出路在哪里？</p></a>
+                                             </div>
+                                                </div>
+                                             </div>
+                                     <div class="kr-white-space" style="height:40px;width:100%;visibility:hidden"></div>
+                                 </div>
+                                <div class="kr-hotlist">
+                                    <div class="kr-column-title">
+                                        <span class="kr-column-title-icon"></span>
+                                        <span class="kr-column-title-text weight-bold">24小时热榜</span>
+                                    </div>
+                                    <div class="hotlist-main">
+                                        <div class="hotlist-item-toptwo">
+                                            <a class="hotlist-item-toptwo-pic" href="/p/5223231" target="_blank" rel="noopener noreferrer">
+                                                <div class="kr-default-img-no-logo  scaleBig"></div>
+                                            </a>
+                                            <span class="hotlist-item-toptwo-icon" style="background-position:0 -153px"></span>
+                                            <a class="hotlist-item-toptwo-title" href="/p/5223231" target="_blank" rel="noopener noreferrer">
+                                                <p class="ellipsis-2 weight-bold">副业赚钱，正在杀死很多年轻人的职业生涯</p></a>
+                                        </div>
+                                        <div class="hotlist-item-other clearfloat">
+                                            <div class="hotlist-item-other-pic">
+                                                <a href="/p/5223427" target="_blank" rel="noopener noreferrer">
+                                                    <div class="kr-default-img-no-logo scaleBig"></div>
+                                                </a>
+                                                <span class="hotlist-item-other-icon" style="background-position:0 -228px;background-color:#4285f4;opacity:1"></span>
+                                            </div>
+                                            <div class="hotlist-item-other-info">
+                                                <a class="hotlist-item-other-title ellipsis-2 weight-bold" href="/p/5223427" target="_blank" rel="noopener noreferrer">最前线丨夏天茶饮比咖啡更好卖，3000家瑞幸开卖芝士奶茶</a>
+                                                <span class="hotlist-item-other-time">19小时前</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kr-white-space" style="height:20px;width:100%;visibility:hidden"></div>
+                                <div class="kr-white-space" style="height:20px;width:100%;visibility:hidden"></div>
+                                <div class="kr-white-space" style="height:40px;width:100%;visibility:hidden"></div>
+                                <div class="kr-location-home-recommend-motif"></div>
+                                <div class="kr-home-recommend-motif-cotainer">
+                                    <div class="kr-recommend-motif">
+                                        <div class="kr-column-title">
+                                            <span class="kr-column-title-icon"></span>
+                                            <span class="kr-column-title-text weight-bold">精选主题</span>
+                                            <a class="go-more" href="/motif-catalog/selected" target="_blank" rel="noopener noreferrer">更多主题</a>
+                                        </div>
+                                        <div class="recommend-motif-list">
+                                            <div class="recommend-motif-item">
+                                                <div class="recommend-motif-item-banner clearfloat">
+                                                    <a class="recommend-motif-item-banner-pic" href="/motif/331" target="_blank" rel="noopener noreferrer">
+                                                        <div class="kr-default-img-no-logo scaleBig"></div>
+                                                    </a>
+                                                    <div class="recommend-motif-item-banner-info">
+                                                        <a class="recommend-motif-item-banner-title ellipsis-1 weight-bold" href="/motif/331" target="_blank" rel="noopener noreferrer">深氪</a>
+                                                        <span class="recommend-motif-item-banner-follow">6076<!-- -->关注</span>
+                                                    </div>
+                                                </div>
+                                                <a class="recommend-motif-item-description ellipsis-2" href="/p/5222748" target="_blank" rel="noopener noreferrer">这批90后已经当高管了｜深氪lite</a>
+                                                <div class="recommend-motif-item-time">2019-07-05</div>
+                                            </div>
+                                           
+                                            <div class="recommend-motif-item"><div class="recommend-motif-item-banner clearfloat"><a class="recommend-motif-item-banner-pic" href="/motif/452" target="_blank" rel="noopener noreferrer"><div class="kr-default-img-no-logo scaleBig"></div></a><div class="recommend-motif-item-banner-info"><a class="recommend-motif-item-banner-title ellipsis-1 weight-bold" href="/motif/452" target="_blank" rel="noopener noreferrer">出海是门大生意</a><span class="recommend-motif-item-banner-follow">1859<!-- -->关注</span></div></div><a class="recommend-motif-item-description ellipsis-2" href="/p/5223550" target="_blank" rel="noopener noreferrer">出海日报 | Go-Jek从三菱处获得新投资；Oyo创始人Ritesh Agarwal或回购15亿美元股票以获得更大控制权</a><div class="recommend-motif-item-time">13小时前</div></div><div class="recommend-motif-item"><div class="recommend-motif-item-banner clearfloat"><a class="recommend-motif-item-banner-pic" href="/motif/333" target="_blank" rel="noopener noreferrer"><div class="kr-default-img-no-logo scaleBig"></div></a><div class="recommend-motif-item-banner-info"><a class="recommend-motif-item-banner-title ellipsis-1 weight-bold" href="/motif/333" target="_blank" rel="noopener noreferrer">最前线</a><span class="recommend-motif-item-banner-follow">10214<!-- -->关注</span></div></div><a class="recommend-motif-item-description ellipsis-2" href="/p/5223654" target="_blank" rel="noopener noreferrer">最前线 | 小米上市一周年，逾40亿限售股迎解禁</a><div class="recommend-motif-item-time">2小时前</div></div><div class="recommend-motif-item"><div class="recommend-motif-item-banner clearfloat"><a class="recommend-motif-item-banner-pic" href="/motif/350" target="_blank" rel="noopener noreferrer"><div class="kr-default-img-no-logo scaleBig"></div></a><div class="recommend-motif-item-banner-info"><a class="recommend-motif-item-banner-title ellipsis-1 weight-bold" href="/motif/350" target="_blank" rel="noopener noreferrer">科技神回复</a><span class="recommend-motif-item-banner-follow">2196<!-- -->关注</span></div></div><a class="recommend-motif-item-description ellipsis-2" href="/p/5217747" target="_blank" rel="noopener noreferrer">科技神回复 | 阿迪达斯三条纹logo被判无效，各大中小学的大队长长舒了一口气</a><div class="recommend-motif-item-time">2019-06-20</div></div></div></div></div></div></div></div></div></div></div><div class="kr-footer "><div class="footer-content"><div class="footer-wrapper"><div class="productServices-wrapper"><div class="title weight-bold">36氪产品服务矩阵</div><div class="row"><div class="first-row"><div><a href="https://36kr.com/subscribe?ktm_source=kaike_pclandingpage" target="_blank" rel="noopener noreferrer">开氪</a></div><div><a href="/VClub" target="_blank" rel="noopener noreferrer">VClub</a></div></div><div class="second-row"><div><a href="https://research.36kr.com" target="_blank" rel="noopener noreferrer">36氪研究院</a></div><div><a href="https://global.36kr.com" target="_blank" rel="noopener noreferrer">36氪海外站</a></div><div><a href="https://innovation.36kr.com" target="_blank" rel="noopener noreferrer">36氪创新咨询</a></div></div><div class="third-row"><div><a href="https://www.jingdata.com/" target="_blank" rel="noopener noreferrer nofollow">鲸准</a></div><div><a href="https://krspace.cn" target="_blank" rel="noopener noreferrer nofollow">氪空间</a></div><div><a href="https://lslb168.sxl.cn" target="_blank" rel="noopener noreferrer nofollow">零售老板内参</a></div></div></div></div><div class="about36kr-wrapper"><div class="title weight-bold">关于36氪</div><div class="list-wrapper"><li><a rel="noopener noreferrer nofollow">商务合作</a></li><li><a href="/pages/about" target="_blank" rel="noopener noreferrer nofollow">关于我们</a></li><li><a href="https://zhaopin.36kr.com" rel="noopener noreferrer nofollow" target="_blank">加入我们</a></li><li><a href="/station-business" rel="noopener noreferrer nofollow" target="_blank">城市加盟</a></li><li><a href="/seek-report" rel="noopener noreferrer nofollow" target="_blank">寻求报道</a></li><li><a>我要投稿</a></li></div></div><div class="parters-wrapper"><div class="title weight-bold">合作伙伴</div><ul class="footer-partner"><li><a href="https://www.aliyun.com/" target="_blank" rel="noopener noreferrer nofollow"><img src="//sta.36krcnd.com/36krx2018-front/static/aly.e9118f2f.png" alt=""/></a></li><li><a href="https://www.upyun.com/" target="_blank" rel="noopener noreferrer nofollow"><img src="//sta.36krcnd.com/36krx2018-front/static/upy.8fdd68cd.png" alt=""/></a></li><li><a><img src="//sta.36krcnd.com/36krx2018-front/static/gaodi.9e9d6741.png" alt=""/></a></li><li><a href="https://www.teambition.com/?utm_source=36kr&amp;utm_campaign=logo-brand" target="_blank" rel="noopener noreferrer nofollow"><img src="//sta.36krcnd.com/36krx2018-front/static/teambition.f755714f.png" alt=""/></a></li><li><a href="https://www.getui.com/cn/index.html" target="_blank" rel="noopener noreferrer nofollow"><img src="//sta.36krcnd.com/36krx2018-front/static/getui.d2af25d2.png" alt=""/></a></li><li><a href="https://www.odaily.com" target="_blank" rel="noopener noreferrer nofollow"><img src="//sta.36krcnd.com/36krx2018-front/static/dailyPlanet.783b0e10.png" alt=""/></a></li></ul></div><div class="appDownload-wrapper"><div class="title weight-bold">36氪APP下载</div><img src="//sta.36krcnd.com/36krx2018-front/static/downCode.d2d221ec.png" alt=""/><div class="info">iOS &amp; Android</div></div><div class="footerInfo-wrapper"><a href="https://36kr.com/" class="footer-logo"><img src="//sta.36krcnd.com/36krx2018-front/static/logoWhite.2a5eceda.png" alt=""/></a><span class="mobile-hide">本站由<a href="https://www.aliyun.com/" target="_blank" rel="noopener noreferrer nofollow"><img src="//sta.36krcnd.com/36krx2018-front/static/aliyunfooter.fd625638.png" alt=""/></a></span><span class="law">© 2011~2018 北京多氪信息科技有限公司 | 京ICP备12031756号 | 京ICP证150143号 |<span class="mobile-hide"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502036099" target="_blank" rel="noopener noreferrer nofollow">京公网安备11010502036099号</a></span></span><div class="share"><a href="https://weibo.com/wow36kr" rel="noopener noreferrer nofollow" target="_blank"><span class="iconSinaWeibo"></span></a><a href="https://36kr.com/feed" target="_blank" rel="noopener noreferrer"><span class="iconRss"></span></a></div></div></div></div></div><div class="assit-wrapper undefined"><a href="http://feedback-36kr.mikecrm.com/FAN8f76" rel="noopener noreferrer nofollow" target="_blank" class="feedBack"><div class="feedBack-img"></div><div class="feedText">意见反馈</div></a><div class="phone"><div class="phone-img"></div><div class="phone-content"><img src="//sta.36krcnd.com/36krx2018-front/static/code.01e4c342.png" alt=""/><div class="content"><span>36氪APP</span><span>让一部分人先看到未来</span></div></div></div><div class="code"><div class="code-img"></div><div class="code-content"><div class="tabs"><div data-index="0" class="bg">36氪</div><div data-index="1">鲸准</div><div data-index="2">氪空间</div></div><div class="tab-content"><div style="display:block"><img src="//sta.36krcnd.com/36krx2018-front/static/kr.ad0c1158.jpg" alt=""/><p>为你推送和解读最前沿、最有料的科技创投资讯</p></div><div style="display:none"><img src="//sta.36krcnd.com/36krx2018-front/static/jingzhun.9a251862.jpg" alt=""/><p>一级市场金融信息和系统服务提供商</p></div><div style="display:none"><img src="//sta.36krcnd.com/36krx2018-front/static/krSpace.7efbe7d3.jpg" alt=""/><p>聚集全球最优秀的创业者，项目融资率接近97%，领跑行业</p></div></div></div></div><div class="top"><div class="top-img"></div></div></div></div></div>
+    <script>
+    window.initialState={"homeData":{"code":0,"data":{"bannerLeft":{"code":0,"data":[{"id":18320,"project_id":1,"feed_id":0,"type":"head_line_new","state":"published","column_id":0,"order":18320,"hidden_title":0,"title":"智氪分析 |准备删掉的？","url":"https://36kr.com/p/5220463","cover":"https://pic.36krcnd.com/201907/09032137/kat5anuc158cz9tv!heading","bg_color":null,"tag":null,"user_id":1200352198,"user_id_edited":1200352198,"published_at":"2019-07-09 11:21:40","finished_at":null,"created_at":"2019-07-09 11:21:40","updated_at":"2019-07-09 11:21:40","entity_type":"post","entity_id":5220463,"source_name":null,"template_info":null,"operate_comment":"","user_id_old":null,"user_id_edited_old":null,"extra":null,"column":null,"monographic":null,"post":null,"user":{"id":1200352198,"name":"麦卡利","avatar_url":"https://pic.36krcnd.com/avatar/201811/23012933/0s67cuw1wnw6yjac.jpeg!480"},"video_author":null},{"id":18287,"project_id":1,"feed_id":0,"type":"head_line_new","state":"published","column_id":0,"order":18288,"hidden_title":0,"title":"焦点分析 | 来自雷军的“提问”：你们女生究竟要什么样的手机？","url":"https://36kr.com/p/5223123","cover":"https://pic.36krcnd.com/201907/08232446/g2e6dpjmdmdd4yxb!heading","bg_color":null,"tag":null,"user_id":1200352198,"user_id_edited":1200352198,"published_at":"2019-07-09 07:24:48","finished_at":null,"created_at":"2019-07-09 07:24:48","updated_at":"2019-07-09 07:30:27","entity_type":"post","entity_id":5223123,"source_name":null,"template_info":null,"operate_comment":"","user_id_old":null,"user_id_edited_old":null,"extra":null,"column":null,"monographic":null,"post":null,"user":{"id":1200352198,"name":"麦卡利","avatar_url":"https://pic.36krcnd.com/avatar/201811/23012933/0s67cuw1wnw6yjac.jpeg!480"},"video_author":null},{"id":18276,"project_id":1,"feed_id":0,"type":"head_line_new","state":"published","column_id":0,"order":18287,"hidden_title":0,"title":"36氪「E-Club创变者俱乐部」首批 CEO 招募启动","url":"https://36kr.com/p/5223495","cover":"https://pic.36krcnd.com/201907/08103437/kwcoegei73dckdpj!heading","bg_color":null,"tag":null,"user_id":755928045,"user_id_edited":755928045,"published_at":"2019-07-08 18:35:42","finished_at":"2019-07-11 00:34:38","created_at":"2019-07-08 18:35:42","updated_at":"2019-07-09 11:21:49","entity_type":"post","entity_id":5223495,"source_name":null,"template_info":null,"operate_comment":"市场部需求，需保留第3帧（7.8-7.10）","user_id_old":null,"user_id_edited_old":null,"extra":null,"column":null,"monographic":null,"post":null,"user":{"id":755928045,"name":"氪小秋","avatar_url":"https://pic.36krcnd.com/avatar/201804/27084939/c0ed8d7cn72yudos.png!480"},"video_author":null},{"id":18285,"project_id":1,"feed_id":0,"type":"head_line_new","state":"published","column_id":0,"order":18285,"hidden_title":0,"title":"焦点分析 | 在抖音打歌，音乐人又爱又恨","url":"https://36kr.com/p/5221304","cover":"https://pic.36krcnd.com/201907/08232201/fhn72bu3rsv1mrod!heading","bg_color":null,"tag":null,"user_id":1200352198,"user_id_edited":1200352198,"published_at":"2019-07-09 07:22:06","finished_at":null,"created_at":"2019-07-09 07:22:06","updated_at":"2019-07-09 11:21:49","entity_type":"post","entity_id":5221304,"source_name":null,"template_info":null,"operate_comment":"","user_id_old":null,"user_id_edited_old":null,"extra":null,"column":null,"monographic":null,"post":null,"user":{"id":1200352198,"name":"麦卡利","avatar_url":"https://pic.36krcnd.com/avatar/201811/23012933/0s67cuw1wnw6yjac.jpeg!480"},"video_author":null},{"id":18148,"project_id":1,"feed_id":0,"type":"head_line_new","state":"published","column_id":0,"order":18283,"hidden_title":0,"title":"邀你看大会直播：2019 WISE超级进化者","url":"https://36kr.com/wise-2019#home","cover":"https://pic.36krcnd.com/201907/05022839/dbkem56i4df0oszz!heading","bg_color":null,"tag":null,"user_id":16433703,"user_id_edited":16433703,"published_at":"2019-07-05 10:30:15","finished_at":null,"created_at":"2019-07-05 10:30:15","updated_at":"2019-07-09 11:21:52","entity_type":"external_url","entity_id":null,"source_name":null,"template_info":null,"operate_comment":"活动需求，请保留第4帧至7月9日","user_id_old":null,"user_id_edited_old":null,"extra":null,"column":null,"monographic":null,"post":null,"user":{"id":16433703,"name":"氪星局长","avatar_url":"https://pic.36krcnd.com/avatar/201812/04111321/o2pea3dbsz2eqgg1.png"},"video_author":null},{"id":18288,"project_id":1,"feed_id":0,"type":"head_line_new","state":"published","column_id":0,"order":18276,"hidden_title":0,"title":"罗静被拘，超34亿元供应链贷款爆雷，累及诺亚财富、湘财证券、云南信托","url":"https://36kr.com/p/5223619","cover":"https://pic.36krcnd.com/201907/08233007/jqh0pguzh9wrv4n6!heading","bg_color":null,"tag":null,"user_id":1200352198,"user_id_edited":1200352198,"published_at":"2019-07-09 07:30:10","finished_at":null,"created_at":"2019-07-09 07:30:10","updated_at":"2019-07-09 11:21:52","entity_type":"post","entity_id":5223619,"source_name":null,"template_info":null,"operate_comment":"","user_id_old":null,"user_id_edited_old":null,"extra":null,"column":null,"monographic":null,"post":null,"user":{"id":1200352198,"name":"麦卡利","avatar_url":"https://pic.36krcnd.com/avatar/201811/23012933/0s67cuw1wnw6yjac.jpeg!480"},"video_author":null}]},"bannerRight":{"code":0,"data":[{"id":18292,"project_id":1,"feed_id":0,"type":"home_page_new","state":"published","column_id":0,"order":18308,"hidden_title":0,"title":"「雪浪数制」获近亿元Pre-A轮融资，基于5G构建新型工业互联网通用平台","url":"https://36kr.com/p/5222249","cover":"https://pic.36krcnd.com/201907/09003115/mt9n9p1fu6sfee30!heading","bg_color":null,"tag":null,"user_id":12990209,"user_id_edited":12990209,"published_at":"2019-07-09 08:31:18","finished_at":null,"created_at":"2019-07-09 08:31:18","updated_at":"2019-07-09 10:43:18","entity_type":"post","entity_id":5222249,"source_name":null,"template_info":null,"operate_comment":"","user_id_old":null,"user_id_edited_old":null,"extra":null,"column":null,"monographic":null,"post":null,"user":{"id":12990209,"name":"刘思远","avatar_url":"//sta.36krcnd.com/kr-passport/usercenter/static/media/avatar.d864db3e.png"},"video_author":null},{"id":18296,"project_id":1,"feed_id":0,"type":"home_page_new","state":"published","column_id":0,"order":18297,"hidden_title":0,"title":"主攻智能获客赛道，「百炼智能」获5000万元Pre-A轮融资","url":"https://36kr.com/p/5222859","cover":"https://pic.36krcnd.com/201907/09003728/nbyef9cpiruatrjd!heading","bg_color":null,"tag":null,"user_id":12990209,"user_id_edited":12990209,"published_at":"2019-07-09 08:37:30","finished_at":null,"created_at":"2019-07-09 08:37:30","updated_at":"2019-07-09 10:43:35","entity_type":"post","entity_id":5222859,"source_name":null,"template_info":null,"operate_comment":"","user_id_old":null,"user_id_edited_old":null,"extra":null,"column":null,"monographic":null,"post":null,"user":{"id":12990209,"name":"刘思远","avatar_url":"//sta.36krcnd.com/kr-passport/usercenter/static/media/avatar.d864db3e.png"},"video_author":null},{"id":18308,"project_id":1,"feed_id":0,"type":"home_page_new","state":"published","column_id":0,"order":18296,"hidden_title":0,"title":"WISE直播现场","url":"https://36kr.com/wise-2019#guests","cover":"https://pic.36krcnd.com/201907/09011646/rcsaxgm8djla4b01!heading","bg_color":null,"tag":null,"user_id":16433703,"user_id_edited":16433703,"published_at":"2019-07-09 09:16:53","finished_at":null,"created_at":"2019-07-09 09:16:53","updated_at":"2019-07-09 10:43:35","entity_type":"external_url","entity_id":null,"source_name":null,"template_info":null,"operate_comment":"活动需求，请保留第3帧至7月11日","user_id_old":null,"user_id_edited_old":null,"extra":null,"column":null,"monographic":null,"post":null,"user":{"id":16433703,"name":"氪星局长","avatar_url":"https://pic.36krcnd.com/avatar/201812/04111321/o2pea3dbsz2eqgg1.png"},"video_author":null},{"id":18297,"project_id":1,"feed_id":0,"type":"home_page_new","state":"published","column_id":0,"order":18295,"hidden_title":0,"title":"线下是不可替代的流量入口，社区小店要如何突破瓶颈？","url":"https://36kr.com/p/5223193","cover":"https://pic.36krcnd.com/201907/09003851/1ic3jmn404rb8myh!heading","bg_color":null,"tag":null,"user_id":12990209,"user_id_edited":12990209,"published_at":"2019-07-09 08:38:54","finished_at":null,"created_at":"2019-07-09 08:38:54","updated_at":"2019-07-09 10:43:26","entity_type":"post","entity_id":5223193,"source_name":null,"template_info":null,"operate_comment":"","user_id_old":null,"user_id_edited_old":null,"extra":null,"column":null,"monographic":null,"post":null,"user":{"id":12990209,"name":"刘思远","avatar_url":"//sta.36krcnd.com/kr-passport/usercenter/static/media/avatar.d864db3e.png"},"video_author":null}]},"latestArticle":{"code":0,"data":[{"id":58755,"aggregation_id":1,"entity_type":"post","entity_id":5222747,"order_num":1562643794180,"post":{"id":5222747,"user_id":1028371076,"title":"主粮创业一定是好方向，但考验创业者的功力和战略 | 36氪宠物经济专题","cover":"https://pic.36krcnd.com/201907/09033327/o4khitoeyj4wfs2q!heading","summary":"从粮食销售的趋势可以倒推出现在养宠人群中的一个趋势：猫的增长很明显是大于狗","published_at":"2019-07-09 11:43:12","user":{"id":1028371076,"name":"思齐","avatar_url":"https://pic.36krcnd.com/avatar/201901/25075146/tjc1ouqjer52mbh8.jpeg!480"},"motifs":[{"pivot_id":126996,"pivot_entity_type":"post","pivot_entity_id":5222747,"pivot_motif_id":341,"id":341,"name":"创投新闻"}],"feeds":[{"pivot_id":385244,"pivot_entity_type":"post","pivot_entity_id":5222747,"pivot_feed_id":305,"id":305,"name":"创投","type":"web","key":"contact"}]}},{"id":58754,"aggregation_id":1,"entity_type":"post","entity_id":5223750,"order_num":1562643612830,"post":{"id":5223750,"user_id":728,"title":"超大型品牌也有“流量难题”，「爽游科技」想用跨平台工具帮品牌商做好自有流量","cover":"https://pic.36krcnd.com/201907/09031309/uvlr2mao6m2drbnt!heading","summary":"流量成本居高不下，淘宝、京东的获客成本已经高于 250 元，社交电商拼多多的获客成本也已达 140 元。","published_at":"2019-07-09 11:40:11","user":{"id":728,"name":"苑伶","avatar_url":"https://pic.36krcnd.com/avatar/201906/17082427/72zn49ny254428lz"},"motifs":[{"pivot_id":126993,"pivot_entity_type":"post","pivot_entity_id":5223750,"pivot_motif_id":342,"id":342,"name":"好项目在这里"}],"feeds":[{"pivot_id":385239,"pivot_entity_type":"post","pivot_entity_id":5223750,"pivot_feed_id":305,"id":305,"name":"创投","type":"web","key":"contact"}]}},{"id":58753,"aggregation_id":1,"entity_type":"post","entity_id":5221427,"order_num":1562642943580,"post":{"id":5221427,"user_id":18259766,"title":"被喜茶、瑞幸“取代”的王老吉，时隔9年商战再起波澜","cover":"https://pic.36krcnd.com/201907/02094347/e8p1tgs9aerltunv!heading","summary":"八点档连续剧“红罐凉茶”之争以及它们所错过的","published_at":"2019-07-09 11:29:02","user":{"id":18259766,"name":"邹黄晶","avatar_url":"https://pic.36krcnd.com/avatar/201905/30145925/2z0khck3imbvzq5o.png"},"motifs":[{"pivot_id":126990,"pivot_entity_type":"post","pivot_entity_id":5221427,"pivot_motif_id":336,"id":336,"name":"商业历史"}],"feeds":[{"pivot_id":385232,"pivot_entity_type":"post","pivot_entity_id":5221427,"pivot_feed_id":304,"id":304,"name":"推荐","type":"web","key":"web_recommend"}]}},{"id":58752,"aggregation_id":1,"entity_type":"post","entity_id":5223464,"order_num":1562642716820,"post":{"id":5223464,"user_id":767581499,"title":"未来球赛能怎么看？「猜猜科技」用 AI 赋能球赛数据分析、升级观赛体验","cover":"https://pic.36krcnd.com/201907/08080944/hyyqfgxxbq6oc658!heading","summary":"猜猜，未来球赛能怎么看？","published_at":"2019-07-09 11:25:16","user":{"id":767581499,"name":"程木各","avatar_url":"https://pic.36krcnd.com/avatar/201905/22024655/4lz493xm9n94xc1o.png!480"},"motifs":[{"pivot_id":126981,"pivot_entity_type":"post","pivot_entity_id":5223464,"pivot_motif_id":342,"id":342,"name":"好项目在这里"}],"feeds":[{"pivot_id":385228,"pivot_entity_type":"post","pivot_entity_id":5223464,"pivot_feed_id":305,"id":305,"name":"创投","type":"web","key":"contact"}]}},{"id":58751,"aggregation_id":1,"entity_type":"post","entity_id":5223573,"order_num":1562642686110,"post":{"id":5223573,"user_id":1895115459,"title":"三星黑科技背后：受市场认可只是水到渠成","cover":"https://pic.36krcnd.com/201907/08133150/js9um2wdmcih5kk4!heading","summary":"硬核黑科技加持，S10成三星年度诚意之作。","published_at":"2019-07-09 11:24:43","user":{"id":1895115459,"name":"36氪品牌","avatar_url":"https://pic.36krcnd.com/avatar/201808/09085013/gjaqf39d7tru2bsy"},"motifs":[{"pivot_id":126984,"pivot_entity_type":"post","pivot_entity_id":5223573,"pivot_motif_id":540,"id":540,"name":"10代，先于时代"}],"feeds":[{"pivot_id":385225,"pivot_entity_type":"post","pivot_entity_id":5223573,"pivot_feed_id":312,"id":312,"name":"其他","type":"web","key":"other"}]}},{"id":58750,"aggregation_id":1,"entity_type":"post","entity_id":5223688,"order_num":1562642347470,"post":{"id":5223688,"user_id":709512616,"title":"“外行”评“内行”，观众到底适不适合做综艺评审？","cover":"https://pic.36krcnd.com/201907/09011335/2e7fgxecph8ulgon!heading","summary":"观众投给的是热闹，而选手拼的是技术。","published_at":"2019-07-09 11:19:05","user":{"id":709512616,"name":"刺猬公社","avatar_url":"https://pic.36krcnd.com/avatar/201609/08035627/p7z1cljtfajr6543.png!480"},"motifs":[{"pivot_id":126879,"pivot_entity_type":"post","pivot_entity_id":5223688,"pivot_motif_id":368,"id":368,"name":"影音娱乐新动向"}],"feeds":[{"pivot_id":385217,"pivot_entity_type":"post","pivot_entity_id":5223688,"pivot_feed_id":307,"id":307,"name":"生活","type":"web","key":"happy_life"}]}},{"id":58749,"aggregation_id":1,"entity_type":"post","entity_id":5220463,"order_num":1562642271890,"post":{"id":5220463,"user_id":1345458698,"title":"智氪分析 | NBA版权争夺开战，阿里+苏宁对战腾讯谁将称王？","cover":"https://pic.36krcnd.com/201906/28115506/1ho6mvm4f4hc84mp!heading","summary":"在线体育，必有一战。“阿里苏宁”对战“腾讯体育”，谁将称王？","published_at":"2019-07-09 11:17:50","user":{"id":1345458698,"name":"Cecilia Xu","avatar_url":"https://pic.36krcnd.com/avatar/201810/11081657/42qzvn5ndawpnymq.jpeg"},"motifs":[{"pivot_id":126962,"pivot_entity_type":"post","pivot_entity_id":5220463,"pivot_motif_id":368,"id":368,"name":"影音娱乐新动向"}],"feeds":[{"pivot_id":385212,"pivot_entity_type":"post","pivot_entity_id":5220463,"pivot_feed_id":307,"id":307,"name":"生活","type":"web","key":"happy_life"}]}},{"id":58748,"aggregation_id":1,"entity_type":"post","entity_id":5223743,"order_num":1562640993860,"post":{"id":5223743,"user_id":991026445,"title":"中国哪里的地铁最拥挤","cover":"https://pic.36krcnd.com/201907/09025542/6oqprohbk2o1bcil!heading","summary":"对于城市发展而言，宽松反倒暗含着问题，拥挤才意味着活力。","published_at":"2019-07-09 10:56:31","user":{"id":991026445,"name":"未来城不落","avatar_url":"https://pic.36krcnd.com/avatar/201807/18033830/acefgtal2m0elpfs!480"},"motifs":[{"pivot_id":126928,"pivot_entity_type":"post","pivot_entity_id":5223743,"pivot_motif_id":360,"id":360,"name":"新居住时代"}],"feeds":[{"pivot_id":385183,"pivot_entity_type":"post","pivot_entity_id":5223743,"pivot_feed_id":311,"id":311,"name":"房产","type":"web","key":"real_estate"}]}},{"id":58747,"aggregation_id":1,"entity_type":"post","entity_id":5222672,"order_num":1562640680870,"post":{"id":5222672,"user_id":2049728232,"title":"36氪首发 | 「让渡居」获200万元种子轮融资，借助科技打造高性价比城市民宿","cover":"https://pic.36krcnd.com/201907/09024706/tog1e6z3t09e1n29!heading","summary":"定位城市经济民宿，主打高性价比，强调通过数字技术来提效降本。","published_at":"2019-07-09 10:51:20","user":{"id":2049728232,"name":"小岗村村长","avatar_url":"https://pic.36krcnd.com/avatar/201611/22020227/eq1w05tzis7spwgk.jpg!480"},"motifs":[{"pivot_id":126918,"pivot_entity_type":"post","pivot_entity_id":5222672,"pivot_motif_id":341,"id":341,"name":"创投新闻"}],"feeds":[{"pivot_id":385179,"pivot_entity_type":"post","pivot_entity_id":5222672,"pivot_feed_id":305,"id":305,"name":"创投","type":"web","key":"contact"}]}},{"id":58746,"aggregation_id":1,"entity_type":"post","entity_id":5223663,"order_num":1562640523520,"post":{"id":5223663,"user_id":332773019,"title":"什么痛让山东“自揭老底”","cover":"https://pic.36krcnd.com/201907/09024830/72qlfzxfzc949itz!heading","summary":"政府对民营企业最大的支持，就是不干预。","published_at":"2019-07-09 10:48:42","user":{"id":332773019,"name":"盒饭财经","avatar_url":"https://pic.36krcnd.com/avatar/201703/30080953/96fz7hnlgicr2xgo.jpg!480"},"motifs":[{"pivot_id":126908,"pivot_entity_type":"post","pivot_entity_id":5223663,"pivot_motif_id":347,"id":347,"name":"未来地产"}],"feeds":[{"pivot_id":385176,"pivot_entity_type":"post","pivot_entity_id":5223663,"pivot_feed_id":311,"id":311,"name":"房产","type":"web","key":"real_estate"}]}},{"id":58745,"aggregation_id":1,"entity_type":"post","entity_id":5223731,"order_num":1562640450780,"post":{"id":5223731,"user_id":375349,"title":"揭秘AI创业江湖里的“师徒帮”：同门师兄弟搭档，导师坐镇后方","cover":"https://pic.36krcnd.com/201907/09024200/h1znq4oozqge1iro!heading","summary":"“AI圈就是一个江湖”。","published_at":"2019-07-09 10:47:28","user":{"id":375349,"name":"36氪的朋友们","avatar_url":"http://krplus-pic.b0.upaiyun.com/201603/22055321/cg0huhoojxi0iipw.jpg!480"},"motifs":[{"pivot_id":126905,"pivot_entity_type":"post","pivot_entity_id":5223731,"pivot_motif_id":465,"id":465,"name":"商业人物追踪"}],"feeds":[{"pivot_id":385171,"pivot_entity_type":"post","pivot_entity_id":5223731,"pivot_feed_id":304,"id":304,"name":"推荐","type":"web","key":"web_recommend"}]}},{"id":58744,"aggregation_id":1,"entity_type":"post","entity_id":5223726,"order_num":1562640381120,"post":{"id":5223726,"user_id":122465660,"title":"中梁成功上岸，但还有百余中小房企苦苦挣扎","cover":"https://pic.36krcnd.com/201907/09024611/rbhxkq3a2ivzg6gn!heading","summary":"驾着 50 辆宝马 mini 的中梁终于如愿，两步小跑，迈进了 IPO 的大门。","published_at":"2019-07-09 10:46:20","user":{"id":122465660,"name":"未来可栖","avatar_url":"https://pic.36krcnd.com/avatar/201707/26090128/nrfwt9ixxcr6fpr8.jpg!480"},"motifs":[{"pivot_id":126881,"pivot_entity_type":"post","pivot_entity_id":5223726,"pivot_motif_id":413,"id":413,"name":"其他"}],"feeds":[{"pivot_id":385165,"pivot_entity_type":"post","pivot_entity_id":5223726,"pivot_feed_id":312,"id":312,"name":"其他","type":"web","key":"other"}]}},{"id":58743,"aggregation_id":1,"entity_type":"post","entity_id":5223733,"order_num":1562639519650,"post":{"id":5223733,"user_id":375349,"title":"SpaceX获得NASA新发射合同：发射黑洞研究设备","cover":"https://pic.36krcnd.com/201907/09023118/jydz9wr74xp0uteo!heading","summary":"按照目前的计划，这次航天器发射将于2021年4月进行，猎鹰九号火箭将从美国佛罗里达州肯尼迪航天中心的LC-39A号发射台升空。","published_at":"2019-07-09 10:31:58","user":{"id":375349,"name":"36氪的朋友们","avatar_url":"http://krplus-pic.b0.upaiyun.com/201603/22055321/cg0huhoojxi0iipw.jpg!480"},"motifs":[{"pivot_id":126892,"pivot_entity_type":"post","pivot_entity_id":5223733,"pivot_motif_id":444,"id":444,"name":"商业航天"}],"feeds":[{"pivot_id":385160,"pivot_entity_type":"post","pivot_entity_id":5223733,"pivot_feed_id":305,"id":305,"name":"创投","type":"web","key":"contact"}]}},{"id":58742,"aggregation_id":1,"entity_type":"post","entity_id":5223690,"order_num":1562638722000,"post":{"id":5223690,"user_id":798492498,"title":"加密交易所的新战场：高频交易","cover":"https://pic.36krcnd.com/201907/09011222/k8p9c8qf7ww1u9gj!heading","summary":"那些希望通过主机托管来获得高频交易的人都是被“人性”所驱动。","published_at":"2019-07-09 10:18:42","user":{"id":798492498,"name":"Odaily星球日报","avatar_url":"https://pic.36krcnd.com/avatar/201805/09044800/0cyyoyrfmv3pulw9.jpeg!480"},"motifs":[{"pivot_id":126872,"pivot_entity_type":"post","pivot_entity_id":5223690,"pivot_motif_id":486,"id":486,"name":"区块链大事件"}],"feeds":[{"pivot_id":385149,"pivot_entity_type":"post","pivot_entity_id":5223690,"pivot_feed_id":312,"id":312,"name":"其他","type":"web","key":"other"}]}},{"id":58741,"aggregation_id":1,"entity_type":"post","entity_id":5223617,"order_num":1562637367010,"post":{"id":5223617,"user_id":1195854171,"title":"越是能够下沉的零售，它的竞争力越强","cover":"https://img.36krcdn.com/20190708/v2_1562599741400_img_000","summary":"真的想赚钱，要到下沉市场去。","published_at":"2019-07-09 09:56:05","user":{"id":1195854171,"name":"笔记侠","avatar_url":"https://pic.36krcnd.com/avatar/201611/15074111/5ikcsxbb8w1rn26j.jpg!480"},"motifs":[{"pivot_id":126786,"pivot_entity_type":"post","pivot_entity_id":5223617,"pivot_motif_id":355,"id":355,"name":"新零售的新发展"}],"feeds":[{"pivot_id":385142,"pivot_entity_type":"post","pivot_entity_id":5223617,"pivot_feed_id":304,"id":304,"name":"推荐","type":"web","key":"web_recommend"}]}},{"id":58740,"aggregation_id":1,"entity_type":"post","entity_id":5223697,"order_num":1562636628890,"post":{"id":5223697,"user_id":1252391665,"title":"抢下硅谷自动驾驶出租车运行首秀的，竟是家中国公司？","cover":"https://pic.36krcnd.com/201907/09012806/0jrujmhw1trw396o!heading","summary":"自动驾驶出租车试运营已来，自动驾驶的真正未来，还有多远呢？","published_at":"2019-07-09 09:43:45","user":{"id":1252391665,"name":"硅谷密探","avatar_url":"https://pic.36krcnd.com/avatar/201701/16032548/vhdrnf5u4bo9ltzf.jpeg!480"},"motifs":[{"pivot_id":126824,"pivot_entity_type":"post","pivot_entity_id":5223697,"pivot_motif_id":413,"id":413,"name":"其他"}],"feeds":[{"pivot_id":385129,"pivot_entity_type":"post","pivot_entity_id":5223697,"pivot_feed_id":312,"id":312,"name":"其他","type":"web","key":"other"}]}},{"id":58739,"aggregation_id":1,"entity_type":"post","entity_id":5223654,"order_num":1562636191590,"post":{"id":5223654,"user_id":308613651,"title":"最前线 | 小米上市一周年，逾40亿限售股迎解禁","cover":"https://pic.36krcnd.com/201907/09013000/r37qyzfbq1sllh2j!heading","summary":"小米的互联网公司定位始终没能得到资本市场认可。","published_at":"2019-07-09 09:36:30","user":{"id":308613651,"name":"李振梁","avatar_url":"https://pic.36krcnd.com/avatar/201609/14081757/svc5ica3rvexkdf7.jpg!480"},"motifs":[{"pivot_id":126839,"pivot_entity_type":"post","pivot_entity_id":5223654,"pivot_motif_id":375,"id":375,"name":"雷军的小米"}],"feeds":[{"pivot_id":385116,"pivot_entity_type":"post","pivot_entity_id":5223654,"pivot_feed_id":304,"id":304,"name":"推荐","type":"web","key":"web_recommend"}]}},{"id":58738,"aggregation_id":1,"entity_type":"post","entity_id":5223659,"order_num":1562636106960,"post":{"id":5223659,"user_id":375349,"title":"外媒揭秘HTC手机“死因”：决策失误 “令人恐惧”的企业文化","cover":"https://pic.36krcnd.com/201907/09000933/8m36ji0fi3cx52vd!heading","summary":"那么围绕HTC的智能手机业务，到底发生了什么?HTC现任和前任员工描绘了这样一幅图景:在一个充满挑战的市场中，面临着艰难的商业决策，高层对于创新的判断出现失误，以及并不和谐的企业文化。","published_at":"2019-07-09 09:35:04","user":{"id":375349,"name":"36氪的朋友们","avatar_url":"http://krplus-pic.b0.upaiyun.com/201603/22055321/cg0huhoojxi0iipw.jpg!480"},"motifs":[{"pivot_id":126780,"pivot_entity_type":"post","pivot_entity_id":5223659,"pivot_motif_id":363,"id":363,"name":"手机厂商成长的烦恼"}],"feeds":[{"pivot_id":385112,"pivot_entity_type":"post","pivot_entity_id":5223659,"pivot_feed_id":306,"id":306,"name":"科技","type":"web","key":"technology"}]}},{"id":58737,"aggregation_id":1,"entity_type":"post","entity_id":5223631,"order_num":1562635865980,"post":{"id":5223631,"user_id":93842,"title":"胡建人花木兰，迪士尼动画电影真人化改编的新思路？","cover":"https://pic.36krcnd.com/201907/09010252/xhbfm6ufu9e0p7pa!heading","summary":"看迪士尼如何用真人电影颠覆公主梦。","published_at":"2019-07-09 09:31:05","user":{"id":93842,"name":"娱乐产业","avatar_url":"https://pic.36krcnd.com/avatar/201808/02060335/l3rt0y1rber5oydu"},"motifs":[{"pivot_id":126812,"pivot_entity_type":"post","pivot_entity_id":5223631,"pivot_motif_id":368,"id":368,"name":"影音娱乐新动向"}],"feeds":[{"pivot_id":385105,"pivot_entity_type":"post","pivot_entity_id":5223631,"pivot_feed_id":307,"id":307,"name":"生活","type":"web","key":"happy_life"}]}},{"id":58736,"aggregation_id":1,"entity_type":"post","entity_id":5223593,"order_num":1562635047760,"post":{"id":5223593,"user_id":693851240,"title":"亚马逊：游戏工作室、技术引擎、电竞联盟……游戏全链路策略现雏形","cover":"https://pic.36krcnd.com/201907/09011700/jpnburoimyouv4gh!heading","summary":"建立飞轮模型。","published_at":"2019-07-09 09:17:25","user":{"id":693851240,"name":"东西文娱","avatar_url":"https://pic.36krcnd.com/avatar/201712/07103106/q4xsp43sxj3r29zz.png!480"},"motifs":[{"pivot_id":126820,"pivot_entity_type":"post","pivot_entity_id":5223593,"pivot_motif_id":364,"id":364,"name":"手游+电竞=下一个风口？"}],"feeds":[{"pivot_id":385093,"pivot_entity_type":"post","pivot_entity_id":5223593,"pivot_feed_id":304,"id":304,"name":"推荐","type":"web","key":"web_recommend"}]}},{"id":58735,"aggregation_id":1,"entity_type":"post","entity_id":5223614,"order_num":1562634725350,"post":{"id":5223614,"user_id":910510593,"title":"《怪奇物语3》开播，Netflix转向迪士尼“剧集+衍生品”老路？","cover":"https://img.36krcdn.com/20190708/v2_1562599560251_img_000","summary":"Netflix与迪士尼等美国好莱坞片厂，开始在更多领域短兵相接。","published_at":"2019-07-09 09:12:04","user":{"id":910510593,"name":"壹娱观察","avatar_url":"https://pic.36krcnd.com/avatar/201906/26053501/to27yoapdy62aeb2"},"motifs":[{"pivot_id":126769,"pivot_entity_type":"post","pivot_entity_id":5223614,"pivot_motif_id":368,"id":368,"name":"影音娱乐新动向"}],"feeds":[{"pivot_id":385091,"pivot_entity_type":"post","pivot_entity_id":5223614,"pivot_feed_id":307,"id":307,"name":"生活","type":"web","key":"happy_life"}]}},{"id":58734,"aggregation_id":1,"entity_type":"post","entity_id":5223674,"order_num":1562634271000,"post":{"id":5223674,"user_id":453363432,"title":"横跨68年：大陆二十城造芯记","cover":"https://pic.36krcnd.com/201907/09010207/jvajxgbh4bdzcmmh!heading","summary":"以这十六省二十一市为代表的中国“芯”事还在持续上演。","published_at":"2019-07-09 09:04:31","user":{"id":453363432,"name":"智东西","avatar_url":"https://pic.36krcnd.com/avatar/201710/27090423/sq2oazt01blecsik.jpg!480"},"motifs":[{"pivot_id":126806,"pivot_entity_type":"post","pivot_entity_id":5223674,"pivot_motif_id":485,"id":485,"name":"芯片领域新鲜事"}],"feeds":[{"pivot_id":385085,"pivot_entity_type":"post","pivot_entity_id":5223674,"pivot_feed_id":306,"id":306,"name":"科技","type":"web","key":"technology"}]}},{"id":58733,"aggregation_id":1,"entity_type":"post","entity_id":5222758,"order_num":1562634005960,"post":{"id":5222758,"user_id":1028371076,"title":"中国宠物市场还相当早期，这里是一些机会和“坑” | 36氪宠物经济专题","cover":"https://pic.36krcnd.com/201907/09001819/y45j7gkfthsibfev!heading","summary":"无论是市场状态还是用户的心态，中国目前的宠物市场其实相当早期","published_at":"2019-07-09 09:00:04","user":{"id":1028371076,"name":"思齐","avatar_url":"https://pic.36krcnd.com/avatar/201901/25075146/tjc1ouqjer52mbh8.jpeg!480"},"motifs":[{"pivot_id":126784,"pivot_entity_type":"post","pivot_entity_id":5222758,"pivot_motif_id":342,"id":342,"name":"好项目在这里"}],"feeds":[{"pivot_id":385079,"pivot_entity_type":"post","pivot_entity_id":5222758,"pivot_feed_id":305,"id":305,"name":"创投","type":"web","key":"contact"}]}},{"id":58732,"aggregation_id":1,"entity_type":"post","entity_id":5203758,"order_num":1562633966560,"post":{"id":5203758,"user_id":1957238772,"title":"运用BIM技术打通施工交付，「酷家乐」的未来故事是产业数字化","cover":"https://pic.36krcnd.com/201907/08133154/nz6k6c1p0u3ksuix!heading","summary":"酷家乐能否成为价值370亿美元的互联网版Autodesk？","published_at":"2019-07-09 08:59:23","user":{"id":1957238772,"name":"Jamie","avatar_url":"https://pic.36krcnd.com/avatar/201903/18001415/8aufnod8kksbrmum.jpeg"},"motifs":[{"pivot_id":126802,"pivot_entity_type":"post","pivot_entity_id":5203758,"pivot_motif_id":341,"id":341,"name":"创投新闻"}],"feeds":[{"pivot_id":385071,"pivot_entity_type":"post","pivot_entity_id":5203758,"pivot_feed_id":305,"id":305,"name":"创投","type":"web","key":"contact"}]}},{"id":58731,"aggregation_id":1,"entity_type":"post","entity_id":5223360,"order_num":1562633758780,"post":{"id":5223360,"user_id":808666477,"title":"36氪首发 | 发力短视频内容电商，「灰斑马」MCN 获 2000 万元 A 轮融资","cover":"https://pic.36krcnd.com/201907/09001403/wzrmegqkkrnl0ixr!heading","summary":"短视频红利消退过程中，MCN 经营的方法论。","published_at":"2019-07-09 08:55:55","user":{"id":808666477,"name":"茉小莉","avatar_url":"https://pic.36krcnd.com/avatar/201812/21083309/7j9m21se0hyhjuaz.jpeg"},"motifs":[{"pivot_id":126798,"pivot_entity_type":"post","pivot_entity_id":5223360,"pivot_motif_id":355,"id":355,"name":"新零售的新发展"}],"feeds":[{"pivot_id":385066,"pivot_entity_type":"post","pivot_entity_id":5223360,"pivot_feed_id":305,"id":305,"name":"创投","type":"web","key":"contact"}]}},{"id":58730,"aggregation_id":1,"entity_type":"post","entity_id":5223653,"order_num":1562633467240,"post":{"id":5223653,"user_id":16637033,"title":"下一代 iPhone 设计的接班人，是“库克背后的库克”","cover":"https://pic.36krcnd.com/201907/08232742/kooihkbw648jqu6c!heading","summary":"根据苹果的管理层调整计划，在艾维离开苹果后，苹果硬件及软件设计团队将由首席运营官 Jeff Williams负责。","published_at":"2019-07-09 08:51:05","user":{"id":16637033,"name":"爱范儿","avatar_url":"https://pic.36krcnd.com/avatar/201805/30092359/8ec2ko2jkphh6qg4!480"},"motifs":[{"pivot_id":126772,"pivot_entity_type":"post","pivot_entity_id":5223653,"pivot_motif_id":377,"id":377,"name":"王者苹果？"}],"feeds":[{"pivot_id":385063,"pivot_entity_type":"post","pivot_entity_id":5223653,"pivot_feed_id":306,"id":306,"name":"科技","type":"web","key":"technology"}]}}]},"specialTopicRecommend":{"code":0,"data":[{"id":3172,"state":"published","title":"斗鱼终于要上市了，但直播行业还是当年的直播行业吗？","summary":"斗鱼曾几度徘徊于美股市场门前，终于确定将于7月17日登陆纳斯达克，发行价区间为11.5至14美元，最高募资10.85亿美元。可如今的直播行业，还有当年斗鱼与虎牙攻防缠斗时期那般火热吗？上市后的斗鱼会迎来新生吗？","cover":"https://pic.36krcnd.com/201907/09005311/26ck49u3aetqzebx!heading","cover_web":"https://pic.36krcnd.com/201907/09005254/b283ni1gntgz1760!heading","user_id":1200352198,"published_at":"2019-07-09 08:59:13","finished_at":null,"created_at":"2019-07-09 08:59:13","updated_at":"2019-07-09 09:04:36","template_info":{"template_type":"small_image","template_title":"斗鱼终于要上市了，但直播行业还是当年的直播行业吗？","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201907/09005324/gsds4m11ulabro65!heading"],"template_extra":{"entity_list":[]}},"type":"info_flow","entity_flag":null,"weight":3},{"id":3170,"state":"published","title":"登上《乐队的夏天》，乐队等待春天","summary":"遵循商业逻辑的综艺节目与反商业文化的摇滚乐，充斥着两种价值观的事物在这个夏天相遇了，某种程度上，乐队与《乐队的夏天》相互成就，随着中国大陆在线音乐平台竞争的稳定，音乐市场的头部内容被瓜分，平台需要更多原创内容，原创音乐市场也逐渐被激活。","cover":"https://pic.36krcnd.com/201907/08065501/ktobsxwd1bsc373f!heading","cover_web":"https://pic.36krcnd.com/201907/08063751/gqlr7ud0af1zrnfj!heading","user_id":753182243,"published_at":"2019-07-08 14:41:16","finished_at":null,"created_at":"2019-07-08 14:36:54","updated_at":"2019-07-09 09:02:21","template_info":{"template_type":"small_image","template_title":"登上《乐队的夏天》，乐队等待春天","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201907/08063648/vwvu7kjpp1ihsg16!heading"],"template_extra":{"entity_list":[]}},"type":"info_flow","entity_flag":null,"weight":2},{"id":3155,"state":"published","title":"“垃圾”创业：下一个独角兽或叫“扔了么”？","summary":"上海开始推进垃圾分类回收后，不少人呼吁上线垃圾代扔，人工智能自动分拣等服务。逐渐增长的需求背后，是否能催生出新的风口，孵化出新的独角兽？","cover":"https://pic.36krcnd.com/201907/01041609/blyabxzamqp2zbwv!heading","cover_web":"https://pic.36krcnd.com/201907/01041601/2ofzac8gztj536q4!heading","user_id":1200352198,"published_at":"2019-07-01 12:16:23","finished_at":null,"created_at":"2019-07-01 12:16:23","updated_at":"2019-07-09 09:02:26","template_info":{"template_type":"small_image","template_title":"“垃圾”创业：下一个独角兽或叫“扔了么”？","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201907/01041618/c3cz85hmpanass1n!heading"],"template_extra":{"entity_list":[]}},"type":"info_flow","entity_flag":null,"weight":1}]},"operate":{"code":0,"data":[{"id":16315,"type":"web_stream_pin","state":"published","hidden_title":0,"title":"分类好的垃圾都去哪儿了？","url":"https://36kr.com/video/49477","cover":"https://pic.36krcnd.com/201907/08072130/plum7hk2dlkxn9et!heading","entity_type":"video","entity_id":49477,"source_name":null,"template_info":{"template_type":"big_image","template_title":"分类好的垃圾都去哪儿了？","template_cover":["https://pic.36krcnd.com/201907/08072130/plum7hk2dlkxn9et!heading"],"template_extra":{"summary":"为什么生活垃圾要“干湿分离”？你辛苦分类好的垃圾会被如何处理？以及，中国工业发展也曾有“洋垃圾”的一份功劳…","duration":"05:43","published_at":"2019-07-08 21:30:07","video_author_id":374152664,"video_author_name":"柴知道"}},"extra":"{\"position\":8}","position":8},{"id":16313,"type":"web_stream_pin","state":"published","hidden_title":0,"title":"科氪丨性能与轻薄合二为一，万元级游戏本上手体验","url":"https://36kr.com/video/49445","cover":"https://pic.36krcnd.com/201907/08064800/wdt45abwlyd4lvi0!heading","entity_type":"video","entity_id":49445,"source_name":null,"template_info":{"template_type":"big_image","template_title":"科氪丨性能与轻薄合二为一，万元级游戏本上手体验","template_cover":["https://pic.36krcnd.com/201907/08064800/wdt45abwlyd4lvi0!heading"],"template_extra":{"summary":"高性能游戏本的轻薄体验。","duration":"02:39","published_at":"2019-07-08 14:51:55","video_author_id":517825446,"video_author_name":"科氪"}},"extra":"{\"position\":16}","position":16}]},"videoRecommend":{"code":0,"data":[{"id":49551,"title":"OPPO的折叠屏要来了？全新商标Enco曝光","format":"mp4","url":"https://video.36krcnd.com/201907/08095648/q43umavct66j4knl.mp4","bitrate":0,"filesize":77399906,"duration":72,"user_id":1547419282,"created_at":"2019-07-08 17:56:16","updated_at":"2019-07-09 11:00:08","template_info":{"template_type":"small_image","template_title":"OPPO的折叠屏要来了？全新商标Enco曝光","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201907/08095701/4v4eznwyiktnmgvs!heading"],"template_extra":{"vtype":"normal","like_count":"1","is_like":false}},"vtype":"normal","summary":"7月8日消息 据Android Updated报道，OPPO在7月2日获得名为Enco的商标使用权，OPPO或将推出一款名为OPPO Enco的设备。","web_cover":"https://pic.36krcnd.com/201907/08095644/5ef7nswmz1vkuywx","column_id":18,"published_at":"2019-07-09 11:00:08","cover":"https://pic.36krcnd.com/201907/08095701/4v4eznwyiktnmgvs!heading","children":[{"id":49552,"format":"mov,mp4,m4a,3gp,3g2,mj2","url":"http://video.chuangkr.china.com.cn/201907/08095648/q43umavct66j4knl_fmp4_s640x360_vb384.mp4","bitrate":331,"filesize":4153803,"duration":72},{"id":49553,"format":"mov,mp4,m4a,3gp,3g2,mj2","url":"http://video.chuangkr.china.com.cn/201907/08095648/q43umavct66j4knl_fmp4_s960x540_vb768.mp4","bitrate":659,"filesize":7085435,"duration":72},{"id":49554,"format":"mov,mp4,m4a,3gp,3g2,mj2","url":"http://video.chuangkr.china.com.cn/201907/08095648/q43umavct66j4knl_fmp4_s1920x1080_vb2560.mp4","bitrate":2199,"filesize":20852520,"duration":72}],"column":{"id":18,"name":"氪视频","type":"normal"},"user":{"id":1547419282,"name":"雷科技","email":"market@leikeji.com","realname":"雷科技","nickname":"雷科技","avatar_url":"https://pic.36krcnd.com/avatar/201801/11095704/n2g6m29mmngim0pp.jpg!480","introduction":"雷科技，致力于让科技资讯变得更加有趣。"},"counters":{"favorite":0,"comment":0,"like":0},"url_384":"http://video.chuangkr.china.com.cn/201907/08095648/q43umavct66j4knl_fmp4_s640x360_vb384.mp4","filesize_384":4153803,"duration_384":72,"bitrate_384":331,"url_512":"http://video.chuangkr.china.com.cn/201907/08095648/q43umavct66j4knl_fmp4_s960x540_vb768.mp4","filesize_512":7085435,"duration_512":72,"bitrate_512":659,"url_1152":"http://video.chuangkr.china.com.cn/201907/08095648/q43umavct66j4knl_fmp4_s1920x1080_vb2560.mp4","filesize_1152":20852520,"duration_1152":72,"bitrate_1152":2199,"is_top":0},{"id":49360,"title":"轻便通勤滑板车：电力驱动一键折叠，比传统电动车小10倍","format":"mp4","url":"https://video.36krcnd.com/201907/06110542/yxvc55a5jwydb3fk.mp4","bitrate":0,"filesize":159292691,"duration":123,"user_id":851532882,"created_at":"2019-07-06 19:05:55","updated_at":"2019-07-09 10:00:08","template_info":{"template_type":"small_image","template_title":"轻便通勤滑板车：电力驱动一键折叠，比传统电动车小10倍","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201907/06110705/z1kq93ajfvh5j1hf!heading"],"template_extra":{"vtype":"normal","like_count":"0","is_like":false}},"vtype":"normal","summary":"电动车作为出行工具，最明显的特征就是小巧、便捷，国外发明的这款会爬坡的电动滑板车，时速超过45公里，续航里程更是超过50公里，遇到斜坡的时候也能轻松爬坡，除此之外，你也可以随意选择坐着或站着，因为座椅可以随时折叠，对于上班族来说也是不错的选择，不再担心因为堵车迟到。","web_cover":"https://pic.36krcnd.com/201907/06110538/qkdha5okjj1mhu9a","column_id":18,"published_at":"2019-07-09 10:00:08","cover":"https://pic.36krcnd.com/201907/06110705/z1kq93ajfvh5j1hf!heading","children":[{"id":49361,"format":"mov,mp4,m4a,3gp,3g2,mj2","url":"http://video.chuangkr.china.com.cn/201907/06110542/yxvc55a5jwydb3fk_fmp4_s640x360_vb384.mp4","bitrate":395,"filesize":8153203,"duration":123},{"id":49362,"format":"mov,mp4,m4a,3gp,3g2,mj2","url":"http://video.chuangkr.china.com.cn/201907/06110542/yxvc55a5jwydb3fk_fmp4_s960x540_vb768.mp4","bitrate":789,"filesize":14215073,"duration":123},{"id":49363,"format":"mov,mp4,m4a,3gp,3g2,mj2","url":"http://video.chuangkr.china.com.cn/201907/06110542/yxvc55a5jwydb3fk_fmp4_s1920x1080_vb2560.mp4","bitrate":2613,"filesize":42283895,"duration":123}],"column":{"id":18,"name":"氪视频","type":"normal"},"user":{"id":851532882,"name":"Max无限创意","email":null,"realname":"杨博","nickname":"Max无限创意","avatar_url":"https://pic.36krcnd.com/avatar/201907/01161545/t0sbh73q9ov008bj","introduction":"两分钟，学点知识，长点见识"},"counters":{"favorite":0,"comment":0,"like":0},"url_384":"http://video.chuangkr.china.com.cn/201907/06110542/yxvc55a5jwydb3fk_fmp4_s640x360_vb384.mp4","filesize_384":8153203,"duration_384":123,"bitrate_384":395,"url_512":"http://video.chuangkr.china.com.cn/201907/06110542/yxvc55a5jwydb3fk_fmp4_s960x540_vb768.mp4","filesize_512":14215073,"duration_512":123,"bitrate_512":789,"url_1152":"http://video.chuangkr.china.com.cn/201907/06110542/yxvc55a5jwydb3fk_fmp4_s1920x1080_vb2560.mp4","filesize_1152":42283895,"duration_1152":123,"bitrate_1152":2613,"is_top":0},{"id":49518,"title":"苹果生态又一重要升级：iCloud将支持Face ID登录","format":"mp4","url":"https://video.36krcnd.com/201907/08091948/wf4r3lwvmdoxcjhq.mp4","bitrate":0,"filesize":75508620,"duration":0,"user_id":1547419282,"created_at":"2019-07-08 17:19:32","updated_at":"2019-07-09 09:30:08","template_info":{"template_type":"small_image","template_title":"苹果生态又一重要升级：iCloud将支持Face ID登录","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201907/08092003/muvz0zf9h75bib3x!heading"],"template_extra":{"vtype":"normal","like_count":"1","is_like":false}},"vtype":"normal","summary":"日前，据外媒9To5Mac报道，苹果各系产品在未来系统更新后或将支持Face ID或Touch ID登录iCloud网页端。","web_cover":"https://pic.36krcnd.com/201907/08091944/wk7jrhyozvxr3zrt","column_id":18,"published_at":"2019-07-09 09:30:08","cover":"https://pic.36krcnd.com/201907/08092003/muvz0zf9h75bib3x!heading","children":[{"id":49530,"format":null,"url":null,"bitrate":0,"filesize":0,"duration":0},{"id":49531,"format":null,"url":null,"bitrate":0,"filesize":0,"duration":0},{"id":49532,"format":null,"url":null,"bitrate":0,"filesize":0,"duration":0}],"column":{"id":18,"name":"氪视频","type":"normal"},"user":{"id":1547419282,"name":"雷科技","email":"market@leikeji.com","realname":"雷科技","nickname":"雷科技","avatar_url":"https://pic.36krcnd.com/avatar/201801/11095704/n2g6m29mmngim0pp.jpg!480","introduction":"雷科技，致力于让科技资讯变得更加有趣。"},"counters":{"favorite":0,"comment":0,"like":1},"is_top":0},{"id":49514,"title":"以次充好：江淮汽车收1.7亿“天价罚单”，股价4年跌超7成","format":"mp4","url":"https://video.36krcnd.com/201907/08091436/alj67na3xcfqifpf.mp4","bitrate":0,"filesize":49044174,"duration":0,"user_id":221035087,"created_at":"2019-07-08 17:16:58","updated_at":"2019-07-09 09:00:09","template_info":{"template_type":"small_image","template_title":"以次充好：江淮汽车收1.7亿“天价罚单”，股价4年跌超7成","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201907/08091522/ycmhhbui10tka4m6!heading"],"template_extra":{"vtype":"normal","like_count":"1","is_like":false}},"vtype":"normal","summary":"7月8日，针对江淮汽车三台产品涉排放造假，遭罚款1.7亿元的情况，公司8日回应称，本次抽查的车辆为京五排放标准（第1阶段）的载货汽车产品，只在北京销售，该款产品共计765台，随着2018年9月1日北京实施京五排放标准（第2阶段），该款产品已经停产，因此不会影响公司正常的生产经营。","web_cover":"https://pic.36krcnd.com/201907/08091516/spywxxy1znwd8sa9","column_id":18,"published_at":"2019-07-09 09:00:09","cover":"https://pic.36krcnd.com/201907/08091522/ycmhhbui10tka4m6!heading","children":[{"id":49515,"format":null,"url":null,"bitrate":0,"filesize":0,"duration":0},{"id":49516,"format":null,"url":null,"bitrate":0,"filesize":0,"duration":0},{"id":49517,"format":null,"url":null,"bitrate":0,"filesize":0,"duration":0}],"column":{"id":18,"name":"氪视频","type":"normal"},"user":{"id":221035087,"name":"老板说的对","email":null,"realname":"老板说的对","nickname":"老板说的对","avatar_url":"https://pic.36krcnd.com/avatar/201811/08093117/bz8ipx8xnt69m6or","introduction":"内事不明看大佬，外事不决问大佬，让大佬为你指点江山。"},"counters":{"favorite":0,"comment":0,"like":1},"is_top":0}]},"dailyWord":{"code":0,"data":{"currentTime":1562601600000,"currentTimeFormat":"2019-07-09","backgroundUrl":"","content":"为两轮电动车提供换电服务的生意被看好，其市场规模或可达千亿，互联网巨头入局、初创公司涌现、资本加注……两轮电动车换电赛道“拥挤”。","title":"换电是门大生意","route":"https://www.36kr.com/p/5220836","column":"看见·365个未来","entityId":5220836}},"latestNewsflash":{"code":0,"data":[{"id":174809,"project_id":1,"column_id":72,"post_id":null,"is_top":0,"pin":0,"title":"商务部：推动便利店品牌化连锁化发展","catch_title":"","description":"商务部办公厅印发关于推动便利店品牌化连锁化发展的工作通知，通知指出，品牌连锁便利店发展工作以城市为单位推进。按照“全面部署、重点推进、逐级延伸”的工作步骤，直辖市、计划单列市和省会城市的品牌连锁便利店发展工作要在2019年先行启动，各地要在重点推进这部分城市的基础上，结合当地经济发展实际，有条件的地方可再选择一些其他城市推进。（证券时报）","cover":"","news_url_type":"news_url","news_url":"http://www.egsea.com/news/detail?id=451320","user_id":167521,"published_at":"2019-07-09 11:51:00","created_at":"2019-07-09 11:51:00","updated_at":"2019-07-09 11:51:00","counters":{"view_count":0,"pv":0,"pv_mobile":0,"pv_app":0,"comment":0},"extraction_tags_arr":[],"extraction_tags":"[]","column":{"id":72,"name":"其他","bg_color":"#000000","type":"normal"},"db_counters":[],"user":{"id":167521,"name":"欧阳伟康","avatar_url":"https://pic.36krcnd.com/avatar/201706/22114434/fgudgkitazowq2xh.jpg!480"},"news_url_title":"原文链接","station_info":null},{"id":174806,"project_id":1,"column_id":72,"post_id":0,"is_top":0,"pin":1,"title":"物美和永辉入围对麦德龙旗下中国业务的最后一轮竞购","catch_title":"","description":"知情人士称，物美和永辉超市参与的一个投资者团体都入围了对麦德龙旗下中国业务的最后一轮竞购，苏宁控股集团已放弃竞标。永辉已与高瓴资本联手，腾讯也在商议加入这个财团。知情人士称，最终入围者被要求于8月份发出有约束力的提议。知情人士表示，鉴于竞争激烈，交易对麦德龙中国业务的估值可能在20亿美元左右。（彭博）","cover":"","news_url_type":"","news_url":"","user_id":167521,"published_at":"2019-07-09 11:40:51","created_at":"2019-07-09 11:40:51","updated_at":"2019-07-09 11:48:46","counters":{"view_count":16,"pv":14,"pv_mobile":2,"pv_app":0,"comment":0},"extraction_tags_arr":[],"extraction_tags":"[]","column":{"id":72,"name":"其他","bg_color":"#000000","type":"normal"},"db_counters":[{"id":229277644,"entity_type":"newsflash","entity_id":174806,"count_type":"pv","key":"kr_newssite_counter:newsflash_174806_pv","value":14,"created_at":"2019-07-09 11:42:38","updated_at":"2019-07-09 11:50:06","entity_id_old":null},{"id":229280252,"entity_type":"newsflash","entity_id":174806,"count_type":"pv_mobile","key":"kr_newssite_counter:newsflash_174806_pv_mobile","value":2,"created_at":"2019-07-09 11:47:01","updated_at":"2019-07-09 11:47:01","entity_id_old":null}],"user":{"id":167521,"name":"欧阳伟康","avatar_url":"https://pic.36krcnd.com/avatar/201706/22114434/fgudgkitazowq2xh.jpg!480"},"news_url_title":"","station_info":null},{"id":174805,"project_id":1,"column_id":72,"post_id":null,"is_top":0,"pin":0,"title":"阿里王坚谈“互联网下半场”：其实互联网才刚刚开始","catch_title":"","description":"在2019中国互联网大会上，阿里巴巴技术委员会主席王坚发表演讲时表示，大家都在谈互联网下半场，但其实互联网时代才刚开始。“中国互联网公司进入了下半场，但不代表互联网也进入了下半场。”王坚称，中国互联网发展20多年，但互联网公司创造的商业价值，并没有发生根本的改变，仍然是以广告营收为主。所以互联网公司急需变革，才会有“下半场”的说法。（新浪科技）","cover":"","news_url_type":"news_url","news_url":"https://tech.sina.com.cn/i/2019-07-09/doc-ihytcitm0695533.shtml","user_id":167521,"published_at":"2019-07-09 11:33:55","created_at":"2019-07-09 11:33:55","updated_at":"2019-07-09 11:33:55","counters":{"view_count":28,"pv":27,"pv_mobile":0,"pv_app":1,"comment":0},"extraction_tags_arr":[],"extraction_tags":"[]","column":{"id":72,"name":"其他","bg_color":"#000000","type":"normal"},"db_counters":[{"id":229273530,"entity_type":"newsflash","entity_id":174805,"count_type":"pv","key":"kr_newssite_counter:newsflash_174805_pv","value":27,"created_at":"2019-07-09 11:35:07","updated_at":"2019-07-09 11:52:19","entity_id_old":null},{"id":229274031,"entity_type":"newsflash","entity_id":174805,"count_type":"pv_app","key":"kr_newssite_counter:newsflash_174805_pv_app","value":1,"created_at":"2019-07-09 11:36:25","updated_at":"2019-07-09 11:36:25","entity_id_old":null}],"user":{"id":167521,"name":"欧阳伟康","avatar_url":"https://pic.36krcnd.com/avatar/201706/22114434/fgudgkitazowq2xh.jpg!480"},"news_url_title":"原文链接","station_info":null},{"id":174804,"project_id":1,"column_id":72,"post_id":null,"is_top":0,"pin":0,"title":"电动车智能化解决方案供应商“小安科技”获近千万Pre-A轮融资","catch_title":"","description":"电动车智能化解决方案供应商“小安科技”宣布于6月24日完成近千万Pre-A轮融资，本轮资金由同鑫力诚和去哪儿网董事长谌振宇提供。这笔资金将协助小安科技在同城配送、车厂智能化等领域加速研发和布局。（猎云网）","cover":"","news_url_type":"news_url","news_url":"https://www.lieyunwang.com/archives/456550","user_id":167521,"published_at":"2019-07-09 11:20:04","created_at":"2019-07-09 11:20:04","updated_at":"2019-07-09 11:20:04","counters":{"view_count":13,"pv":13,"pv_mobile":0,"pv_app":0,"comment":0},"extraction_tags_arr":[],"extraction_tags":"[]","column":{"id":72,"name":"其他","bg_color":"#000000","type":"normal"},"db_counters":[{"id":229268008,"entity_type":"newsflash","entity_id":174804,"count_type":"pv","key":"kr_newssite_counter:newsflash_174804_pv","value":13,"created_at":"2019-07-09 11:25:40","updated_at":"2019-07-09 11:44:34","entity_id_old":null}],"user":{"id":167521,"name":"欧阳伟康","avatar_url":"https://pic.36krcnd.com/avatar/201706/22114434/fgudgkitazowq2xh.jpg!480"},"news_url_title":"原文链接","station_info":null},{"id":174803,"project_id":1,"column_id":72,"post_id":null,"is_top":0,"pin":0,"title":"民航局：波音737MAX机型安全隐患导致国内部分地区暑期运力供需矛盾突出","catch_title":"","description":"民航局相关负责人在例行发布会上表示，因波音737MAX机型存在重大隐患，3月份、民航局已向国内公司发布了暂停波音737MAX8飞机商业运行的通知。国内各航空公司根据要求，已停飞737MAX8飞机，并暂停了对该机型的引进。运力的非预期调减，将导致市场供给受到一定影响，虽然航空公司通过提升现有飞机利用率加以弥补，但预计在局部市场，暑运供需矛盾可能会比较突出。（央广）","cover":"","news_url_type":"news_url","news_url":"http://www.nbd.com.cn/articles/2019-07-09/1352073.html","user_id":167521,"published_at":"2019-07-09 11:09:25","created_at":"2019-07-09 11:09:25","updated_at":"2019-07-09 11:09:25","counters":{"view_count":13,"pv":13,"pv_mobile":0,"pv_app":0,"comment":0},"extraction_tags_arr":[],"extraction_tags":"[]","column":{"id":72,"name":"其他","bg_color":"#000000","type":"normal"},"db_counters":[{"id":229260186,"entity_type":"newsflash","entity_id":174803,"count_type":"pv","key":"kr_newssite_counter:newsflash_174803_pv","value":13,"created_at":"2019-07-09 11:12:48","updated_at":"2019-07-09 11:40:08","entity_id_old":null}],"user":{"id":167521,"name":"欧阳伟康","avatar_url":"https://pic.36krcnd.com/avatar/201706/22114434/fgudgkitazowq2xh.jpg!480"},"news_url_title":"原文链接","station_info":null}]},"hotlist":{"code":0,"data":[{"id":5223231,"goods_id":0,"column_id":192,"monographic_id":null,"related_company_id":0,"related_company_type":"domestic","related_company_name":"","total_words":4820,"close_comment":0,"title":"副业赚钱，正在杀死很多年轻人的职业生涯","catch_title":"","summary":"如果不合适，请尽快停下。","cover":"https://pic.36krcnd.com/201907/08085956/mn223sv5ur24fdk9!heading","related_post_ids":"","extraction_tags":"","extra":"{\"push_info\":{\"title\":\"\\u526f\\u4e1a\\u8d5a\\u94b1\\uff0c\\u6b63\\u5728\\u6740\\u6b7b\\u5f88\\u591a\\u5e74\\u8f7b\\u4eba\\u7684\\u804c\\u4e1a\\u751f\\u6daf\",\"content\":\"\\u201c\\u6211\\u4e3b\\u4e1a\\u4e0d\\u597d\\uff0c\\u6240\\u4ee5\\u60f3\\u51fa\\u6765\\u641e\\u641e\\u526f\\u4e1a\\u201d\\uff0c\\u8fd9\\u7edd\\u5bf9\\u662f\\u8bef\\u533a\\u3002\",\"is_pushed\":1,\"push_type\":\"all\",\"sound\":\"0\",\"expire_time\":86400000,\"pushed_at\":\"2019-07-08 20:48:51\",\"android_task_id\":\"OSA-0708_VjCDhd6BIN8tLmOBm8Sca9\",\"ios_task_id\":\"OSA-0708_qZxSQquCvr56ZLwEr5w7CA\"}}","user_id":1931717417,"published_at":"2019-07-08 20:18:04","created_at":"2019-07-07 21:14:59","updated_at":"2019-07-08 22:03:11","counters":{"view_count":89014,"pv":2701,"pv_mobile":3910,"pv_app":12328,"favorite":1219,"comment":42,"like":110},"related_posts":null,"is_free":0,"is_tovc":0,"template_info":{"template_type":"small_image","template_title":"副业赚钱，正在杀死很多年轻人的职业生涯","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201907/08085944/m2486vderjtztkzw!heading"]},"has_audio":0,"entity_flag":null,"title_mobile":null,"cover_mobile":null,"column":{"id":192,"name":"读书","introduction":"书摘、书评、书单，给你提供进步的阶梯","bg_color":"#f04666"},"db_counters":[{"id":228974698,"entity_type":"post","entity_id":5223231,"count_type":"comment","value":42},{"id":228967977,"entity_type":"post","entity_id":5223231,"count_type":"favorite","value":1219},{"id":228969879,"entity_type":"post","entity_id":5223231,"count_type":"like","value":110},{"id":228967577,"entity_type":"post","entity_id":5223231,"count_type":"pv","value":2701},{"id":228967777,"entity_type":"post","entity_id":5223231,"count_type":"pv_app","value":12328},{"id":228968178,"entity_type":"post","entity_id":5223231,"count_type":"pv_mobile","value":3910},{"id":229087986,"entity_type":"post","entity_id":5223231,"count_type":"score","value":11}],"user":{"id":1931717417,"name":"粥左罗","avatar_url":"https://pic.36krcnd.com/avatar/201805/22032210/m34m8s0wuzyjfolo!480","introduction":"个人公众号@粥左罗","is_push_outside":0}},{"id":5223423,"goods_id":0,"column_id":225,"monographic_id":3170,"related_company_id":0,"related_company_type":"domestic","related_company_name":"","total_words":7018,"close_comment":0,"title":"“复兴中国摇滚”是对《乐队的夏天》最大的误会","catch_title":"","summary":"她觉得摇滚乐的意义与使命感和一档综艺没有关系","cover":"https://pic.36krcnd.com/201907/08060534/reu7dmttfxzyj2w2!heading","related_post_ids":"","extraction_tags":"","extra":null,"user_id":375349,"published_at":"2019-07-08 14:09:34","created_at":"2019-07-08 14:04:11","updated_at":"2019-07-08 14:36:54","counters":{"view_count":67427,"pv":1447,"pv_mobile":11997,"pv_app":902,"favorite":14,"comment":9,"like":8},"related_posts":null,"is_free":0,"is_tovc":0,"template_info":{"template_type":"small_image","template_title":"“复兴中国摇滚”是对《乐队的夏天》最大的误会","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201907/08060524/zab1qnljq4u56e3n!heading"]},"has_audio":0,"entity_flag":null,"title_mobile":null,"cover_mobile":null,"column":{"id":225,"name":"娱乐","introduction":" ","bg_color":""},"db_counters":[{"id":228779442,"entity_type":"post","entity_id":5223423,"count_type":"comment","value":9},{"id":228776133,"entity_type":"post","entity_id":5223423,"count_type":"favorite","value":14},{"id":228791270,"entity_type":"post","entity_id":5223423,"count_type":"like","value":8},{"id":228775831,"entity_type":"post","entity_id":5223423,"count_type":"pv","value":1447},{"id":228776336,"entity_type":"post","entity_id":5223423,"count_type":"pv_app","value":902},{"id":228777440,"entity_type":"post","entity_id":5223423,"count_type":"pv_mobile","value":11997},{"id":229087916,"entity_type":"post","entity_id":5223423,"count_type":"score","value":4}],"user":{"id":375349,"name":"36氪的朋友们","avatar_url":"http://krplus-pic.b0.upaiyun.com/201603/22055321/cg0huhoojxi0iipw.jpg!480","introduction":"群众的智慧是无穷的~欢迎一线的创业者和投资者分享你们的观察和看法 tips@36kr.com","is_push_outside":0}},{"id":5223427,"goods_id":0,"column_id":223,"monographic_id":3171,"related_company_id":0,"related_company_type":"domestic","related_company_name":"","total_words":815,"close_comment":0,"title":"最前线丨夏天茶饮比咖啡更好卖，3000家瑞幸开卖芝士奶茶","catch_title":"","summary":"但产品力还有待检验。","cover":"https://pic.36krcnd.com/201907/08061958/9g0gjsx43alvdj2h!heading","related_post_ids":"","extraction_tags":"","extra":"{\"push_info\":{\"title\":\"\\u590f\\u5929\\u8336\\u996e\\u6bd4\\u5496\\u5561\\u66f4\\u597d\\u5356\\uff0c\\u745e\\u5e78\\u5f00\\u5356\\u829d\\u58eb\\u5976\\u8336\",\"content\":\"\\u65b0\\u5f0f\\u8336\\u996e\\u5df2\\u505a\\u719f\\u7684\\u559c\\u8336\\u5948\\u96ea\\uff0c\\u5e97\\u9762\\u6ca1\\u745e\\u5e78\\u591a\\uff1b\\u5c3d\\u7ba1\\u62e5\\u67093000\\u5bb6\\u95e8\\u5e97\\uff0c\\u4f46\\u745e\\u5e78\\u6700\\u5927\\u7684\\u95ee\\u9898\\u4ecd\\u7136\\u662f\\uff1a\\u4ea7\\u54c1\\u529b\\u6709\\u5f85\\u68c0\\u9a8c\\u3002\",\"is_pushed\":1,\"push_type\":\"all\",\"sound\":\"1\",\"expire_time\":86400000,\"pushed_at\":\"2019-07-08 16:39:41\",\"android_task_id\":\"OSA-0708_wQCuStrqVJ97nibgxWBzi8\",\"ios_task_id\":\"OSA-0708_Z74E3abUY76RudgFIjiBl\"}}","user_id":123990832,"published_at":"2019-07-08 15:56:58","created_at":"2019-07-08 14:16:01","updated_at":"2019-07-08 18:52:15","counters":{"view_count":59817,"pv":2564,"pv_mobile":3793,"pv_app":6370,"favorite":127,"comment":25,"like":30},"related_posts":null,"is_free":0,"is_tovc":0,"template_info":{"template_type":"small_image","template_title":"最前线丨夏天茶饮比咖啡更好卖，3000家瑞幸开卖芝士奶茶","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201907/08061940/v9yd5uioaq82bd29!heading"]},"has_audio":0,"entity_flag":null,"title_mobile":null,"cover_mobile":null,"column":{"id":223,"name":"内容","introduction":" ","bg_color":""},"db_counters":[{"id":228852554,"entity_type":"post","entity_id":5223427,"count_type":"comment","value":25},{"id":228845035,"entity_type":"post","entity_id":5223427,"count_type":"favorite","value":127},{"id":228845034,"entity_type":"post","entity_id":5223427,"count_type":"like","value":30},{"id":228835112,"entity_type":"post","entity_id":5223427,"count_type":"pv","value":2564},{"id":228835811,"entity_type":"post","entity_id":5223427,"count_type":"pv_app","value":6370},{"id":228836011,"entity_type":"post","entity_id":5223427,"count_type":"pv_mobile","value":3793},{"id":229087930,"entity_type":"post","entity_id":5223427,"count_type":"score","value":4}],"user":{"id":123990832,"name":"曹倩","avatar_url":"https://pic.36krcnd.com/avatar/201903/23064346/6c06ab6dsxfu25yn.png!480","introduction":"关注电商、零售、旅游，交流请加微信CQ_Beatles","is_push_outside":1}},{"id":5223642,"goods_id":0,"column_id":223,"monographic_id":null,"related_company_id":0,"related_company_type":"domestic","related_company_name":"","total_words":3055,"close_comment":0,"title":"8点1氪｜斗鱼确定IPO发行价区间11.5美元~14美元；智联招聘16万份简历被出售；外媒称华为正帮英国四大手机运营商开发5G网络","catch_title":"","summary":"个人信息安全或成网络时代的新难题。","cover":"https://pic.36krcnd.com/201907/08173034/ppv8h0hqlfjymbtd!heading","related_post_ids":"","extraction_tags":"","extra":"{\"push_info\":{\"title\":\"36\\u6c2a\\u65e9\\u62a5\\u00b7\\u542c\\u65b0\\u95fb\",\"content\":\"\\u6597\\u9c7c\\u786e\\u5b9aIPO\\u53d1\\u884c\\u4ef7\\u533a\\u95f4\\uff1b\\u667a\\u8054\\u62db\\u805816\\u4e07\\u4efd\\u7b80\\u5386\\u88ab\\u51fa\\u552e\\uff1b\\u5b57\\u8282\\u8df3\\u52a8\\u5185\\u6d4b\\u82f1\\u8bed\\u5b66\\u4e60App\\u201c\\u6c64\\u5706\\u82f1\\u8bed\\u201d\\uff1b\\u5916\\u5a92\\u79f0\\u534e\\u4e3a\\u6b63\\u5e2e\\u82f1\\u56fd\\u56db\\u5927\\u624b\\u673a\\u8fd0\\u8425\\u5546\\u5f00\\u53d15G\\u7f51\\u7edc\",\"is_pushed\":1,\"push_type\":\"all\",\"sound\":\"1\",\"expire_time\":86400000,\"pushed_at\":\"2019-07-09 07:44:30\",\"android_task_id\":\"OSA-0709_yRDRPArUq57zNsrHMwHEn9\",\"ios_task_id\":\"OSA-0709_41lIxQBDqz8c8BkfCeEz16\"}}","user_id":1975064343,"published_at":"2019-07-09 07:32:14","created_at":"2019-07-09 00:55:21","updated_at":"2019-07-09 08:36:12","counters":{"view_count":47320,"pv":889,"pv_mobile":611,"pv_app":8568,"favorite":37,"comment":6,"like":29},"related_posts":null,"is_free":0,"is_tovc":0,"template_info":{"template_type":"small_image","template_title":"8点1氪｜斗鱼确定IPO发行价区间11.5美元~14美元；智联招聘16万份简历被出售；外媒称华为正帮英国四大手机运营商开发5G网络","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201907/08173046/fqxkp93bctbfs86t!heading"]},"has_audio":1,"entity_flag":null,"title_mobile":null,"cover_mobile":null,"column":{"id":223,"name":"内容","introduction":" ","bg_color":""},"db_counters":[{"id":229117306,"entity_type":"post","entity_id":5223642,"count_type":"comment","value":6},{"id":229124145,"entity_type":"post","entity_id":5223642,"count_type":"favorite","value":37},{"id":229118311,"entity_type":"post","entity_id":5223642,"count_type":"like","value":29},{"id":229110783,"entity_type":"post","entity_id":5223642,"count_type":"pv","value":889},{"id":229110682,"entity_type":"post","entity_id":5223642,"count_type":"pv_app","value":8568},{"id":229111788,"entity_type":"post","entity_id":5223642,"count_type":"pv_mobile","value":611}],"user":{"id":1975064343,"name":"徐子","avatar_url":"https://pic.36krcnd.com/avatar/201805/31164944/wua5fjorwgt0dwur.jpeg!480","introduction":"关注消费、内容电商和健身，微信xym_vine","is_push_outside":1}},{"id":5223416,"goods_id":0,"column_id":229,"monographic_id":3171,"related_company_id":0,"related_company_type":"domestic","related_company_name":"","total_words":4587,"close_comment":0,"title":"国产手机大败局之金立溃败：过度营销后留下了负债200亿的一地鸡毛","catch_title":"","summary":"从当年的国产手机第一阵营到负债200亿、破产重组，金立留给我们的教训有很多。","cover":"https://pic.36krcnd.com/201907/08053626/8e2ra237yf3dwa8r!heading","related_post_ids":"","extraction_tags":"","extra":"{\"push_info\":{\"title\":\"\\u91d1\\u7acb\\u6e83\\u8d25\\uff1a\\u8fc7\\u5ea6\\u8425\\u9500\\u7559\\u4e0b\\u8d1f\\u503a200\\u4ebf\\u7684\\u4e00\\u5730\\u9e21\\u6bdb\",\"content\":\"\\u8fd1\\u65e5\\uff0c\\u5728\\u963f\\u91cc\\u62cd\\u5356\\u7f51\\uff0c\\u91d1\\u7acb\\u901a\\u4fe1\\u540d\\u4e0b211\\u5b97\\u5916\\u89c2\\u8bbe\\u8ba1\\u4e13\\u5229\\u6302\\u51fa\\u62cd\\u5356\\uff0c\\u62cd\\u4ef7\\u4e3a2.11\\u4e07\\u5143\\uff0c\\u7b97\\u4e0b\\u6765\\u4e00\\u4ef6\\u4ec5\\u6709100\\u5143\",\"is_pushed\":1,\"push_type\":\"all\",\"sound\":\"1\",\"expire_time\":86400000,\"pushed_at\":\"2019-07-08 15:00:07\",\"android_task_id\":\"OSA-0708_cU8V9yJ2g6AxQOugZe04D4\",\"ios_task_id\":\"OSA-0708_BZKkJ80g3t9HbwaJymFRRA\"}}","user_id":375349,"published_at":"2019-07-08 13:40:25","created_at":"2019-07-08 13:32:08","updated_at":"2019-07-08 18:52:15","counters":{"view_count":43494,"pv":1734,"pv_mobile":703,"pv_app":6817,"favorite":159,"comment":13,"like":34},"related_posts":null,"is_free":0,"is_tovc":0,"template_info":{"template_type":"small_image","template_title":"国产手机大败局之金立溃败：过度营销后留下了负债200亿的一地鸡毛","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201907/08053619/uqkhezudbcvsjh7i!heading"]},"has_audio":0,"entity_flag":null,"title_mobile":null,"cover_mobile":null,"column":{"id":229,"name":"手机与硬件","introduction":" ","bg_color":""},"db_counters":[{"id":228845937,"entity_type":"post","entity_id":5223416,"count_type":"comment","value":13},{"id":228759961,"entity_type":"post","entity_id":5223416,"count_type":"favorite","value":159},{"id":228795791,"entity_type":"post","entity_id":5223416,"count_type":"like","value":34},{"id":228756256,"entity_type":"post","entity_id":5223416,"count_type":"pv","value":1734},{"id":228756356,"entity_type":"post","entity_id":5223416,"count_type":"pv_app","value":6817},{"id":228757157,"entity_type":"post","entity_id":5223416,"count_type":"pv_mobile","value":703},{"id":229087912,"entity_type":"post","entity_id":5223416,"count_type":"score","value":3}],"user":{"id":375349,"name":"36氪的朋友们","avatar_url":"http://krplus-pic.b0.upaiyun.com/201603/22055321/cg0huhoojxi0iipw.jpg!480","introduction":"群众的智慧是无穷的~欢迎一线的创业者和投资者分享你们的观察和看法 tips@36kr.com","is_push_outside":0}},{"id":5223123,"goods_id":0,"column_id":223,"monographic_id":null,"related_company_id":0,"related_company_type":"domestic","related_company_name":"","total_words":3323,"close_comment":0,"title":"焦点分析 | 来自雷军的“提问”：你们女生究竟要什么样的手机？","catch_title":"","summary":"OV和nova并没有给自己贴上“女性手机”的标签。","cover":"https://pic.36krcnd.com/201907/07142121/8g8ncrrq6zqbuif4!heading","related_post_ids":"","extraction_tags":"","extra":"{\"push_info\":{\"title\":\"\\u96f7\\u519b\\u201c\\u63d0\\u95ee\\u201d\\uff1a\\u5973\\u6027\\u7a76\\u7adf\\u8981\\u4ec0\\u4e48\\u6837\\u7684\\u624b\\u673a\\uff1f\",\"content\":\"nova\\u7684\\u6210\\u529f\\uff0c\\u662f\\u4e00\\u573a\\u5957\\u8def+\\u5b9e\\u529b\\u7684\\u80dc\\u5229\\uff0c\\u7f8e\\u56fe\\u3001\\u6735\\u552f\\u7684\\u5931\\u8d25\\uff0c\\u662f\\u5ffd\\u7565\\u4e86\\u6027\\u80fd\\u548c\\u914d\\u7f6e\\uff0c\\u5355\\u5355\\u8ffd\\u6c42\\u5916\\u89c2\\u534e\\u4e3d\\u6216\\u8425\\u9500\\u7684\\u5927\\u624b\\u7b14\\uff0c\\u6ce8\\u5b9a\\u662f\\u4e00\\u65f6\\u98ce\\u5149\\u3002\",\"is_pushed\":1,\"push_type\":\"all\",\"sound\":\"1\",\"expire_time\":28800000,\"pushed_at\":\"2019-07-09 09:12:47\",\"android_task_id\":\"OSA-0709_t9MT2ZNYIN7JLq2qrH2lj7\",\"ios_task_id\":\"OSA-0709_0T9ZJgftzsA0DAO3xz1oZ8\"}}","user_id":15419058,"published_at":"2019-07-09 07:21:05","created_at":"2019-07-06 22:37:18","updated_at":"2019-07-09 09:54:12","counters":{"view_count":34527,"pv":1698,"pv_mobile":362,"pv_app":5286,"favorite":100,"comment":30,"like":26},"related_posts":null,"is_free":0,"is_tovc":0,"template_info":{"template_type":"small_image","template_title":"焦点分析 | 来自雷军的“提问”：你们女生究竟要什么样的手机？","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201907/07142104/bkbq3i8ikezqr9fw!heading"]},"has_audio":0,"entity_flag":null,"title_mobile":null,"cover_mobile":null,"column":{"id":223,"name":"内容","introduction":" ","bg_color":""},"db_counters":[{"id":229128261,"entity_type":"post","entity_id":5223123,"count_type":"comment","value":30},{"id":229108366,"entity_type":"post","entity_id":5223123,"count_type":"favorite","value":100},{"id":229108367,"entity_type":"post","entity_id":5223123,"count_type":"like","value":26},{"id":229108773,"entity_type":"post","entity_id":5223123,"count_type":"pv","value":1698},{"id":229107663,"entity_type":"post","entity_id":5223123,"count_type":"pv_app","value":5286},{"id":229108573,"entity_type":"post","entity_id":5223123,"count_type":"pv_mobile","value":362}],"user":{"id":15419058,"name":"袁斯来","avatar_url":"https://pic.36krcnd.com/avatar/201906/26070924/7do7ii1nc86j12ls.png!480","introduction":"关注科技领域，可加微信yuansl_92，请注明姓名+公司","is_push_outside":0}},{"id":5223458,"goods_id":0,"column_id":223,"monographic_id":null,"related_company_id":0,"related_company_type":"domestic","related_company_name":"","total_words":4122,"close_comment":0,"title":"氪星晚报 | 任正非称“鸿蒙”适用于自动驾驶；瑞幸咖啡发布10余款新品“小鹿茶”；孙宇晨辟谣巴菲特午餐取消","catch_title":"","summary":"继5G技术和巴龙5000芯片之后，华为在操作系统层面也完成了有关自动驾驶的布局。","cover":"https://pic.36krcnd.com/201907/08083311/xf1edr2uqif3bkov!heading","related_post_ids":"","extraction_tags":"","extra":null,"user_id":11847694,"published_at":"2019-07-08 18:10:22","created_at":"2019-07-08 16:01:18","updated_at":"2019-07-08 18:10:27","counters":{"view_count":26555,"pv":595,"pv_mobile":237,"pv_app":4818,"favorite":29,"comment":3,"like":12},"related_posts":null,"is_free":0,"is_tovc":0,"template_info":{"template_type":"small_image","template_title":"氪星晚报 | 任正非称“鸿蒙”适用于自动驾驶；瑞幸咖啡发布10余款新品“小鹿茶”；孙宇晨辟谣巴菲特午餐取消","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201907/08083125/k3kybb7lahwlvnil!heading"]},"has_audio":0,"entity_flag":null,"title_mobile":null,"cover_mobile":null,"column":{"id":223,"name":"内容","introduction":" ","bg_color":""},"db_counters":[{"id":228962648,"entity_type":"post","entity_id":5223458,"count_type":"comment","value":3},{"id":228924959,"entity_type":"post","entity_id":5223458,"count_type":"favorite","value":29},{"id":228921644,"entity_type":"post","entity_id":5223458,"count_type":"like","value":12},{"id":228915639,"entity_type":"post","entity_id":5223458,"count_type":"pv","value":595},{"id":228916040,"entity_type":"post","entity_id":5223458,"count_type":"pv_app","value":4818},{"id":228916039,"entity_type":"post","entity_id":5223458,"count_type":"pv_mobile","value":237},{"id":229087956,"entity_type":"post","entity_id":5223458,"count_type":"score","value":1}],"user":{"id":11847694,"name":"史圣园","avatar_url":"https://pic.36krcnd.com/avatar/201906/18151834/wsscr70xkt5ofzir.jpeg!480","introduction":"内容/消费/互联网，交流可加微信623208413","is_push_outside":1}},{"id":5223479,"goods_id":0,"column_id":225,"monographic_id":null,"related_company_id":0,"related_company_type":"domestic","related_company_name":"","total_words":3837,"close_comment":0,"title":"刘亦菲的《花木兰》，凭什么拿下全世界？","catch_title":"","summary":"事实上，文化输出的第一步，永远都是片面和符号化的。","cover":"https://pic.36krcnd.com/201907/08084705/o3ecvmgpoqepzq3f!heading","related_post_ids":"","extraction_tags":"","extra":null,"user_id":375349,"published_at":"2019-07-08 16:57:10","created_at":"2019-07-08 16:42:17","updated_at":"2019-07-08 16:57:13","counters":{"view_count":20774,"pv":1664,"pv_mobile":623,"pv_app":2133,"favorite":44,"comment":13,"like":23},"related_posts":null,"is_free":0,"is_tovc":0,"template_info":{"template_type":"small_image","template_title":"刘亦菲的《花木兰》，凭什么拿下全世界？","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201907/08084655/8lsb8yoz8br2xxfd!heading"]},"has_audio":0,"entity_flag":null,"title_mobile":null,"cover_mobile":null,"column":{"id":225,"name":"娱乐","introduction":" ","bg_color":""},"db_counters":[{"id":228889781,"entity_type":"post","entity_id":5223479,"count_type":"comment","value":13},{"id":228877426,"entity_type":"post","entity_id":5223479,"count_type":"favorite","value":44},{"id":228883353,"entity_type":"post","entity_id":5223479,"count_type":"like","value":23},{"id":228876217,"entity_type":"post","entity_id":5223479,"count_type":"pv","value":1664},{"id":228876117,"entity_type":"post","entity_id":5223479,"count_type":"pv_app","value":2133},{"id":228876017,"entity_type":"post","entity_id":5223479,"count_type":"pv_mobile","value":623},{"id":229087949,"entity_type":"post","entity_id":5223479,"count_type":"score","value":2}],"user":{"id":375349,"name":"36氪的朋友们","avatar_url":"http://krplus-pic.b0.upaiyun.com/201603/22055321/cg0huhoojxi0iipw.jpg!480","introduction":"群众的智慧是无穷的~欢迎一线的创业者和投资者分享你们的观察和看法 tips@36kr.com","is_push_outside":0}},{"id":5223279,"goods_id":0,"column_id":221,"monographic_id":null,"related_company_id":0,"related_company_type":"domestic","related_company_name":"","total_words":3460,"close_comment":0,"title":"互联网直男经济学：游戏、体育、荷尔蒙，锁定直男三大法宝","catch_title":"","summary":"想赚直男钱，学好直男经济学。","cover":"https://img.36krcdn.com/20190708/v2_1562545148679_img_000","related_post_ids":"","extraction_tags":"","extra":null,"user_id":419888,"published_at":"2019-07-08 18:53:09","created_at":"2019-07-08 08:19:08","updated_at":"2019-07-08 18:53:15","counters":{"view_count":19830,"pv":1007,"pv_mobile":515,"pv_app":2697,"favorite":227,"comment":15,"like":41},"related_posts":null,"is_free":0,"is_tovc":0,"template_info":{"template_type":"small_image","template_title":"互联网直男经济学：游戏、体育、荷尔蒙，锁定直男三大法宝","template_title_isSame":true,"template_cover":["https://img.36krcdn.com/20190708/v2_1562545148679_img_000"]},"has_audio":0,"entity_flag":null,"title_mobile":null,"cover_mobile":null,"column":{"id":221,"name":"消费","introduction":" ","bg_color":""},"db_counters":[{"id":228940937,"entity_type":"post","entity_id":5223279,"count_type":"comment","value":15},{"id":228936015,"entity_type":"post","entity_id":5223279,"count_type":"favorite","value":227},{"id":228945762,"entity_type":"post","entity_id":5223279,"count_type":"like","value":41},{"id":228936116,"entity_type":"post","entity_id":5223279,"count_type":"pv","value":1007},{"id":228935815,"entity_type":"post","entity_id":5223279,"count_type":"pv_app","value":2697},{"id":228936117,"entity_type":"post","entity_id":5223279,"count_type":"pv_mobile","value":515},{"id":229087976,"entity_type":"post","entity_id":5223279,"count_type":"score","value":2}],"user":{"id":419888,"name":"人人都是产品经理","avatar_url":"https://pic.36krcnd.com/201512/26025758/0f19lgoutbxyk3pr.png!480","introduction":"百万用户关注的产品经理学习、分享平台\n公众号：woshipm","is_push_outside":0}},{"id":5223272,"goods_id":0,"column_id":109,"monographic_id":null,"related_company_id":0,"related_company_type":"domestic","related_company_name":"","total_words":1775,"close_comment":0,"title":"为什么小公司不能轻易杀死“小白兔”","catch_title":"","summary":"是否干掉小白兔，管理者也有自己的难处…","cover":"https://pic.36krcnd.com/201907/08020722/qwap69elqihegtn7!heading","related_post_ids":"","extraction_tags":"","extra":null,"user_id":1204237299,"published_at":"2019-07-08 21:01:06","created_at":"2019-07-08 07:18:10","updated_at":"2019-07-08 21:01:09","counters":{"view_count":18368,"pv":1283,"pv_mobile":490,"pv_app":2135,"favorite":70,"comment":9,"like":13},"related_posts":null,"is_free":0,"is_tovc":0,"template_info":{"template_type":"small_image","template_title":"为什么小公司不能轻易杀死“小白兔”","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201907/08020715/cx7nsadoys52yn45!heading"]},"has_audio":0,"entity_flag":null,"title_mobile":null,"cover_mobile":null,"column":{"id":109,"name":"职场漫谈","introduction":"除了工作，还有诗和远方","bg_color":"#f04666"},"db_counters":[{"id":229018677,"entity_type":"post","entity_id":5223272,"count_type":"comment","value":9},{"id":228981431,"entity_type":"post","entity_id":5223272,"count_type":"favorite","value":70},{"id":229001897,"entity_type":"post","entity_id":5223272,"count_type":"like","value":13},{"id":228981433,"entity_type":"post","entity_id":5223272,"count_type":"pv","value":1283},{"id":228981333,"entity_type":"post","entity_id":5223272,"count_type":"pv_app","value":2135},{"id":228981335,"entity_type":"post","entity_id":5223272,"count_type":"pv_mobile","value":490},{"id":229087989,"entity_type":"post","entity_id":5223272,"count_type":"score","value":1}],"user":{"id":1204237299,"name":"秋叶大叔","avatar_url":"https://pic.36krcnd.com/avatar/201711/09103947/0taeait2l065lqc7.jpg!480","introduction":null,"is_push_outside":0}}]},"recommendMotif":{"code":0,"data":[{"id":52817,"aggregation_id":16,"entity_title":null,"entity_type":"motif","entity_id":331,"order_num":3,"created_at":"2019-04-29 13:00:54","updated_at":"2019-06-20 09:14:33","template":null,"user_id":1200352198,"user_id_edited":null,"motif":{"id":331,"type":"原创","name":"深氪","cover":"https://pic.36krcnd.com/201811/09041845/0lwbvfdeed270uu2","description":"","state":"published","created_at":"2018-11-08 22:23:28","updated_at":"2019-04-29 12:59:57","business_type":"normal","banner_thumb":null,"banner":null,"web_banner":null,"post_banner":null,"post_banner_position":null,"remark":null,"follow_plus":2,"user_id":1200352198,"user_id_edited":null,"user_id_created":null,"project_id":null,"weight":0,"app_list_banner":""},"post_title":"这批90后已经当高管了｜深氪lite","post_id":5222748,"post_published_at":"2019-07-05 11:52:02","attention":6076},{"id":57155,"aggregation_id":16,"entity_title":null,"entity_type":"motif","entity_id":574,"order_num":2,"created_at":"2019-06-20 09:13:35","updated_at":"2019-06-20 09:13:35","template":null,"user_id":1200352198,"user_id_edited":null,"motif":{"id":574,"type":"公司","name":"华为新动向","cover":"https://pic.36krcnd.com/201905/07081419/gfvp2l2pqdvjpoyr","description":"","state":"published","created_at":"2019-05-07 16:14:44","updated_at":"2019-05-07 16:14:44","business_type":"normal","banner_thumb":"","banner":"","web_banner":null,"post_banner":"","post_banner_position":"top","remark":null,"follow_plus":0,"user_id":18721458,"user_id_edited":null,"user_id_created":null,"project_id":null,"weight":1,"app_list_banner":""},"post_title":"与华为合作，被俄罗斯买下的Aurora OS是个什么来头？","post_id":5200194,"post_published_at":"2019-06-24 09:01:04","attention":1225},{"id":57152,"aggregation_id":16,"entity_title":null,"entity_type":"motif","entity_id":452,"order_num":1,"created_at":"2019-06-20 09:11:53","updated_at":"2019-06-20 09:12:43","template":null,"user_id":1200352198,"user_id_edited":null,"motif":{"id":452,"type":"创投","name":"出海是门大生意","cover":"https://pic.36krcnd.com/201906/19080948/lnbfwsq2d9u2uf8j","description":null,"state":"published","created_at":"2018-11-26 10:31:18","updated_at":"2019-06-19 16:09:51","business_type":"normal","banner_thumb":null,"banner":null,"web_banner":null,"post_banner":null,"post_banner_position":"top","remark":null,"follow_plus":0,"user_id":18721458,"user_id_edited":null,"user_id_created":null,"project_id":null,"weight":0,"app_list_banner":""},"post_title":"出海日报 | Go-Jek从三菱处获得新投资；Oyo创始人Ritesh Agarwal或回购15亿美元股票以获得更大控制权","post_id":5223550,"post_published_at":"2019-07-08 22:35:31","attention":1859},{"id":41101,"aggregation_id":16,"entity_title":null,"entity_type":"motif","entity_id":333,"order_num":1,"created_at":"2018-12-20 17:37:52","updated_at":"2019-06-20 09:12:37","template":null,"user_id":1200352198,"user_id_edited":null,"motif":{"id":333,"type":"原创","name":"最前线","cover":"https://pic.36krcnd.com/201811/09055429/7134logom3icmp4z","description":"","state":"published","created_at":"2018-11-08 22:23:28","updated_at":"2019-03-22 10:36:55","business_type":"normal","banner_thumb":null,"banner":null,"web_banner":null,"post_banner":null,"post_banner_position":null,"remark":null,"follow_plus":2643,"user_id":923047669,"user_id_edited":null,"user_id_created":null,"project_id":null,"weight":0,"app_list_banner":""},"post_title":"最前线 | 小米上市一周年，逾40亿限售股迎解禁","post_id":5223654,"post_published_at":"2019-07-09 09:36:30","attention":10214},{"id":53952,"aggregation_id":16,"entity_title":null,"entity_type":"motif","entity_id":350,"order_num":1,"created_at":"2019-05-14 13:37:56","updated_at":"2019-06-20 09:12:32","template":null,"user_id":1200352198,"user_id_edited":null,"motif":{"id":350,"type":"原创","name":"科技神回复","cover":"https://pic.36krcnd.com/201811/12024325/e75hxu8ad86vt7lj","description":"","state":"published","created_at":"2018-11-08 22:23:28","updated_at":"2019-03-22 10:36:55","business_type":"normal","banner_thumb":null,"banner":null,"web_banner":null,"post_banner":null,"post_banner_position":null,"remark":null,"follow_plus":0,"user_id":2043739950,"user_id_edited":null,"user_id_created":null,"project_id":null,"weight":0,"app_list_banner":""},"post_title":"科技神回复 | 阿迪达斯三条纹logo被判无效，各大中小学的大队长长舒了一口气","post_id":5217747,"post_published_at":"2019-06-20 18:28:48","attention":2196}]},"businessMotifHomeright":{"code":0,"data":[{"id":14177,"project_id":1,"feed_id":0,"type":"web_homepage_business_motif","state":"published","column_id":0,"order":16670,"hidden_title":0,"title":"红利见顶，利润下滑，B2C出口电商的出路在哪里？","url":"5223422","cover":"https://pic.36krcnd.com/201907/08094830/93j79elqh8c90gzz!heading","bg_color":null,"tag":null,"user_id":1209209511,"user_id_edited":1209209511,"published_at":"2019-04-01 14:09:36","finished_at":null,"created_at":"2019-04-01 14:09:36","updated_at":"2019-07-08 17:48:34","entity_type":"post","entity_id":5223422,"source_name":null,"template_info":{"template_type":"big_image","template_title":"红利见顶，利润下滑，B2C出口电商的出路在哪里？","template_cover":["https://pic.36krcnd.com/201907/08094830/93j79elqh8c90gzz!heading"],"template_extra":{"published_at":"2019-07-08 15:44:01"}},"operate_comment":"","user_id_old":null,"user_id_edited_old":null,"extra":"{\"motif_id\":526,\"motif\":{\"id\":526,\"type\":\"\\u63a8\\u8350\",\"name\":\"\\u89c2\\u5bdf+\",\"remark\":null,\"cover\":\"https:\\/\\/pic.36krcnd.com\\/201903\\/22093757\\/fveh72zrvjauqavh\",\"description\":\"\\u6df1\\u5165\\u89e3\\u8bfb\\u884c\\u4e1a\\u5927\\u4e8b\\uff0c\\u7280\\u5229\\u8bc4\\u8ff0\\u4e1a\\u5185\\u53d8\\u52a8\\u3002\\u300a\\u89c2\\u5bdf+\\u300b\\u548c\\u884c\\u4e1a\\u89c2\\u5bdf\\u5458\\u4e00\\u8d77\\uff0c\\u653e\\u5927\\u6bcf\\u4e2a\\u5546\\u4e1a\\u7ec6\\u8282\\u3002\",\"state\":\"published\",\"follow_plus\":\"0\",\"created_at\":\"2019-03-22 12:08:09\",\"updated_at\":\"2019-06-24 17:34:06\",\"user_id\":\"1209209511\",\"user_id_edited\":null,\"user_id_created\":null,\"business_type\":\"commercial\",\"banner_thumb\":\"https:\\/\\/pic.36krcnd.com\\/201903\\/22062957\\/5i8hcggq0y5y3dki\",\"banner\":\"https:\\/\\/pic.36krcnd.com\\/201903\\/24064822\\/vtaw28e4i1pvo8xh\",\"web_banner\":null,\"post_banner\":\"https:\\/\\/pic.36krcnd.com\\/201903\\/22093811\\/ranrt0kevxa8yr1q\",\"post_banner_position\":\"top\",\"project_id\":null,\"weight\":9,\"app_list_banner\":\"https:\\/\\/pic.36krcnd.com\\/201905\\/15083732\\/5t9dsjauwz0c4ah9\"}}","column":null,"monographic":null,"user":{"id":1209209511,"name":"36氪视频新闻","avatar_url":"https://pic.36krcnd.com/avatar/201903/28093240/4xropp7vvol4rudw"},"video_author":null,"motif":{"id":526,"type":"推荐","name":"观察+","remark":null,"cover":"https://pic.36krcnd.com/201903/22093757/fveh72zrvjauqavh","description":"深入解读行业大事，犀利评述业内变动。《观察+》和行业观察员一起，放大每个商业细节。","state":"published","follow_plus":"0","created_at":"2019-03-22 12:08:09","updated_at":"2019-06-24 17:34:06","user_id":"1209209511","user_id_edited":null,"user_id_created":null,"business_type":"commercial","banner_thumb":"https://pic.36krcnd.com/201903/22062957/5i8hcggq0y5y3dki","banner":"https://pic.36krcnd.com/201903/24064822/vtaw28e4i1pvo8xh","web_banner":null,"post_banner":"https://pic.36krcnd.com/201903/22093811/ranrt0kevxa8yr1q","post_banner_position":"top","project_id":null,"weight":9,"app_list_banner":"https://pic.36krcnd.com/201905/15083732/5t9dsjauwz0c4ah9"},"motif_id":526},{"id":14176,"project_id":1,"feed_id":0,"type":"web_homepage_business_motif","state":"published","column_id":0,"order":15858,"hidden_title":0,"title":"星座物联网，或是初创航天企业的一张好牌","url":"5222713","cover":"https://pic.36krcnd.com/201907/05154538/0qv7m1pty0ez8ptv!heading","bg_color":null,"tag":null,"user_id":1209209511,"user_id_edited":1209209511,"published_at":"2019-04-01 14:07:45","finished_at":null,"created_at":"2019-04-01 14:07:45","updated_at":"2019-07-08 10:15:50","entity_type":"post","entity_id":5222713,"source_name":null,"template_info":{"template_type":"big_image","template_title":"星座物联网，或是初创航天企业的一张好牌","template_cover":["https://pic.36krcnd.com/201907/05154538/0qv7m1pty0ez8ptv!heading"],"template_extra":{"published_at":"2019-07-05 18:35:34"}},"operate_comment":"","user_id_old":null,"user_id_edited_old":null,"extra":"{\"motif_id\":525,\"motif\":{\"id\":525,\"type\":\"\\u63a8\\u8350\",\"name\":\"\\u5c11\\u6570\\u6d3e\\u7684\\u672a\\u6765\\u731c\\u60f3\",\"remark\":null,\"cover\":\"https:\\/\\/pic.36krcnd.com\\/201906\\/11030413\\/8pcj5faah85tc66w\",\"description\":\"\\u8fd9\\u662f36\\u6c2a\\u4e00\\u6863\\u5173\\u6ce8\\u79d1\\u6280\\u3001\\u5c0f\\u8d8b\\u52bf\\u7684\\u680f\\u76ee\\u3002\\u5728\\u8fd9\\u91cc\\uff0c\\u6211\\u4eec\\u4f1a\\u5bf9\\u8bdd\\u62e5\\u6709\\u806a\\u660e\\u5927\\u8111\\u7684\\u5c11\\u6570\\u6d3e\\uff0c\\u6df1\\u5165\\u89e3\\u8bfb\\u4ed6\\u4eec\\u5bf9\\u672a\\u6765\\u7684\\u65b0\\u9c9c\\u731c\\u60f3\\u3002\",\"state\":\"published\",\"follow_plus\":\"0\",\"created_at\":\"2019-03-22 11:18:43\",\"updated_at\":\"2019-06-24 17:34:14\",\"user_id\":\"1209209511\",\"user_id_edited\":null,\"user_id_created\":null,\"business_type\":\"commercial\",\"banner_thumb\":\"https:\\/\\/pic.36krcnd.com\\/201903\\/22062944\\/u1le01ck5jor2nic\",\"banner\":\"https:\\/\\/pic.36krcnd.com\\/201906\\/11030713\\/rbeyd1i123gl8ome\",\"web_banner\":null,\"post_banner\":\"https:\\/\\/pic.36krcnd.com\\/201906\\/11030420\\/pet2ulh5z141t890\",\"post_banner_position\":\"top\",\"project_id\":null,\"weight\":8,\"app_list_banner\":\"https:\\/\\/pic.36krcnd.com\\/201905\\/15084022\\/x24crc4yrn0nbdqz\"}}","column":null,"monographic":null,"user":{"id":1209209511,"name":"36氪视频新闻","avatar_url":"https://pic.36krcnd.com/avatar/201903/28093240/4xropp7vvol4rudw"},"video_author":null,"motif":{"id":525,"type":"推荐","name":"少数派的未来猜想","remark":null,"cover":"https://pic.36krcnd.com/201906/11030413/8pcj5faah85tc66w","description":"这是36氪一档关注科技、小趋势的栏目。在这里，我们会对话拥有聪明大脑的少数派，深入解读他们对未来的新鲜猜想。","state":"published","follow_plus":"0","created_at":"2019-03-22 11:18:43","updated_at":"2019-06-24 17:34:14","user_id":"1209209511","user_id_edited":null,"user_id_created":null,"business_type":"commercial","banner_thumb":"https://pic.36krcnd.com/201903/22062944/u1le01ck5jor2nic","banner":"https://pic.36krcnd.com/201906/11030713/rbeyd1i123gl8ome","web_banner":null,"post_banner":"https://pic.36krcnd.com/201906/11030420/pet2ulh5z141t890","post_banner_position":"top","project_id":null,"weight":8,"app_list_banner":"https://pic.36krcnd.com/201905/15084022/x24crc4yrn0nbdqz"},"motif_id":525},{"id":16670,"project_id":1,"feed_id":0,"type":"web_homepage_business_motif","state":"published","column_id":0,"order":15008,"hidden_title":0,"title":"如何开一家赚钱的店？","url":"5220057","cover":"https://pic.36krcnd.com/201906/27111147/r6brwheixipynt1e!heading","bg_color":null,"tag":null,"user_id":1209209511,"user_id_edited":1209209511,"published_at":"2019-06-03 18:05:52","finished_at":null,"created_at":"2019-06-03 18:05:52","updated_at":"2019-07-05 11:24:51","entity_type":"post","entity_id":5220057,"source_name":null,"template_info":{"template_type":"big_image","template_title":"如何开一家赚钱的店？","template_cover":["https://pic.36krcnd.com/201906/27111147/r6brwheixipynt1e!heading"],"template_extra":{"published_at":"2019-06-27 19:07:33"}},"operate_comment":"","user_id_old":null,"user_id_edited_old":null,"extra":"{\"motif_id\":553,\"motif\":{\"id\":553,\"type\":\"\\u63a8\\u8350\",\"name\":\"\\u9ad8\\u624b\\u6765\\u4e86\",\"remark\":null,\"cover\":\"https:\\/\\/pic.36krcnd.com\\/201904\\/15145418\\/3xdl703pbc1hrdh6\",\"description\":\"\\u300a\\u9ad8\\u624b\\u6765\\u4e86\\u300b\\u662f36\\u6c2a\\u65b0\\u63a8\\u51fa\\u7684\\u4e00\\u6863\\u76f4\\u64ad\\u680f\\u76ee\\uff0c\\u805a\\u7126\\u5546\\u4e1a\\u6d1e\\u5bdf\\u3001\\u804c\\u573a\\u5e72\\u8d27\\u6280\\u80fd\\u3002\\u6bcf\\u5468\\u56db\\u665a\\u9080\\u8bf7\\u4e00\\u540d\\u4e1a\\u5185\\u5927\\u5496\\u621636\\u6c2a\\u8d44\\u6df1\\u4f5c\\u8005\\u3001\\u5206\\u6790\\u5e08\\uff0c\\u4e3a\\u6c2a\\u53cb\\u5206\\u4eab\\u804c\\u573a\\u5e72\\u8d27\\uff0c\\u89e3\\u8bfb\\u5546\\u4e1a\\u8d8b\\u52bf\\uff0c\\u5256\\u6790\\u4e92\\u8054\\u7f51\\u70ed\\u70b9\\u4e8b\\u4ef6\\uff0c\\u66f4\\u6709\\u4f5c\\u8005\\u672c\\u4eba\\u4eb2\\u81ea\\u62c6\\u89e3\\u5546\\u4e1a\\u79d1\\u6280\\u4e66\\u7c4d\\u3002\\n\\u6b22\\u8fce\\u6dfb\\u52a0\\u6c2a\\u541b\\u5fae\\u4fe1\\uff1ahello36kr\\uff0c\\u52a0\\u5165\\u5b98\\u65b9\\u6c2a\\u53cb\\u7fa4\\uff0c\\u542c\\u5927\\u5496\\u804a\\u5546\\u4e1a\\u8bb2\\u98ce\\u53e3\\uff0c\\u4e0e\\u6c2a\\u53cb\\u4e00\\u8d77\\u5b66\\u4e60\\u6210\\u957f\\u3002\",\"state\":\"published\",\"follow_plus\":\"0\",\"created_at\":\"2019-04-15 22:55:22\",\"updated_at\":\"2019-05-20 16:37:29\",\"user_id\":\"1209209511\",\"user_id_edited\":null,\"user_id_created\":null,\"business_type\":\"commercial\",\"banner_thumb\":\"https:\\/\\/pic.36krcnd.com\\/201904\\/15145400\\/eu67ej5qag9p3bw6\",\"banner\":\"https:\\/\\/pic.36krcnd.com\\/201904\\/15145409\\/bvhsme15hh6kjn0v\",\"web_banner\":null,\"post_banner\":\"https:\\/\\/pic.36krcnd.com\\/201904\\/15145424\\/4uascurunndepm8r\",\"post_banner_position\":\"top\",\"project_id\":null,\"weight\":4,\"app_list_banner\":\"https:\\/\\/pic.36krcnd.com\\/201905\\/15083655\\/gana7jz3ada59u52\"}}","column":null,"monographic":null,"user":{"id":1209209511,"name":"36氪视频新闻","avatar_url":"https://pic.36krcnd.com/avatar/201903/28093240/4xropp7vvol4rudw"},"video_author":null,"motif":{"id":553,"type":"推荐","name":"高手来了","remark":null,"cover":"https://pic.36krcnd.com/201904/15145418/3xdl703pbc1hrdh6","description":"《高手来了》是36氪新推出的一档直播栏目，聚焦商业洞察、职场干货技能。每周四晚邀请一名业内大咖或36氪资深作者、分析师，为氪友分享职场干货，解读商业趋势，剖析互联网热点事件，更有作者本人亲自拆解商业科技书籍。\n欢迎添加氪君微信：hello36kr，加入官方氪友群，听大咖聊商业讲风口，与氪友一起学习成长。","state":"published","follow_plus":"0","created_at":"2019-04-15 22:55:22","updated_at":"2019-05-20 16:37:29","user_id":"1209209511","user_id_edited":null,"user_id_created":null,"business_type":"commercial","banner_thumb":"https://pic.36krcnd.com/201904/15145400/eu67ej5qag9p3bw6","banner":"https://pic.36krcnd.com/201904/15145409/bvhsme15hh6kjn0v","web_banner":null,"post_banner":"https://pic.36krcnd.com/201904/15145424/4uascurunndepm8r","post_banner_position":"top","project_id":null,"weight":4,"app_list_banner":"https://pic.36krcnd.com/201905/15083655/gana7jz3ada59u52"},"motif_id":553}]}}},"channel":[{"id":303,"type":"web","project_id":1,"key":"web_news","state":"published","is_system":0,"api":null,"name":"最新","mark":"none","description":"","ad_info":"{\"banner\":[{\"position\":2,\"ad_id\":\"\"}],\"feed\":[{\"position\":4,\"ad_id\":\"\"},{\"position\":9,\"ad_id\":\"\"},{\"position\":14,\"ad_id\":\"\"},{\"position\":19,\"ad_id\":\"\"}]}","order_num":1,"user_id":0,"user_id_edited":18721458,"published_at":null,"created_at":null,"updated_at":"2019-05-07 16:18:27"},{"id":304,"type":"web","project_id":1,"key":"web_recommend","state":"published","is_system":0,"api":null,"name":"推荐","mark":"none","description":"","ad_info":"{\"banner\":[{\"position\":3,\"ad_id\":\"\"},{\"ad_id\":237,\"position\":7}],\"feed\":[{\"position\":4,\"ad_id\":\"\"},{\"position\":9,\"ad_id\":\"\"},{\"position\":14,\"ad_id\":\"\"},{\"position\":19,\"ad_id\":\"\"}]}","order_num":2,"user_id":0,"user_id_edited":132730,"published_at":null,"created_at":null,"updated_at":"2019-04-10 14:21:20"},{"id":305,"type":"web","project_id":1,"key":"contact","state":"published","is_system":0,"api":null,"name":"创投","mark":"hot","description":"","ad_info":"{\"banner\":[{\"position\":2,\"ad_id\":\"\"}],\"feed\":[{\"position\":4,\"ad_id\":\"\"},{\"position\":9,\"ad_id\":\"\"},{\"position\":14,\"ad_id\":\"\"},{\"position\":19,\"ad_id\":\"\"}]}","order_num":3,"user_id":0,"user_id_edited":132730,"published_at":null,"created_at":null,"updated_at":"2019-03-26 15:45:39"},{"id":310,"type":"web","project_id":1,"key":"travel","state":"published","is_system":0,"api":null,"name":"汽车","mark":"none","description":"","ad_info":"{\"banner\":[{\"position\":2,\"ad_id\":\"\"}],\"feed\":[{\"position\":4,\"ad_id\":\"\"},{\"position\":9,\"ad_id\":\"\"},{\"position\":14,\"ad_id\":\"\"},{\"position\":19,\"ad_id\":\"\"}]}","order_num":4,"user_id":0,"user_id_edited":18721458,"published_at":null,"created_at":null,"updated_at":"2019-07-02 10:11:36"},{"id":306,"type":"web","project_id":1,"key":"technology","state":"published","is_system":0,"api":null,"name":"科技","mark":"none","description":"","ad_info":"{\"banner\":[{\"position\":2,\"ad_id\":\"\"}],\"feed\":[{\"position\":4,\"ad_id\":\"\"},{\"position\":9,\"ad_id\":\"\"},{\"position\":14,\"ad_id\":\"\"},{\"position\":19,\"ad_id\":\"\"}]}","order_num":5,"user_id":0,"user_id_edited":18721458,"published_at":null,"created_at":null,"updated_at":"2019-07-02 09:30:43"},{"id":329,"type":"web","project_id":1,"key":"enterpriseservice","state":"published","is_system":0,"api":null,"name":"企服","mark":"none","description":"","ad_info":"{\"banner\":[{\"position\":2,\"ad_id\":\"\"}],\"feed\":[{\"position\":4,\"ad_id\":\"\"},{\"position\":9,\"ad_id\":\"\"},{\"position\":14,\"ad_id\":\"\"},{\"position\":19,\"ad_id\":\"\"}]}","order_num":6,"user_id":132730,"user_id_edited":132730,"published_at":"2019-04-26 16:29:53","created_at":"2019-04-25 19:20:37","updated_at":"2019-07-02 09:30:35"},{"id":307,"type":"web","project_id":1,"key":"happy_life","state":"published","is_system":0,"api":null,"name":"生活","mark":"none","description":"","ad_info":"{\"banner\":[{\"position\":2,\"ad_id\":\"\"}],\"feed\":[{\"position\":4,\"ad_id\":\"\"},{\"position\":9,\"ad_id\":\"\"},{\"position\":14,\"ad_id\":\"\"},{\"position\":19,\"ad_id\":\"\"}]}","order_num":7,"user_id":0,"user_id_edited":18721458,"published_at":null,"created_at":null,"updated_at":"2019-07-02 09:30:24"},{"id":309,"type":"web","project_id":1,"key":"web_zhichang","state":"published","is_system":0,"api":null,"name":"职场","mark":"none","description":"","ad_info":"{\"banner\":[{\"ad_id\":\"\",\"position\":2}],\"feed\":[{\"ad_id\":\"\",\"position\":4},{\"ad_id\":\"\",\"position\":9},{\"ad_id\":\"\",\"position\":14},{\"ad_id\":\"\",\"position\":19}]}","order_num":8,"user_id":0,"user_id_edited":2043739950,"published_at":null,"created_at":null,"updated_at":"2019-07-02 09:30:16"},{"id":325,"type":"web","project_id":1,"key":"innovate","state":"published","is_system":0,"api":null,"name":"创新","mark":"none","description":"品牌市场部频道","ad_info":"{\"banner\":[{\"position\":2,\"ad_id\":\"\"}],\"feed\":[{\"position\":4,\"ad_id\":\"\"},{\"position\":9,\"ad_id\":\"\"},{\"position\":14,\"ad_id\":\"\"},{\"position\":19,\"ad_id\":\"\"}]}","order_num":9,"user_id":132730,"user_id_edited":132730,"published_at":"2019-03-25 12:09:23","created_at":"2019-03-22 18:10:57","updated_at":"2019-04-26 16:30:04"},{"id":311,"type":"web","project_id":1,"key":"real_estate","state":"published","is_system":0,"api":null,"name":"房产","mark":"none","description":"","ad_info":"{\"banner\":[{\"ad_id\":\"\",\"position\":2}],\"feed\":[{\"ad_id\":\"\",\"position\":4},{\"ad_id\":\"\",\"position\":9},{\"ad_id\":\"\",\"position\":14},{\"ad_id\":\"\",\"position\":19}]}","order_num":325,"user_id":0,"user_id_edited":10103286,"published_at":null,"created_at":null,"updated_at":"2019-04-26 16:30:03"},{"id":312,"type":"web","project_id":1,"key":"other","state":"published","is_system":0,"api":null,"name":"其他","mark":"none","description":"","ad_info":"{\"banner\":[{\"ad_id\":\"\",\"position\":2}],\"feed\":[{\"ad_id\":\"\",\"position\":4},{\"ad_id\":\"\",\"position\":9},{\"ad_id\":\"\",\"position\":14},{\"ad_id\":\"\",\"position\":19}]}","order_num":329,"user_id":0,"user_id_edited":132730,"published_at":null,"created_at":null,"updated_at":"2019-04-26 16:30:01"}],"userInfo":null}</script>
+<script src="https://static.geetest.com/static/tools/gt.js"></script>
+<script src="sta.36krcnd.com/36krx2018-front/static/runtime.2270b5f4.js" type="text/javascript"></script>
+<script src="sta.36krcnd.com/36krx2018-front/static/app.9b6120b3.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+    $(function(){
+        $.ajax({
+            type:"post",
+            url:"queryImg",
+            success:function(msg){
+                td=document.getElementById("main");
+                th=document.getElementById("liid");
+                for(var i=0;i<msg.length;i++){
+                    if(i==0){
+                        td.innerHTML="<div class='item active' align='center'  data-ride='carousel' data-interval='1000'> " +
+                            "<img src='"+msg[i].url+"'  height='400px' alt='First slide'></div>"
+                        //th.innerHTML="<li data-target='#myCarousel' data-interval='1000' data-slide-to='"+i+"' class='active'></li>"
+                    }else{
+                        td.innerHTML+="<div class='item' align='center'  data-ride='carouse2' data-interval='1000'> " +
+                            "<img src='"+msg[i].url+"'  height='400px' alt='Second slide'></div>"
+                        //th.innerHTML+="<li data-target='#myCarousel' data-interval='1000' data-slide-to='"+i+"'></li>"
+                    }
+
+
+                }
+            }
+        })
+    })
+</script>
+</body>
+</html>
