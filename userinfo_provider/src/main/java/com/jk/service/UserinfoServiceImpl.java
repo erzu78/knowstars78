@@ -31,4 +31,9 @@ public class UserinfoServiceImpl implements UserinfoService{
     public void saveUser(@RequestBody User user) {
         userinfoMapper.saveUser(user);
     }
+
+    @Override
+    public void updatePass(@RequestBody Integer userId) {
+        userinfoMapper.updatePass(userId);
+    }
 }
