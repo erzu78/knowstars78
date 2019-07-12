@@ -3,10 +3,10 @@
 <mapper namespace="com.jk.mapper.VideoMapper" >
 
 
-<!--<insert id="addVideo">
+<insert id="addVideo">
 insert into T_VIDEO(headline,issuer,issueTime,introduction,videoImg,videoNews)
             values (#{headline},#{issuer},now(),#{introduction},#{videoImg},'video/512f3ef61ab7b989-20.mp4')
-</insert>-->
+</insert>
 
 
 </mapper>

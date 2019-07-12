@@ -49,5 +49,23 @@ public class VideoServiceImpl implements VideoService {
         return videoMapper.querySingleVideo(videoId);
     }
 
+    @Override
+    @GetMapping("findVideoById/{vid}")
+    public Video findVideoById(@PathVariable(value = "vid") Integer vid) {
+        return videoMapper.findVideoById(vid);
+    }
+
+    @Override
+    @PostMapping("updateVideo")
+    public void updateVideo(@RequestBody Video video) {
+        videoMapper.updateVideo(video);
+    }
+
+    @Override
+    @PostMapping("deleteVideo/{vid}")
+    public void deleteVideo(@PathVariable(value = "vid") Integer vid) {
+        videoMapper.deleteVideo(vid);
+    }
+
 
 }

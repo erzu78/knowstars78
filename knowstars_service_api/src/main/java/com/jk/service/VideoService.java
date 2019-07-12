@@ -27,4 +27,13 @@ public interface VideoService {
 
     @GetMapping("querySingleVideo/{videoId}")
     Video querySingleVideo(@PathVariable(value = "videoId") Integer videoId);
+
+    @GetMapping("findVideoById/{vid}")
+    Video findVideoById(@PathVariable(value = "vid") Integer vid);
+
+    @PostMapping("updateVideo")
+    void updateVideo(Video video);
+
+    @PostMapping("deleteVideo/{vid}")
+    void deleteVideo(@PathVariable(value = "vid") Integer vid);
 }
