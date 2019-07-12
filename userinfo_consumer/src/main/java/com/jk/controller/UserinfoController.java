@@ -35,10 +35,10 @@ public class UserinfoController {
     }
 
 
-    //个人信息修改
+    //个人密码修改
     @PostMapping("updatePass")
-    public void updatePass(Integer userId){
-        userinfoServiceFeign.updatePass(userId);
+    public void updatePass(User user){
+        userinfoServiceFeign.updatePass(user);
     }
 
 

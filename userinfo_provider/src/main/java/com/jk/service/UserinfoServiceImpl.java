@@ -33,7 +33,7 @@ public class UserinfoServiceImpl implements UserinfoService{
     }
 
     @Override
-    public void updatePass(@RequestBody Integer userId) {
-        userinfoMapper.updatePass(userId);
+    public void updatePass(@RequestBody User user ) {
+        userinfoMapper.updatePass(user);
     }
 }
