@@ -58,13 +58,20 @@
 
 </div>
 
+
+<!--
+<img src='https://www.jsdaima.com/Upload/1482989740/yizan.png' id='praise-img' class='animation' />
+-->
+
 <div style="align-content: center">
-<div class="praise" style="float: left">
-    <span id="praise" onclick="xiHuan()"><img src="https://www.jsdaima.com/Upload/1482989740/zan.png"/></span>
-    <span id="zhanCount"></span>
-</div>
-    <div class="feed" id="feed1" style="float: right">
-        <div class="heart " id="like1" rel="like" onclick="shou()"></div> <div class="likeCount" id="shouCount"></div>
+    <div class="praise" style="float: left">
+        <span id="praise" onclick="opZhan()"><img src="https://www.jsdaima.com/Upload/1482989740/zan.png"/></span>
+        <span id="zhanCount"></span>
+    </div>
+
+    <div class="praise" style="float: left">
+        <span id="prai" onclick="opShou()"><img src="img/aa.png"/></span>
+        <span id="shouCount"></span>
     </div>
 
 </div>
@@ -77,69 +84,25 @@
     $(function(){
         queryZhan();
         queryShou();
-            $("#praise").click(function(){
-                var praise_img = $("#praise-img");
-                var text_box = $("#add-num");
-                var praise_txt = $("#praise-txt");
-                var num=parseInt(praise_txt.text());
-
-                if(praise_img.attr("src") == ("https://www.jsdaima.com/Upload/1482989740/yizan.png")){
-                    $(this).html("<img src='https://www.jsdaima.com/Upload/1482989740/zan.png' id='praise-img' class='animation' />");
-                    praise_txt.removeClass("hover");
-                    text_box.show().html("<em class='add-animation'>-1</em>");
-                    $(".add-animation").removeClass("hover");
-                    num -=1;
-                    praise_txt.text(num)
-                }else{
-                    $(this).html("<img src='https://www.jsdaima.com/Upload/1482989740/yizan.png' id='praise-img' class='animation' />");
-                    praise_txt.addClass("hover");
-                    text_box.show().html("<em class='add-animation'>+1</em>");
-                    $(".add-animation").addClass("hover");
-                    num +=1;
-                    praise_txt.text(num)
-                }
-            });
-
     })
-    $(document).ready(function()
-    {
 
-        $('body').on("click",'.heart',function()
-        {
-            var A=$(this).attr("id");
-            var B=A.split("like");
-            var messageID=B[1];
-            var C=parseInt($("#likeCount"+messageID).html());
-            $(this).css("background-position","")
-            var D=$(this).attr("rel");
-
-            if(D === 'like')
-            {
-                $("#likeCount"+messageID).html(C+1);
-                $(this).addClass("heartAnimation").attr("rel","unlike");
-
-            }
-            else
-            {
-                $("#likeCount"+messageID).html(C-1);
-                $(this).removeClass("heartAnimation").attr("rel","like");
-                $(this).css("background-position","left");
-            }
-
-
-        });
-
-
-    });
+    //查询点赞数量
     queryZhan = function(){
+
+        var infId = 88;
+
         $.ajax({
-            url:"http://192.168.1.108:8000/queryZhan",
+            url:"http://localhost:8000/queryZhan",
             type:'get',
-            data:{infId:666},
-            dataType:"json",
+            data:{infId:infId},
             success:function(data){
-                // alert(data);
-                $("#zhanCount").html(data);
+
+                $("#zhanCount").html(data.zhanCount);
+                if(data.inId!=null){
+                    $("#praise").html("<img src='https://www.jsdaima.com/Upload/1482989740/yizan.png' id='praise-img' class='animation' />");
+                }else{
+                    $("#praise").html("<img src=\"https://www.jsdaima.com/Upload/1482989740/zan.png\"/>");
+                }
 
             },
             error:function(){
@@ -148,33 +111,13 @@
         });
     }
 
-    queryShou = function(){
-        $.ajax({
-            url:"http://192.168.1.108:8000/queryshou",
-            type:'get',
-            data:{heartId:333},
-            dataType:"json",
-            success:function(data){
-                // alert(data);
-                $("#shouCount").html(data);
+    //操作点赞
+    opZhan = function(){
 
-            },
-            error:function(){
-                bootbox.alert("失败");
-            }
-        });
-    }
-    /* @author:Romey
-     * 动态点赞
-     * 此效果包含css3，部分浏览器不兼容（如：IE10以下的版本）
-    */
-    xiHuan = function(){
-       //alert("ssss")
         $.ajax({
-            url:"http://192.168.1.108:8000/zizi",
+            url:"http://localhost:8000/zizi",
             type:'post',
-            data:{infId:666,liveTime:1},
-            dataType:"json",
+            data:{infId:88},
             success:function(){
                 queryZhan();
             },
@@ -184,13 +127,42 @@
         });
 
     }
-    shou = function(){
-        //alert("ssss")
+
+
+
+
+    //查询收藏数量
+    queryShou = function(){
+
+        var infId = 88;
+
         $.ajax({
-            url:"http://192.168.1.108:8000/zizeng",
+            url:"http://localhost:8000/queryShou",
+            type:'get',
+            data:{infId:infId},
+            success:function(data){
+
+                $("#shouCount").html(data.shouCount);
+                if(data.inId!=null){
+                    $("#prai").html("<img src=\"img/bb.jpg\"/>");
+                }else{
+                    $("#prai").html("<img src=\"img/aa.png\"/>");
+                }
+
+            },
+            error:function(){
+                bootbox.alert("失败");
+            }
+        });
+    }
+
+    //收藏操作
+    opShou = function(){
+
+        $.ajax({
+            url:"http://localhost:8000/opShou",
             type:'post',
-            data:{heartId:333,liveTime:1},
-            dataType:"json",
+            data:{infId:88},
             success:function(){
                 queryShou();
             },
@@ -203,7 +175,8 @@
 
 
 
-
 </script>
+
+
 </body>
 </html>
