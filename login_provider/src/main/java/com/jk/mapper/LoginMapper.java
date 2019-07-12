@@ -32,7 +32,7 @@ public interface LoginMapper {
     void delOne(Integer uid);
 
     @Select("select * from t_staff where staffname=#{staffname} and staffpassword=#{staffpassword}")
-    User findStaffByNamePWD(Staff loginstaff);
+    Staff findStaffByNamePWD(Staff loginstaff);
 
     @Select("select count(*) from t_staff where staffname=#{staffname}")
     Integer findStaffByName(String staffname);
