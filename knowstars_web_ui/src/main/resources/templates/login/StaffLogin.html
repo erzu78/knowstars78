@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>后台管理人员登陆</title>
+    <title>管理人员登录</title>
     <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
     <meta name="author" content="Vincent Garreau" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -47,14 +47,9 @@
 <div id="switcher">
     <div class="center">
         <ul>
-
-
             <li class="logoTop">
                 knowstar酷炫的登录页面
-                <script type="text/javascript">
-                    jQuery('#output').qrcode({width:150,height: 150,text: window.location.href});
-                </script>
-            <li class="remove_frame"><a href="http://localhost:8280/toindex" title="移除框架"></a></li>
+            </li>
         </ul>
     </div>
 </div>
@@ -64,7 +59,7 @@
 <form id="loginff">
     <div class="login-page">
         <div class="login-content">
-            <div class="login-tit">登录</div>
+            <div class="login-tit">管理人员登录</div>
             <div class="login-input">
                 <input type="text" name="staffname" placeholder="用户名/手机号">
             </div>
@@ -73,20 +68,36 @@
             </div>
 
 
-<div>
-
-
-
-            <div class="login-btn">
-                <div class="login-btn-left">
-                    <button type="button" class="btn btn-primary" onclick="login()" >登录</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="button" class="btn btn-primary" onclick="editTable()" >注册</button>&nbsp;&nbsp;&nbsp;&nbsp;
-
-
+            <div class="login-input">
+                <div class="login-btn">
+                    <div class="login-btn-right">
+                        <button type="button" class="btn btn-primary" onclick="login()" >
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            登录
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        </button>
+                    </div>
+                    <div class="login-btn-right" onClick="changeImg()">
+                        <!--<img src="../img/check.png" alt="" id="picture"> 记住密码-->
+                    </div>
                 </div>
-                <div class="login-btn-right" onClick="changeImg()">
-                    <!--<img src="../img/check.png" alt="" id="picture"> 记住密码-->
+
+                <div class="login-input">
+                    <div class="login-btn-right">
+                        <input type="button" onclick="toStaffZhuce()" class="btn btn-primary" value="没有账号？注册">
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -99,11 +110,15 @@
     function changeImg(){
         let pic = document.getElementById('picture');
         console.log(pic.src)
-        if(pic.getAttribute("src",2) =="../img/check.png"){
-            pic.src ="../img/checked.png"
+        if(pic.getAttribute("src",2) =="img/check.png"){
+            pic.src ="img/checked.png"
         }else{
-            pic.src ="../img/check.png"
+            pic.src ="img/check.png"
         }
+    }
+
+    function toStaffZhuce(){
+        location.href="http://localhost:8280/toaddLoginStaff";
     }
 
 
@@ -124,96 +139,6 @@
                 alert("错误！！！");
             }
         });
-    }
-
-    function editTable(){
-        dialog("toaddLoginStaff",'http://localhost:8088/addLoginStaff','用户注册');
-    }
-
-
-
-
-
-    /*
-          *发送ajax请求获取jsp页面内容
-          */
-    function getJspHtml(urlStr){
-        var  jspHtml = "";
-        $.ajax({
-            url:urlStr,
-            type:'post',
-            async:false,
-            success:function(data){
-                alert("ss")
-                //alert(data);//data--addProduct.jsp页面内容
-                jspHtml = data;
-            },
-            error:function(){
-                bootbox.alert("ajax1失败");
-            }
-        });
-        return jspHtml;
-    }
-
-
-    function  dialog(HTMLurl,submitUrl,title){
-        var dialog = bootbox.dialog({
-            title: title,
-            message: getJspHtml(HTMLurl),   //调用方法
-            buttons:{
-                "save":{
-                    label: '保存',
-                    //自定义样式
-                    className: "btn-success",
-                    callback: function() {
-                        $.ajax({
-                            url:submitUrl,
-                            type:'post',
-                            data:$("#addLoginUserForm").serialize(),
-                            success:function(data){
-                                if(data==1){
-                                    bootbox.alert("已经存在相同用户名");
-                                }else{
-                                    bootbox.alert("保存成功");
-                                }
-
-                                $("#bootTab").bootstrapTable('refresh');
-                            },
-                            error:function(){
-                                bootbox.alert("注册失败");
-                            }
-                        });
-                    }
-                },
-                "unSave":{
-                    label: '取消',
-                    //自定义样式
-                    className: "btn-info",
-                    callback: function() {
-                        // return false;  //dialog不关闭
-                    }
-                }
-            }
-        });
-    }
-
-
-    function sendPhoneCode(){
-        var phone=$("#phoneId").val();
-        alert(phone);
-        $.ajax({
-            url:"http://localhost:8088/sendPhoneCode",
-            data:{phoneName:phone},
-            success:function(data){
-                if(data==1){
-                    alert("发送成功")
-                }else if(data==2){
-                    alert("发送失败")
-                }
-            },error:function(){
-
-            }
-        })
     }
 
 
