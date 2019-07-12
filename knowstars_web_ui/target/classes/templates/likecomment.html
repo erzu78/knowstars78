@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>常用点赞及取消点赞动画jquery特效</title>
+    <meta name="keywords" content="常用,点赞,取消点赞,点赞动画,jquery特效" />
+    <meta name="description" content="常用点赞及取消点赞动画jquery特效。" />
+    <!--样式表开始-->
+    <link type="text/css" rel="stylesheet" href="https://www.jsdaima.com/Upload/1482989740/demo.css"/>
+    <!--样式表结束-->
+    <script type="text/javascript" src="https://www.jsdaima.com/Upload/1482989740/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript">
+        function stops(){
+            return false;
+        }
+        document.oncontextmenu=stops;
+    </script>
+</head>
+
+<body>
+
+<!--动态点赞开始-->
+<div class="text-content">
+    <h1>艾弗森、科比、詹姆斯，谁的得分能力更强？</h1>
+
+</div>
+<div class="praise">
+    <span id="praise"><img src="https://www.jsdaima.com/Upload/1482989740/zan.png" id="praise-img" /></span>
+    <span id="praise-txt">1455</span>
+    <span id="add-num"><em>+1</em></span>
+</div>
+<!--动态点赞结束-->
+
+<script>
+    /* @author:Romey
+     * 动态点赞
+     * 此效果包含css3，部分浏览器不兼容（如：IE10以下的版本）
+    */
+    $(function(){
+        $("#praise").click(function(){
+            var praise_img = $("#praise-img");
+            var text_box = $("#add-num");
+            var praise_txt = $("#praise-txt");
+            var num=parseInt(praise_txt.text());
+            if(praise_img.attr("src") == ("https://www.jsdaima.com/Upload/1482989740/yizan.png")){
+                $(this).html("<img src='https://www.jsdaima.com/Upload/1482989740/zan.png' id='praise-img' class='animation' />");
+                praise_txt.removeClass("hover");
+                text_box.show().html("<em class='add-animation'>-1</em>");
+                $(".add-animation").removeClass("hover");
+                num -=1;
+                praise_txt.text(num)
+            }else{
+                $(this).html("<img src='https://www.jsdaima.com/Upload/1482989740/yizan.png' id='praise-img' class='animation' />");
+                praise_txt.addClass("hover");
+                text_box.show().html("<em class='add-animation'>+1</em>");
+                $(".add-animation").addClass("hover");
+                num +=1;
+                praise_txt.text(num)
+            }
+        });
+    })
+</script>
+</body>
+</html>

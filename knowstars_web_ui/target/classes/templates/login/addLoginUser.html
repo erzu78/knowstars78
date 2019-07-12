@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>用户注册</title>
+    <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+    <meta name="author" content="Vincent Garreau" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" media="screen" href="../css/login.css">
+
+    <!-- 引入bootstrap的css -->
+    <link  href="../js/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
+    <!-- 引入bootstrap-treeview的css -->
+    <link  href="../js/treeview/bootstrap-treeview.min.css" rel="stylesheet" >
+    <!-- 引入bootstrap-addTabs的css -->
+    <link  href="../js/addTabs/addTabs.css" rel="stylesheet" >
+    <!-- 引入bootstrap-table的css -->
+    <link  href="../js/table/bootstrap-table.min.css" rel="stylesheet" >
+    <!-- 引入fileinput的css -->
+    <link type="text/css" rel="stylesheet" href="../js/fileinput/css/fileinput.min.css" />
+    <!-- 引入jquery -->
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <!-- 引入my97 -->
+    <script type="text/javascript" src="../js/my97/WdatePicker.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/treeview/bootstrap-treeview.min.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/addTabs/addTabs.js"></script>
+    <!-- 引入bootstrap-table的js-->
+    <script type="text/javascript" src="../js/table/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../js/table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- 引入bootbox.js -->
+    <script type="text/javascript" src="../js/bootbox/bootbox.js"></script>
+    <!-- 引入fileinput的js -->
+    <script type="text/javascript" src="../js/fileinput/js/fileinput.min.js"></script>
+    <!--  引入fileinput的js -->
+    <script type="text/javascript" src="../js/fileinput/js/locales/zh.js"></script>
+    <script type="text/javascript" src="../js/fileinput/themes/fa/theme.js"></script>
+
+    <!--头部样式-->
+    <link href="../css/demo.css" rel="stylesheet" media="all" />
+</head>
+<body id="by">
+
+
+<div id="switcher">
+    <div class="center">
+        <ul>
+            <li class="logoTop">
+                knowstar酷炫的登录页面
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- particles.js container -->
+<div id="particles-js" style="display: flex;align-items: center;justify-content: center">
+</div>
+    <div class="login-page">
+        <div class="login-content">
+            <div class="login-tit">用户注册</div>
+
+            <form id="addFF">
+            <div class="login-input">
+                <input type="text"  name="username" id="username2" placeholder="请输入用户名">
+                <input type="hidden"  id="spancode2" >
+            </div>
+            <div class="login-input">
+                <input type="text"  name="password"  id="password2" placeholder="请输入密码">
+            </div>
+            <div class="login-input">
+                <input type="text"  name="phoneName" id="phoneId" placeholder="请输入手机号">
+            </div>
+            <div class="login-input">
+                <input type="text" name="yanzheng" id="yanzhengId" placeholder="请输入验证码" >
+            </div>
+
+
+                <div class="login-input">
+                    <div class="login-btn">
+                        <div class="login-btn-left">
+                            <input type="button" class="btn btn-primary"  onclick="sendPhoneCode()" value="获取验证码">
+                            <button type="button" class="btn btn-primary" onclick="editTable()" >
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                注册
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+           <div class="login-input">
+                <input type="button" onclick="toUserLogin()" class="btn btn-primary" value="已有账号？登陆">
+            </div>
+
+        </div>
+    </div>
+
+<!-- scripts -->
+<script src="../js/particles.js"></script>
+<script src="../js/app.js"></script>
+<script>
+ function toUserLogin(){
+     location.href="http://localhost:8280/toUserLogin";
+}
+
+
+
+    function editTable(){
+        var spancode = $("#spancode2").val();
+        var yanzhengId=$("#yanzhengId").val();
+        var phoneId=$("#phoneId").val();
+        var username2=$("#username2").val();
+        var password2=$("#password2").val();
+        if(spancode!=yanzhengId){
+            alert("验证码不一致");
+            return ;
+        }if(phoneId.length<= 0|username2.length<= 0|password2.length<= 0){
+            alert("请填写完整信息");
+            return ;
+        }
+        var adduser=$("#addFF").serialize();
+        $.ajax({
+            url:"http://localhost:8088/addLoginUser",
+            type:'post',
+            data:adduser,
+            success:function(data){
+                if(data==1){
+                    bootbox.alert("" +
+                        "&nbsp;<br>" +
+                        "&nbsp;<br>" +
+                        "已经存在相同用户名");
+                }else{
+                    alert(data)
+                    bootbox.alert("保存成功");
+                }
+
+                $("#bootTab").bootstrapTable('refresh');
+            },
+            error:function(){
+                bootbox.alert("注册失败");
+            }
+        });    }
+
+
+             function sendPhoneCode(){
+                 var phone=$("#phoneId").val();
+                 var yanzhengId=$("#yanzhengId").val();
+
+                 $.ajax({
+                     url:"http://localhost:8088/sendPhoneCode",
+                     data:{phoneName:phone},
+                     success:function(data){
+                         var newcode=data.newcode;
+                         alert(newcode+"//////222");
+                         $("#spancode2").val(newcode);
+                         if(data==1){
+                             alert("发送成功")
+                         }else if(data==2){
+                             alert("发送失败")
+                         }
+                     },error:function(){
+
+                     }
+                 })
+             }
+
+
+</script>
+</body>
+</html>
