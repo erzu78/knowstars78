@@ -20,5 +20,5 @@ public interface UserinfoService {
     void saveUser(User user);
 
     @PostMapping("updatePass")
-    void updatePass(Integer userId);
+    void updatePass(User user);
 }

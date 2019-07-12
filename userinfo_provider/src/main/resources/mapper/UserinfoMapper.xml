@@ -13,6 +13,6 @@
     </update>
     <update id="updatePass">
         UPDATE t_user SET password = #{password} WHERE
-        uid = #{userId}
+        uid = #{uid}
     </update>
 </mapper>

@@ -1,6 +1,7 @@
 package com.jk.controller.userinfo;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -29,8 +30,8 @@ public class UserinfoKnow {
 
 
     @RequestMapping("toUpPassDialog")
-    public String toUpPassDialog(){
-
+    public String toUpPassDialog(Integer userId, Model model){
+        model.addAttribute("userId",userId);
         return "userinfo/upPassDialog";
     }
 }

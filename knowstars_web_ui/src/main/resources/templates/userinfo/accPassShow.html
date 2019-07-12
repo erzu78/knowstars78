@@ -441,8 +441,8 @@
         <div class="kr-usercenter">
             <div class="usercenter-main">
                 <div class="usercenter-tab">
-                    <div class="tabPane ">基本资料</div>
-                    <div class="tabPane tabPaneSelected" onclick="" >账号和密码</div>
+                    <div class="tabPane " onclick="toUserInfoShow()">基本资料</div>
+                    <div class="tabPane tabPaneSelected"  >账号和密码</div>
                     <div class="tabPane ">我的收藏</div>
                 </div>
             </div>
@@ -508,7 +508,7 @@
 
                 $("#accountId").html(data.account);
                 $("#passwordId").html(data.password);
-                $("#userid").html(data.uid);
+                $("#userid").val(data.uid);
 
             },
             error:function(){
@@ -520,9 +520,13 @@
     })
 
     function updatePass(){
-        var userId = $("#userid");
-        alert(userId)
-        dialog("toUpPassDialog",Myip+"/updatePass?userId="+userId,"修改密码");
+        var userId = $("#userid").val();
+
+        dialog("toUpPassDialog?userId="+userId,Myip+"/updatePass","修改密码");
+    }
+
+    function toUserInfoShow() {
+        location.href="toUserinfo"
     }
 
     /*

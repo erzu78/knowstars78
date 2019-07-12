@@ -15,5 +15,5 @@ public interface UserinfoMapper {
 
     void saveUser(User user);
 
-    void updatePass(@Param("userId") Integer userId);
+    void updatePass(User user);
 }
