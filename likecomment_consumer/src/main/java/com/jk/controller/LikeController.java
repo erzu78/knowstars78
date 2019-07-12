@@ -16,8 +16,8 @@ import java.util.concurrent.TimeUnit;
 
 @RestController
 public class LikeController {
-   /* @Autowired
-    private LikeServiceFeign likeServiceFeign;*/
+   @Autowired
+    private LikeServiceFeign likeServiceFeign;
 
 
     @Autowired
@@ -33,7 +33,7 @@ public class LikeController {
     @RequestMapping("zizi")
     public void incr(String infId) {
 
-        Integer userId = 25;
+        Integer userId = 26;
         String inId = (String) redisTemplate.opsForValue().get("userZhan"+userId+infId);
 
         if(inId!=null){
@@ -58,7 +58,7 @@ public class LikeController {
     @GetMapping("queryZhan")
     public HashMap<String,String> queryZhan(String infId){
 
-        Integer userId = 25;
+        Integer userId = 26;
 
         String zhanCount = (String) redisTemplate.opsForValue().get("infzhan"+infId);
         String inId = (String) redisTemplate.opsForValue().get("userZhan"+userId+infId);
@@ -76,9 +76,9 @@ public class LikeController {
      * @param infId
      */
     @RequestMapping("opShou")
-    public void opShou(String infId) {
+    public void opShou(@RequestParam("infId") String infId) {
 
-        Integer userId = 25;
+        Integer userId = 26;
         String inId = (String) redisTemplate.opsForValue().get("userShou"+userId+infId);
 
         if(inId!=null){
@@ -87,13 +87,23 @@ public class LikeController {
 
             redisTemplate.delete("userShou"+userId+infId);
 
+            delInfuser(infId,userId);
+
         } else{
             RedisAtomicLong entityIdCounter = new RedisAtomicLong("infshou"+infId, redisTemplate.getConnectionFactory());
             entityIdCounter.getAndIncrement();
             redisTemplate.opsForValue().set("userShou"+userId+infId,infId);
+            likeServiceFeign.addInfuser(infId,userId);
         }
 
+
+
     }
+     @RequestMapping("delInfuser")
+    public void delInfuser(@RequestParam("infId")String infId,@RequestParam("userId")Integer userId){
+         likeServiceFeign.delInfuser(infId,userId);
+    }
+
 
     /**
      * 查询收藏数量
@@ -103,7 +113,7 @@ public class LikeController {
     @GetMapping("queryShou")
     public HashMap<String,String> queryShou(String infId){
 
-        Integer userId = 25;
+        Integer userId = 26;
 
         String shouCount = (String) redisTemplate.opsForValue().get("infshou"+infId);
         String inId = (String) redisTemplate.opsForValue().get("userShou"+userId+infId);
