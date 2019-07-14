@@ -33,12 +33,15 @@ public class LocationHref {
 
 
 
-    @RequestMapping("/toEditor")
 
-    public String toEditor(){
 
-        return "/NewsFlash/ueditor";
+
+//跳转首页 快讯专栏
+    @RequestMapping("/toNewsFlashPage")
+
+    public String toNewsFlashPage(){
+
+        return "/NewsFlash/NewsFlashPage";
     }
-
 
 }

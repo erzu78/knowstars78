@@ -1,6 +1,7 @@
 package com.jk.service;
 
 import com.jk.pojo.NewsFlash;
+import com.jk.pojo.Video;
 
 import java.util.List;
 
@@ -19,4 +20,8 @@ public interface NewsFlashService {
 
 
     List<NewsFlash> NewsQueryAll();
+
+    List<NewsFlash> queryNews();
+
+    NewsFlash queryNewsFlashById(Integer flashid);
 }

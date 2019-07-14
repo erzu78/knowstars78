@@ -114,6 +114,26 @@
 
   <select  id="NewsQueryAll" resultMap="BaseResultMap">
 
-SELECT  * FROM  t_newsflash ORDER  BY   creattime DESC
+SELECT  * FROM  t_newsflash ORDER  BY   flashinfo DESC
   </select>
+
+
+
+
+
+  <select  id="queryNews" resultMap="BaseResultMap">
+
+
+
+    select * from t_newsflash order by creattime desc limit 0,10
+
+  </select>
+
+
+
+  <select  id="queryNewsFlashById"    resultMap="BaseResultMap">
+    SELECT * FROM  t_newsflash WHERE  flashid=#{flashid}
+  </select>
+
+
 </mapper>
