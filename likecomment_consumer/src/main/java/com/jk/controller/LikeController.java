@@ -124,6 +124,41 @@ public class LikeController {
 
         return map;
     }
+    /**
+     * 查询评论
+     * @param infId
+     * @return
+     */
+    @GetMapping("queryPing")
+    public HashMap<String,String> queryPing(String infId){
+        Integer userId = 25;
+        String pingContent = (String) redisTemplate.opsForValue().get("ping"+userId+infId);
+        HashMap<String,String> map = new HashMap<>();
+        map.put("pingContent",pingContent);
+        return map;
+    }
+    /**
+     * 操作点赞
+     * @param infId
+     * @return
+     */
+    @RequestMapping("addPing")
+    public void addPing(String infId , String sp) {
 
+        Integer userId = 25;
+        String inId = (String) redisTemplate.opsForValue().get("ping"+userId+infId);
 
+        if(inId!=null){
+
+            redisTemplate.boundValueOps("ping"+userId+infId).getAndSet(sp);
+
+            redisTemplate.delete("ping"+userId+infId);
+
+        } else{
+            RedisAtomicLong entityIdCounter = new RedisAtomicLong("ping"+userId+infId, redisTemplate.getConnectionFactory());
+            entityIdCounter.getAndIncrement();
+            redisTemplate.opsForValue().set("ping"+userId+infId,sp);
+        }
+
+    }
 }
