@@ -9,7 +9,8 @@
 
 
     <link href="sta.36krcnd.com\36krx2018-front\static\app.3d4278b5.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="sta.36krcnd.com\36krx2018-front\static\usercenter.b851f7c9.css"><link href="https://36kr.com/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" type="text/css" href="sta.36krcnd.com\36krx2018-front\static\usercenter.b851f7c9.css">
+    <link href="https://36kr.com/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
 
 
 
@@ -492,26 +493,37 @@
                 <a class="resgister"><span>注册</span></a></div><ul class="business-line">
                 <li><a href="https://auto-time.36kr.com/" target="_blank" rel="noopener noreferrer">未来汽车日报</a>
                 </li><li><a href="https://36kr.com/ranking" target="_blank" rel="noopener noreferrer">氪榜</a></li>
-                <li><a href="https://36kr.com/subscribe?ktm_source=kaike_pclandingpage" target="_blank" rel="noopener noreferrer">开氪</a></li>
+                <li><a href="https://36kr.com/subscribe?ktm_source=k
+                *963..6aike_pclandingpage" target="_blank" rel="noopener noreferrer">开氪</a></li>
                 <li><a href="https://36kr.com/organization" target="_blank" rel="noopener noreferrer">VClub投资机构</a></li>
                 <li><div class="kr-header-search-entry clearfloat"><div class="search-button"><span class="search-icon"></span><span class="search-text weight-bold">搜索</span></div></div>
-                </li></ul></div></div></div><div class="kr-layout-content"><div class="kr-usercenter">
-            <div class="usercenter-main"><div class="usercenter-tab"><div class="tabPane tabPaneSelected">基本资料</div>
-                <div class="tabPane ">账号和密码</div><div class="tabPane ">我的收藏</div></div>
-                <form id="userFormId">
-                <div class="content">
-                <div class="basicinfo">
-                    <div class="usercenter-upload" style="height:400px">
-                        <div class="form-group">
-                    <div class="upload-info">头像</div>
-
-                        <div class="col-lg-4 " >
-                        <!--<img src="./36氪_让一部分人先看到未来_files/oi8rg1khm1lfqk0a!480" alt="">-->
-                        <input type="hidden" id="testimg" name="userhead" />
-                        <input type="file" class="projectfile" name="imgg" id="headImg" >
-                        </div>
-                    </div>
+                </li></ul></div></div></div><div class="kr-layout-content">
+            <div class="kr-usercenter">
+            <div class="usercenter-main">
+                <div class="usercenter-tab">
+                    <div class="tabPane tabPaneSelected">基本资料</div>
+                <div class="tabPane " onclick="accPass()">账号和密码</div>
+                    <div class="tabPane ">我的收藏</div>
                 </div>
+                <form id="userFormId">
+                    <div class="" style="height: 800px;width: 370px;float: left">
+                        <div class="form-group" >
+                            <div class="usercenter-upload" style="height:600px">
+                                <div class="form-group">
+                                    <div class="upload-info">头像</div>
+
+                                    <div class="col-lg-4 " >
+                                        <!--<img src="./36氪_让一部分人先看到未来_files/oi8rg1khm1lfqk0a!480" alt="">-->
+                                        <img src="" id="toux"  width="60px" height="60px">
+                                        <input type="hidden" id="testimg" name="userhead" />
+                                        <input type="file" class="projectfile" name="imgg" id="headImg" >
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                <div class="" style="height:800px; width: 530px;float: right;" >
+
                     <div class="usercenter-date clearfloat">
                     <div class="form-group">
 
@@ -591,7 +603,15 @@
                             </div>
 
                         </div>
-                    </div><button class="usercenter-button" onclick="saveUser()">保存</button>
+                    </div>
+
+                    <div class="form-group">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button  class="btn btn-primary btn-lg " onclick="saveUser()">保存</button>
+                    </div>
                     <input type="hidden" name="uid" id="uidId">
                 </div>
             </div>
@@ -627,11 +647,12 @@ var userId = 1;
             data:{userId:userId},
             success:function(data){
 
-
+                $("#toux").attr("src",data.userhead);
                 $("#uidId").val(data.uid);
                 $("#usernameId").val(data.username);
                 $("#userintroId").val(data.userintro);
                 $("#birthdayId").val(data.birthday);
+
 
                 if(data.profession==1){
                     $("#professionId").val(data.profession);
@@ -713,7 +734,7 @@ var userId = 1;
 function uploadImg(url) {
     $('#headImg').fileinput({
         language: 'zh', //设置语言
-        uploadUrl: Myip + ':8087/updaloadImg', //上传的地址
+        uploadUrl: Myip + '/updaloadImg', //上传的地址
         allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
         showUpload: true, //是否显示上传按钮
         showCaption: false,//是否显示标题
@@ -744,6 +765,10 @@ function uploadImg(url) {
         $('#testimg').val(imgval);
     });
 }
+
+    function  accPass() {
+        location.href="toAccPass"
+    }
 </script>
 
 </html>

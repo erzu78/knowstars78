@@ -33,7 +33,7 @@ public class LikeController {
     @RequestMapping("zizi")
     public void incr(String infId) {
 
-        Integer userId = 26;
+        Integer userId = 34;
         String inId = (String) redisTemplate.opsForValue().get("userZhan"+userId+infId);
 
         if(inId!=null){
@@ -58,7 +58,7 @@ public class LikeController {
     @GetMapping("queryZhan")
     public HashMap<String,String> queryZhan(String infId){
 
-        Integer userId = 26;
+        Integer userId = 34;
 
         String zhanCount = (String) redisTemplate.opsForValue().get("infzhan"+infId);
         String inId = (String) redisTemplate.opsForValue().get("userZhan"+userId+infId);
@@ -78,7 +78,7 @@ public class LikeController {
     @RequestMapping("opShou")
     public void opShou(@RequestParam("infId") String infId) {
 
-        Integer userId = 26;
+        Integer userId = 34;
         String inId = (String) redisTemplate.opsForValue().get("userShou"+userId+infId);
 
         if(inId!=null){
@@ -113,7 +113,7 @@ public class LikeController {
     @GetMapping("queryShou")
     public HashMap<String,String> queryShou(String infId){
 
-        Integer userId = 26;
+        Integer userId = 34;
 
         String shouCount = (String) redisTemplate.opsForValue().get("infshou"+infId);
         String inId = (String) redisTemplate.opsForValue().get("userShou"+userId+infId);

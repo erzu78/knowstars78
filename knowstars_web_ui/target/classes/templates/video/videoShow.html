@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" >
     <title>后台视频展示页面</title>
     <!-- 引入bootstrap的css -->
     <link href="../js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -75,7 +75,6 @@
                     }
                 },
                 {field: 'headline', title: '大标题', width: 100},      //  列    field   代表是 后台  传过来的值
-                {field: 'subtitle', title: '小标题', width: 100},
                 {field: 'issuer', title: '发布人', width: 100},
                 {field: 'introduction', title: '介绍', width: 100},
                 {field: 'issueTime', title: '发布时间', width: 100, sortable: true},
@@ -143,7 +142,7 @@
         return jspHtml;
     }
 
-    //修改 and 新增的 弹框
+    // 新增的 弹框
     function  dialog(HTMLurl,submitUrl,title){
 
         var dialog = bootbox.dialog({
@@ -187,7 +186,85 @@
         dialog("toAddVideoDialog",ip+":8083/saveorupdateVideo","新增");
     }
 
+    //修改的 弹框
+    function  dialogVideo(HTMLurl,submitUrl,title,videoId){
 
+        var dialog = bootbox.dialog({
+            title: title,
+            message: getJspHtml(HTMLurl),   //调用方法
+            buttons:{
+                "save":{
+                    label: '保存',
+                    //自定义样式
+                    className: "btn-success",
+                    callback: function() {
+                        $.ajax({
+                            url:submitUrl,
+                            type:'post',
+                            data:$("#updateVideoForm").serialize(),
+                            success:function(data){
+                                bootbox.alert("保存成功");
+                                $("#bootTab").bootstrapTable('refresh');
+                            },
+                            error:function(){
+                                bootbox.alert("ajax失败");
+                            }
+                        });
+                    }
+                },
+                "unSave":{
+                    label: '取消',
+                    //自定义样式
+                    className: "btn-info",
+                    callback: function() {
+                        // return false;  //dialog不关闭
+                    }
+                }
+            }
+        });
+
+        $.ajax({
+            url:ip+":8083/findVideoById",
+            type:'post',
+            data:{vid:videoId},
+            success:function(data){
+
+                $("#videoId").val(data.videoId);
+                $("#headline").val(data.headline);
+                $("#issuer").val(data.issuer);
+                $("#hequipId").val(data.hequip);
+
+            },
+            error:function(){
+                bootbox.alert("失败");
+            }
+        });
+    }
+
+
+    // a 标签直接修改
+   function update(videoId){
+        dialogVideo("toUpdateVideoDialog",ip+":8083/saveorupdateVideo","修改",videoId);
+    }
+
+
+    //删除 del
+    function del(id){
+        $.ajax({
+            url:ip+":8083/deleteVideo",
+            type:"post",
+            data:{vid:id},
+            success:function(){
+
+                alert("恭喜你删除成功");
+                $('#bootTab').bootstrapTable('refresh');
+            },
+            error:function(){
+
+                alert("抱歉,删除失败")
+            }
+        })
+    }
 
 
 </script>

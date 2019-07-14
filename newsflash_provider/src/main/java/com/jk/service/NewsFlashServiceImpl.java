@@ -34,13 +34,15 @@ public class NewsFlashServiceImpl  implements NewsFlashService {
     @Override
     public void addNewsFlash(NewsFlash newsFlash) {
 
-      /*  Date date = new Date();
-        //设置要获取到什么样的时间
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        //获取String类型的时间
-        String sd = sdf.format(date);
-        newsFlash.setCreattime(sd);
-        System.out.println(newsFlash);*/
+
+
+
+
+        Date date = new Date();
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        newsFlash.setCreattime(df.format(date));
+        System.out.println(df.format(date));
         newsFlashMapper.insert(newsFlash);
     }
 
@@ -51,6 +53,18 @@ public class NewsFlashServiceImpl  implements NewsFlashService {
 
     @Override
     public void UpdNews(NewsFlash newsFlash) {
+        Date date1 = new Date();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        newsFlash.setCreattime(sdf.format(date1));
+        System.out.println(sdf.format(date1));
         newsFlashMapper.updateByPrimaryKey(newsFlash);
     }
+
+    @Override
+    public List<NewsFlash> NewsQueryAll() {
+        return newsFlashMapper.NewsQueryAll();
+    }
+
+
 }

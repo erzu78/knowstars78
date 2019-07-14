@@ -16,4 +16,7 @@ public interface NewsFlashService {
     NewsFlash queryNewsById(Integer flashid);
 
     void UpdNews(NewsFlash newsFlash);
+
+
+    List<NewsFlash> NewsQueryAll();
 }

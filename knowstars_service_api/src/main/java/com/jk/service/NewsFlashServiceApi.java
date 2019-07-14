@@ -19,6 +19,8 @@ public interface NewsFlashServiceApi {
     NewsFlash queryNewsById(@RequestParam(value="flashid")Integer flashid);
     @PostMapping ("/UpdNews")
     void UpdNews(@RequestBody NewsFlash newsFlash);
+    @GetMapping(value = "/NewsQueryAll")
+    List<NewsFlash> NewsQueryAll();
 
     /*@RequestMapping("/NewsFlashList")
     long queryCount();*/

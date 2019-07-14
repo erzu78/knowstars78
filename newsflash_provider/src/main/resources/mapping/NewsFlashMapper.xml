@@ -4,16 +4,11 @@
   <resultMap id="BaseResultMap" type="com.jk.pojo.NewsFlash" >
     <id column="flashid" property="flashid" jdbcType="INTEGER" />
     <result column="flashtitle" property="flashtitle" jdbcType="VARCHAR" />
+    <result column="flashinfo" property="flashinfo" jdbcType="VARCHAR" />
     <result column="creattime" property="creattime" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.jk.pojo.NewsFlash" extends="BaseResultMap" >
-    <result column="flashinfo" property="flashinfo" jdbcType="LONGVARCHAR" />
-  </resultMap>
   <sql id="Base_Column_List" >
-    flashid, flashtitle, creattime
-  </sql>
-  <sql id="Blob_Column_List" >
-    flashinfo
+    flashid, flashtitle, flashinfo, creattime
   </sql>
 
 
@@ -26,105 +21,18 @@
 
 
 
-
-
-
-
-
-
-
-
-
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from t_newsflash
-    where flashid = #{flashid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from t_newsflash
-    where flashid = #{flashid,jdbcType=INTEGER}
-  </delete>
-
-
-  <insert id="insert" parameterType="com.jk.pojo.NewsFlash" >
-    insert into t_newsflash ( flashtitle,
-      flashinfo)
-    values ( #{flashtitle,jdbcType=VARCHAR},
-      #{flashinfo,jdbcType=LONGVARCHAR})
-  </insert>
-
-
-
   <select id="queryNewsById" resultMap = "BaseResultMap">
     select * from t_newsflash where flashid=#{flashid}
   </select>
 
 
 
-  <insert id="insertSelective" parameterType="com.jk.pojo.NewsFlash" >
-    insert into t_newsflash
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="flashid != null" >
-        flashid,
-      </if>
-      <if test="flashtitle != null" >
-        flashtitle,
-      </if>
-      <if test="creattime != null" >
-        creattime,
-      </if>
-      <if test="flashinfo != null" >
-        flashinfo,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="flashid != null" >
-        #{flashid,jdbcType=INTEGER},
-      </if>
-      <if test="flashtitle != null" >
-        #{flashtitle,jdbcType=VARCHAR},
-      </if>
-      <if test="creattime != null" >
-        #{creattime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="flashinfo != null" >
-        #{flashinfo,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jk.pojo.NewsFlash" >
-    update t_newsflash
-    <set >
-      <if test="flashtitle != null" >
-        flashtitle = #{flashtitle,jdbcType=VARCHAR},
-      </if>
-      <if test="creattime != null" >
-        creattime = #{creattime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="flashinfo != null" >
-        flashinfo = #{flashinfo,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from t_newsflash
     where flashid = #{flashid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jk.pojo.NewsFlash" >
-    update t_newsflash
-    set flashtitle = #{flashtitle,jdbcType=VARCHAR},
-      creattime = #{creattime,jdbcType=TIMESTAMP},
-      flashinfo = #{flashinfo,jdbcType=LONGVARCHAR}
-    where flashid = #{flashid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.jk.pojo.NewsFlash" >
-    update t_newsflash
-    set flashtitle = #{flashtitle,jdbcType=VARCHAR}, flashinfo = #{flashinfo,jdbcType=LONGVARCHAR}
-
-    where flashid = #{flashid,jdbcType=INTEGER}
-  </update>
-
-
+  </select>
 
 
   <delete id="delById" parameterType="java.lang.Integer" >
@@ -134,4 +42,78 @@
 
 
 
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_newsflash
+    where flashid = #{flashid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jk.pojo.NewsFlash" >
+    insert into t_newsflash ( flashtitle, flashinfo,creattime
+    )
+    values ( #{flashtitle,jdbcType=VARCHAR}, #{flashinfo,jdbcType=VARCHAR}, #{creattime,jdbcType=TIMESTAMP}
+    )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jk.pojo.NewsFlash" >
+    insert into t_newsflash
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="flashid != null" >
+        flashid,
+      </if>
+      <if test="flashtitle != null" >
+        flashtitle,
+      </if>
+      <if test="flashinfo != null" >
+        flashinfo,
+      </if>
+      <if test="creattime != null" >
+        creattime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="flashid != null" >
+        #{flashid,jdbcType=INTEGER},
+      </if>
+      <if test="flashtitle != null" >
+        #{flashtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="flashinfo != null" >
+        #{flashinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="creattime != null" >
+        #{creattime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jk.pojo.NewsFlash" >
+    update t_newsflash
+    <set >
+      <if test="flashtitle != null" >
+        flashtitle = #{flashtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="flashinfo != null" >
+        flashinfo = #{flashinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="creattime != null" >
+        creattime = #{creattime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where flashid = #{flashid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jk.pojo.NewsFlash" >
+    update t_newsflash
+    set flashtitle = #{flashtitle,jdbcType=VARCHAR},
+    flashinfo = #{flashinfo,jdbcType=VARCHAR},  creattime = #{creattime,jdbcType=TIMESTAMP}
+
+    where flashid = #{flashid,jdbcType=INTEGER}
+  </update>
+
+
+
+
+
+  <select  id="NewsQueryAll" resultMap="BaseResultMap">
+
+SELECT  * FROM  t_newsflash ORDER  BY   creattime DESC
+  </select>
 </mapper>

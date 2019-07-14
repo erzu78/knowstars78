@@ -14,11 +14,11 @@ public interface NewsFlashMapper {
 
     NewsFlash selectByPrimaryKey(Integer flashid);
 
-    int updateByPrimaryKeySelective(NewsFlash record);
+    int updateByPrimaryKeySelective(NewsFlash newsFlash);
 
-    int updateByPrimaryKeyWithBLOBs(NewsFlash record);
+    int updateByPrimaryKeyWithBLOBs(NewsFlash newsFlash);
 
-    int updateByPrimaryKey(NewsFlash record);
+    int updateByPrimaryKey(NewsFlash newsFlash);
 
     List<NewsFlash> NewsFlashList(@Param("start") Integer start, @Param("rows") Integer rows);
 
@@ -27,4 +27,7 @@ public interface NewsFlashMapper {
     void delById(@Param("flashid") Integer flashid);
 
     NewsFlash queryNewsById(@Param("flashid") Integer flashid);
+
+
+    List<NewsFlash> NewsQueryAll();
 }

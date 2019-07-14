@@ -7,6 +7,7 @@ import com.jk.service.NewsFlashServiceApi;
 import com.jk.service.NewsFlashServiceFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -30,23 +31,23 @@ public class NewsFlashControllerc {
         return map;
     }
 
-
+    //快讯删除方法
     @RequestMapping("/delById")
     public void delById(@RequestParam(value="flashid") Integer flashid){
         newsFlashServiceApi.delById(flashid);
 
     }
 
-
+     //添加快讯方法
     @PostMapping("/addNewsFlash")
 
-    public void addNewsFlash(@RequestBody  NewsFlash newsFlash){
+    public void addNewsFlash(  NewsFlash newsFlash){
         System.out.println(newsFlash.getFlashinfo());
         System.out.println(newsFlash.getFlashtitle());
         System.out.println(121212);
         newsFlashServiceApi.addNewsFlash(newsFlash);
     }
-
+     //根据ID回显快讯信息
     @RequestMapping("/queryNewsById")
 
     public NewsFlash queryNewsById(@RequestParam(value="flashid") Integer flashid){
@@ -54,13 +55,27 @@ public class NewsFlashControllerc {
         return newsFlashServiceApi.queryNewsById(flashid);
     }
 
-
+  //修改快讯信息
     @PostMapping ("/UpdNews")
-    @ResponseBody
-    public void UpdNews(@RequestBody NewsFlash newsFlash){
+    public void UpdNews( NewsFlash newsFlash){
 
         newsFlashServiceApi.UpdNews(newsFlash);
     }
+
+    @RequestMapping("NewsQueryAll")
+    public String NewsQueryAll( Model model){
+
+        List<NewsFlash> newslist=newsFlashServiceApi.NewsQueryAll();
+        model.addAttribute("nslt",newslist);
+
+        return "/homePage/testMain";
+    }
+
+
+
+
+
+
 
 
 
