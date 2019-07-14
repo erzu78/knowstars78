@@ -4,8 +4,11 @@ import com.jk.pojo.Video;
 import com.jk.service.VideoServiceFeign;
 import com.jk.util.OSSClientUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -57,7 +60,12 @@ public class VideoController {
                   //新增或者修改
                   @PostMapping("saveorupdateVideo")
                   public void saveorupdateVideo(Video video){
-                      videoServiceFeign.saveVideo(video);
+                      if (video.getVideoId() != null){
+                          videoServiceFeign.updateVideo(video);
+                      }else {
+                          videoServiceFeign.saveVideo(video);
+                      }
+
                   }
 
                   //查询前台视频展示专栏
@@ -66,6 +74,25 @@ public class VideoController {
                       List<Video> list = videoServiceFeign.queryAboutVideo();
                       return list;
                   }
+
+                  //根据视频Id查询对应的单个视频信息
+                  @GetMapping("querySingleVideo")
+                  public Video querySingleVideo(Integer videoId){
+
+                      return videoServiceFeign.querySingleVideo(videoId);
+                  }
+
+                 //后台 回显
+                 @PostMapping("findVideoById")
+                 public Video toUpdateVideoDialog(Integer vid){
+                    Video video = videoServiceFeign.findVideoById(vid);
+                    return video;
+                 }
+                 //后台删除
+                @PostMapping("deleteVideo")
+                public void deleteVideo(Integer vid){
+                    videoServiceFeign.deleteVideo(vid);
+                }
 
 
 

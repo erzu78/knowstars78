@@ -3,9 +3,9 @@
 <mapper namespace="com.jk.mapper.VideoMapper" >
 
 
-<insert id="saveVideo">
-insert into T_VIDEO(headline,subtitle,issuer,issueTime,introduction,videoImg,videoNews)
-            values (#{headline},#{subtitle},#{issuer},now(),#{introduction},#{videoImg},'video/512f3ef61ab7b989-20.mp4')
+<insert id="addVideo">
+insert into T_VIDEO(headline,issuer,issueTime,introduction,videoImg,videoNews)
+            values (#{headline},#{issuer},now(),#{introduction},#{videoImg},'video/512f3ef61ab7b989-20.mp4')
 </insert>
 
 

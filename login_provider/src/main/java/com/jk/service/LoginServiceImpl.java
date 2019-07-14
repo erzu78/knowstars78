@@ -59,7 +59,7 @@ public class LoginServiceImpl implements LoginService {
 
     @RequestMapping(value="loginstaff")
     @Override
-    public User loginstaff(@RequestBody Staff loginstaff) {
+    public Staff loginstaff(@RequestBody Staff loginstaff) {
         return loginMapper.findStaffByNamePWD(loginstaff);
     }
 

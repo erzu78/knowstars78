@@ -25,17 +25,24 @@ public class UserinfoController {
 
 
     //个人信息查询
-    @RequestMapping("findUserinfo")
-    @ResponseBody
-    public User findUserinfo(Integer userId){
+        @RequestMapping("findUserinfo")
+        @ResponseBody
+        public User findUserinfo(Integer userId){
 
-        User userinfo = userinfoServiceFeign.findUserinfo(userId);
-        return userinfo;
+            User userinfo = userinfoServiceFeign.findUserinfo(userId);
+            return userinfo;
 
     }
 
-    //个人信息修改
 
+    //个人密码修改
+    @PostMapping("updatePass")
+    public void updatePass(User user){
+        userinfoServiceFeign.updatePass(user);
+    }
+
+
+    //个人信息修改
     @PostMapping("saveUser")
     public void saveUser(User user){
         userinfoServiceFeign.saveUser(user);

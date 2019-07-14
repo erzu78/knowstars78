@@ -9,9 +9,7 @@ public class LoginController {
 
     //跳转用户查询页面
     @RequestMapping("toUserShow")
-    public String toUserShow(){
-        return "login/UserShow";
-    }
+    public String toUserShow(){ return "login/UserShow"; }
 
     //跳转员工查询页面
     @RequestMapping("toStaffShow")
@@ -43,18 +41,5 @@ public class LoginController {
         return "login/addLoginStaff";
     }
 
-    @RequestMapping("totest")
-    public String totest(){
-        return "login/test";
-    }
 
-    @RequestMapping("totest2")
-    public String totest2(){
-        return "login/test2";
-    }
-
-    @RequestMapping("toindex")
-    public String toindex(){
-        return "login/index";
-    }
 }

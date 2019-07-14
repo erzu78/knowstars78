@@ -11,4 +11,8 @@
         birthday = #{birthday} , userintro = #{userintro} , profession = #{profession} , trade = #{trade} WHERE
         uid = #{uid}
     </update>
+    <update id="updatePass">
+        UPDATE t_user SET password = #{password} WHERE
+        uid = #{uid}
+    </update>
 </mapper>

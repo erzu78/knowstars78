@@ -1,6 +1,7 @@
 package com.jk.controller.userinfo;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -17,5 +18,20 @@ public class UserinfoKnow {
     public String toUserinfo(){
 
         return "userinfo/userinfoShow";
+    }
+
+    //跳转账号和密码页面
+
+    @RequestMapping("toAccPass")
+    public String toAccPass(){
+
+        return "userinfo/accPassShow";
+    }
+
+
+    @RequestMapping("toUpPassDialog")
+    public String toUpPassDialog(Integer userId, Model model){
+        model.addAttribute("userId",userId);
+        return "userinfo/upPassDialog";
     }
 }

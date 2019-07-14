@@ -1,6 +1,7 @@
 package com.jk.controller.video;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -24,6 +25,25 @@ public class VideoController {
     public String toAddVideoDialog(){
           return "video/addVideoDialog";
     }
+
+    //点击一个视频携带着Id跳转到此视频的介绍页面
+    @RequestMapping("toSingleVideo")
+    public String toSingleVideo(Integer viId, Model model){
+          model.addAttribute("viId",viId);
+          return "video/singleVideo";
+    }
+    //打开后台修改页面
+    @RequestMapping("toUpdateVideoDialog")
+    public String toUpdateVideoDialog(){
+          return "video/upVideoDialog";
+    }
+    //携带着Id跳转到最近视频页面
+    @RequestMapping("latelyVideo")
+    public String latelyVideo(Integer vid,Model model){
+        model.addAttribute("vid",vid);
+        return "video/recentVideo";
+    }
+
 
 
 

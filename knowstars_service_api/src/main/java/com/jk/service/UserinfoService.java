@@ -18,4 +18,7 @@ public interface UserinfoService {
 
     @PostMapping("saveUser")
     void saveUser(User user);
+
+    @PostMapping("updatePass")
+    void updatePass(User user);
 }

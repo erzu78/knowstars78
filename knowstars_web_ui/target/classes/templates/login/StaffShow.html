@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>员工查询</title>
+    <meta charset="UTF-8">
+    <title>员工查询</title>
+    <!-- 引入bootstrap的css -->
+    <link  href="../js/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
+    <!-- 引入bootstrap-treeview的css -->
+    <link  href="../js/treeview/bootstrap-treeview.min.css" rel="stylesheet" >
+    <!-- 引入bootstrap-addTabs的css -->
+    <link  href="../js/addTabs/addTabs.css" rel="stylesheet" >
+    <!-- 引入bootstrap-table的css -->
+    <link  href="../js/table/bootstrap-table.min.css" rel="stylesheet" >
+    <!-- 引入fileinput的css -->
+    <link type="text/css" rel="stylesheet" href="../js/fileinput/css/fileinput.min.css" />
+
+
+    <!-- 引入jquery -->
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <!-- 引入my97 -->
+    <script type="text/javascript" src="../js/my97/WdatePicker.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/treeview/bootstrap-treeview.min.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/addTabs/addTabs.js"></script>
+    <!-- 引入bootstrap-table的js-->
+    <script type="text/javascript" src="../js/table/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../js/table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- 引入bootbox.js -->
+    <script type="text/javascript" src="../js/bootbox/bootbox.js"></script>
+    <!-- 引入fileinput的js -->
+    <script type="text/javascript" src="../js/fileinput/js/fileinput.min.js"></script>
+    <!--  引入fileinput的js -->
+    <script type="text/javascript" src="../js/fileinput/js/locales/zh.js"></script>
+    <script type="text/javascript" src="../js/fileinput/themes/fa/theme.js"></script>
+
+</head>
+
+<body>
+
+
+<table id="bootTab" ></table>
+</body>
+<script type="text/javascript">
+
+
+
+    $(function(){
+        findStaff();
+    })
+    function findStaff(){
+        $("#bootTab").bootstrapTable({
+            url:"http://localhost:8088/findStaff",
+            method:"post",
+            striped: false,  	// 斑马线效果     默认false
+            //只允许选中一行
+            singleSelect:false,
+            //选中行是不选中复选框或者单选按钮
+            clickToSelect:true,
+            showToggle:true,                    //是否显示详细视图和列表视图的切换按钮
+            cardView: false,                    //是否显示详细视图
+            uniqueId: "sid",                 //每一行的唯一标识，一般为主键列
+            showColumns: true,                  //是否显示所有的列
+            showRefresh: true,                  //是否显示刷新按钮
+            minimumCountColumns: 2,     //  最少留两列
+            detailView: false,                  //是否显示父子表
+            //发送到服务器的数据编码类型
+            contentType:'application/x-www-form-urlencoded;charset=UTF-8',   //数据编码纯文本  offset=0&limit=5
+            toolbar:'#tabToolBar',   //  工具定义位置
+            columns:[
+                {field: 'sid', title: "用户id", width: 5},      //  列    field   代表是 后台  传过来的值
+                {field:'staffname',title:'名称',width:60},      //  列    field   代表是 后台  传过来的值
+                {field:'role',title:'角色',width:100},      //  列    field   代表是 后台  传过来的值
+                 {field:'crud',title:'操作',width:100,
+                    formatter:function (value,row,index){
+                        return "<a href='javascript:editTable2(&quot;"+row.sid+"&quot;)'>修改</a><a href='javascript:delOne(&quot;"+row.uid+"&quot;)'>删除</a>  ";
+                    }
+                },
+            ],
+//传递参数（*）
+            queryParams: function(params) {
+
+                var whereParams = {
+
+                    //分页  自定义的参数         默认传 limit（展示几条）    offset（从第几条开始    起始条数）
+
+                    "pageSize":params.limit,
+                    "start":params.offset,
+                }
+                return whereParams;
+            },
+            //前台--排序字段
+            //sortName:'proPrice',
+            //sortOrder:'desc',
+            //前台--搜索框
+            search:false,
+            //启动回车键做搜索功能
+            searchOnEnterKey:true,
+            //分页方式   后台请求的分页方式
+            sidePagination:'server',
+            pagination: true,                   //是否显示分页（*）
+            pageNum: 1,                       //每页的记录行数（*）
+            pageSize: 3,                       //每页的记录行数（*）
+            pageList: [3, 6, 9,12],        //可供选择的每页的行数（*）
+
+        });
+    }
+
+
+    function delOne(uid){
+        $.ajax({
+            url:"http://localhost:8088/delOne",
+            type:'post',
+            data:{uid:uid},
+            success:function(data){
+                bootbox.alert("删除成功");
+                $("#bootTab").bootstrapTable("refresh");
+            },
+            error:function(){
+                bootbox.alert("删除失败");
+            }
+        });
+    }
+
+
+
+
+
+</script>
+</html>
