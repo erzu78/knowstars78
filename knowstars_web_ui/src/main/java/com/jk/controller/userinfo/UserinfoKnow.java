@@ -29,6 +29,14 @@ public class UserinfoKnow {
     }
 
 
+
+
+    //跳转我的收藏页面
+    @RequestMapping("toCollect")
+    public String toCollect(){
+        return "userinfo/collectShow";
+    }
+
     @RequestMapping("toUpPassDialog")
     public String toUpPassDialog(Integer userId, Model model){
         model.addAttribute("userId",userId);

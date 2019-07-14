@@ -18,6 +18,15 @@ public class User {
     private Integer trade;//行业
     private String account;//用户登录名
 
+    private Integer infuserId;//收藏中间表的Id
+    private Integer infId;//中间表收藏的Id
+    private Integer userId;//中间表用户的Id
+
+
+    private Integer infid;//咨询id
+    private String inftitle;//咨询标题
+    private String articleimg;//文章封面
+
     public String getAccount() {
         return account;
     }
@@ -96,5 +105,53 @@ public class User {
 
     public void setTrade(Integer trade) {
         this.trade = trade;
+    }
+
+    public Integer getInfId() {
+        return infId;
+    }
+
+    public void setInfId(Integer infId) {
+        this.infId = infId;
+    }
+
+    public Integer getInfuserId() {
+        return infuserId;
+    }
+
+    public void setInfuserId(Integer infuserId) {
+        this.infuserId = infuserId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getInfid() {
+        return infid;
+    }
+
+    public void setInfid(Integer infid) {
+        this.infid = infid;
+    }
+
+    public String getInftitle() {
+        return inftitle;
+    }
+
+    public void setInftitle(String inftitle) {
+        this.inftitle = inftitle;
+    }
+
+    public String getArticleimg() {
+        return articleimg;
+    }
+
+    public void setArticleimg(String articleimg) {
+        this.articleimg = articleimg;
     }
 }
