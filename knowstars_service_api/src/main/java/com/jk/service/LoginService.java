@@ -24,7 +24,7 @@ public interface LoginService  {
     void delOne(@RequestParam("uid")Integer uid);
 
     @RequestMapping(value="loginstaff")
-    User loginstaff(Staff loginstaff);
+    Staff loginstaff(Staff loginstaff);
 
     @RequestMapping(value="addLoginStaff")
     String addLoginStaff(Staff loginstaff);

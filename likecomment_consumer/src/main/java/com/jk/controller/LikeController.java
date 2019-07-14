@@ -33,7 +33,7 @@ public class LikeController {
     @RequestMapping("zizi")
     public void incr(String infId) {
 
-        Integer userId = 26;
+        Integer userId = 34;
         String inId = (String) redisTemplate.opsForValue().get("userZhan"+userId+infId);
 
         if(inId!=null){
@@ -58,7 +58,7 @@ public class LikeController {
     @GetMapping("queryZhan")
     public HashMap<String,String> queryZhan(String infId){
 
-        Integer userId = 26;
+        Integer userId = 34;
 
         String zhanCount = (String) redisTemplate.opsForValue().get("infzhan"+infId);
         String inId = (String) redisTemplate.opsForValue().get("userZhan"+userId+infId);
@@ -78,7 +78,7 @@ public class LikeController {
     @RequestMapping("opShou")
     public void opShou(@RequestParam("infId") String infId) {
 
-        Integer userId = 26;
+        Integer userId = 34;
         String inId = (String) redisTemplate.opsForValue().get("userShou"+userId+infId);
 
         if(inId!=null){
@@ -113,7 +113,7 @@ public class LikeController {
     @GetMapping("queryShou")
     public HashMap<String,String> queryShou(String infId){
 
-        Integer userId = 26;
+        Integer userId = 34;
 
         String shouCount = (String) redisTemplate.opsForValue().get("infshou"+infId);
         String inId = (String) redisTemplate.opsForValue().get("userShou"+userId+infId);
@@ -124,6 +124,41 @@ public class LikeController {
 
         return map;
     }
+    /**
+     * 查询评论
+     * @param infId
+     * @return
+     */
+    @GetMapping("queryPing")
+    public HashMap<String,String> queryPing(String infId){
+        Integer userId = 25;
+        String pingContent = (String) redisTemplate.opsForValue().get("ping"+userId+infId);
+        HashMap<String,String> map = new HashMap<>();
+        map.put("pingContent",pingContent);
+        return map;
+    }
+    /**
+     * 操作点赞
+     * @param infId
+     * @return
+     */
+    @RequestMapping("addPing")
+    public void addPing(String infId , String sp) {
 
+        Integer userId = 25;
+        String inId = (String) redisTemplate.opsForValue().get("ping"+userId+infId);
 
+        if(inId!=null){
+
+            redisTemplate.boundValueOps("ping"+userId+infId).getAndSet(sp);
+
+            redisTemplate.delete("ping"+userId+infId);
+
+        } else{
+            RedisAtomicLong entityIdCounter = new RedisAtomicLong("ping"+userId+infId, redisTemplate.getConnectionFactory());
+            entityIdCounter.getAndIncrement();
+            redisTemplate.opsForValue().set("ping"+userId+infId,sp);
+        }
+
+    }
 }
