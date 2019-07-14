@@ -20,4 +20,8 @@ public class ziXun {
     public String updDialogInfo(){
         return "zixun/toUpInfo";
     }
+    @RequestMapping("/toAllZx")
+    public String toAllZx(){
+        return "zixun/toAllZx";
+    }
 }

@@ -78,5 +78,11 @@ public class infController {
 
         return (HashMap<String, Object>) map;
     }
-
+    @RequestMapping("/toZww")
+    @ResponseBody
+    public List<Information> toZww(@RequestParam(value="start") Integer start, @RequestParam(value="rows")Integer rows){
+        System.out.println(start);
+        System.out.println(rows);
+         return  infServiceFeign.InfoList(start,rows);
+    }
 }
