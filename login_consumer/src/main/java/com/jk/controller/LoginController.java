@@ -1,11 +1,13 @@
 package com.jk.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.jk.cliservice.CliService;
 import com.jk.pojo.Staff;
 import com.jk.pojo.User;
 import com.jk.service.LoginService;
 import com.jk.util.HttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -21,16 +23,25 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+    @Autowired
+    private RedisTemplate redisTemplate;
+
     //用户登录页面
     @RequestMapping(value="loginuser")
     public String loginuser(User loginuser){
         User userModel=loginService.login(loginuser);
         if(userModel!=null){
+            //将对象或者集合转换成json字符串
+            String userjs = JSON.toJSONString(userModel);
+            System.out.println("loginuser = [" + userjs + "]");
+            redisTemplate.opsForValue().set("userjs",userjs);
             return "1";
         }else{
             return "2";
         }
+
     }
+
 
     //用户注册
     @RequestMapping("addLoginUser")
@@ -58,6 +69,10 @@ public class LoginController {
     public String loginstaff(Staff loginstaff){
         Staff staffModel=loginService.loginstaff(loginstaff);
         if(staffModel!=null){
+            //将对象或者集合转换成json字符串
+            String staffjs = JSON.toJSONString(staffModel);
+            System.out.println("loginstaff = [" + staffjs + "]");
+            redisTemplate.opsForValue().set("staffjs",staffjs);
             return "1";
         }else{
             return "2";
