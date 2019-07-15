@@ -3,6 +3,8 @@ package com.jk.mapper;
 import com.jk.pojo.User;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @author Administrator
  * @title: UserinfoMapper
@@ -16,4 +18,6 @@ public interface UserinfoMapper {
     void saveUser(User user);
 
     void updatePass(User user);
+
+    List<User> findCollect(@Param("userid") Integer userid);
 }

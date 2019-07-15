@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -67,5 +68,14 @@ public class UserinfoController {
         map.put("imngName", split[0]);
 
         return (HashMap<String, Object>) map;
+    }
+
+    //我的收藏
+    @RequestMapping("findCollect")
+    @ResponseBody
+    public List<User> findCollect(Integer userid){
+
+        List<User> collect = userinfoServiceFeign.findCollect(userid);
+        return collect;
     }
 }

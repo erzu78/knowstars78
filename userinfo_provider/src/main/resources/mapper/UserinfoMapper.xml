@@ -15,4 +15,8 @@
         UPDATE t_user SET password = #{password} WHERE
         uid = #{uid}
     </update>
+    <select id="findCollect" resultType="com.jk.pojo.User">
+SELECT * FROM infuser iu , t_user tu , t_information ti  WHERE tu.uid = iu.userId AND ti.infId = iu.infId
+AND iu.userId = #{userid}
+    </select>
 </mapper>
