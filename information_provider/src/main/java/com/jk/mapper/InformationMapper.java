@@ -8,7 +8,7 @@ import java.util.List;
 public interface InformationMapper {
     int deleteByPrimaryKey(Integer infid);
 
-    int insert(Information record);
+    int insert(Information information);
 
     int insertSelective(Information record);
 
@@ -22,4 +22,6 @@ public interface InformationMapper {
     long queryCount();
 
     void delAll(@Param("ids") String ids);
+
+    List<Information> toZwww(@Param("start") Integer start, @Param("rows") Integer rows, @Param("tid") Integer tid);
 }

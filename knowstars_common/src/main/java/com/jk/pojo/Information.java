@@ -8,6 +8,16 @@ import java.util.Date;
 public class Information implements Serializable{
     private Integer infid;//咨询id
 
+    private Integer hot; //是否热门
+
+    public Integer getHot() {
+        return hot;
+    }
+
+    public void setHot(Integer hot) {
+        this.hot = hot;
+    }
+
     private String inftitle;//咨询标题
 
     private Integer authorid;//关联作者id

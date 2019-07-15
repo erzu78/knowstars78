@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.TyMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.pojo.Ty" >
+    <id column="tid" property="tid" jdbcType="INTEGER" />
+    <result column="tname" property="tname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tid, tname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from info_type
+    where tid = #{tid,jdbcType=INTEGER}
+  </select>
+  <select id="queryTy" resultMap="BaseResultMap">
+    select * from info_type
+  </select>
+  <select id="tyList" resultMap="BaseResultMap">
+     select * from info_type limit #{start},#{rows}
+  </select>
+  <select id="queryTyCount" resultType="long">
+    select count(* ) from info_type
+  </select>
+
+
+  <delete id="deleteAllTy">
+    delete from info_type
+    where tid in (${ids})
+  </delete>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from info_type
+    where tid = #{tid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jk.pojo.Ty" >
+    insert into info_type ( tname)
+    values ( #{tname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jk.pojo.Ty" >
+    insert into info_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tid != null" >
+        tid,
+      </if>
+      <if test="tname != null" >
+        tname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tid != null" >
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="tname != null" >
+        #{tname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jk.pojo.Ty" >
+    update info_type
+    <set >
+      <if test="tname != null" >
+        tname = #{tname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jk.pojo.Ty" >
+    update info_type
+    set tname = #{tname,jdbcType=VARCHAR}
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+</mapper>

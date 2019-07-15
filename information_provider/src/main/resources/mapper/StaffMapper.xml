@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.StaffMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.pojo.Staff" >
+    <id column="sid" property="sid" jdbcType="INTEGER" />
+    <result column="staffname" property="staffname" jdbcType="VARCHAR" />
+    <result column="staffpassword" property="staffpassword" jdbcType="VARCHAR" />
+    <result column="role" property="role" jdbcType="INTEGER" />
+    <result column="staffimg" property="staffimg" jdbcType="VARCHAR" />
+    <result column="staffinfo" property="staffinfo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sid, staffname, staffpassword, role
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_staff
+    where sid = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_staff
+    where sid = #{sid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jk.pojo.Staff" >
+    insert into t_staff (sid, staffname, staffpassword, 
+      role)
+    values (#{sid,jdbcType=INTEGER}, #{staffname,jdbcType=VARCHAR}, #{staffpassword,jdbcType=VARCHAR}, 
+      #{role,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jk.pojo.Staff" >
+    insert into t_staff
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="staffname != null" >
+        staffname,
+      </if>
+      <if test="staffpassword != null" >
+        staffpassword,
+      </if>
+      <if test="role != null" >
+        role,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="staffname != null" >
+        #{staffname,jdbcType=VARCHAR},
+      </if>
+      <if test="staffpassword != null" >
+        #{staffpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jk.pojo.Staff" >
+    update t_staff
+    <set >
+      <if test="staffname != null" >
+        staffname = #{staffname,jdbcType=VARCHAR},
+      </if>
+      <if test="staffpassword != null" >
+        staffpassword = #{staffpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="role != null" >
+        role = #{role,jdbcType=INTEGER},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jk.pojo.Staff" >
+    update t_staff
+    set staffname = #{staffname,jdbcType=VARCHAR},
+      staffpassword = #{staffpassword,jdbcType=VARCHAR},
+      role = #{role,jdbcType=INTEGER}
+    where sid = #{sid,jdbcType=INTEGER}
+  </update>
+  <select id="queryStaff" resultMap="BaseResultMap">
+      select t.* from t_staff t where t.sid in (select s.authorid from t_information s where s.hot=1) and t.role!=2
+  </select>
+</mapper>
