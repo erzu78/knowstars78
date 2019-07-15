@@ -1,6 +1,7 @@
 package com.jk.service;
 
 import com.jk.mapper.VideoMapper;
+import com.jk.pojo.Staff;
 import com.jk.pojo.Video;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -65,6 +66,23 @@ public class VideoServiceImpl implements VideoService {
     @PostMapping("deleteVideo/{vid}")
     public void deleteVideo(@PathVariable(value = "vid") Integer vid) {
         videoMapper.deleteVideo(vid);
+    }
+
+    @Override
+    public List<Staff> queryAuthor() {
+        return videoMapper.queryAuthor();
+    }
+
+    @Override
+    @GetMapping("queryGengDuoVideo")
+    public List<Video> queryGengDuoVideo() {
+        return videoMapper.queryGengDuoVideo();
+    }
+
+    @Override
+    @GetMapping("queryAuthorVideo/{videoId}")
+    public List<Video> queryAuthorVideo(@PathVariable("videoId") Integer videoId) {
+        return videoMapper.queryAuthorVideo(videoId);
     }
 
 

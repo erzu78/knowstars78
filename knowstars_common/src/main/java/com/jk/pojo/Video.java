@@ -6,12 +6,16 @@ package com.jk.pojo;
 public class Video {
      private Integer videoId;        // Id
      private String headline;        //大标题
-     //private String subtitle;        //小标题
-     private String issuer;          //发布人
+    // private String issuer;          //发布人
      private String issueTime;       //发布时间
      private String introduction;    //介绍
      private String videoImg;        //视频封面图片
      private String videoNews;       //视频
+     private Integer staffId;        //连接staff表的外键
+
+    /*Staff表中的字段*/
+    private Integer sid;
+    private String staffname;//登录名
 
 
     public Integer getVideoId() {
@@ -30,13 +34,13 @@ public class Video {
         this.headline = headline;
     }
 
-    public String getIssuer() {
+/*    public String getIssuer() {
         return issuer;
     }
 
     public void setIssuer(String issuer) {
         this.issuer = issuer;
-    }
+    }*/
 
     public String getIssueTime() {
         return issueTime;
@@ -68,5 +72,29 @@ public class Video {
 
     public void setVideoNews(String videoNews) {
         this.videoNews = videoNews;
+    }
+
+    public Integer getSid() {
+        return sid;
+    }
+
+    public void setSid(Integer sid) {
+        this.sid = sid;
+    }
+
+    public String getStaffname() {
+        return staffname;
+    }
+
+    public void setStaffname(String staffname) {
+        this.staffname = staffname;
+    }
+
+    public Integer getStaffId() {
+        return staffId;
+    }
+
+    public void setStaffId(Integer staffId) {
+        this.staffId = staffId;
     }
 }
