@@ -45,7 +45,7 @@ public class LoginController {
     //跳转员工注册页面
     @RequestMapping("touserinfo")
     public String touserinfo(){
-        return "login/userinfoShow";
+        return "userinfo/userinfoShow";
     }
 
 

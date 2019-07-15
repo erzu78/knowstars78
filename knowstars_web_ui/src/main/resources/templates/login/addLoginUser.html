@@ -144,7 +144,7 @@
             success:function(data){
 
                 finduserByUserName(username2);
-                alert(username2)
+                //alert(username2)
                 if(data==1){
                     bootbox.alert("" +
                         "&nbsp;<br>" +
@@ -193,8 +193,8 @@
                          type:'post',
                          data:{username:username2},
                          success:function(data){
-                             alert(data.uid)
-                             alert("成功");
+                             //alert(data.uid)
+                             //alert("成功");
                          },
                          error:function(){
                             alert("失败");
