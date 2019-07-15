@@ -172,7 +172,7 @@
                     //自定义样式
                     className: "btn-success",
                     callback: function () {
-                        alert($("#addnewsflashform").serialize())
+                        //alert($("#addnewsflashform").serialize())
 
                         $.ajax({
                             url: submitUrl,
@@ -290,13 +290,13 @@
     }
 
     UpdNews = function(flashid){
-              alert(flashid)
+              //alert(flashid)
         dialogCurr('updDialogNews','http://192.168.1.234:8013/UpdNews',"修改",flashid);
 
     }
-
+//删除
     delnewsflash = function (flashid) {
-          alert(flashid)
+      //    alert(flashid)
         $.ajax({
             url:"http://192.168.1.234:8011/delById",
             type:'post',
