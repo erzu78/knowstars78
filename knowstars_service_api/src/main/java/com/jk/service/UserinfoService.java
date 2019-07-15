@@ -25,4 +25,7 @@ public interface UserinfoService {
 
     @RequestMapping("findCollect")
     List<User> findCollect(Integer userid);
+
+    @PostMapping("cancelColl")
+    void cancelColl(Integer infuserId);
 }

@@ -20,4 +20,6 @@ public interface UserinfoMapper {
     void updatePass(User user);
 
     List<User> findCollect(@Param("userid") Integer userid);
+
+    void cancelColl(@Param("infuserId") Integer infuserId);
 }

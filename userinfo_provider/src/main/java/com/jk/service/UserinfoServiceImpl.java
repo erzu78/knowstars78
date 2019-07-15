@@ -44,4 +44,9 @@ public class UserinfoServiceImpl implements UserinfoService{
     public List<User> findCollect(@RequestBody Integer userid) {
         return userinfoMapper.findCollect(userid);
     }
+
+    @Override
+    public void cancelColl(@RequestBody Integer infuserId) {
+        userinfoMapper.cancelColl(infuserId);
+    }
 }

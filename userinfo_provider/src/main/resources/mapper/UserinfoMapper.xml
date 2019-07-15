@@ -19,4 +19,9 @@
 SELECT * FROM infuser iu , t_user tu , t_information ti  WHERE tu.uid = iu.userId AND ti.infId = iu.infId
 AND iu.userId = #{userid}
     </select>
+
+    <!--取消收藏-->
+    <delete id="cancelColl">
+     DELETE FROM infuser WHERE infuserId = #{infuserId}
+    </delete>
 </mapper>

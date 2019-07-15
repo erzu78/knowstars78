@@ -79,4 +79,14 @@ public class UserinfoController {
         List<User> collect = userinfoServiceFeign.findCollect(userid);
         return collect;
     }
+
+
+    //取消收藏
+
+    @PostMapping("cancelColl")
+    public void cancelColl(Integer infuserId){
+
+        userinfoServiceFeign.cancelColl(infuserId);
+
+    }
 }

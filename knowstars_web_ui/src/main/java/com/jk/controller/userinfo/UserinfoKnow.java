@@ -42,4 +42,10 @@ public class UserinfoKnow {
         model.addAttribute("userId",userId);
         return "userinfo/upPassDialog";
     }
+
+    //跳转搜索页面
+    @RequestMapping("toSearch")
+    public String toSearch(){
+        return "userinfo/searchKnow";
+    }
 }

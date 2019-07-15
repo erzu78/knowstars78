@@ -452,21 +452,10 @@
     <div class="tabPane tabPaneSelected">我的收藏</div>
 </div>
     <div class="content">
-    <div class="favorite" style="height: auto;width: 900px">
+    <div class="favorite" style="height: auto;width: 900px" id="divCollId">
 
 
-        <div  style="height: 160px;width: 900px">
-            <div style="height: 160px;width: 200px;float: left">
-              <img src="" id="imgId" width="200px" height="160px">
-            </div>
-
-            <div style="height: 160px;width: 700px;float: right">
-
-                <div style="height: 60px;width: 700px;float: top">
-                    &nbsp;&nbsp;&nbsp;<span  id="titleId"></span>
-                </div>
-            </div>
-        </div>
+        <a href="javascript:reload1()">点击刷新页面</a>
 
 
     </div></div></div></div>
@@ -479,7 +468,7 @@
 <script src="//sta.36krcnd.com/36krx2018-front/static/runtime.c6b798bb.js" type="text/javascript"></script><script src="//sta.36krcnd.com/36krx2018-front/static/app.9b6120b3.js" type="text/javascript"></script>
 
 </body>
-<script>
+<script type="text/javascript">
 
     var Myip ="http://192.168.1.126:8087";
 
@@ -494,8 +483,27 @@ $(function(){
         success:function(data){
 
             for (var i=0;i< data.length;i++) {
-                $("#imgId").attr("src",data[i].articleimg);
-                $("#titleId").html(data[i].inftitle);
+                /*$("#imgId").attr("src",data[i].articleimg);
+                $("#titleId").html(data[i].inftitle);*/
+var htmlDiv="<div  style=\"height: 160px;width: 900px\">\n" +
+    "                    <div style=\"height: 160px;width: 200px;float: left\">\n" +
+    "                    <img src=\""+data[i].articleimg+"\" id=\"imgId\" width=\"200px\" height=\"160px\">\n" +
+    "                    </div>\n" +
+    "                    <div style=\"height: 160px;width: 700px;float: right\">\n" +
+    "                    <div style=\"height: 60px;width: 700px;float: top\">\n" +
+    "                    &nbsp;&nbsp;&nbsp;<span  id=\"titleId\">"+data[i].inftitle+"</span>\n" +
+    "                    </div>\n" +
+    "\n" +
+    "                    <div style=\"height: 80px;width: 700px\">\n" +
+    "\n" +
+    "                    </div>\n" +
+    "                    <div style=\"height: 20px;width: 700px\">\n" +
+    "                    &nbsp;&nbsp;&nbsp; <a href='javascript:cancelColl("+data[i].infuserId+"),reload1()'>取消收藏</a>\n" +
+    "                </div>\n" +
+    "                </div>\n" +
+    "                </div>\n"+
+        "<hr>"
+                $("#divCollId").append(htmlDiv);
             }
 
 
@@ -517,6 +525,30 @@ $(function(){
     //账号密码页面
     function  accPass() {
         location.href="toAccPass"
+    }
+
+    //取消收藏
+    function cancelColl(infuserId){
+
+        $.ajax({
+            url:Myip+"/cancelColl",
+            type:'post',
+            dataType:'json',
+            data:{infuserId:infuserId},
+            success:function(data){
+
+             p;3
+            },
+            error:function(){
+
+
+            }
+        })
+    }
+    
+    //刷新页面
+    function  reload1() {
+        location.reload();
     }
 </script>
 </html>
