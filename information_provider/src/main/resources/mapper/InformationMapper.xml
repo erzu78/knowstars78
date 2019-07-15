@@ -9,12 +9,13 @@
     <result column="articleinformation" property="articleinformation" jdbcType="VARCHAR" />
     <result column="articleimg" property="articleimg" jdbcType="VARCHAR" />
     <result column="tyid" property="tyid" jdbcType="INTEGER" />
+    <result column="hot" property="hot" jdbcType="INTEGER" />
     <result column="topicid" property="topicid" jdbcType="INTEGER" />
     <result column="subtitle" property="subtitle" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     infId, infTitle, authorid, releasetime, articleinformation, articleimg, tyid, topicid, 
-    subtitle
+    subtitle,hot
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -24,6 +25,11 @@
   </select>
   <select id="infoList" resultMap="BaseResultMap">
     select i.*,p.topicname topicname,ty.tname tname,s.staffname staffname from t_information i,t_staff s,info_type ty,t_topic p where i.topicid=p.topicid and i.authorid=s.sid and i.tyid=ty.tid
+    limit #{start},#{rows}
+  </select>
+  <select id="toZwww" resultMap="BaseResultMap">
+    select i.*,p.topicname topicname,ty.tname tname,s.staffname staffname from t_information i,t_staff s,info_type ty,t_topic p where i.topicid=p.topicid and i.authorid=s.sid and i.tyid=ty.tid
+    and ty.tid=#{tid}
     limit #{start},#{rows}
   </select>
   <select id="queryCount" resultType="long">
@@ -50,7 +56,7 @@
       )
     values ( #{inftitle,jdbcType=VARCHAR}, #{authorid,jdbcType=INTEGER},
       #{releasetime,jdbcType=TIMESTAMP}, #{articleinformation,jdbcType=VARCHAR}, #{articleimg,jdbcType=VARCHAR}, 
-      #{tyid,jdbcType=INTEGER}, #{topicid,jdbcType=INTEGER}, #{subtitle,jdbcType=VARCHAR}
+      #{tyid,jdbcType=INTEGER}, #{topicid,jdbcType=INTEGER}, #{subtitle,jdbcType=VARCHAR},
       )
   </insert>
   <insert id="insertSelective" parameterType="com.jk.pojo.Information" >

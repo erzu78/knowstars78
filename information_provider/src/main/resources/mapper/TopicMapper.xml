@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.TopicMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.pojo.Topic" >
+    <id column="topicid" property="topicid" jdbcType="INTEGER" />
+    <result column="topicname" property="topicname" jdbcType="VARCHAR" />
+    <result column="topicimg" property="topicimg" jdbcType="VARCHAR" />
+    <result column="tcount" property="tcount" jdbcType="INTEGER" />
+    <result column="tdate" property="tdate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    topicid, topicname, topicimg, tcount, tdate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_topic
+    where topicid = #{topicid,jdbcType=INTEGER}
+  </select>
+  <select id="queryTopic" resultMap="BaseResultMap">
+    select p.*,i.inftitle inftitle from t_topic p,t_information i where i.topicid=p.topicid group by p.topicname
+  </select>
+
+
+
+
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_topic
+    where topicid = #{topicid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jk.pojo.Topic" >
+    insert into t_topic (topicid, topicname, topicimg, 
+      tcount, tdate)
+    values (#{topicid,jdbcType=INTEGER}, #{topicname,jdbcType=VARCHAR}, #{topicimg,jdbcType=VARCHAR}, 
+      #{tcount,jdbcType=INTEGER}, #{tdate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jk.pojo.Topic" >
+    insert into t_topic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="topicid != null" >
+        topicid,
+      </if>
+      <if test="topicname != null" >
+        topicname,
+      </if>
+      <if test="topicimg != null" >
+        topicimg,
+      </if>
+      <if test="tcount != null" >
+        tcount,
+      </if>
+      <if test="tdate != null" >
+        tdate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="topicid != null" >
+        #{topicid,jdbcType=INTEGER},
+      </if>
+      <if test="topicname != null" >
+        #{topicname,jdbcType=VARCHAR},
+      </if>
+      <if test="topicimg != null" >
+        #{topicimg,jdbcType=VARCHAR},
+      </if>
+      <if test="tcount != null" >
+        #{tcount,jdbcType=INTEGER},
+      </if>
+      <if test="tdate != null" >
+        #{tdate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jk.pojo.Topic" >
+    update t_topic
+    <set >
+      <if test="topicname != null" >
+        topicname = #{topicname,jdbcType=VARCHAR},
+      </if>
+      <if test="topicimg != null" >
+        topicimg = #{topicimg,jdbcType=VARCHAR},
+      </if>
+      <if test="tcount != null" >
+        tcount = #{tcount,jdbcType=INTEGER},
+      </if>
+      <if test="tdate != null" >
+        tdate = #{tdate,jdbcType=DATE},
+      </if>
+    </set>
+    where topicid = #{topicid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jk.pojo.Topic" >
+    update t_topic
+    set topicname = #{topicname,jdbcType=VARCHAR},
+      topicimg = #{topicimg,jdbcType=VARCHAR},
+      tcount = #{tcount,jdbcType=INTEGER},
+      tdate = #{tdate,jdbcType=DATE}
+    where topicid = #{topicid,jdbcType=INTEGER}
+  </update>
+</mapper>

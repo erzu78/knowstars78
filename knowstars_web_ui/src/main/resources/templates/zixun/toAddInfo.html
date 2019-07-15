@@ -59,11 +59,24 @@
               <option value="1">最新</option>
               <option value="2">推荐</option>
               <option value="3">创投</option>
+              <option value="4">汽车</option>
+              <option value="5">科技</option>
+              <option value="6">企服</option>
+              <option value="7">生活</option>
+              <option value="8">职场</option>
+              <option value="9">创新</option>
+              <option value="10">房产</option>
+              <option value=11>其他</option>
 </select><br/>
     资讯主题：<select id="topicid" name="topicid" class="form-control" style="width: 300px" >
     <option value="">全部</option>
-    <option value="1">创投新闻</option>
-    <option value="2">未来地产</option>
+    <option value="1">手机厂商成长的烦恼</option>
+    <option value="2">智克分析</option>
+    <option value="3">焦点分析</option>
+    <option value="4">未来汽车</option>
+    <option value="5">神科技回复</option>
+    <option value="6">出海是门大生意</option>
+    <option value="7">最前线</option>
 </select><br/>
 </form>
 <script>
@@ -96,7 +109,7 @@
             msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
 
         }).on('fileuploaded', function (event, data, previewId, index) {
-            alert(data.response.imngName);
+           /* alert(data.response.imngName);*/
 
             var imgval = $('#articleimg').val();
 
