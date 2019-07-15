@@ -1,18 +1,16 @@
 package com.jk.controller;
 
-import com.alibaba.fastjson.JSON;
+import com.jk.pojo.User;
 import com.jk.service.LikeServiceFeign;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Description;
-import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.support.atomic.RedisAtomicLong;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 @RestController
 public class LikeController {
@@ -124,6 +122,10 @@ public class LikeController {
 
         return map;
     }
+
+
+
+
     /**
      * 查询评论
      * @param infId
@@ -131,7 +133,7 @@ public class LikeController {
      */
     @GetMapping("queryPing")
     public HashMap<String,String> queryPing(String infId){
-        Integer userId = 25;
+        Integer userId = 34;
         String pingContent = (String) redisTemplate.opsForValue().get("ping"+userId+infId);
         HashMap<String,String> map = new HashMap<>();
         map.put("pingContent",pingContent);
@@ -145,7 +147,7 @@ public class LikeController {
     @RequestMapping("addPing")
     public void addPing(String infId , String sp) {
 
-        Integer userId = 25;
+        Integer userId = 34;
         String inId = (String) redisTemplate.opsForValue().get("ping"+userId+infId);
 
         if(inId!=null){
@@ -159,6 +161,44 @@ public class LikeController {
             entityIdCounter.getAndIncrement();
             redisTemplate.opsForValue().set("ping"+userId+infId,sp);
         }
+    }
+
+
+
+
+
+    @GetMapping("sent")
+    public List<HashMap<String, Object>> hmget() {
+
+        List<Object> list = redisTemplate.opsForList().range("idssss",0,999999999);
+
+        List<HashMap<String, Object>> redisList = new ArrayList<>();
+
+        for (int i = 0; i < list.size(); i++) {
+            String str = (String) list.get(i);
+            HashMap<String,Object> map = (HashMap<String, Object>) redisTemplate.opsForHash().entries("hh"+str);
+            redisList.add(map);
+        }
+        return redisList;
+    }
+
+
+    @GetMapping("addRedis")
+    public void addRedis(){
+
+       RedisAtomicLong entityIdCounter = new RedisAtomicLong("testId", redisTemplate.getConnectionFactory());
+        String testId = String.valueOf(entityIdCounter.getAndIncrement());
+        redisTemplate.opsForList().leftPush("idssss",testId);
+        HashMap<String,String> map = new HashMap<>();
+        map.put("id","33");
+        map.put("name","oooohh");
+        redisTemplate.opsForHash().putAll("hh"+testId,map);
+
+
+
 
     }
+
+
+
 }
