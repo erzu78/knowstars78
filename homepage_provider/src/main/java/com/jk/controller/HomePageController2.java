@@ -1,7 +1,10 @@
 package com.jk.controller;
 
 import com.jk.dao.ImgMapper;
+import com.jk.dao.TreeMapper;
 import com.jk.pojo.Img;
+import com.jk.pojo.MenuTree;
+import com.jk.pojo.Tree;
 import com.jk.service.HomePageServiceApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,9 +19,19 @@ import java.util.List;
 public class HomePageController2 implements HomePageServiceApi {
     @Autowired
     private ImgMapper imgMapper;
+    @Autowired
+    private TreeMapper treeMapper;
     @RequestMapping("/queryImg")
     public List<Img> queryImg() {
         List<Img> gg = imgMapper.queryImg();
         return gg;
     }
+
+    @Override
+    @RequestMapping("queryTree")
+    public List<MenuTree> queryTree() {
+        return treeMapper.queryTree();
+    }
+
+
 }

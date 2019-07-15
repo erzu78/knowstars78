@@ -1,6 +1,7 @@
 package com.jk.controller;
 
 import com.jk.pojo.NewsFlash;
+import com.jk.pojo.Video;
 import com.jk.service.NewsFlashService;
 import com.jk.service.NewsFlashServiceApi;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,16 @@ public class NewsFlashController  implements NewsFlashServiceApi {
     @Override
     public List<NewsFlash> NewsQueryAll() {
         return newsFlashService.NewsQueryAll();
+    }
+
+    @Override
+    public List<NewsFlash> queryNews() {
+        return newsFlashService.queryNews();
+    }
+
+    @Override
+    public NewsFlash queryNewsFlashById(@RequestParam(value="flashid")Integer flashid) {
+        return newsFlashService.queryNewsFlashById(flashid);
     }
 
 

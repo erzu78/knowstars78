@@ -18,4 +18,5 @@ public interface ImgMapper {
     int updateByPrimaryKey(Img record);
 
     List<Img> queryImg();
+
 }

@@ -3,18 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+	  <script src="/admin/ueditor/ueditor.config.js"></script>
+      <script src="/admin/ueditor/ueditor.all.min.js"></script>
+      <script src="/admin/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <!-- 引入bootstrap的css -->
+    <link href="../js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入bootstrap-treeview的css -->
+    <link href="../js/treeview/bootstrap-treeview.min.css" rel="stylesheet">
+    <!-- 引入bootstrap-addTabs的css -->
+    <link href="../js/addTabs/addTabs.css" rel="stylesheet">
+    <!-- 引入bootstrap-table的css -->
+    <link href="../js/table/bootstrap-table.min.css" rel="stylesheet">
+    <!-- 引入fileinput的css -->
+    <link type="text/css" rel="stylesheet" href="../js/fileinput/css/fileinput.min.css"/>
+
+
+    <!-- 引入jquery -->
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <!-- 引入my97 -->
+    <script type="text/javascript" src="../js/my97/WdatePicker.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/treeview/bootstrap-treeview.min.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/addTabs/addTabs.js"></script>
+    <!-- 引入bootstrap-table的js-->
+    <script type="text/javascript" src="../js/table/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../js/table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- 引入bootbox.js -->
+    <script type="text/javascript" src="../js/bootbox/bootbox.js"></script>
+    <!-- 引入fileinput的js -->
+    <script type="text/javascript" src="../js/fileinput/js/fileinput.min.js"></script>
+    <!--  引入fileinput的js -->
+    <script type="text/javascript" src="../js/fileinput/js/locales/zh.js"></script>
+    <script type="text/javascript" src="../js/fileinput/themes/fa/theme.js"></script>
+
+    <script src="/admin/ueditor/ueditor.config.js"></script>
+    <script src="/admin/ueditor/ueditor.all.min.js"></script>
+    <script src="/admin/ueditor/lang/zh-cn/zh-cn.js"></script>
 </head>
 <body>
 <form id="addform" method="post">
 <div class="form-group">
     <label for="articleimg">资讯封面</label>
-    <input type="text" id="articleimg" name="articleimg"/>
+    <input type="hidden" id="articleimg" name="articleimg"/>
     <input type="file" class="projectfile" name="imgg" id="headImg">
 </div>
     资讯大标题：<input type="text" class="form-control" id="inftitle" name="inftitle" style="width: 300px"><br/>
     资讯小标题: <input type="text" class="form-control" id="subtitle" name="subtitle" style="width: 300px"><br/>
     发布时间：  <input type="date" class="form-control" id="releasetime" style="width: 300px" name="releasetime"><br/>
-    文章内容: <input type="text" class="form-control" id="articleinformation" name="articleinformation" style="width: 300px"><br/>
+    文章内容: <textarea name="articleinformation" id="articleinformation"></textarea><br/>
     资讯类型：<select id="tyid" name="tyid" class="form-control" style="width: 300px" >
               <option value="">全部</option>
               <option value="1">最新</option>
@@ -28,6 +67,7 @@
 </select><br/>
 </form>
 <script>
+    UE.getEditor('articleinformation');
     var ip = "http://192.168.1.128";
 
     $(function () {
@@ -68,6 +108,21 @@
             $('#articleimg').val(imgval);
         });
     }
+    /*function add(){
+        $.ajax({
+            url:"http://localhost:8013/addInfo",
+            type: 'post',
+            data: $("#addform").serialize(),
+            success: function () {
+                bootbox.alert("保存成功");
+               location.href="http://localhost:8280/tonfo";
+                //location.reload();
+            },
+            error: function () {
+                bootbox.alert("失败");
+            }
+        });
+    }*/
 </script>
 </body>
 </html>

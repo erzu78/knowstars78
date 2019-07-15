@@ -1,14 +1,17 @@
 package com.jk.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.jk.cliservice.CliService;
 import com.jk.pojo.Staff;
 import com.jk.pojo.User;
 import com.jk.service.LoginService;
 import com.jk.util.HttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -20,16 +23,25 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+    @Autowired
+    private RedisTemplate redisTemplate;
+
     //用户登录页面
     @RequestMapping(value="loginuser")
     public String loginuser(User loginuser){
         User userModel=loginService.login(loginuser);
         if(userModel!=null){
+            //将对象或者集合转换成json字符串
+            String userjs = JSON.toJSONString(userModel);
+            System.out.println("loginuser = [" + userjs + "]");
+            redisTemplate.opsForValue().set("userjs",userjs);
             return "1";
         }else{
             return "2";
         }
+
     }
+
 
     //用户注册
     @RequestMapping("addLoginUser")
@@ -57,6 +69,10 @@ public class LoginController {
     public String loginstaff(Staff loginstaff){
         Staff staffModel=loginService.loginstaff(loginstaff);
         if(staffModel!=null){
+            //将对象或者集合转换成json字符串
+            String staffjs = JSON.toJSONString(staffModel);
+            System.out.println("loginstaff = [" + staffjs + "]");
+            redisTemplate.opsForValue().set("staffjs",staffjs);
             return "1";
         }else{
             return "2";
@@ -89,9 +105,9 @@ public class LoginController {
         int newcode = (int)(Math.random()*899999)+100000;
         Map<String, Object> hashMap = new HashMap<>();
         hashMap.put("mobile",phoneName);
-        hashMap.put("tpl_id","172497");
+        hashMap.put("tpl_id","172959");
         hashMap.put("tpl_value","%23code%23%3D"+newcode);
-        hashMap.put("key","5528967c9bf6b1568e5385379e754630");
+        hashMap.put("key","4dbca76f9b8d9e635c52c4dae4b9cac6");
 
         try {
             String s = HttpClient.sendGet("http://v.juhe.cn/sms/send", hashMap);
@@ -103,6 +119,13 @@ public class LoginController {
         }
         hashMap.put("newcode",newcode);
         return hashMap;
+    }
+
+    //根据用户名查询用户id
+    @RequestMapping("finduserByUserName")
+    public User finduserByUserName(@RequestParam("username") String username){
+        User list=loginService.finduserByUserName(username);
+        return list;
     }
 
 }

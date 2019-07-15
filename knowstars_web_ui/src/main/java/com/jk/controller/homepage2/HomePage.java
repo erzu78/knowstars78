@@ -1,4 +1,4 @@
-package com.jk.controller.homePage;
+package com.jk.controller.homepage2;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomePage {
     @RequestMapping("toHomePage")
     public String toHomePage(){
-        return "homePage/testmain";
+        return "homePage/testMain";
+    }
+
+    @RequestMapping("toTree")
+    public String toTree(){
+        return "homePage/Tree";
     }
 }

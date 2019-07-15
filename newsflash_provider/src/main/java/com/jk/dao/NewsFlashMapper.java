@@ -1,6 +1,7 @@
 package com.jk.dao;
 
 import com.jk.pojo.NewsFlash;
+import com.jk.pojo.Video;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -30,4 +31,8 @@ public interface NewsFlashMapper {
 
 
     List<NewsFlash> NewsQueryAll();
+
+    List<NewsFlash> queryNews();
+
+    NewsFlash queryNewsFlashById(@Param("flashid")Integer flashid);
 }

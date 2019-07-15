@@ -2,6 +2,7 @@ package com.jk.service;
 
 import com.jk.dao.NewsFlashMapper;
 import com.jk.pojo.NewsFlash;
+import com.jk.pojo.Video;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,6 +65,16 @@ public class NewsFlashServiceImpl  implements NewsFlashService {
     @Override
     public List<NewsFlash> NewsQueryAll() {
         return newsFlashMapper.NewsQueryAll();
+    }
+
+    @Override
+    public List<NewsFlash> queryNews() {
+        return newsFlashMapper.queryNews();
+    }
+
+    @Override
+    public NewsFlash queryNewsFlashById(Integer flashid) {
+        return newsFlashMapper.queryNewsFlashById(flashid);
     }
 
 

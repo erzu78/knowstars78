@@ -1,6 +1,7 @@
 package com.jk.service;
 
 import com.jk.pojo.NewsFlash;
+import com.jk.pojo.Video;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,10 @@ public interface NewsFlashServiceApi {
     void UpdNews(@RequestBody NewsFlash newsFlash);
     @GetMapping(value = "/NewsQueryAll")
     List<NewsFlash> NewsQueryAll();
+    @GetMapping(value = "/queryNews")
+    List<NewsFlash> queryNews();
+    @RequestMapping("/queryNewsFlashById")
+    NewsFlash queryNewsFlashById(@RequestParam(value="flashid")Integer flashid);
 
     /*@RequestMapping("/NewsFlashList")
     long queryCount();*/

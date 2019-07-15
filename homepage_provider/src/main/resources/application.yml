@@ -8,9 +8,11 @@ spring:
   application:
     name: homepage-provider
   datasource:
-    url: jdbc:mysql://localhost:3306/happy?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
-    username: root
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.1.139:3306/knowstars78?useUnicode=true&characterEncoding=utf-8
+    username: erzhu
     password: 123
-    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
 mybatis:
   mapper-locations: mapping/*.xml

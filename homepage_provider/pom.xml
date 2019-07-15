@@ -44,7 +44,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
+			<version>5.1.30</version>
 		</dependency>
 
 		<dependency>
@@ -52,6 +52,8 @@
 			<artifactId>knowstars_service_api</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
+
+
 	</dependencies>
 
 	<dependencyManagement>

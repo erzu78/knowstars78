@@ -62,10 +62,11 @@ public class UserinfoController {
         OSSClientUtil ossClient = new OSSClientUtil();
         String name = ossClient.uploadImg2Oss(imgg);
         String imgUrl = ossClient.getImgUrl(name);
-        String[] split = imgUrl.split("\\?");
+      /*  String[] split = imgUrl.split("\\?");*/
 
         Map<String, Object> map = new HashMap<>();
-        map.put("imngName", split[0]);
+        map.put("imngName", imgUrl);
+
 
         return (HashMap<String, Object>) map;
     }
@@ -77,5 +78,15 @@ public class UserinfoController {
 
         List<User> collect = userinfoServiceFeign.findCollect(userid);
         return collect;
+    }
+
+
+    //取消收藏
+
+    @PostMapping("cancelColl")
+    public void cancelColl(Integer infuserId){
+
+        userinfoServiceFeign.cancelColl(infuserId);
+
     }
 }
