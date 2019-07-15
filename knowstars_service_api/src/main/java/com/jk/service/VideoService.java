@@ -1,5 +1,6 @@
 package com.jk.service;
 
+import com.jk.pojo.Staff;
 import com.jk.pojo.Video;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,4 +37,13 @@ public interface VideoService {
 
     @PostMapping("deleteVideo/{vid}")
     void deleteVideo(@PathVariable(value = "vid") Integer vid);
+
+    @GetMapping("queryAuthor")
+    List<Staff> queryAuthor();
+
+    @GetMapping("queryGengDuoVideo")
+    List<Video> queryGengDuoVideo();
+
+    @GetMapping("queryAuthorVideo/{videoId}")
+    List<Video> queryAuthorVideo(@PathVariable("videoId") Integer videoId);
 }

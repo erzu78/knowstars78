@@ -43,6 +43,12 @@ public class VideoController {
         model.addAttribute("vid",vid);
         return "video/recentVideo";
     }
+    //去推荐作者的视频信息页面
+    @RequestMapping("toAuthorVideo")
+    public String toAuthorVideo(Integer authorId,Model model){
+          model.addAttribute("authorId",authorId);
+          return "video/authorVideo";
+    }
 
 
 

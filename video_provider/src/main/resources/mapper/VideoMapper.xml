@@ -4,8 +4,8 @@
 
 
 <insert id="addVideo">
-insert into T_VIDEO(headline,issuer,issueTime,introduction,videoImg,videoNews)
-            values (#{headline},#{issuer},now(),#{introduction},#{videoImg},'video/512f3ef61ab7b989-20.mp4')
+insert into T_VIDEO(headline,issueTime,introduction,videoImg,videoNews,staffId)
+            values (#{headline},now(),#{introduction},#{videoImg},'video/guochang.mp4',10)
 </insert>
 
 

@@ -1,5 +1,6 @@
 package com.jk.controller;
 
+import com.jk.pojo.Staff;
 import com.jk.pojo.Video;
 import com.jk.service.VideoServiceFeign;
 import com.jk.util.OSSClientUtil;
@@ -49,10 +50,10 @@ public class VideoController {
         OSSClientUtil ossClient = new OSSClientUtil();
         String name = ossClient.uploadImg2Oss(imgg);
         String imgUrl = ossClient.getImgUrl(name);
-        String[] split = imgUrl.split("\\?");
+        //String[] split = imgUrl.split("\\?");
 
         Map<String, Object> map = new HashMap<>();
-        map.put("imngName", split[0]);
+        map.put("imngName", imgUrl);
 
         return (HashMap<String, Object>) map;
     }
@@ -94,6 +95,21 @@ public class VideoController {
                     videoServiceFeign.deleteVideo(vid);
                 }
 
+                //查询视频专栏页面的 推荐作者 (前5条)
+                @GetMapping("queryAuthor")
+                public List<Staff> queryAuthor(){
+                    return videoServiceFeign.queryAuthor();
+                }
+                //查看更多视频信息
+                @GetMapping("queryGengDuoVideo")
+                public List<Video> queryGengDuoVideo(){
+                    return videoServiceFeign.queryGengDuoVideo();
+                }
+                //查询推荐作者的视频信息
+                @GetMapping("queryAuthorVideo")
+                public List<Video> queryAuthorVideo(Integer videoId){
+                    return videoServiceFeign.queryAuthorVideo(videoId);
+                }
 
 
 }
