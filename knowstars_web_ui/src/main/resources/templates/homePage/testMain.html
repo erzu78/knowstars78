@@ -850,23 +850,22 @@
                                         <span class="kr-column-title-icon"></span>
                                         <span class="kr-column-title-text weight-bold">最新快讯</span>
                                     </div>
-                                 <!--   <div class="column-newsflash-main">
-                                    <div class="column-newsflash-main">
+                              <div class="column-newsflash-main" >
+                                    <div class="column-newsflash-main"  id="NewsId">
                                         <div class="column-newsflash-vertiacl-line"></div>
                                           <div class="column-newsflash-item">
                                             <div class="column-newsflash-item-head">
                                                 <span class="column-newsflash-item-icon"></span>
 
 
-                                                &lt;!&ndash;<div class="ulSiteRecruitment" th:each="news,iterStat : ${nslt}">
-&ndash;&gt;
 
-                                                <div class="column-newsflash-item-title ellipsis-2 weight-bold ">快讯！！ &lt;!&ndash;<span th:text="${news.flashtitle}"></span>&ndash;&gt;
+
+                                                <div class="column-newsflash-item-title ellipsis-2 weight-bold ">快讯！！
                                                 </div>
                                                     <div class="column-newsflash-item-time">5分钟前</div></div>
 
 
-                                          &lt;!&ndash; // </div>&ndash;&gt;
+
                                                 <div class="column-newsflash-item-title ellipsis-2 weight-bold ">商务部：推动便利店品牌化连锁化发展</div>
                                                 <div class="column-newsflash-item-time">5分钟前</div>
                                             </div>
@@ -874,52 +873,12 @@
                                                 <p>商务部办公厅印发关于推发展的工作通知，发照“。（证券时报）</p>
                                                 <div class="kr-default-img-no-logo "></div>
                                             </div>
-                                          </div>-->
-
+                                          </div>
                 <div style="width:1000px;height:1310px;margin-left: 55px">
                          <table width="1000px" height="1000px" id="NewsData">
 
                         </table>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1030,7 +989,7 @@
 
 
 <script type="text/javascript">
-    $(function(){
+ $(function(){
         $.ajax({
             type:"post",
             url:"queryImg",
@@ -1057,50 +1016,31 @@
 
 
 
-    var ip="http://localhost";
-            $(function(){
-                    $.ajax({
-                        url: ip + ":8011/NewsQueryAll",
-                        xhrFields: {
-                            //允许带上凭据
-                            //
-                            withCredentials: true
-                        },
-                        crossDomain: true,
-                        type: 'post',
-                        success: function (data) {
-                            //alert(data[0].orderId);
-                            var orderData = "<tr>\ n" +
-                                "                    <td>\n" +
-                                "                        <font size=\"3\" >快讯标题</font>\n" +
-                                "                       &nbsp;&nbsp;&nbsp;&nbsp;\n" +
-                                "                      &nbsp;&nbsp;&nbsp;\n" +
-                                "\n" +
-                                "                    </td>\n" +
-                                "                    <td>\n" +
-                                "                        <font size=\"3\" >快讯内容</font>\n" +
-                                "                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n" +
-                                "                    </td>\n" +
-                                "                </tr>"
-                        }
+    var ip="http://192.168.1.234";
 
+    $(function(){
+        queryNews();
+    })
 
+    function queryNews(){
+        $.ajax({
+            url:ip+":8011/queryNews",
+            type:'get',
+            success:function(data){
+               // alert(data)
+                // commonality(data);
+                var     AboutNews = "";
+                for (var i = 0 ; i < data.length ;i++){
+                    AboutNews +='<div class="flow-item"><div class="kr-shadow-content"><ul><li>发布于'+data[i].creattime+'</li></ul><a class="flow-item-pic" href="toSingleVideo?viId='+data[i].flashid+'" target="_blank" rel="noopener noreferrer"><span class="video-icon"></span></a><div class="flow-item-detail"><a class="flow-item-title weight-bold ellipsis-2" href="toNewsFlashPage?newsid='+data[i].flashid+'" target="_blank" rel="noopener noreferrer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+data[i].flashtitle+'</a></div></div></div></div>';
+                }
 
-               /*       for(var i = 0;i<data.length;i++){
-                                orderData += "<tr>\n" +
-                                    "                    <td>\n" +
-                                    "                        <input style=\"width:60px\" value='"+data[i].flashtitle+"' /></td>\n" +
-
-
-
-
-                                    "                    <td><input value='"+data[i].flashinfo+"' /><br>\n"
-                      }*/
-
-
-
-
-
+                $("#NewsId").html(AboutNews);
+            },
+            error:function(){
+                alert("失败");
+            }
+        });
+    }
 </script>
 </body>
 </html>
