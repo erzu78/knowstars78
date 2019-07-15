@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>BootstrapTable分页</title>
+
+    <!-- 引入bootstrap的css -->
+    <link href="../js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入bootstrap-treeview的css -->
+    <link href="../js/treeview/bootstrap-treeview.min.css" rel="stylesheet">
+    <!-- 引入bootstrap-addTabs的css -->
+    <link href="../js/addTabs/addTabs.css" rel="stylesheet">
+    <!-- 引入bootstrap-table的css -->
+    <link href="../js/table/bootstrap-table.min.css" rel="stylesheet">
+    <!-- 引入fileinput的css -->
+    <link type="text/css" rel="stylesheet" href="../js/fileinput/css/fileinput.min.css"/>
+
+
+    <!-- 引入jquery -->
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <!-- 引入my97 -->
+    <script type="text/javascript" src="../js/my97/WdatePicker.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/treeview/bootstrap-treeview.min.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/addTabs/addTabs.js"></script>
+    <!-- 引入bootstrap-table的js-->
+    <script type="text/javascript" src="../js/table/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../js/table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- 引入bootbox.js -->
+    <script type="text/javascript" src="../js/bootbox/bootbox.js"></script>
+    <!-- 引入fileinput的js -->
+    <script type="text/javascript" src="../js/fileinput/js/fileinput.min.js"></script>
+    <!--  引入fileinput的js -->
+    <script type="text/javascript" src="../js/fileinput/js/locales/zh.js"></script>
+
+    <script type="text/javascript" src="../js/fileinput/themes/fa/theme.js"></script>
+
+    <style type="text/css">
+        body {padding-top:55px;}
+    </style>
+    <!-- Bootstrap 插件 css -->
+    <link href="<%=request.getContextPath() %>/js/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Bootstrap 核心css -->
+    <link href="<%=request.getContextPath() %>/js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap TreeView css -->
+    <link href="<%=request.getContextPath() %>/js/bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+    <!-- Bootstrap addTabs css -->
+    <link href="<%=request.getContextPath() %>/js/bootStrap-addTabs/bootstrap.addtabs.css" rel="stylesheet">
+
+    <!-- Bootstrap table css -->
+    <link href="<%=request.getContextPath() %>/js/bootstrap-table/dist/bootstrap-table.css" rel="stylesheet">
+    <!-- bootstrap-datetimepicker css -->
+    <link href="<%=request.getContextPath() %>/js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">
+
+    <!-- bootstrap-dialog css -->
+    <link href="<%=request.getContextPath() %>/js/bootstrap-dialog/dist/css/bootstrap-dialog.css" rel="stylesheet">
+    <!-- bootstrap-fileinput css -->
+    <link href="<%=request.getContextPath() %>/js/bootstrap-fileinput/css/fileinput.css" rel="stylesheet">
+    <!-- <style type="text/css">
+      .navbar{
+         height: 60px;
+         background: black;
+
+      }
+      .layout{
+        padding-top: 60px;
+        position: relative;
+
+      }
+
+    </style> -->
+    <!--jQuery核心js  -->
+    <script src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
+    <!-- bootstrap 核心js文件 -->
+    <script src="<%=request.getContextPath() %>/js/bootstrap/js/bootstrap.min.js"></script>
+    <!-- bootStrap TreeView -->
+    <script src="<%=request.getContextPath() %>/js/bootstrap-treeview/dist/bootstrap-treeview.min.js"></script>
+
+    <!-- bootStrap addTabs -->
+    <script src="<%=request.getContextPath() %>/js/bootStrap-addTabs/bootstrap.addtabs.js"></script>
+
+    <!-- bootStrap table -->
+    <script src="<%=request.getContextPath() %>/js/bootstrap-table/dist/bootstrap-table.js"></script>
+    <!-- bootStrap table 语言包中文-->
+    <script src="<%=request.getContextPath() %>/js/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
+
+    <!-- bootstrap-datetimepicker -->
+    <script src="<%=request.getContextPath() %>/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="<%=request.getContextPath() %>/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+    <!-- bootstrap-dialog -->
+    <script src="<%=request.getContextPath() %>/js/bootstrap-dialog/dist/js/bootstrap-dialog.js"></script>
+    <!-- bootstrap-fileinput -->
+    <script src="<%=request.getContextPath() %>/js/bootstrap-fileinput/js/fileinput.js"></script>
+    <script src="<%=request.getContextPath() %>/js/bootstrap-fileinput/js/locales/zh.js"></script>
+
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <!--定义在容器顶部  -->
+    <div class="container-fluid">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <!-- 头部信息 -->
+        <div class="navbar-header">
+            <a class="navbar-brand glyphicon glyphicon-globe" href="javascript:dialogRedis()" id="menu-toggle">
+                KnowStarts后台管理系统
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active "><a href="#" class="glyphicon glyphicon-home">&nbsp控制台<span class="sr-only">(current)</span></a></li>
+                <li><a href="#" class="glyphicon glyphicon-wrench">&nbsp设备管理</a></li>
+                <li><a href="#" class="glyphicon glyphicon-glass">&nbsp合作单位</a></li>
+            </ul>
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+
+            <!-- 右边的    导航 按钮 -->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="tostaffLogin">登录</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" id="staRole" aria-expanded="false"><span class="caret"></span></a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="row">
+
+    <div class="col-md-3">
+        <div id="treeDiv"></div>
+    </div>
+
+    <div class="col-md-9">
+        <ul id="tabs" class="nav nav-tabs" role="tablist">
+        </ul>
+
+        <!-- 选项卡  内容 -->
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" style="" class="tab-pane active " id="home">
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-4 column">
+            <div id="tree"></div>
+        </div>
+        <div class="col-md-8 column">
+            <ul class="nav nav-tabs" id="tabs1" role="tablist">
+                <li class="active" role="presentation">
+                    <a aria-controls="home" data-toggle="tab" href="#home" role="tab">
+                        Home
+                    </a>
+                </li>
+            </ul>
+
+            <!--想要打开tab页内容，需要把对应的ul和要打开的内容tab放在一个div里  -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="home" role="tabpanel">
+                    欢迎访问
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script type="text/javascript">
+
+/*
+    $(function (){
+        $.addtabs({iframeHeight:870});
+        $.ajax({
+            url : "Access-Control-Allow-Origin:http://localhost:8085/queryTree",
+            type : "post",
+            dataType : "json",
+            success : function (data){
+                $("#treeDiv").treeview({
+                    //data属性 树节点信息 json数组
+                    data: data,
+                    //tree默认展开的节点级别默认为2
+                    levels: 0,
+                    //含有子节点的图标
+                    collapseIcon:'glyphicon glyphicon-star-empty',
+                    //没有子节点的图标
+                    emptyIcon:'glyphicon glyphicon-usd',
+                    //背景颜色
+                    //backColor: 'green'
+                    //是否显示复选框
+                    showCheckbox:false,
+                    //是否允许选中多个节点
+                    //multiSelect:true,
+                    //启用节点的超链接功能默认为false,节点需指定href属性
+                    enableLinks:false,
+                    //事件当节点选中时
+                    onNodeSelected:function(event,node){
+                        //动态向 nav-tabs 导航标签添加tab选项卡
+                        //addTabs方法  add() 添加tab  close()关闭tab  closeAll() 关闭全部tab
+                        //alert(node.url);
+                        if(null !=  node.url){
+                            $.addtabs.add({
+                                id:node.id,
+                                title:node.text,
+                                url:node.url,
+                            })
+                        }
+                    }
+                })
+            },error : function (){
+                alert("查询树失败");
+            }
+        })
+    })
+*/
+/*
+    $.ajax({
+        url:"Access-Control-Allow-Origin:http://localhost:8085/queryTreeByPid",
+        xhrFields: {
+            withCredentials: true
+        },
+        type:"post",
+        success:function(data){
+            if(data.role==1){
+                $("#staRole").html("管理员");
+            }else{
+                $("#staRole").html("客服");
+            }
+        },
+        error:function(){
+            alert("失败")
+        }
+    })
+*/
+function getTreeData(){
+    var tree_data = "";
+    $.ajax({
+        url:"http://localhost:8085/queryTree",
+        type:"post",
+        dataType:"json",
+        async:false,
+        success:function(data){
+            tree_data = data;
+        },
+        error:function(){
+            alert("查询出错");
+        }
+    });
+    return tree_data;
+}
+$(function(){
+    $('#tree').treeview({
+        data:getTreeData(),
+        onNodeSelected:function(event,node){
+// 	        	当url不为空时，添加选项卡
+            if(node.url!=null && node.url!="" ){
+// 	        		添加选项卡
+                $.addtabs.add({
+                    id:node.id,
+                    title:node.text,
+                    // content:"固定数据",
+                    //url引用的请求是选项卡展示的内容。即真正要展示的业务内容的查询请求。
+                    url:"http://localhost:8085/"+node.url
+                })
+
+            }
+        }
+    })
+})
+</script>
+
+</html>
