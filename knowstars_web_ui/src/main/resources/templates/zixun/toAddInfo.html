@@ -65,7 +65,6 @@
     <option value="1">创投新闻</option>
     <option value="2">未来地产</option>
 </select><br/>
-    <input type="button" value="保存" onclick="add()">
 </form>
 <script>
     UE.getEditor('articleinformation');
@@ -109,7 +108,7 @@
             $('#articleimg').val(imgval);
         });
     }
-    function add(){
+    /*function add(){
         $.ajax({
             url:"http://localhost:8013/addInfo",
             type: 'post',
@@ -123,7 +122,7 @@
                 bootbox.alert("失败");
             }
         });
-    }
+    }*/
 </script>
 </body>
 </html>
