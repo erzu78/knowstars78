@@ -90,9 +90,9 @@ public class LoginController {
         int newcode = (int)(Math.random()*899999)+100000;
         Map<String, Object> hashMap = new HashMap<>();
         hashMap.put("mobile",phoneName);
-        hashMap.put("tpl_id","172497");
+        hashMap.put("tpl_id","172959");
         hashMap.put("tpl_value","%23code%23%3D"+newcode);
-        hashMap.put("key","5528967c9bf6b1568e5385379e754630");
+        hashMap.put("key","4dbca76f9b8d9e635c52c4dae4b9cac6");
 
         try {
             String s = HttpClient.sendGet("http://v.juhe.cn/sms/send", hashMap);
