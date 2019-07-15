@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @author Administrator
  * @title: UserinfoServiceImpl
@@ -18,7 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserinfoServiceImpl implements UserinfoService{
 
     @Autowired
-    private UserinfoMapper userinfoMapper;
+    private UserinfoMapper userinfoMapper
+            ;
 
 
     @Override
@@ -35,5 +38,10 @@ public class UserinfoServiceImpl implements UserinfoService{
     @Override
     public void updatePass(@RequestBody User user ) {
         userinfoMapper.updatePass(user);
+    }
+
+    @Override
+    public List<User> findCollect(@RequestBody Integer userid) {
+        return userinfoMapper.findCollect(userid);
     }
 }

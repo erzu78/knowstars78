@@ -1,9 +1,10 @@
 package com.jk.service;
 
 import com.jk.pojo.User;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 /**
  * @author Administrator
@@ -21,4 +22,7 @@ public interface UserinfoService {
 
     @PostMapping("updatePass")
     void updatePass(User user);
+
+    @RequestMapping("findCollect")
+    List<User> findCollect(Integer userid);
 }
