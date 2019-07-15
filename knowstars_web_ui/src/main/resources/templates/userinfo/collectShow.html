@@ -447,12 +447,13 @@
         <div class="kr-usercenter">
             <div class="usercenter-main">
                 <div class="usercenter-tab">
-    <div class="tabPane ">基本资料</div>
-    <div class="tabPane ">账号和密码</div>
+    <div class="tabPane " onclick="toUserInfoShow()">基本资料</div>
+    <div class="tabPane " onclick="accPass()">账号和密码</div>
     <div class="tabPane tabPaneSelected">我的收藏</div>
 </div>
     <div class="content">
     <div class="favorite" style="height: auto;width: 900px">
+
 
         <div  style="height: 160px;width: 900px">
             <div style="height: 160px;width: 200px;float: left">
@@ -461,8 +462,8 @@
 
             <div style="height: 160px;width: 700px;float: right">
 
-                <div style="height: 60px;width: 700px;float: top;background-color: #ff6600">
-                    &nbsp;&nbsp;&nbsp;<font size="20px"><span id="titleId"></span></font>
+                <div style="height: 60px;width: 700px;float: top">
+                    &nbsp;&nbsp;&nbsp;<span  id="titleId"></span>
                 </div>
             </div>
         </div>
@@ -507,5 +508,15 @@ $(function(){
     })
 
 })
+
+    //个人资料页面
+    function toUserInfoShow() {
+        location.href="toUserinfo"
+    }
+
+    //账号密码页面
+    function  accPass() {
+        location.href="toAccPass"
+    }
 </script>
 </html>
