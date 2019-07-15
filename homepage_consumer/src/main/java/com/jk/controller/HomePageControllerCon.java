@@ -1,12 +1,16 @@
 package com.jk.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.jk.pojo.Img;
+import com.jk.pojo.MenuTree;
+import com.jk.pojo.Tree;
 import com.jk.service.HomePageService;
+import com.jk.util.TreeNoteUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -36,4 +40,19 @@ public class HomePageControllerCon {
     public String  queryImg2(){
         return "homePage/pagelov3";
     }
+
+    @RequestMapping("queryTree")
+    @ResponseBody
+    public List<MenuTree> getTreeAll(){
+
+        List<MenuTree> list = homePageService.queryTree();
+        list =  TreeNoteUtil.getFatherNode(list);
+
+        return list;
+    }
+
+
+
+
+
 }
