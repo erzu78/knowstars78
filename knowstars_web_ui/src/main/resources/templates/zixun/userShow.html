@@ -52,7 +52,7 @@
         <option value="3">其他</option>
     </select>-->
 
-    <button type="button" class="btn btn-warning" onclick="dialogInfo()">添加资讯</button>
+    <button type="button" class="btn btn-warning" onclick="dialogInfo('addDialogInfo','http://192.168.1.128:8013/addInfo','添加资讯')">添加资讯</button>
     <button type="button" class="btn btn-primary" onclick="delAll()">批量删除</button>
 </div>
 
@@ -73,7 +73,7 @@
 
     queryInf = function () {
         $("#infData").bootstrapTable({
-            url: "http://localhost:8013/infoList",
+            url: "http://192.168.1.128:8013/infoList",
             method: "post",
             striped: true,  // 斑马线效果     默认false
             //只允许选中一行
@@ -163,7 +163,7 @@
         var ids = temp.substr(1);
         if(confirm("您确定删除这"+count+"信息吗?")){
             $.ajax({
-                url:"http://localhost:8013/deleteAllInfo",
+                url:"http://192.168.1.128:8013/deleteAllInfo",
                 type:'post',
                 data:{ids:ids},
                 success:function(){
@@ -180,10 +180,8 @@
 
 
     //弹框
-    dialogInfo = function () {
-        location.href="/addDialogInfo"
-
-      /*var dialog = bootbox.dialog({
+    dialogInfo = function (HTMLurl, submitUrl, title) {
+        var dialog = bootbox.dialog({
             title: title,
             message: getJspHtml(HTMLurl),   //调用方法
             buttons: {
@@ -216,7 +214,7 @@
                     }
                 }
             }
-        });*/
+        });
     }
 
 
@@ -276,7 +274,7 @@
         });
 
         $.ajax({
-            url:"http://localhost:8013/queryInfoById",
+            url:"http://192.168.1.128:8013/queryInfoById",
             type:'post',
             data:{infid:infid},
             success:function(data){
@@ -308,14 +306,14 @@
 
     upInfo = function(infid){
 
-        dialogCurr('updDialogInfo','http://localhost:8013/upInfo',"修改",infid);
+        dialogCurr('updDialogInfo','http://192.168.1.128:8013/upInfo',"修改",infid);
 
     }
 
     deleteInfo = function (infid) {
 
             $.ajax({
-                url:"http://localhost:8013/deleteInfo",
+                url:"http://192.168.1.128:8013/deleteInfo",
                 type:'post',
                 data:{infid:infid},
                 success:function(){

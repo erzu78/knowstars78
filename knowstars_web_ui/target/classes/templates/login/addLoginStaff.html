@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>用户注册</title>
+    <title>管理人员注册</title>
     <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
     <meta name="author" content="Vincent Garreau" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -58,16 +58,16 @@
 <div id="particles-js" style="display: flex;align-items: center;justify-content: center">
 </div>
 <div class="login-page">
-    <div class="login-content">
+    <div class="login-content"   style="height: 452px">
         <div class="login-tit">用户注册</div>
 
         <form id="addFF">
             <div class="login-input">
-                <input type="text"  name="username" id="username2" placeholder="请输入用户名">
+                <input type="text"  name="staffname" id="username2" placeholder="请输入用户名">
                 <input type="hidden"  id="spancode2" >
             </div>
             <div class="login-input">
-                <input type="text"  name="password"  id="password2" placeholder="请输入密码">
+                <input type="text"  name="staffpassword"  id="password2" placeholder="请输入密码">
             </div>
             <div class="login-input">
                 <input type="text"  name="phoneName" id="phoneId" placeholder="请输入手机号">
@@ -166,7 +166,7 @@
             data:{phoneName:phone},
             success:function(data){
                 var newcode=data.newcode;
-                alert(newcode+"//////222");
+                //alert(newcode+"//////222");
                 $("#spancode2").val(newcode);
                 if(data==1){
                     alert("发送成功")

@@ -10,14 +10,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="/admin/ueditor/ueditor.config.js"></script>
+    <script src="/admin/ueditor/ueditor.all.min.js"></script>
+    <script src="/admin/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <!-- 引入bootstrap的css -->
+    <link href="../js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入bootstrap-treeview的css -->
+    <link href="../js/treeview/bootstrap-treeview.min.css" rel="stylesheet">
+    <!-- 引入bootstrap-addTabs的css -->
+    <link href="../js/addTabs/addTabs.css" rel="stylesheet">
+    <!-- 引入bootstrap-table的css -->
+    <link href="../js/table/bootstrap-table.min.css" rel="stylesheet">
+    <!-- 引入fileinput的css -->
+    <link type="text/css" rel="stylesheet" href="../js/fileinput/css/fileinput.min.css"/>
+
+
+    <!-- 引入jquery -->
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <!-- 引入my97 -->
+    <script type="text/javascript" src="../js/my97/WdatePicker.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/treeview/bootstrap-treeview.min.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/addTabs/addTabs.js"></script>
+    <!-- 引入bootstrap-table的js-->
+    <script type="text/javascript" src="../js/table/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../js/table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- 引入bootbox.js -->
+    <script type="text/javascript" src="../js/bootbox/bootbox.js"></script>
+    <!-- 引入fileinput的js -->
+    <script type="text/javascript" src="../js/fileinput/js/fileinput.min.js"></script>
+    <!--  引入fileinput的js -->
+    <script type="text/javascript" src="../js/fileinput/js/locales/zh.js"></script>
+    <script type="text/javascript" src="../js/fileinput/themes/fa/theme.js"></script>
+
+    <script src="/admin/ueditor/ueditor.config.js"></script>
+    <script src="/admin/ueditor/ueditor.all.min.js"></script>
+    <script src="/admin/ueditor/lang/zh-cn/zh-cn.js"></script>
 </head>
 <body>
 <form id="upform" method="post">
     <div class="form-group">
         <label for="articleimg">资讯封面</label>
         <input type="file" class="projectfile" name="imgg" id="headImg">
+        <img id="showImg" src="">
     </div>
-                <input type="text" name="articleimg" id="articleimg">
+                <input type="hidden" name="articleimg" id="articleimg">
                 <input type="hidden" name="infid" id="infid">
     资讯大标题：<input type="text" class="form-control" id="inftitle" name="inftitle" style="width: 300px"><br/>
     资讯小标题: <input type="text" class="form-control" id="subtitle" name="subtitle" style="width: 300px"><br/>
@@ -29,13 +69,54 @@
     <option value="2">推荐</option>
     <option value="3">创投</option>
 </select><br/>
-    资讯主题：<select id="topicid" name="topicid" class="form-control" style="width: 300px" >
+    资讯主题：<select id="topicid" name="topicid" class="form-control" style="width: 300px">
     <option value="">全部</option>
     <option value="1">创投新闻</option>
     <option value="2">未来地产</option>
 </select><br/>
 </form>
+<script>
+    var ip = "http://192.168.1.128";
 
+    $(function () {
+        uploadImg();
+    })
+
+    function uploadImg(url) {
+        $('#headImg').fileinput({
+            language: 'zh', //设置语言
+            uploadUrl: ip + ':8013/updaloadImg', //上传的地址
+            allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+            showUpload: true, //是否显示上传按钮
+            showCaption: false,//是否显示标题
+            browseClass: "btn btn-primary", //按钮样式
+            dropZoneEnabled: false,//是否显示拖拽区域
+            //minImageWidth: 50, //图片的最小宽度
+            //minImageHeight: 50,//图片的最小高度
+            //maxImageWidth: 1000,//图片的最大宽度
+            //maxImageHeight: 1000,//图片的最大高度
+            //maxFileSize: 0,//单位为kb，如果为0表示不限制文件大小
+            //minFileCount: 0,
+            maxFileCount: 2, //表示允许同时上传的最大文件个数
+            enctype: 'multipart/form-data',
+            validateInitialCount: true,
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+
+        }).on('fileuploaded', function (event, data, previewId, index) {
+            alert(data.response.imngName);
+
+          /*  var imgval = $('#articleimg').val();
+
+            if (imgval == null || imgval == "" || imgval == undefined) {
+                imgval = data.response.imngName;
+            }/!*else{
+         imgval += ","+"http://<%= request.getServerName()%>:<%=request.getServerPort()%><%=request.getContextPath()%>/"+data.response;
+      }*!/*/
+            $('#articleimg').val(data.response.imngName);
+        });
+    }
+</script>
 </body>
 </html>
 </body>
