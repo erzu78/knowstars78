@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomePage {
     @RequestMapping("toHomePage")
     public String toHomePage(){
-        return "homePage/testmain";
+        return "homePage/testMain";
     }
 
     @RequestMapping("toTree")
