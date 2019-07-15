@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -103,6 +104,13 @@ public class LoginController {
         }
         hashMap.put("newcode",newcode);
         return hashMap;
+    }
+
+    //根据用户名查询用户id
+    @RequestMapping("finduserByUserName")
+    public User finduserByUserName(@RequestParam("username") String username){
+        User list=loginService.finduserByUserName(username);
+        return list;
     }
 
 }

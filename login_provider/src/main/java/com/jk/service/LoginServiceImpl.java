@@ -89,4 +89,11 @@ public class LoginServiceImpl implements LoginService {
         hashMap.put("total",UserSum);
         return hashMap;
     }
+
+    @RequestMapping("finduserByUserName")
+    @Override
+    public User finduserByUserName(String username) {
+        User list=loginMapper.finduserByUserName(username);
+        return list;
+    }
 }

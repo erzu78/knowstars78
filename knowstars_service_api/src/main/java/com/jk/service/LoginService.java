@@ -31,4 +31,7 @@ public interface LoginService  {
 
     @RequestMapping("findStaff")
     HashMap<String, Object> findStaff(@RequestParam("start") Integer start, @RequestParam("pageSize") Integer pageSize);
+
+    @RequestMapping("finduserByUserName")
+    User finduserByUserName(@RequestParam("username") String username);
 }

@@ -44,4 +44,7 @@ public interface LoginMapper {
 
     @Select("select count(*) from t_staff ")
     Long StaffSum();
+
+    @Select("select uid from t_user where username=#{username}")
+    User finduserByUserName(String username);
 }
