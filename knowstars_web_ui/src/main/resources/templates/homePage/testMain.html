@@ -814,11 +814,22 @@
                                         <span class="kr-column-title-icon"></span>
                                         <span class="kr-column-title-text weight-bold">最新快讯</span>
                                     </div>
+                              <div class="column-newsflash-main" >
                                     <div class="column-newsflash-main"  id="NewsId">
                                         <div class="column-newsflash-vertiacl-line"></div>
                                         <div class="column-newsflash-item">
                                             <div class="column-newsflash-item-head">
                                                 <span class="column-newsflash-item-icon"></span>
+
+
+
+
+                                                <div class="column-newsflash-item-title ellipsis-2 weight-bold ">快讯！！
+                                                </div>
+                                                    <div class="column-newsflash-item-time">5分钟前</div></div>
+
+
+
                                                 <div class="column-newsflash-item-title ellipsis-2 weight-bold ">商务部：推动便利店品牌化连锁化发展</div>
                                                 <div class="column-newsflash-item-time">5分钟前</div>
                                             </div>
@@ -826,7 +837,17 @@
                                                 <p>商务部办公厅印发关于推发展的工作通知，发照“。（证券时报）</p>
                                                 <div class="kr-default-img-no-logo "></div>
                                             </div>
-                                        </div>
+                                          </div>
+                <div style="width:1000px;height:1310px;margin-left: 55px">
+                         <table width="1000px" height="1000px" id="NewsData">
+
+                        </table>
+                </div>
+
+
+
+
+                                          </div>
 
                                         <a class="column-newsflash-see-more" href="/newsflashes" target="_blank" rel="noopener noreferrer">查看更多</a></div>
                                 </div>
@@ -921,7 +942,7 @@
 
 
 <script type="text/javascript">
-    $(function(){
+ $(function(){
         $.ajax({
             type:"post",
             url:"http://localhost:8085/queryImg",
@@ -966,6 +987,8 @@
 
     var ip="http://192.168.1.234";
 
+    var ip="http://192.168.1.234";
+
     $(function(){
         queryNews();
     })
@@ -975,7 +998,7 @@
             url:ip+":8011/queryNews",
             type:'get',
             success:function(data){
-                // alert(data)
+               // alert(data)
                 // commonality(data);
                 var     AboutNews = "";
                 for (var i = 0 ; i < data.length ;i++){
@@ -989,10 +1012,6 @@
             }
         });
     }
-
-
-
-
 </script>
 </body>
 </html>

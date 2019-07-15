@@ -84,7 +84,7 @@ public class NewsFlashControllerc {
 
     //根据快讯标题查询对应的信息
     @GetMapping("queryNewsFlashById")
-    public NewsFlash queryNewsFlashById(Integer flashid){
+        public NewsFlash queryNewsFlashById(Integer flashid){
 
         return newsFlashServiceApi.queryNewsFlashById(flashid);
     }

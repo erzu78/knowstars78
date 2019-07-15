@@ -12,6 +12,7 @@
         <module>knowstars_common</module>
         <module>knowstars_service_api</module>
         <module>knowstars_util</module>
+        <module>knowstars_shiro</module>
     </modules>
 
 
