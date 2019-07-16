@@ -46,6 +46,6 @@ public class UserinfoKnow {
     //跳转搜索页面
     @RequestMapping("toSearch")
     public String toSearch(){
-        return "userinfo/searchKnow";
+        return "userinfo/searckShow";
     }
 }

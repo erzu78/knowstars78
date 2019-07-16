@@ -114,8 +114,11 @@
 <script src="../js/particles.js"></script>
 <script src="../js/app.js"></script>
 <script>
+
+    var ip="http://192.168.1.142";
+
  function toUserLogin(){
-     location.href="http://localhost:8280/toUserLogin";
+     location.href=ip+":8280/toUserLogin";
 }
 
 
@@ -135,18 +138,22 @@
         }
         var adduser=$("#addFF").serialize();
         $.ajax({
-            url:"http://localhost:8088/addLoginUser",
+            url:ip+":8088/addLoginUser",
             type:'post',
             data:adduser,
             success:function(data){
+
+                finduserByUserName(username2);
+                //alert(username2)
                 if(data==1){
                     bootbox.alert("" +
                         "&nbsp;<br>" +
                         "&nbsp;<br>" +
                         "已经存在相同用户名");
                 }else{
-                    alert(data)
-                    bootbox.alert("保存成功");
+                    //alert(data)
+                    bootbox.alert("注册成功");
+                    location.href="touserinfo";
                 }
 
                 $("#bootTab").bootstrapTable('refresh');
@@ -162,11 +169,11 @@
                  var yanzhengId=$("#yanzhengId").val();
 
                  $.ajax({
-                     url:"http://localhost:8088/sendPhoneCode",
+                     url:ip+":8088/sendPhoneCode",
                      data:{phoneName:phone},
                      success:function(data){
                          var newcode=data.newcode;
-                         alert(newcode+"//////222");
+                         //alert(newcode+"//////222");
                          $("#spancode2").val(newcode);
                          if(data==1){
                              alert("发送成功")
@@ -179,6 +186,21 @@
                  })
              }
 
+
+             function  finduserByUserName(username2){
+                     $.ajax({
+                         url:ip+":8088/finduserByUserName",
+                         type:'post',
+                         data:{username:username2},
+                         success:function(data){
+                             //alert(data.uid)
+                             //alert("成功");
+                         },
+                         error:function(){
+                            alert("失败");
+                         }
+                     });
+             }
 
 </script>
 </body>

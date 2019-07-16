@@ -44,32 +44,54 @@
 </head>
 <body>
 
-<div style="height: 730px;width: auto;background-color: #ff6600">
-    <div style="width: 150px;height: 730px;float: left;background-color: #4cbfb6"></div>
-    <div style="width: 1359px;height: 730px;float: right;background-color: #ff8e5a">
-        <div style="height: 730px;width: 1209px;float: left;background-color: #4e627a">
-            <div style="height: 230px;width: 1200px;float: top;background-color: #fad045">
-                <div style="height: 230px;width: 300px;float: left;background-color: #ff0000">
+<div style="height: 730px;width: auto;">
+    <div style="width: 150px;height: 730px;float: left;"></div>
+    <div style="width: 1359px;height: 730px;float: right;">
+        <div style="height: 730px;width: 1209px;float: left;">
+            <div style="height: 230px;width: 1200px;float: top;">
+                <div style="height: 230px;width: 300px;float: left;">
                     <img src="http://gaokangle.oss-cn-beijing.aliyuncs.com/gaoakngle/1562810017993.png?Expires=1563991614&OSSAccessKeyId=LTAIVgOSeiYLY2E5&Signature=uB%2Bl3e%2BTATqIPNHxqGeEkxzKhmQ%3D">
                 </div>
             </div>
-            <div style="height: 500px;width: 1200px;background-color: #f0a0fa">
+            <div style="height: 500px;width: 1200px;">
                 <form id="mongoForm" method="post">
                     <div class="form-group">
-                        <label for="hprice"></label>
-                        <input type="text" class="form-control" value=""  name=""  id="hprice" placeholder="请输入搜索内容">
+                        <label for="inftitleId"></label>
+                        <input type="text" class="form-control" value=""  name="inftitle"  id="inftitleId" placeholder="请输入搜索内容">
 
                         <center><button type="button" class="btn btn-success btn-lg" onclick="search()">搜索</button></center>
                     </div>
-                </form>cf f
+                </form>
 
             </div>
         </div>
 
-    <div style="width: 150px;height: 730px;float: right;background-color: #4cbfb6"></div>
+    <div style="width: 150px;height: 730px;float: right;"></div>
     </div>
 
 </div>
 
 </body>
+
+<script>
+    var Myip ="http://192.168.1.126:8087";
+
+function search(){
+    var  inftitle = $("#inftitleId").val();
+    $.ajax({
+        url:Myip+"/findUserinfo",
+        type:'post',
+        dataType:'json',
+        data:{inftitle:inftitle},
+        success:function(){
+
+
+        },
+        error:function(){
+
+
+        }
+    })
+}
+</script>
 </html>

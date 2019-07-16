@@ -52,7 +52,7 @@
         <option value="3">其他</option>
     </select>-->
 
-    <button type="button" class="btn btn-warning" onclick="DialogNews('addDialogNews','http://localhost:8011/addNewsFlash','发布快讯')">发布快讯</button>
+    <button type="button" class="btn btn-warning" onclick="DialogNews('addDialogNews','http://192.168.1.234:8011/addNewsFlash','发布快讯')">发布快讯</button>
 <!--
     <button type="button" class="btn btn-primary" onclick="hrefCoupon()">批量删除</button>
 -->
@@ -75,7 +75,7 @@
 
     queryInf = function () {
         $("#infData").bootstrapTable({
-            url: "http://localhost:8011/NewsFlashList",
+            url: "http://192.168.1.234:8011/NewsFlashList",
             method: "post",
             striped: true,  // 斑马线效果     默认false
             //只允许选中一行
@@ -262,7 +262,7 @@
         });
 
         $.ajax({
-            url:"http://localhost:8011/queryNewsById",
+            url:"http://192.168.1.234:8011/queryNewsById",
             type:'post',
             data:{flashid:flashid},
             success:function(data){
@@ -291,14 +291,14 @@
 
     UpdNews = function(flashid){
               alert(flashid)
-        dialogCurr('updDialogNews','http://localhost:8013/UpdNews',"修改",flashid);
+        dialogCurr('updDialogNews','http://192.168.1.234:8013/UpdNews',"修改",flashid);
 
     }
 
     delnewsflash = function (flashid) {
           alert(flashid)
         $.ajax({
-            url:"http://localhost:8011/delById",
+            url:"http://192.168.1.234:8011/delById",
             type:'post',
             data:{"flashid":flashid},
             success:function(){

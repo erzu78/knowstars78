@@ -8,6 +8,10 @@ eureka:
 spring:
   application:
     name: userinfo-consumer
+  data:
+    elasticsearch:
+      cluster-name: my-application
+      cluster-nodes: localhost:9300
 feign:
   hystrix:
     enabled: false
