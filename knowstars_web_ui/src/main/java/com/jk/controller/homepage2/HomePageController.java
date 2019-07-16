@@ -1,7 +1,6 @@
 package com.jk.controller.homepage2;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomePageController {
@@ -16,10 +15,10 @@ public class HomePageController {
      * 主页面跳转
      * @return
      */
-   @RequestMapping("toHome")
+   /*@RequestMapping("toHome")
     public String toHome(){
        return "homePage/testMain";
    }
-
+*/
 
 }
