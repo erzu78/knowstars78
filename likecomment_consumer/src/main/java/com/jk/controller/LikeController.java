@@ -1,5 +1,6 @@
 package com.jk.controller;
 
+import com.jk.pojo.Ping;
 import com.jk.pojo.User;
 import com.jk.service.LikeServiceFeign;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,11 +127,11 @@ public class LikeController {
 
 
 
-    /**
+   /* *//**
      * 查询评论
      * @param infId
      * @return
-     */
+     *//*
     @GetMapping("queryPing")
     public HashMap<String,String> queryPing(String infId){
         Integer userId = 34;
@@ -139,11 +140,11 @@ public class LikeController {
         map.put("pingContent",pingContent);
         return map;
     }
-    /**
+    *//**
      * 操作点赞
      * @param infId
      * @return
-     */
+     *//*
     @RequestMapping("addPing")
     public void addPing(String infId , String sp) {
 
@@ -162,40 +163,45 @@ public class LikeController {
             redisTemplate.opsForValue().set("ping"+userId+infId,sp);
         }
     }
+*/
 
 
 
 
+    @GetMapping("queryComment")
+    public List<HashMap<String, Object>> queryComment(String infId) {
 
-    @GetMapping("sent")
-    public List<HashMap<String, Object>> hmget() {
+        List<Object> commentIds = redisTemplate.opsForList().range("ids"+infId,0,999999999);
 
-        List<Object> list = redisTemplate.opsForList().range("idssss",0,999999999);
+        List<HashMap<String, Object>> commentList = new ArrayList<>();
 
-        List<HashMap<String, Object>> redisList = new ArrayList<>();
-
-        for (int i = 0; i < list.size(); i++) {
-            String str = (String) list.get(i);
-            HashMap<String,Object> map = (HashMap<String, Object>) redisTemplate.opsForHash().entries("hh"+str);
-            redisList.add(map);
+        for (int i = 0; i < commentIds.size(); i++) {
+            String str = (String) commentIds.get(i);
+            HashMap<String,Object> map = (HashMap<String, Object>) redisTemplate.opsForHash().entries("comment"+infId+str);
+            commentList.add(map);
         }
-        return redisList;
+        return commentList;
     }
 
 
-    @GetMapping("addRedis")
-    public void addRedis(){
+    @GetMapping("addComment")
+    public void addComment(String infId,String sp){
 
-       RedisAtomicLong entityIdCounter = new RedisAtomicLong("testId", redisTemplate.getConnectionFactory());
-        String testId = String.valueOf(entityIdCounter.getAndIncrement());
-        redisTemplate.opsForList().leftPush("idssss",testId);
-        HashMap<String,String> map = new HashMap<>();
-        map.put("id","33");
-        map.put("name","oooohh");
-        redisTemplate.opsForHash().putAll("hh"+testId,map);
+        String userName = "战神";
+        String userImg = "http://gaokangle.oss-cn-beijing.aliyuncs.com/gaoakngle/1563243571310.png?Expires=1564425173&OSSAccessKeyId=LTAIVgOSeiYLY2E5&Signature=EbAiR0%2BmxEV%2BtDfp493QQ7otLGY%3D";
 
+        HashMap<String,String> pingMap = new HashMap<>();
+        pingMap.put("pingInfo",sp);
+        pingMap.put("userImg",userImg);
+        pingMap.put("userName",userName);
 
+        RedisAtomicLong entityIdCounter = new RedisAtomicLong("idsId", redisTemplate.getConnectionFactory());
+        String idsId = String.valueOf(entityIdCounter.getAndIncrement());
+        redisTemplate.opsForList().leftPush("ids"+infId,idsId);
 
+        //HashMap<String, Ping> map = ping.getMap();
+
+        redisTemplate.opsForHash().putAll("comment"+infId+idsId,pingMap);
 
     }
 
