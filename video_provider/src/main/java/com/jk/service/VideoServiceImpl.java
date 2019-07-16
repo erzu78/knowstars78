@@ -85,5 +85,11 @@ public class VideoServiceImpl implements VideoService {
         return videoMapper.queryAuthorVideo(videoId);
     }
 
+    @Override
+    @GetMapping("queryLunBo")
+    public List<Video> queryLunBo() {
+        return videoMapper.queryLunBo();
+    }
+
 
 }

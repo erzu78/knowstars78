@@ -46,4 +46,7 @@ public interface VideoService {
 
     @GetMapping("queryAuthorVideo/{videoId}")
     List<Video> queryAuthorVideo(@PathVariable("videoId") Integer videoId);
+
+    @GetMapping("queryLunBo")
+    List<Video> queryLunBo();
 }

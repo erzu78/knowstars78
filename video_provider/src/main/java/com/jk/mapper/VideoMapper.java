@@ -40,4 +40,7 @@ public interface VideoMapper {
 
     @Select("SELECT * FROM t_video v,t_staff s where v.staffId = s.sid and v.staffId = #{videoId} GROUP BY v.videoId")
     List<Video> queryAuthorVideo(Integer videoId);
+
+    @Select("select * from T_VIDEO v,T_STAFF s where v.staffId = s.sid and s.role = 1 limit 5")
+    List<Video> queryLunBo();
 }

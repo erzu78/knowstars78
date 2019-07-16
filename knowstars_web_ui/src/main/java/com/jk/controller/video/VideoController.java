@@ -50,6 +50,12 @@ public class VideoController {
           return "video/authorVideo";
     }
 
+    //去轮播图展示页面 测试
+    @RequestMapping("toLunBo")
+    public String toLunBo(){
+        return "video/test";
+    }
+
 
 
 

@@ -110,6 +110,11 @@ public class VideoController {
                 public List<Video> queryAuthorVideo(Integer videoId){
                     return videoServiceFeign.queryAuthorVideo(videoId);
                 }
+                //查询轮播图的信息
+                @GetMapping("queryLunBo")
+                public List<Video> queryLunBo(){
+                    return videoServiceFeign.queryLunBo();
+                }
 
 
 }
