@@ -111,5 +111,11 @@ public class InfControllerP implements InfService {
         infServiceP.deleteAllTy(ids);
     }
 
+    @Override
+    public List<Information> queryWzById(Integer infid) {
+
+        return infServiceP.queryWzById(infid);
+    }
+
 
 }

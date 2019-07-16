@@ -1,0 +1,506 @@
+
+<!doctype html>
+<html data-path="/p/:id" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta property="og:url" content="https://36kr.com/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="36氪_让一部分人先看到未来" />
+    <meta property="og:description" content="36氪为您提供创业资讯、科技新闻、投融资对接、股权投资、极速融资等创业服务，致力成为创业者可以依赖的创业服务平台，为创业者提供最好的产品和服务。" />
+    <meta property="og:image" content="https://pic.36krcnd.com/201602/24094427/3butngz6peklnpft.jpg" />
+    <meta name="renderer" content="webkit"/>
+    <meta name="baidu-site-verification" content="ET7tYDCqIv"/>
+    <meta name="apple-mobile-web-app-title" content="Title"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="HandheldFriendly" content="True"/>
+    <meta name="MobileOptimized" content="320"/>
+    <meta name="applicable-device" content="pc,mobile"/>
+    <meta name="format-detection" content="telephone=no"/><meta name="keywords" content="创业,互联网创业,互联网创业项目">
+    <meta name="description" content="36氪为您提供创业资讯、科技新闻、投融资对接、股权投资、极速融资等创业服务，致力成为创业者可以依赖的创业服务平台，为创业者提供最好的产品和服务。">
+    <title data-react-helmet="true">孙正义和愿景基金的三年大考_36氪</title>
+    <link href="sta.36krcnd.com/36krx2018-front/static/app.3d4278b5.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="sta.36krcnd.com/36krx2018-front/static/article.4f466c20.css"><link href="36kr.com/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
+    <link href="sta.36krcnd.com/36krx2018-front/static/app.3d4278b5.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="sta.36krcnd.com/36krx2018-front/static/home~information~motif-detail.b90f8244.css"><link rel="stylesheet" type="text/css" href="sta.36krcnd.com/36krx2018-front/static/information.090996e1.css"><link href="36kr.com/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
+    <!-- 引入bootstrap的css -->
+    <link href="../js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入bootstrap-treeview的css -->
+    <link href="../js/treeview/bootstrap-treeview.min.css" rel="stylesheet">
+    <!-- 引入bootstrap-addTabs的css -->
+    <link href="../js/addTabs/addTabs.css" rel="stylesheet">
+    <!-- 引入bootstrap-table的css -->
+    <link href="../js/table/bootstrap-table.min.css" rel="stylesheet">
+    <!-- 引入fileinput的css -->
+    <link type="text/css" rel="stylesheet" href="../js/fileinput/css/fileinput.min.css"/>
+
+
+    <!-- 引入jquery -->
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <!-- 引入my97 -->
+    <script type="text/javascript" src="../js/my97/WdatePicker.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/treeview/bootstrap-treeview.min.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../js/addTabs/addTabs.js"></script>
+    <!-- 引入bootstrap-table的js-->
+    <script type="text/javascript" src="../js/table/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../js/table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <!-- 引入bootbox.js -->
+    <script type="text/javascript" src="../js/bootbox/bootbox.js"></script>
+    <!-- 引入fileinput的js -->
+    <script type="text/javascript" src="../js/fileinput/js/fileinput.min.js"></script>
+    <!--  引入fileinput的js -->
+    <script type="text/javascript" src="../js/fileinput/js/locales/zh.js"></script>
+
+
+    <script type="text/javascript" src="../js/fileinput/themes/fa/theme.js"></script>
+    <script></script>
+    <script>
+        //百度统计代码
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement('script');
+            hm.src = '//hm.baidu.com/hm.js?713123c60a0e86982326bae1a51083e1';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    <script>
+        // sem 统计代码
+        var _hmt= _hmt||[];
+        (function(){
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?1684191ccae0314c6254306a8333d090";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm,s);
+        })();
+    </script>
+    <!-- 神策手动埋点抽离出的代码 -->
+    <script>
+        function sensorsManual ( element_target ) {
+            const data = { platform: 'web' };
+            // 此处只采集a标签的跳转
+            if (element_target.tagName.toLowerCase() === 'a') {
+                const attributes = element_target.attributes;
+                const classObj = attributes.class || {};
+                const className = classObj.value || "";
+                const hrefObj = attributes.href || {};
+                const hrefValue = hrefObj.value || "";
+                const hrefUrlArr = hrefValue.split('/').filter(x => x !== "");
+                // 当前的浏览器地址 Array
+                const localPath = window.location.pathname;
+                const localPathArr = localPath.split('/').filter(x => x !== "");;
+                if (/(http|ftp|https):\/\//.test(hrefValue)) {
+                    // 若为外链，记录外链url
+                    data.media_content_id = hrefValue;
+                    // 文章详情含有跳转链接
+                    if (localPathArr[0] === 'p') {
+                        if (!isNaN(Number(localPathArr[1]))) {
+                            data.media_source = 'article';
+                        }
+                    }
+                    if (localPathArr[0] === 'newsflashes') {
+                        // 快讯详情 中 含有跳转链接
+                        if (!isNaN(Number(localPathArr[1]))) {
+                            data.media_source = 'newsflash';
+                        } else {
+                            data.media_source = 'page_newsflashes';
+                        }
+                    }
+                    if (localPathArr[0] === 'topics') {
+                        // 专题详情页含有外链
+                        if (!isNaN(Number(localPathArr[1]))) {
+                            data.media_source = 'topics';
+                        }
+                    }
+                    // 首页进外链，添加media_source
+                    if (localPath === '/') {
+                        data.media_source = 'page_home';
+                    }
+                    if(!isNaN(Number(localPathArr[1]))){
+                        // 详情页中（当前地址包含ID），含有外链，发送source_id
+                        data.source_id = localPathArr[1];
+                    }
+                } else {
+                    /* 聚合页跳转id */
+                    if(localPathArr[1] && !isNaN(Number(localPathArr[1])) &&
+                        hrefUrlArr[1] && !isNaN(Number(hrefUrlArr[1]))){
+                        data.source_id = localPathArr[1];
+                    }
+                    /* 搜索结果及资讯 */
+                    if (localPathArr[0] === 'search' && !isNaN(Number(hrefUrlArr[1]))) {
+                        // 搜索
+                        if (localPathArr[1] === 'articles') {
+                            // 文章
+                            data.media_event_value = 'search_articles';
+                        } else if (localPathArr[1] === 'newsflashes') {
+                            // 快讯
+                            data.media_event_value = 'search_flashnews';
+                        } else if (localPathArr[1] === 'video') {
+                            // 视频
+                            data.media_event_value = 'search_videos';
+                        } else if (localPathArr[1] === 'monographic') {
+                            // 专题
+                            data.media_event_value = 'search_topics';
+                        } else if (localPathArr[1] === 'user') {
+                            // 作者
+                            data.media_event_value = 'search_writer';
+                        }
+                    } else if (localPathArr[0] === 'information' && !isNaN(Number(hrefUrlArr[1]))) {
+                        // 资讯
+                        if (localPathArr[1] === 'web_news') {
+                            // 最新
+                            data.media_event_value = 'web_news';
+                        } else if (localPathArr[1] === 'contact') {
+                            // 创投
+                            data.media_event_value = 'contact';
+                        } else if (localPathArr[1] === 'enterpriseservice') {
+                            // 企服
+                            data.media_event_value = 'enterpriseservice';
+                        } else if (localPathArr[1] === 'happy_life') {
+                            // 生活
+                            data.media_event_value = 'happy_life';
+                        } else if (localPathArr[1] === 'travel') {
+                            // 出行
+                            data.media_event_value = 'travel';
+                        } else if (localPathArr[1] === 'real_estate') {
+                            // 房产
+                            data.media_event_value = 'real_estate';
+                        } else if (localPathArr[1] === 'web_recommend') {
+                            // 推荐
+                            data.media_event_value = 'web_recommend';
+                        } else if (localPathArr[1] === 'technology') {
+                            // 科技
+                            data.media_event_value = 'technology';
+                        } else if (localPathArr[1] === 'zhichang') {
+                            // 职场
+                            data.media_event_value = 'web_zhichang';
+                        } else if (localPathArr[1] === 'innovate') {
+                            // 创新
+                            data.media_event_value = 'innovate';
+                        }
+                    } else if (localPathArr[0] === 'local' && !isNaN(Number(hrefUrlArr[1]))) {
+                        // 城市
+                        data.media_event_value = 'local_' + localPathArr[1];
+                    }
+
+                    /* 不同页面，进入详情页 */
+                    // 文章详情含有跳转链接
+                    if (localPathArr[0] === 'p' && !isNaN(Number(localPathArr[1])) &&
+                        !isNaN(Number(hrefUrlArr[1]))) {
+                        data.media_source = 'article';
+                    }
+                    if (localPath === '/') {
+                        // 首页进入详情页
+                        // 判断_:url/:id_是数字ID
+                        // 不包含热榜和精选主题
+                        if (!isNaN(Number(hrefUrlArr[1]))
+                        // && !className.includes('hotlist-item') &&
+                        // !className.includes('recommend-motif-item')
+                        ) {
+                            data.media_source = 'page_home';
+                        }
+                    } else if (localPathArr[0] === 'newsflashes') {
+                        if (!isNaN(Number(localPathArr[1]))) {
+                            // 判断_:url/:id_是数字ID
+                            // 不包含热榜和精选主题
+                            // if (!isNaN(Number(hrefUrlArr[1]))
+                            // && !className.includes('hotlist-item') &&
+                            // !className.includes('recommend-motif-item')
+                            // ) {
+                            data.media_source = 'newsflash';
+                            // }
+                        } else {
+                            // 快讯列表页跳转内容详情
+                            data.media_source = 'page_newsflashes';
+                        }
+                    } else if (localPathArr[0] === 'information') {
+                        // 资讯列表页跳转内容详情
+                        // 不包含热榜和精选主题
+                        if (!isNaN(Number(hrefUrlArr[1]))
+                        // && !className.includes('hotlist-item') &&
+                        // !className.includes('recommend-motif-item')
+                        ) {
+                            data.media_source = 'page_information';
+                        }
+                    } else if (localPath === '/video') {
+                        // 视频列表页跳转内容详情
+                        // 不包含推荐作者
+                        if (!isNaN(Number(hrefUrlArr[1]))
+                        // && !className.includes('hot-author')
+                        ) {
+                            data.media_source = 'page_video';
+                        }
+                    } else if (localPath === '/topics') {
+                        // 专题列表页跳转内容详情
+                        // 不包含推荐作者
+                        if (!isNaN(Number(hrefUrlArr[1]))
+                        // && !className.includes('hot-author')
+                        ) {
+                            data.media_source = 'page_topics';
+                        }
+                    } else if (localPathArr[0] === 'search') {
+                        // 搜索结果列表页跳转内容详情
+                        if (!isNaN(Number(hrefUrlArr[1]))) {
+                            data.media_source = 'page_search';
+                        }
+                    } else if (localPathArr[0] === 'Calendar') {
+                        // 历史日签页跳转内容详情
+                        if (!isNaN(Number(hrefUrlArr[1]))) {
+                            data.media_source = 'calendar';
+                        }
+                    } else if (localPathArr[0] === 'user') {
+                        // 用户详情页跳转内容详情
+                        if (!isNaN(Number(hrefUrlArr[1]))) {
+                            data.media_source = 'user';
+                        }
+                    } else if (localPathArr[0] === 'motif') {
+                        // 主题列表页跳转内容详情
+                        if (!isNaN(Number(hrefUrlArr[1]))) {
+                            data.media_source = 'motif';
+                        }
+                    } else if (localPathArr[0] === 'topics') {
+                        // 专题详情页跳转内容详情
+                        if (!isNaN(Number(hrefUrlArr[1]))) {
+                            data.media_source = 'topics';
+                        }
+                    } else if (localPathArr[0] === 'video' && localPathArr[1]) {
+                        // 视频详情页点击最近视频进入视频详情页
+                        if (!isNaN(Number(hrefUrlArr[1]))) {
+                            data.media_source = 'video';
+                        }
+                    } else if (localPathArr[0] === 'video' && localPathArr[1]) {
+                        // 视频详情页点击最近视频进入视频详情页
+                        if (!isNaN(Number(hrefUrlArr[1]))) {
+                            data.media_source = 'video';
+                        }
+                    }
+
+                    /* 添加media_conten_type 针对相应页面添加属性 */
+                    if (hrefUrlArr[0] === 'p') {
+                        // 文章详情页
+                        data.media_content_type = 'article';
+                        // 路由后跟:id的情况
+                        if (hrefUrlArr[1]) {
+                            data.media_content_id = hrefUrlArr[1];
+                        }
+                    } else if (hrefUrlArr[0] === 'newsflashes' && !isNaN(Number(hrefUrlArr[1]))) {
+                        // 快讯
+                        data.media_content_type = 'flashnews';
+                        // 路由后跟:id的情况
+                        if (hrefUrlArr[1]) {
+                            data.media_content_id = hrefUrlArr[1];
+                        } else {
+                            data.operation_list = 'page_flow';
+                        }
+                    } else if (hrefUrlArr[0] === 'video' && !isNaN(Number(hrefUrlArr[1]))) {
+                        // 视频
+                        data.media_content_type = 'video';
+                        if (hrefUrlArr[1]) {
+                            // video 详情页
+                            data.media_content_id = hrefUrlArr[1];
+                        } else {
+                            // video 列表
+                            data.operation_list = 'video_recommend';
+                        }
+                    } else if (hrefUrlArr[0] === 'v-video' && !isNaN(Number(hrefUrlArr[1]))) {
+                        // 竖版视频
+                        data.media_content_type = 'video_portrait';
+                        if (hrefUrlArr[1]) {
+                            // 竖版视频详情页
+                            data.media_content_id = hrefUrlArr[1];
+                        }
+                    } else if (hrefUrlArr[0] === 'topics' && !isNaN(Number(hrefUrlArr[1]))) {
+                        // 专题
+                        data.media_content_type = 'topic';
+                        if (hrefUrlArr[1]) {
+                            // 专题详情页
+                            data.media_content_id = hrefUrlArr[1];
+                        } else {
+                            // 专题列表
+                            data.operation_list = 'specialtopic_recommend';
+                        }
+                    } else if (hrefUrlArr[0] === 'motif' && !isNaN(Number(hrefUrlArr[1]))) {
+                        if (
+                            (localPathArr[0] === 'motif-catalog' && localPathArr[1] === 'recomend') ||
+                            className.includes('businessMotifHome-main-item-top-a')
+                        ) {
+                            // 商业主题
+                            data.media_content_type = 'business_motif';
+                            if (hrefUrlArr[1]) {
+                                // 商业主题详情页
+                                data.media_content_id = hrefUrlArr[1];
+                            }
+                        } else {
+                            // 普通主题
+                            data.media_content_type = 'motif';
+                            if (hrefUrlArr[1]) {
+                                // 普通主题详情页
+                                data.media_content_id = hrefUrlArr[1];
+                            }
+                        }
+                    } else if (hrefUrlArr[0] === 'user' && !isNaN(Number(hrefUrlArr[1]))) {
+                        // 用户
+                        data.media_content_type = 'user';
+                        if (hrefUrlArr[1]) {
+                            // 用户主页
+                            data.media_content_id = hrefUrlArr[1];
+                        }
+                    }
+                }
+            }
+            return data;
+        }
+    </script>
+    <script>
+        // 神策统计代码
+        (function(para) {
+            var p = para.sdk_url, n = para.name, w = window, d = document, s = 'script',x = null,y = null;
+            w['sensorsDataAnalytic201505'] = n;
+            w[n] = w[n] || function(a) {return function() {(w[n]._q = w[n]._q || []).push([a, arguments]);}};
+            var ifs = ['track','quick','register','registerPage','registerOnce','trackSignup', 'trackAbtest', 'setProfile','setOnceProfile','appendProfile', 'incrementProfile', 'deleteProfile', 'unsetProfile', 'identify','login','logout','trackLink','clearAllRegister','getAppStatus'];
+            for (var i = 0; i < ifs.length; i++) {
+                w[n][ifs[i]] = w[n].call(null, ifs[i]);
+            }
+            if (!w[n]._t) {
+                x = d.createElement(s), y = d.getElementsByTagName(s)[0];
+                x.async = 1;
+                x.src = p;
+                x.setAttribute('charset','UTF-8');
+                y.parentNode.insertBefore(x, y);
+                w[n].para = para;
+            }
+        })({
+            sdk_url: 'https://static.sensorsdata.cn/sdk/1.12.5/sensorsdata.min.js',
+            heatmap_url: 'https://static.sensorsdata.cn/sdk/1.12.5/heatmap.min.js',
+            name: 'sa',
+            web_url: 'https://data.corp.36kr.com/',
+            server_url: 'https://36kr.com/global/sensors/sa/sa',
+            heatmap:{
+                scroll_notice_map:'not_collect',
+                custom_property:function( element_target ){
+                    return sensorsManual(element_target);
+                },
+            },
+            show_log: false,
+        });
+        (function(){
+            const cookies = {};
+            document.cookie.split('; ').forEach((c) => {
+                const key = c.split('=')[0];
+            const value = c.split('=')[1];
+            cookies[key] = value;
+        });
+            const userid = cookies["kr_plus_id"];
+            const cid = cookies["kr_stat_uuid"];
+            if (userid) {
+                sa.login(userid);
+            } else {
+                sa.login(cid);
+            }
+
+            sa.quick('autoTrack');
+        })();
+    </script>
+
+    <script>
+        // 给百度seo主动推送,  文明确认
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+
+        // 36氪全局统计代码
+        (function (i, s, o, g, r, a, m) {
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//36kr.com/global/stat.js', 'krtracker');
+        krtracker('trackPageView', window.location.pathname + window.location.search);
+
+        // 优路
+        !function(a,b,c){var d=b.getElementsByTagName(c)[0],e=b.createElement(c);e.async=!0,e.src="https://recom.qipus.cn/api/sc/j/dcda692e.js",d.parentNode.insertBefore(e,d)}(window,document,"script");
+    </script>
+</head>
+<body>
+<!-- 引入jquery -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<input type="hidden" id="aa" th:value="${infid}">
+<script>
+    $(function() {
+        $.ajax({
+            url: "http://192.168.1.128:8013/queryWzById",
+            crossDomain: true,
+            type: 'post',
+            data: {
+                infid:$("#aa").val(),
+            },
+            success: function (data) {
+                $("#span1").html(data[0].inftitle);
+                $("#span2").html(data[0].staffname);
+                $("#span3").html(data[0].releasetime);
+                $("#span4").html(data[0].subtitle);
+                $("#span5").html(data[0].staffname);
+                $("#span6").html(data[0].articleinformation);
+                $("#ss1").html(data[0].staffname);
+                $("#ss2").html(data[0].stafftype);
+                $("#ss3").html(data[0].staffinfo);
+                $("#img1").attr("src",data[0].staffimg);
+            }
+        })
+    })
+
+</script>
+<div id="app"><div class="kr-article-box" data-reactroot=""><div class="box-kr-article-new-y"><div class="kr-layout"><div class="kr-layout-main clearfloat"><div class="main-left"><div class="kr-sider "><a href="/" class="go-home clearfloat"><div class="logo"></div></a><div class="kr-sider-shadow-wrapper clearfloat"><div class="line"></div><ul class="kr-channel-nav"><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="/">首页</a></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="/newsflashes">快讯</a></div></li><li class="channel-item"><div class="sub-title"><span class="open-icon close"></span><a class="name weight-bold " href="/information/web_news">资讯</a></div><div class="sub-list "><ul class="sub-list-right"><li class="sub-item"><a href="/information/web_recommend" class="">推荐</a></li><li class="sub-item"><a href="/information/travel" class="">汽车</a></li><li class="sub-item"><a href="/information/enterpriseservice" class="">企服</a></li><li class="sub-item"><a href="/information/web_zhichang" class="">职场</a></li><li class="sub-item"><a class="">城市</a></li></ul><ul class="sub-list-left"><li class="sub-item"><a href="/information/web_news" class="">最新</a></li><li class="sub-item"><a href="/information/contact" class="">创投</a><span class="hot"></span></li><li class="sub-item"><a href="/information/technology" class="">科技</a></li><li class="sub-item"><a href="/information/happy_life" class="">生活</a></li><li class="sub-item"><a href="/information/innovate" class="">创新</a></li></ul></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="/video">视频</a></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="/topics">专题</a></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="https://chuang.36kr.com/huodong#/report/recent" target="_target" rel="noopener noreferrer">活动</a></div></li><div class="local-list" style="display:none;top:;left:"><div class="triangle"></div></div></ul><div class="kr-search-entry clearfloat"><div class="search-button"><span class="search-icon"></span><span class="search-text weight-bold">搜索</span></div></div><a href="/seek-report" class="seek-report" target="_blank" rel="noopener noreferrer nofollow"><span class="seek-report-icon"></span><span class="seek-report-text">寻求报道</span></a><div><div class="i-want-contribution"><span class="i-want-contribution-icon"></span><span class="i-want-contribution-text">我要投稿</span></div></div><a class="seek-finance-entry" href="http://vclub-36kr.mikecrm.com/r3yRAwz " target="_blank" rel="noopener noreferrer nofollow"><span class="seek-finance-entry-icon"></span><span class="seek-finance-entry-text">寻求融资</span></a></div></div></div><div class="main-right"><div class="kr-header "><div class="kr-header-main"><div class="kr-header-content"><div class="user-login" style="display:none"><img src="https://static.36krcnd.com/v1/20181105/YfPuR3I-qGKsl3V5g1nfMA906f68a624074dbe88c3b3b768a3ff22" alt="" class="user-pic"/><div class="pull-down"><a class="ellipsis-1 user-name" title="" href="/usercenter/basicinfo" target="_blank" rel="noopener noreferrer"></a><a class="ellipsis-1 " title="账号设置" href="/usercenter/account-password" target="_blank" rel="noopener noreferrer">账号设置</a><a class="ellipsis-1 " title="我的收藏" href="/usercenter/favorite" target="_blank" rel="noopener noreferrer">我的收藏</a><a class="ellipsis-1 " title="退出登录" target="_blank" rel="noopener noreferrer">退出登录</a></div></div><div class="kr-header-passport" style="display:inline-block"><a class="login"><span>登录</span></a><a class="line">|</a><a class="resgister"><span>注册</span></a></div><ul class="business-line"><li><a href="https://auto-time.36kr.com" target="_blank" rel="noopener noreferrer">未来汽车日报</a></li><li><a href="/ranking" target="_blank" rel="noopener noreferrer">氪榜</a></li><li><a href="https://36kr.com/subscribe?ktm_source=kaike_pclandingpage" target="_blank" rel="noopener noreferrer">开氪</a></li><li><a href="/organization" target="_blank" rel="noopener noreferrer">VClub投资机构</a></li><li><div class="kr-header-search-entry clearfloat"><div class="search-button"><span class="search-icon"></span><span class="search-text weight-bold">搜索</span></div></div></li></ul></div></div></div><div class="kr-layout-content"><div class="kr-article"><div class="kr-article-inner"><div class="article-detail-wrapper-box"><div><div class="article-left-container"><div class="article-content"><div class="article-mian-content"><div class="article-wrapper common-width"><div class="common-width"><div><h1 class="article-title margin-bottom-20 common-width"><span id="span1"></span></h1><div class="article-title-icon common-width margin-bottom-40"><a class="title-icon-item item-a" href="/user/18360719" target="_blank" rel="nofollow noopener noreferrer"><span id="span2"></span></a><span class="title-icon-item item-time"> <i>·</i> <!-- --><span id="span3"></span></span></div><div class="summary"><span id="span4"></span></div></div></div><div class="common-width margin-bottom-20"><div class="common-width content articleDetailContent kr-rich-text-wrapper" id="div1"><p>作者：<span id="span5"></span></p><!--<p>对于软银和孙正义本人来说，2016 年应当是极为重要的一年。<br/></p><p>当年 3 月，软银宣布将拆分为两家公司，分别针对日本境内的移动通讯业务，和海外市场的科技领域投资。</p><p>6 月，向来以「阿里股份坚定持有者」自居的软银宣布，出售价值 79 亿美元的阿里股份，其持股比例从 31% 降低到 28%；</p><p>与此同时，腾讯宣布将以 89 亿美元收购知名游戏公司 Supercell 84.3% 的股份，其中 73% 来自于软银。据《华尔街日报》报道，这家游戏公司凭借《皇室战争》《部落战争》等知名游戏，在 2015 年录得 22.3 亿美元营收和 9.3 亿美元利润。</p><p>频繁出售优质资产后，孙正义在其 59 岁生日即将到来之际，宣布「60 岁退休」的承诺作罢，他将继续执掌软银 5 到 10 年。</p><p><img alt="孙正义和愿景基金的三年大考" src="https://pic.36krcnd.com/201907/16095035/8bw7wtt3oj5pbw8h!1200" data-img-size-val="1080,745"/\></p><p>彼时，外界对于孙正义出售优质股份的做法有两种猜测，一是因为收购 Sprint 导致软银经济受困急需资金爬出漩涡，二是为了筹措资本，支持自己大幅对外投资的动作。从后期软银的动作来看，两大因素应当兼具。</p><p>2017 年 5 月，孙正义在宣布开启外海投资一年后，拿到了来自阿联酋、苹果、富士康以及软银自己等大财团提供的 930 亿美元，直接成为全球最大的私募基金。</p><p>之后的几年时间里，手握雄厚资本的孙正义开启了花钱模式，对于新兴科技企业的投资毫不手软，在烧钱成风的互联网创业案例中，软银的身影随处可见。</p><p>三年后的今天，愿景基金又是 IPO，又是启动二期工程，但结合当下科技互联网企业的状态看，孙正义和软银在经历了三年的狂放之后，终于迎来了一次大考。而从当下来看，他们的成绩单并不如预想中那么光鲜。</p><h3  >1、<span >愿景基金三年战绩背后</span></h3><p>按孙正义的解释，多年前因为资金不足错过了亚马逊，是他投资生涯中最后悔的一步棋，以至于 2000 万美元押注阿里巴巴这么一大壮举，都不足以抵消他在亚马逊上的失落。</p><p><img alt="孙正义和愿景基金的三年大考" src="https://pic.36krcnd.com/201907/16095035/a4n1vqyjbyezt0us!1200" data-img-size-val="620,414"/\></p><p>在成立了愿景基金后，财大气粗的孙正义遍地撒钱，赌的就是自己的慧眼能够押中下一个，甚至好几个未来亚马逊。</p><p>国内有媒体报道称，孙正义的算盘打得够好。因为手握 1000 亿美元，仅协议中软银向投资者收取的 0.7%&#45;&#45;1.3% 的服务费，一年下来也能赚上 10 亿美元。</p><p>这一算法显然忽略了协议中的重要一项——愿景基金尽管描绘了一个美好的未来，但还没有强大到让投资人白白送钱给你。事实上，孙正义这 1000 亿美元筹得并不容易，根据 FT 的报道，有 423 亿美元的资金属于债务融资。</p><p>这意味着有将近一半的投资额度，不要软银的盈利分成，而是连续十二年收取 7% 的利息。</p><p><img alt="孙正义和愿景基金的三年大考" src="https://pic.36krcnd.com/201907/16095035/jg0q2lby42dtz5zv!1200" data-img-size-val="1080,1027"/\></p><p>这么看来，孙正义的面子也没想象中那么大，他的愿景也不是每个人都认可。</p><p>愿景基金这笔钱来得并不算容易，但孙正义花起钱来却丝毫没有手软。细数过往几年愿景基金的投资案例，几乎每一笔支出都直接指向了一个方向：烧钱。</p><p>孙正义的整个投资逻辑，和他投资企业的扩张逻辑相似，即用烧钱换规模，用规模推估值，且在这些企业的对外表态中，难免都有那么一句「短期内没有盈利的计划」。</p><p>在愿景基金启动之前，软银刚刚经历了收购 Sprint 带来的阵痛，2016 年软银为此付出了 56.6 亿美元的负收入。尽管如此，愿景基金在面向未来的投资上仍然称不上稳妥，其比较大的几笔投资，Uber、滴滴、WeWork、OYO、波士顿动力，每一个都是烧钱和盈利都看不到尽头的平台级投资。</p><p>不仅如此，愿景基金在同一行业中还会进行多家投资，如打车领域除 Uber 滴滴之外，愿景基金还投资了印度的 Ola，并在撮合 Ola 和 Uber 合并的过程中遭到了对方的拒绝。双方在印度、新西兰、英国等多个市场激烈竞争，烧出去的钱，都有一部分来自于愿景基金。</p><p>目前，在愿景基金的众多投资案例中，Flipkart 应当算是最成功的一个。2017 年愿景基金花了 25 亿美元，不到一年便转手将其以 40 亿美元的价格卖给了沃尔玛，收益率高达 60%，成为孙正义颇为得意的一项佳绩。</p><p>但除此单一案例外，愿景基金的多个投资均尚未看到收益的可能。仅前文列出的几家，都分别有各自的问题：</p><p>Uber，成功上市，但市值从原计划的 900&#45;&#45;1200 亿美元，降到了 750 亿美元，并在上市首日大跌 7%，目前维持在 740 亿美元左右，愿景基金投入的 90 亿美元，预期价值从 160 亿美元降至 130 亿美元，软银股价因 Uber 破发而大幅波动；</p><p>滴滴，因恶性事件被迫放缓 IPO 进程，日前全面提升了收费标准，但盈利和上市都陷入僵局；</p><p>WeWork，远景基金原计划要在其上市前投资 200 亿美元，因投资人不认可被迫降至 20 亿美元；</p><p>OYO，被红杉资本放弃投资，尽管手握 10 亿美元，要将 6 亿美元用来扩张中国市场，却遭遇美团打压，目前前途不甚明朗；</p><p>波士顿动力，最初谷歌因严重亏损将其出售给软银，目前仍无盈利可能。</p><p>这是愿景基金过往投资的一部分案例。与早年的苹果、谷歌、亚马逊不同，如今这些新兴小巨头，发展多年仍然没能提出合理的盈利计划，导致其亏损得不到任何抵消，完全依靠风险投资方提供的资金维持运转。一旦资金链出现问题，业务的维持将陷入僵局。</p><p>而愿景基金手中的千亿美元，在过去两年已经花出去了 800 多亿。根据孙正义的计划，愿景基金要每两到三年募集一次，规模维持在千亿美元左右，显然愿景基金二期的募资情况如何，便成为了孙正义能否迈出下一步的关键。</p><p>不久前，软银再次抛售阿里股票，套现百亿美元，一切似乎和 2016 年愿景基金成立前夕的情景相似。但唯一不同的是，这一次要让投资方出钱，变得更加困难。</p><h3  ><strong>2、<span >没有愿景基金二期，世界会变成怎样？</span></strong></h3><p>知名财经媒体 CNBC 在一个月前的一篇报道中，用了这么一个标题：</p><blockquote><p>如果没有愿景基金二期，世界会变成怎样？</p><p>What happens if there’s no Vision Fund II ?</p></blockquote><p>在这篇文章开头，CNBC 又搬出来了华尔街日报和华盛顿邮报的两篇报道，标题分别为：</p><blockquote><p>软银筹集新一期千亿美元基金面临挑战。</p><p>SoftBank Faces Challenges Raising Latest $100 Billion Fund.</p><p>孙正义发现不是每个人都认可他的愿景。</p><p>Masa Finds Not Everyone Shares His Vision.</p></blockquote><p>全球最知名的财经媒体们，似乎都在关注这么一个问题，他们的疑问简单总结下来就是，愿景基金二期是不是要凉了？</p><p>这些质疑和担忧并非空穴来风。除了前文所述愿景基金投资企业的上市和盈利难题外，在投资人和愿景基金之间，还有很多其他的隔阂阻碍了愿景基金二期的顺利开展。</p><p>首先是愿景基金在投资过程中，给被投方的估值过高，其中造成投资人对愿景基金产生直接不满的，包括对 WeWork 和商汤科技的投资。前文提及的 WeWork 投资额大幅降低，背后的原因便是投资人对于孙正义计算估值过高的不满。这一现象在商汤科技的案例上更为明显。</p><p><span >去年秋天，愿景基金以 77 亿美元的估值，向商汤科技投资了数亿美元。短短数月后，愿景联合穆巴达拉，计划以 100 亿美元的估值对其进行高达 20 亿美元的再次投资。这一投资计划，最终因穆巴达拉的退出而未能实现，其给出的原因便是估值过高。</span><br/></p><p>由于一向实行高估值投资，愿景基金一度被认为是比 IPO 更好的退出方式，甚至投资领域有分析师将移动互联网的投资泡沫，归咎于愿景基金的大手笔。</p><p>不过，最令投资方不满的，不仅是愿景基金给出的高估值，而是软银自身投资项目向愿景基金的转移。</p><p>据《华尔街日报》，目前软银已经转让、出售或计划向愿景基金转让的股份总额已经达到了 263 亿美元之多，这些股份由软银在过去几年花费了 249 亿美元购得。这些转让让投资人心生不满，认为孙正义有将愿景基金的资本转入软银的嫌疑。</p><p><img alt="孙正义和愿景基金的三年大考" src="https://pic.36krcnd.com/201907/16095035/0o7jpak2v70ch6fc!1200" data-img-size-val="730,486"/\></p><p>但更大的问题，应该是投资风险的转移。显然，软银的股份转移在价格上并没有比自己的原本的投资额高出太多，但考虑到软银一向高估值的投资做法，愿景基金极有可能在未来承担软银早期投资带来的投资风险。这一项，足够让愿景基金的投资人感受到威胁。</p><p>同时，近期外媒不断有消息证实，包括阿拉伯的 RIF、加拿大的 PPIB 在内的多家愿景基金的主要出资方，都已经搭建的自己的投资渠道，并对相关项目进行了直接投资，愿景基金被直接绕过。</p><p>孙正义对于第二个千亿美金融资计划展现出的美好幻想，可能会在未来一段时间被彻底打破。</p><h3  ><strong>3、<span >玩不下去的投资游戏</span></strong></h3><p>外界对与孙正义的愿景基金，一向当作投资游戏看待，其获得的两个评价也比较极端：要么未来大获成功，要么半途离奇破产。</p><p>放弃退休执掌软银，开启愿景基金后的孙正义，比预料之中显得更加激进。这种激进表现在两个方面，一方面是筹钱时的反常态度，一方面是花钱时过分草率。</p><p>过去三年，孙正义从投资阿里的股份中套现了两次，一次是愿景基金成立前，一次是最近愿景基金钱差不多花光后。可以预想，如果愿景基金二期融资不顺利，孙正义再次从阿里手里换来几百亿美元拿去实现自己的未来愿景也并非不可能。</p><p><img alt="孙正义和愿景基金的三年大考" src="https://pic.36krcnd.com/201907/16095035/kewog9masri2n6br!1200" data-img-size-val="720,405"/\></p><p>要知道，阿里可是软银最大的宝藏且具有很好的增长价值，孙正义「套阿里养愿景」的投资方式增加了他「赌」的属性，却绝对称不上稳妥。</p><p>花钱上，孙正义更加不理智。2017 年愿景基金成立时，这笔千亿美金的巨款，原计划的花费时间是 4 年，但孙正义在 2 年内便将至挥霍一空，投资拍板速度之快令人惊讶。</p><p>以至于到 2019 年的今天，愿景基金陷入了死循环之中。在过去几年的投资里，Sprint 表现不佳，ARM 不及预期，滴滴、波士顿动力等被投资企业需要钱，这些仍在成长且盈利能力不佳的企业，亟需大笔资金续命。</p><p>但越需要钱，愿景基金的融资就越困难。Uber 和 WeWork 这两家能给愿景基金提供资金缓冲的企业，前者上市成绩不佳，后者结果尚不明朗，资金的巨大缺口导致愿景基金成了烫手山芋，任何投资放都不会再轻易地巨额资金押注在它身上。</p><p><img alt="孙正义和愿景基金的三年大考" src="https://pic.36krcnd.com/201907/16095035/bcjlfcypej2vkbz0!1200" data-img-size-val="800,450"/\></p><p>当然，对于愿景基金来说 IPO 也是一条路，不过这条路并不容易走通。与伯克希尔哈撒韦手握公共事业、保险公司和能源公司这些盈利能力强的企业不同，愿景基金手中不过是一些完全看不到盈利的年轻公司，这样的产品公开上市，在历史上几乎是不存在的。</p><p>另外，即使 IPO 成功，愿景基金也无非是进入了一个新的资金池——由投资经验不丰富的散户形成的筹资渠道。但是，监管方为了保护不成熟投资者，免受风险投资不稳定性产生的损失，禁止这一群体购入风险投资基金的股票。</p><p>这些规定对于愿景基金来说，都是极难克服的阻碍。另外，它旗下的企业，包括 Uber 和 WeWork 都将在今年完成上市，这也会降低愿景基金在公开市场上的吸引力。</p><p>摆在孙正义面前可走的路似乎已经不多了。他曾经兴致勃勃的未来野心，如今倒像是一个投资游戏，癫狂、荒诞、无关盈利，唯一能够让人们掀起热情的，只有数以亿计的钱和孙正义描绘出的美好未来。</p><p>可是美好未来太遥远，当没有钱的困境摆在了孙正义的面前，这场投资游戏的美好未来被搁置在一旁，而他能不能够继续将这把游戏玩下去，才是目前最关键的问题。</p>--><span id="span6"></span></div></div><div class="common-width"><div class="article-footer-txt"><p>本文经授权发布，不代表36氪立场。如若转载请联系原作者。</p></div></div></div></div></div><div class="kr-article-company"><div></div></div><div class="ad87-box"></div><div class="thumb-up-box"><div class="thumb-inner"><div class="thumb-wrapper"><div class="backgroundImg-box-wrapper"><div class="backgroundImg-box showNormal"><span class="kr-article-tranistion-thumb  normalColor">+1</span><div class="thumbNum normalColor"></div></div></div><p class="txt">好文章，需要你的鼓励</p></div></div></div><div class="navbar-wrapper"><div class="navbar-inner-box"><div class="kr-card"><div class="top-line" style="height:4px"></div><div class="kr-card-content article-detail-navbar"><div class="wrapper" style="width:100%;height:70px"><div class="inner"><a class="author-avrtar" href="/user/18360719" target="_blank" rel="noopener noreferrer"><div class="kr-default-img-avatar author-avatar-img"></div></a><a class="author-name" href="/user/18360719" target="_blank" rel="noopener noreferrer">互联网圈内事</a><span class="author-level">特邀作者</span><div class="actions-Items"><div class="items-inner"><div class="item item1"><span class="item-collection-action item-common "><b class="favorite-count item-count-common"></b><i class="collect-icon item-icon">收  藏</i><span class="count-animation-collect ">+1</span><span class=""></span></span><span class="item-tocomment-action item-common"><b class="comment-count item-count-common"></b><i class="tocomment-icon item-icon">评  论</i></span></div><div class="item item2"><span class="item-share-weixin item-common"><span class="weixin-icon item-icon"><div class="kr-default-img-no-logo weixin-code"></div><i class="weixin-txt">打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</i></span></span><a class="item-share-weibo item-common" href="http://share.baidu.com/s?type=text&amp;searchPic=1&amp;sign=on&amp;to=tsina&amp;key=595885820&amp;url=https://36kr.com/p/5226205&amp;title=孙正义和愿景基金的三年大考" target="_blank" rel="noopener noreferrer nofollow"><i class="weibo-icon item-icon">微  博</i></a></div><div class="item item3"><span class="item-pure-action item-common"><i class="pure-icon item-icon">沉浸阅读</i></span><span class="item-backtop-action item-common"><i class="totop-icon item-icon">返回顶部</i></span></div></div></div></div></div></div></div></div></div><div class=""></div><div></div><div class="kr-article-commitbox-left-navbar-bottom"><div class="kr-plugin-comment " title="参与评论"><div class="comment-part"><div class="comment-part-title"><div class="kr-column-title"><span class="kr-column-title-icon"></span><span class="kr-column-title-text weight-bold">参与评论</span></div></div><div class="comment-input-content"><div class="comment-input-wrapper"><div class="comment-input-nologin">登录后才能参与讨论哦...</div></div><div class="comment-control"><div class="comment-control-nologin"><a class="login-link">登录</a>后参与讨论</div><span class="comment-control-submit"><span>提交评论</span></span><span class="length-tip">0/1000</span></div></div><p class="comment-input-warn">请回复有价值的信息，无意义的评论将很快被删除，账号将被禁止发言。</p></div></div></div><div class="ad817-box"></div></div><div class="article-right-container"><div class="list-author-wrapper"><div class="kr-card"><div class="top-line" style="height:4px"></div><div class="kr-card-content "><div class="author-detail-info"><div class="author-detail-info-header clearfloat"><a href="/user/18360719" target="_blank" rel="noopener noreferrer"><div class="kr-default-img-avatar author-avatar"><img id="img1" src="" width="80" height="80"></div></a>
+
+    <div class="info-header-text"><a class="author-name ellipsis-1 active" href="/user/18360719" target="_blank" rel="noopener noreferrer"><span id="ss1"></span></a><span class="author-role"><span id="ss2"></span></span></div></div><p class="author-description"><span id="ss3"></span></p><div class="author-detail-info-footer"><div class="author-article-count"><i></i><span>发表文章<!-- -->18<!-- -->篇</span></div></div><div class="author-wrapper"><div class="inner-wrapper"><div class="section"><h3 class="section-h3">最近内容</h3><div class="author-itemslist"><div class="item-wrapper-box"><a class="item-title" href="/p/5226205">孙正义和愿景基金的三年大考</a><div class="item-related-info"><span class="time item">15分钟前</span></div></div></div><div class="author-itemslist"><div class="item-wrapper-box"><a class="item-title" href="/p/5218967">隐藏在平板电脑背后的，操作系统之争</a><div class="item-related-info"><span class="time item">2019-06-25</span></div></div></div><div class="author-itemslist"><div class="item-wrapper-box"><a class="item-title" href="/p/5211221">欠债、吃软饭、失败五千次，他是戴森吹风机之父</a><div class="item-related-info"><span class="time item">2019-05-31</span></div></div></div></div></div><div class="footer"><a class="footer-a" href="/user/18360719" target="_blank" rel="noopener noreferrer"><span>阅读更多内容，狠戳这里</span></a></div></div></div></div></div></div><div class="article-803-ad-wrappper"></div><div class="article-814-ad-wrappper"></div><div class="article-Enterprise-wrappper"></div><div class="article-OrganArticle-wrappper"></div><div class="kr-article-follow"><div class="article-follow-content"><div class="next-card-wrapper-box"><div class="kr-card"><div class="top-line" style="height:4px"></div><div class="kr-card-content "><div class="next-cart-wrapper" style="padding:15px"><h3 class="header" style="font-size:16px;line-height:25px">下一篇</h3><div class="section"><div class="section-title section-item ellipsis-2" style="font-size:14px;line-height:25px"><a href="/p/5226216" class="section-title-a ellipsis-2">深度资讯 | 华为的新品类“智慧屏”不是电视，而是电视的未来</a></div><p class="section-brief section-item ellipsis-2">“智慧屏”不是电视，而是电视的未来，是一个类似手机和智能音箱一样的智能家居入口，智慧屏将成为家庭影音娱乐中心、信息共享中心、控制管理中心和多设备交互中心。</p><p class="section-publice-at section-item">21分钟前</p></div></div></div></div></div></div></div></div></div></div><div></div></div></div></div></div></div><div class="kr-footer "><div class="footer-content"><div class="footer-wrapper"><div class="productServices-wrapper"><div class="title weight-bold">36氪产品服务矩阵</div><div class="row"><div class="first-row"><div><a href="https://36kr.com/subscribe?ktm_source=kaike_pclandingpage" target="_blank" rel="noopener noreferrer">开氪</a></div><div><a href="/VClub" target="_blank" rel="noopener noreferrer">VClub</a></div></div><div class="second-row"><div><a href="https://research.36kr.com" target="_blank" rel="noopener noreferrer">36氪研究院</a></div><div><a href="https://global.36kr.com" target="_blank" rel="noopener noreferrer">36氪海外站</a></div><div><a href="https://innovation.36kr.com" target="_blank" rel="noopener noreferrer">36氪创新咨询</a></div></div><div class="third-row"><div><a href="https://www.jingdata.com/" target="_blank" rel="noopener noreferrer nofollow">鲸准</a></div><div><a href="https://krspace.cn" target="_blank" rel="noopener noreferrer nofollow">氪空间</a></div><div><a href="https://lslb168.sxl.cn" target="_blank" rel="noopener noreferrer nofollow">零售老板内参</a></div></div></div></div><div class="about36kr-wrapper"><div class="title weight-bold">关于36氪</div><div class="list-wrapper"><li><a rel="noopener noreferrer nofollow">商务合作</a></li><li><a href="/pages/about" target="_blank" rel="noopener noreferrer nofollow">关于我们</a></li><li><a href="https://zhaopin.36kr.com" rel="noopener noreferrer nofollow" target="_blank">加入我们</a></li><li><a href="/station-business" rel="noopener noreferrer nofollow" target="_blank">城市加盟</a></li><li><a href="/seek-report" rel="noopener noreferrer nofollow" target="_blank">寻求报道</a></li><li><a>我要投稿</a></li></div></div><div class="parters-wrapper"><div class="title weight-bold">合作伙伴</div><ul class="footer-partner"><li><a href="https://www.aliyun.com/" target="_blank" rel="noopener noreferrer nofollow"><img src="//sta.36krcnd.com/36krx2018-front/static/aly.e9118f2f.png" alt=""/></a></li><li><a href="https://www.upyun.com/" target="_blank" rel="noopener noreferrer nofollow"><img src="//sta.36krcnd.com/36krx2018-front/static/upy.8fdd68cd.png" alt=""/></a></li><li><a><img src="//sta.36krcnd.com/36krx2018-front/static/gaodi.9e9d6741.png" alt=""/></a></li><li><a href="https://www.teambition.com/?utm_source=36kr&amp;utm_campaign=logo-brand" target="_blank" rel="noopener noreferrer nofollow"><img src="//sta.36krcnd.com/36krx2018-front/static/teambition.f755714f.png" alt=""/></a></li><li><a href="https://www.getui.com/cn/index.html" target="_blank" rel="noopener noreferrer nofollow"><img src="//sta.36krcnd.com/36krx2018-front/static/getui.d2af25d2.png" alt=""/></a></li><li><a href="https://www.odaily.com" target="_blank" rel="noopener noreferrer nofollow"><img src="//sta.36krcnd.com/36krx2018-front/static/dailyPlanet.783b0e10.png" alt=""/></a></li></ul></div><div class="appDownload-wrapper"><div class="title weight-bold">36氪APP下载</div><img src="//sta.36krcnd.com/36krx2018-front/static/downCode.d2d221ec.png" alt=""/><div class="info">iOS &amp; Android</div></div><div class="footerInfo-wrapper"><a href="https://36kr.com/" class="footer-logo"><img src="//sta.36krcnd.com/36krx2018-front/static/logoWhite.2a5eceda.png" alt=""/></a><span class="mobile-hide">本站由<a href="https://www.aliyun.com/" target="_blank" rel="noopener noreferrer nofollow"><img src="//sta.36krcnd.com/36krx2018-front/static/aliyunfooter.fd625638.png" alt=""/></a></span><span class="law">© 2011~2018 北京多氪信息科技有限公司 | 京ICP备12031756号 | 京ICP证150143号 |<span class="mobile-hide"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502036099" target="_blank" rel="noopener noreferrer nofollow">京公网安备11010502036099号</a></span></span><div class="share"><a href="https://weibo.com/wow36kr" rel="noopener noreferrer nofollow" target="_blank"><span class="iconSinaWeibo"></span></a><a href="https://36kr.com/feed" target="_blank" rel="noopener noreferrer"><span class="iconRss"></span></a></div></div></div></div></div><div class="assit-wrapper undefined"><a href="http://feedback-36kr.mikecrm.com/FAN8f76" rel="noopener noreferrer nofollow" target="_blank" class="feedBack"><div class="feedBack-img"></div><div class="feedText">意见反馈</div></a><div class="phone"><div class="phone-img"></div><div class="phone-content"><img src="//sta.36krcnd.com/36krx2018-front/static/code.01e4c342.png" alt=""/><div class="content"><span>36氪APP</span><span>让一部分人先看到未来</span></div></div></div><div class="code"><div class="code-img"></div><div class="code-content"><div class="tabs"><div data-index="0" class="bg">36氪</div><div data-index="1">鲸准</div><div data-index="2">氪空间</div></div><div class="tab-content"><div style="display:block"><img src="//sta.36krcnd.com/36krx2018-front/static/kr.ad0c1158.jpg" alt=""/><p>为你推送和解读最前沿、最有料的科技创投资讯</p></div><div style="display:none"><img src="//sta.36krcnd.com/36krx2018-front/static/jingzhun.9a251862.jpg" alt=""/><p>一级市场金融信息和系统服务提供商</p></div><div style="display:none"><img src="//sta.36krcnd.com/36krx2018-front/static/krSpace.7efbe7d3.jpg" alt=""/><p>聚集全球最优秀的创业者，项目融资率接近97%，领跑行业</p></div></div></div></div><div class="top"><div class="top-img"></div></div></div></div></div><div class="pure-article-wrapper-box"><div class="article-pureReading-wrapper"><div class="article-pureReading-inner"></div></div></div></div></div>
+<script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    window.initialState={"articleDetail":{"isPureReading":false,"renderPureReading":false,"showPurereading":false,"scrollToCommentBox":false,"loginModalShow":false,"companyFormMsg":"","showtextFormTrue":false,"articleDetailData":{"code":0,"msg":"文章详情数据ok","data":{"id":5226205,"project_id":1,"goods_id":0,"domain_id":0,"column_id":0,"monographic_id":null,"related_company_id":0,"related_company_type":"domestic","related_company_name":"","close_comment":0,"state":"published","title":"孙正义和愿景基金的三年大考","catch_title":"","summary":"对于软银和孙正义本人来说，2016 年应当是极为重要的一年。","content":"<p>作者：魏新峰</p><p>出品：科技新知</p><p>对于软银和孙正义本人来说，2016 年应当是极为重要的一年。<br/></p><p>当年 3 月，软银宣布将拆分为两家公司，分别针对日本境内的移动通讯业务，和海外市场的科技领域投资。</p><p>6 月，向来以「阿里股份坚定持有者」自居的软银宣布，出售价值 79 亿美元的阿里股份，其持股比例从 31% 降低到 28%；</p><p>与此同时，腾讯宣布将以 89 亿美元收购知名游戏公司 Supercell 84.3% 的股份，其中 73% 来自于软银。据《华尔街日报》报道，这家游戏公司凭借《皇室战争》《部落战争》等知名游戏，在 2015 年录得 22.3 亿美元营收和 9.3 亿美元利润。</p><p>频繁出售优质资产后，孙正义在其 59 岁生日即将到来之际，宣布「60 岁退休」的承诺作罢，他将继续执掌软银 5 到 10 年。</p><p><img alt=\"孙正义和愿景基金的三年大考\" src=\"https://pic.36krcnd.com/201907/16095035/8bw7wtt3oj5pbw8h!heading\" data-img-size-val=\"1080,745\"/\\></p><p>彼时，外界对于孙正义出售优质股份的做法有两种猜测，一是因为收购 Sprint 导致软银经济受困急需资金爬出漩涡，二是为了筹措资本，支持自己大幅对外投资的动作。从后期软银的动作来看，两大因素应当兼具。</p><p>2017 年 5 月，孙正义在宣布开启外海投资一年后，拿到了来自阿联酋、苹果、富士康以及软银自己等大财团提供的 930 亿美元，直接成为全球最大的私募基金。</p><p>之后的几年时间里，手握雄厚资本的孙正义开启了花钱模式，对于新兴科技企业的投资毫不手软，在烧钱成风的互联网创业案例中，软银的身影随处可见。</p><p>三年后的今天，愿景基金又是 IPO，又是启动二期工程，但结合当下科技互联网企业的状态看，孙正义和软银在经历了三年的狂放之后，终于迎来了一次大考。而从当下来看，他们的成绩单并不如预想中那么光鲜。</p><h3  >1、<span >愿景基金三年战绩背后</span></h3><p>按孙正义的解释，多年前因为资金不足错过了亚马逊，是他投资生涯中最后悔的一步棋，以至于 2000 万美元押注阿里巴巴这么一大壮举，都不足以抵消他在亚马逊上的失落。</p><p><img alt=\"孙正义和愿景基金的三年大考\" src=\"https://pic.36krcnd.com/201907/16095035/a4n1vqyjbyezt0us!heading\" data-img-size-val=\"620,414\"/\\></p><p>在成立了愿景基金后，财大气粗的孙正义遍地撒钱，赌的就是自己的慧眼能够押中下一个，甚至好几个未来亚马逊。</p><p>国内有媒体报道称，孙正义的算盘打得够好。因为手握 1000 亿美元，仅协议中软银向投资者收取的 0.7%--1.3% 的服务费，一年下来也能赚上 10 亿美元。</p><p>这一算法显然忽略了协议中的重要一项——愿景基金尽管描绘了一个美好的未来，但还没有强大到让投资人白白送钱给你。事实上，孙正义这 1000 亿美元筹得并不容易，根据 FT 的报道，有 423 亿美元的资金属于债务融资。</p><p>这意味着有将近一半的投资额度，不要软银的盈利分成，而是连续十二年收取 7% 的利息。</p><p><img alt=\"孙正义和愿景基金的三年大考\" src=\"https://pic.36krcnd.com/201907/16095035/jg0q2lby42dtz5zv!heading\" data-img-size-val=\"1080,1027\"/\\></p><p>这么看来，孙正义的面子也没想象中那么大，他的愿景也不是每个人都认可。</p><p>愿景基金这笔钱来得并不算容易，但孙正义花起钱来却丝毫没有手软。细数过往几年愿景基金的投资案例，几乎每一笔支出都直接指向了一个方向：烧钱。</p><p>孙正义的整个投资逻辑，和他投资企业的扩张逻辑相似，即用烧钱换规模，用规模推估值，且在这些企业的对外表态中，难免都有那么一句「短期内没有盈利的计划」。</p><p>在愿景基金启动之前，软银刚刚经历了收购 Sprint 带来的阵痛，2016 年软银为此付出了 56.6 亿美元的负收入。尽管如此，愿景基金在面向未来的投资上仍然称不上稳妥，其比较大的几笔投资，Uber、滴滴、WeWork、OYO、波士顿动力，每一个都是烧钱和盈利都看不到尽头的平台级投资。</p><p>不仅如此，愿景基金在同一行业中还会进行多家投资，如打车领域除 Uber 滴滴之外，愿景基金还投资了印度的 Ola，并在撮合 Ola 和 Uber 合并的过程中遭到了对方的拒绝。双方在印度、新西兰、英国等多个市场激烈竞争，烧出去的钱，都有一部分来自于愿景基金。</p><p>目前，在愿景基金的众多投资案例中，Flipkart 应当算是最成功的一个。2017 年愿景基金花了 25 亿美元，不到一年便转手将其以 40 亿美元的价格卖给了沃尔玛，收益率高达 60%，成为孙正义颇为得意的一项佳绩。</p><p>但除此单一案例外，愿景基金的多个投资均尚未看到收益的可能。仅前文列出的几家，都分别有各自的问题：</p><p>Uber，成功上市，但市值从原计划的 900--1200 亿美元，降到了 750 亿美元，并在上市首日大跌 7%，目前维持在 740 亿美元左右，愿景基金投入的 90 亿美元，预期价值从 160 亿美元降至 130 亿美元，软银股价因 Uber 破发而大幅波动；</p><p>滴滴，因恶性事件被迫放缓 IPO 进程，日前全面提升了收费标准，但盈利和上市都陷入僵局；</p><p>WeWork，远景基金原计划要在其上市前投资 200 亿美元，因投资人不认可被迫降至 20 亿美元；</p><p>OYO，被红杉资本放弃投资，尽管手握 10 亿美元，要将 6 亿美元用来扩张中国市场，却遭遇美团打压，目前前途不甚明朗；</p><p>波士顿动力，最初谷歌因严重亏损将其出售给软银，目前仍无盈利可能。</p><p>这是愿景基金过往投资的一部分案例。与早年的苹果、谷歌、亚马逊不同，如今这些新兴小巨头，发展多年仍然没能提出合理的盈利计划，导致其亏损得不到任何抵消，完全依靠风险投资方提供的资金维持运转。一旦资金链出现问题，业务的维持将陷入僵局。</p><p>而愿景基金手中的千亿美元，在过去两年已经花出去了 800 多亿。根据孙正义的计划，愿景基金要每两到三年募集一次，规模维持在千亿美元左右，显然愿景基金二期的募资情况如何，便成为了孙正义能否迈出下一步的关键。</p><p>不久前，软银再次抛售阿里股票，套现百亿美元，一切似乎和 2016 年愿景基金成立前夕的情景相似。但唯一不同的是，这一次要让投资方出钱，变得更加困难。</p><h3  ><strong>2、<span >没有愿景基金二期，世界会变成怎样？</span></strong></h3><p>知名财经媒体 CNBC 在一个月前的一篇报道中，用了这么一个标题：</p><blockquote><p>如果没有愿景基金二期，世界会变成怎样？</p><p>What happens if there’s no Vision Fund II ?</p></blockquote><p>在这篇文章开头，CNBC 又搬出来了华尔街日报和华盛顿邮报的两篇报道，标题分别为：</p><blockquote><p>软银筹集新一期千亿美元基金面临挑战。</p><p>SoftBank Faces Challenges Raising Latest $100 Billion Fund.</p><p>孙正义发现不是每个人都认可他的愿景。</p><p>Masa Finds Not Everyone Shares His Vision.</p></blockquote><p>全球最知名的财经媒体们，似乎都在关注这么一个问题，他们的疑问简单总结下来就是，愿景基金二期是不是要凉了？</p><p>这些质疑和担忧并非空穴来风。除了前文所述愿景基金投资企业的上市和盈利难题外，在投资人和愿景基金之间，还有很多其他的隔阂阻碍了愿景基金二期的顺利开展。</p><p>首先是愿景基金在投资过程中，给被投方的估值过高，其中造成投资人对愿景基金产生直接不满的，包括对 WeWork 和商汤科技的投资。前文提及的 WeWork 投资额大幅降低，背后的原因便是投资人对于孙正义计算估值过高的不满。这一现象在商汤科技的案例上更为明显。</p><p><span >去年秋天，愿景基金以 77 亿美元的估值，向商汤科技投资了数亿美元。短短数月后，愿景联合穆巴达拉，计划以 100 亿美元的估值对其进行高达 20 亿美元的再次投资。这一投资计划，最终因穆巴达拉的退出而未能实现，其给出的原因便是估值过高。</span><br/></p><p>由于一向实行高估值投资，愿景基金一度被认为是比 IPO 更好的退出方式，甚至投资领域有分析师将移动互联网的投资泡沫，归咎于愿景基金的大手笔。</p><p>不过，最令投资方不满的，不仅是愿景基金给出的高估值，而是软银自身投资项目向愿景基金的转移。</p><p>据《华尔街日报》，目前软银已经转让、出售或计划向愿景基金转让的股份总额已经达到了 263 亿美元之多，这些股份由软银在过去几年花费了 249 亿美元购得。这些转让让投资人心生不满，认为孙正义有将愿景基金的资本转入软银的嫌疑。</p><p><img alt=\"孙正义和愿景基金的三年大考\" src=\"https://pic.36krcnd.com/201907/16095035/0o7jpak2v70ch6fc!heading\" data-img-size-val=\"730,486\"/\\></p><p>但更大的问题，应该是投资风险的转移。显然，软银的股份转移在价格上并没有比自己的原本的投资额高出太多，但考虑到软银一向高估值的投资做法，愿景基金极有可能在未来承担软银早期投资带来的投资风险。这一项，足够让愿景基金的投资人感受到威胁。</p><p>同时，近期外媒不断有消息证实，包括阿拉伯的 RIF、加拿大的 PPIB 在内的多家愿景基金的主要出资方，都已经搭建的自己的投资渠道，并对相关项目进行了直接投资，愿景基金被直接绕过。</p><p>孙正义对于第二个千亿美金融资计划展现出的美好幻想，可能会在未来一段时间被彻底打破。</p><h3  ><strong>3、<span >玩不下去的投资游戏</span></strong></h3><p>外界对与孙正义的愿景基金，一向当作投资游戏看待，其获得的两个评价也比较极端：要么未来大获成功，要么半途离奇破产。</p><p>放弃退休执掌软银，开启愿景基金后的孙正义，比预料之中显得更加激进。这种激进表现在两个方面，一方面是筹钱时的反常态度，一方面是花钱时过分草率。</p><p>过去三年，孙正义从投资阿里的股份中套现了两次，一次是愿景基金成立前，一次是最近愿景基金钱差不多花光后。可以预想，如果愿景基金二期融资不顺利，孙正义再次从阿里手里换来几百亿美元拿去实现自己的未来愿景也并非不可能。</p><p><img alt=\"孙正义和愿景基金的三年大考\" src=\"https://pic.36krcnd.com/201907/16095035/kewog9masri2n6br!heading\" data-img-size-val=\"720,405\"/\\></p><p>要知道，阿里可是软银最大的宝藏且具有很好的增长价值，孙正义「套阿里养愿景」的投资方式增加了他「赌」的属性，却绝对称不上稳妥。</p><p>花钱上，孙正义更加不理智。2017 年愿景基金成立时，这笔千亿美金的巨款，原计划的花费时间是 4 年，但孙正义在 2 年内便将至挥霍一空，投资拍板速度之快令人惊讶。</p><p>以至于到 2019 年的今天，愿景基金陷入了死循环之中。在过去几年的投资里，Sprint 表现不佳，ARM 不及预期，滴滴、波士顿动力等被投资企业需要钱，这些仍在成长且盈利能力不佳的企业，亟需大笔资金续命。</p><p>但越需要钱，愿景基金的融资就越困难。Uber 和 WeWork 这两家能给愿景基金提供资金缓冲的企业，前者上市成绩不佳，后者结果尚不明朗，资金的巨大缺口导致愿景基金成了烫手山芋，任何投资放都不会再轻易地巨额资金押注在它身上。</p><p><img alt=\"孙正义和愿景基金的三年大考\" src=\"https://pic.36krcnd.com/201907/16095035/bcjlfcypej2vkbz0!heading\" data-img-size-val=\"800,450\"/\\></p><p>当然，对于愿景基金来说 IPO 也是一条路，不过这条路并不容易走通。与伯克希尔哈撒韦手握公共事业、保险公司和能源公司这些盈利能力强的企业不同，愿景基金手中不过是一些完全看不到盈利的年轻公司，这样的产品公开上市，在历史上几乎是不存在的。</p><p>另外，即使 IPO 成功，愿景基金也无非是进入了一个新的资金池——由投资经验不丰富的散户形成的筹资渠道。但是，监管方为了保护不成熟投资者，免受风险投资不稳定性产生的损失，禁止这一群体购入风险投资基金的股票。</p><p>这些规定对于愿景基金来说，都是极难克服的阻碍。另外，它旗下的企业，包括 Uber 和 WeWork 都将在今年完成上市，这也会降低愿景基金在公开市场上的吸引力。</p><p>摆在孙正义面前可走的路似乎已经不多了。他曾经兴致勃勃的未来野心，如今倒像是一个投资游戏，癫狂、荒诞、无关盈利，唯一能够让人们掀起热情的，只有数以亿计的钱和孙正义描绘出的美好未来。</p><p>可是美好未来太遥远，当没有钱的困境摆在了孙正义的面前，这场投资游戏的美好未来被搁置在一旁，而他能不能够继续将这把游戏玩下去，才是目前最关键的问题。</p>","cover":"https://pic.36krcnd.com/201907/16095235/959uwb19g5zdxt4g!heading","source_type":"contribution","source_urls":"","related_post_ids":"","extraction_tags":"","extra":null,"user_id":18360719,"published_at":"2019-07-16 19:06:05","created_at":"2019-07-16 17:50:39","updated_at":"2019-07-16 19:06:05","counters":{"view_count":0,"pv":0,"pv_mobile":0,"pv_app":0,"favorite":0,"comment":0,"like":0},"related_company_counters":null,"related_posts":null,"is_free":0,"has_rights_goods":true,"is_tovc":0,"image_source":[],"company_info":null,"company_contact_info":null,"company_fund_info":null,"share_data":{"default":{"title":"孙正义和愿景基金的三年大考","cover":"https://pic.36krcnd.com/201907/16095221/o5n8yr9i8ajn6y9v","description":"对于软银和孙正义本人来说，2016 年应当是极为重要的一年。","url":"https://36kr.com/p/5226205.html"},"weibo":{"title":"【36氪新闻】孙正义和愿景基金的三年大考 https://36kr.com/p/5226205.html","cover":"https://pic.36krcnd.com/201907/16095221/o5n8yr9i8ajn6y9v"},"youdao":{"title":"【36氪新闻】孙正义和愿景基金的三年大考","url":"https://36kr.com/p/5226205.html"}},"title_mobile":null,"cover_mobile":null,"audios":[],"db_counters":[],"user":{"id":18360719,"name":"互联网圈内事","avatar_url":"https://pic.36krcnd.com/avatar/201901/04103121/gpxc8ksbtb4mfej0!120","tovc_avatar_url":null,"introduction":"互联网圈内事，呈现最新热门有料内容，犀利点评IT八卦事件。","tovc_brief_intro":"","tovc_intro":"","tovc_title":"","tovc_level":null,"role_id":7,"title":"特邀作者","department_belong":"要闻-UGC部","qr_code_url":"","roles":[{"id":7,"name":"特邀作者","description":"特邀作者","user_id_server":0,"available_domain_ids":"[]","server":null}],"role":{"id":7,"name":"特邀作者","description":"特邀作者","user_id_server":0,"available_domain_ids":"[]","server":null}},"motifs":[{"id":341,"name":"创投新闻","cover":"https://pic.36krcnd.com/201811/09060444/hto8sdoepz3yl5ak","description":"","source_name":"motif"}],"motif_banner":null,"has_buy_goods":false,"has_rights_research_report":true,"has_right_company":false}},"authorLatestData":{"code":0,"msg":"作者最近内容数据ok","data":{"total_count":18,"page":1,"page_size":3,"items":[{"id":5226205,"summary":"对于软银和孙正义本人来说，2016 年应当是极为重要的一年。","project_id":"1","tag_id":0,"views_count":"0","mobile_views_count":"0","app_views_count":"0","monographic_id":0,"domain_id":"0","goods_id":"0","is_tovc":"0","is_free":"0","column_name":"","title":"孙正义和愿景基金的三年大考","cover":"https://pic.36krcnd.com/201907/16095235/959uwb19g5zdxt4g!heading","template_info":{"template_type":"small_image","template_title":"孙正义和愿景基金的三年大考","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201907/16095221/o5n8yr9i8ajn6y9v!heading"]},"published_at":"2019-07-16T19:06:05+08:00","column_id":"0","user_id":"18360719","extraction_tags":"","user_info":"{\"id\":18360719,\"avatar_url\":\"https:\\/\\/pic.36krcnd.com\\/avatar\\/201901\\/04103121\\/gpxc8ksbtb4mfej0!480\",\"name\":\"\\u4e92\\u8054\\u7f51\\u5708\\u5185\\u4e8b\",\"nickname\":\"\\u4e92\\u8054\\u7f51\\u5708\\u5185\\u4e8b\",\"title\":\"\\u7279\\u9080\\u4f5c\\u8005\",\"department_belong\":\"\\u8981\\u95fb-UGC\\u90e8\",\"introduction\":\"\\u4e92\\u8054\\u7f51\\u5708\\u5185\\u4e8b\\uff0c\\u5448\\u73b0\\u6700\\u65b0\\u70ed\\u95e8\\u6709\\u6599\\u5185\\u5bb9\\uff0c\\u7280\\u5229\\u70b9\\u8bc4IT\\u516b\\u5366\\u4e8b\\u4ef6\\u3002\",\"is_author\":\"1\"}","highlight":null,"_type":"post","_score":null,"favourite_num":0},{"id":5218967,"summary":"2019 年是 5G 预商用的开始，基础技术的改变可能带来的是整个消费电子行业的变化。","project_id":"1","tag_id":0,"views_count":"0","mobile_views_count":"0","app_views_count":"0","monographic_id":0,"domain_id":"0","goods_id":"0","is_tovc":"0","is_free":"0","column_name":"","title":"隐藏在平板电脑背后的，操作系统之争","cover":"https://pic.36krcnd.com/201906/25014410/z93m19hazxs40f74!heading","template_info":{"template_type":"small_image","template_title":"隐藏在平板电脑背后的，操作系统之争","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201906/25014404/8mjha3zhns3ntnfd!heading"]},"published_at":"2019-06-25T15:06:05+08:00","column_id":"0","user_id":"18360719","extraction_tags":"","user_info":"{\"id\":18360719,\"avatar_url\":\"https:\\/\\/pic.36krcnd.com\\/avatar\\/201901\\/04103121\\/gpxc8ksbtb4mfej0!480\",\"name\":\"\\u4e92\\u8054\\u7f51\\u5708\\u5185\\u4e8b\",\"nickname\":\"\\u4e92\\u8054\\u7f51\\u5708\\u5185\\u4e8b\",\"title\":\"\\u7279\\u9080\\u4f5c\\u8005\",\"department_belong\":\"\\u8981\\u95fb-UGC\\u90e8\",\"introduction\":\"\\u4e92\\u8054\\u7f51\\u5708\\u5185\\u4e8b\\uff0c\\u5448\\u73b0\\u6700\\u65b0\\u70ed\\u95e8\\u6709\\u6599\\u5185\\u5bb9\\uff0c\\u7280\\u5229\\u70b9\\u8bc4IT\\u516b\\u5366\\u4e8b\\u4ef6\\u3002\",\"is_author\":\"1\"}","highlight":null,"_type":"post","_score":null,"favourite_num":24},{"id":5211221,"summary":"一个工匠的骄傲和喜悦。","project_id":"1","tag_id":0,"views_count":"0","mobile_views_count":"0","app_views_count":"0","monographic_id":0,"domain_id":"0","goods_id":"0","is_tovc":"0","is_free":"0","column_name":"","title":"欠债、吃软饭、失败五千次，他是戴森吹风机之父","cover":"https://pic.36krcnd.com/201905/31105634/qwhg114e8cujtd22!heading","template_info":{"template_type":"small_image","template_title":"欠债、吃软饭、失败五千次，他是戴森吹风机之父","template_title_isSame":true,"template_cover":["https://pic.36krcnd.com/201905/31105620/gpw7698vhcmog24n!heading"]},"published_at":"2019-05-31T19:57:05+08:00","column_id":"0","user_id":"18360719","extraction_tags":"","user_info":"{\"id\":18360719,\"avatar_url\":\"https:\\/\\/krplus-pic.b0.upaiyun.com\\/avatar\\/201901\\/04103121\\/gpxc8ksbtb4mfej0!480\",\"name\":\"\\u4e92\\u8054\\u7f51\\u5708\\u5185\\u4e8b\",\"nickname\":\"\\u4e92\\u8054\\u7f51\\u5708\\u5185\\u4e8b\",\"title\":\"\\u7279\\u9080\\u4f5c\\u8005\",\"department_belong\":\"\\u8981\\u95fb-UGC\\u90e8\",\"introduction\":\"\\u4e92\\u8054\\u7f51\\u5708\\u5185\\u4e8b\\uff0c\\u5448\\u73b0\\u6700\\u65b0\\u70ed\\u95e8\\u6709\\u6599\\u5185\\u5bb9\\uff0c\\u7280\\u5229\\u70b9\\u8bc4IT\\u516b\\u5366\\u4e8b\\u4ef6\\u3002\",\"is_author\":\"1\"}","highlight":null,"_type":"post","_score":null,"favourite_num":112}]}},"nextArticleDetailData":{"code":0,"msg":"下一篇文章详情数据成功","data":{"id":5226216,"project_id":1,"goods_id":0,"domain_id":0,"column_id":0,"monographic_id":null,"related_company_id":0,"related_company_type":"domestic","related_company_name":"","close_comment":0,"state":"published","title":"深度资讯 | 华为的新品类“智慧屏”不是电视，而是电视的未来","catch_title":"","summary":"“智慧屏”不是电视，而是电视的未来，是一个类似手机和智能音箱一样的智能家居入口，智慧屏将成为家庭影音娱乐中心、信息共享中心、控制管理中心和多设备交互中心。","content":"<p>文 | 36氪每日商业精选</p><h2 class=\"ql-long-13011303\"></h2><h3 >华为的新品类“智慧屏”不是电视，而是电视的未来</h3><p>7月15日，荣耀总裁赵明介绍了荣耀将于8月上旬发布的“智慧屏”新品类。他表示，“智慧屏”不是电视，而是电视的未来，是一个类似手机和智能音箱一样的智能家居入口，智慧屏将成为家庭影音娱乐中心、信息共享中心、控制管理中心和多设备交互中心。</p><p>目前，这一智慧屏新品还未面世，但从去年11月的乌镇互联网大会期间赵明透露布局电视领域至今，荣耀已经为智慧屏做了大半年的舆论铺垫，频繁释放的信号都围绕着一个核心——“华为不做传统电视”。荣耀之所以急于撇清智慧屏与传统电视的关系，主要还是为了抢夺下一个loT入口。</p><p>智慧屏是另一种叫法，但无论使用或是形态，这一新品类都还很难脱离电视形态，语音助手、智能操控等只是“增值”部分。对追赶5G物联网的华为来说，要突出的恰是增值部分，所以也就不以电视命名。分析师刘步尘向《财新》表示<span >...</span></p><blockquote><p><strong>主编点评：</strong>就目前公布的产品能力来看，智慧屏将与小米电视直接竞争。华为在底层技术方面有优势，但在智能设备多样化方面不及小米<span >...</span></p></blockquote><h3 >阿里股东大会批准拆股方案，赴港上市一步之遥</h3><p>7月15日晚9点，阿里巴巴在香港召开了股东大会，会上批准并通过了“1拆8”的普通股拆股方案，将普通股的数量从现在的40亿股扩大到320亿股。对于拆分股票的目的，阿里方面的说法是，为了“增加以较低每股价格发行的股票数量，增加公司未来筹资活动的灵活性，包括发行新股”。而外界的解读是，这是阿里在为赴港上市做准备。</p><p>以阿里当前的股价计算，在没有拆股之前，美股市场的投资者只需要173.5美元就能成为阿里的股东，但港股的交易单位是“手”，一手等于100股，也就是说，港股市场的投资者买一手阿里的股票，至少要投入超过13万港币。而拆股之后，100股只需要不到两万港币，投资门槛明显降低了很多，也更能吸引中小投资的参与<span >...</span></p><blockquote><p><strong>主编点评：</strong>可以说，新经济公司近两年在港股的日子并不好过，小米、美团点评等明星公司的股价表现都不如人意。摩根士丹利认为<span >...</span></p></blockquote><address><p>本文来自36氪付费栏目《36氪每日商业精选》——7月16日<br/></p><p>每天不到1元，深度资讯+主编点评，省时省心高效阅读</p><p><a href=\"https://36kr.com/coupons/single?id=216?ktm_source=kk_feed071603_36krdaily\" target=\"_blank\" >【限时彩蛋】戳此订阅，立减10元&gt;&gt;</a></p></address><h3><a href=\"https://36kr.com/goods/p/5226066?ktm_source=kk_0716content3_36krdaily\" target=\"_blank\" >已购用户戳此查看完整内容或听完整音频&gt;</a></h3><p><a href=\"https://36kr.com/goods/p/5226066?ktm_source=kk_0716content3_36krdaily\" target=\"_blank\"><img alt=\"深度资讯 | 华为的新品类“智慧屏”不是电视，而是电视的未来\" src=\"https://pic.36krcnd.com/201907/16103547/3uk3t7ssh6xcvjl3.jpg!heading\" data-img-size-val=\"720,1753\"/\\></a></p><p><a href=\"https://36kr.com/coupons/single?id=216?ktm_source=kk_feed071603_36krdaily\" target=\"_blank\"><img alt=\"深度资讯 | 华为的新品类“智慧屏”不是电视，而是电视的未来\" src=\"https://pic.36krcnd.com/201906/12101128/q0fwdgyep9jnhcuw.png!1200\" data-img-size-val=\"720,3783\"/\\></a></p>","cover":"https://pic.36krcnd.com/201907/16103615/b74f6c8nk2k6df6b!heading","source_type":"original","source_urls":"","related_post_ids":"","extraction_tags":"","extra":null,"user_id":747305693,"published_at":"2019-07-16 19:00:05","created_at":"2019-07-16 18:16:59","updated_at":"2019-07-16 19:00:05","counters":{"view_count":16,"pv":12,"pv_mobile":1,"pv_app":3,"favorite":0,"comment":0,"like":0},"related_company_counters":null,"related_posts":null,"is_free":0,"has_rights_goods":true,"is_tovc":0,"image_source":"","company_info":null,"company_contact_info":null,"company_fund_info":null,"title_mobile":null,"cover_mobile":null,"audios":[],"db_counters":[{"id":233162604,"entity_type":"post","entity_id":5226216,"count_type":"pv","value":12},{"id":233163001,"entity_type":"post","entity_id":5226216,"count_type":"pv_app","value":3},{"id":233164610,"entity_type":"post","entity_id":5226216,"count_type":"pv_mobile","value":1}],"user":{"id":747305693,"name":"36氪每日商业精选","avatar_url":"https://pic.36krcnd.com/avatar/201807/26115210/1saxc9wa8zrjfdxl!480","tovc_avatar_url":null,"introduction":"TA还在犹豫如何开场","tovc_brief_intro":"","tovc_intro":"","tovc_title":"","tovc_level":null,"role_id":191,"title":"氪星运营","department_belong":"市场-品牌部","qr_code_url":"","role":{"id":191,"name":"operator_paidcolumn_kaikejun","description":"【主】开氪专栏运营主管","user_id_server":0}},"has_rights_research_report":true}},"post_create":"18","organArticleData":{"code":0,"data":{"organizationList":[]},"msg":"返回数据成功"},"enterprise":null},"channel":[{"id":303,"type":"web","project_id":1,"key":"web_news","state":"published","is_system":0,"api":null,"name":"最新","mark":"none","description":"","ad_info":"{\"banner\":[{\"position\":2,\"ad_id\":\"\"}],\"feed\":[{\"position\":4,\"ad_id\":\"\"},{\"position\":9,\"ad_id\":\"\"},{\"position\":14,\"ad_id\":\"\"},{\"position\":19,\"ad_id\":\"\"}]}","order_num":1,"user_id":0,"user_id_edited":18721458,"published_at":null,"created_at":null,"updated_at":"2019-05-07 16:18:27"},{"id":304,"type":"web","project_id":1,"key":"web_recommend","state":"published","is_system":0,"api":null,"name":"推荐","mark":"none","description":"","ad_info":"{\"banner\":[{\"position\":3,\"ad_id\":\"\"},{\"ad_id\":237,\"position\":7}],\"feed\":[{\"position\":4,\"ad_id\":\"\"},{\"position\":9,\"ad_id\":\"\"},{\"position\":14,\"ad_id\":\"\"},{\"position\":19,\"ad_id\":\"\"}]}","order_num":2,"user_id":0,"user_id_edited":132730,"published_at":null,"created_at":null,"updated_at":"2019-04-10 14:21:20"},{"id":305,"type":"web","project_id":1,"key":"contact","state":"published","is_system":0,"api":null,"name":"创投","mark":"hot","description":"","ad_info":"{\"banner\":[{\"position\":2,\"ad_id\":\"\"}],\"feed\":[{\"position\":4,\"ad_id\":\"\"},{\"position\":9,\"ad_id\":\"\"},{\"position\":14,\"ad_id\":\"\"},{\"position\":19,\"ad_id\":\"\"}]}","order_num":3,"user_id":0,"user_id_edited":132730,"published_at":null,"created_at":null,"updated_at":"2019-03-26 15:45:39"},{"id":310,"type":"web","project_id":1,"key":"travel","state":"published","is_system":0,"api":null,"name":"汽车","mark":"none","description":"","ad_info":"{\"banner\":[{\"position\":2,\"ad_id\":\"\"}],\"feed\":[{\"position\":4,\"ad_id\":\"\"},{\"position\":9,\"ad_id\":\"\"},{\"position\":14,\"ad_id\":\"\"},{\"position\":19,\"ad_id\":\"\"}]}","order_num":4,"user_id":0,"user_id_edited":18721458,"published_at":null,"created_at":null,"updated_at":"2019-07-02 10:11:36"},{"id":306,"type":"web","project_id":1,"key":"technology","state":"published","is_system":0,"api":null,"name":"科技","mark":"none","description":"","ad_info":"{\"banner\":[{\"position\":2,\"ad_id\":\"\"}],\"feed\":[{\"position\":4,\"ad_id\":\"\"},{\"position\":9,\"ad_id\":\"\"},{\"position\":14,\"ad_id\":\"\"},{\"position\":19,\"ad_id\":\"\"}]}","order_num":5,"user_id":0,"user_id_edited":18721458,"published_at":null,"created_at":null,"updated_at":"2019-07-02 09:30:43"},{"id":329,"type":"web","project_id":1,"key":"enterpriseservice","state":"published","is_system":0,"api":null,"name":"企服","mark":"none","description":"","ad_info":"{\"banner\":[{\"position\":2,\"ad_id\":\"\"}],\"feed\":[{\"position\":4,\"ad_id\":\"\"},{\"position\":9,\"ad_id\":\"\"},{\"position\":14,\"ad_id\":\"\"},{\"position\":19,\"ad_id\":\"\"}]}","order_num":6,"user_id":132730,"user_id_edited":132730,"published_at":"2019-04-26 16:29:53","created_at":"2019-04-25 19:20:37","updated_at":"2019-07-02 09:30:35"},{"id":307,"type":"web","project_id":1,"key":"happy_life","state":"published","is_system":0,"api":null,"name":"生活","mark":"none","description":"","ad_info":"{\"banner\":[{\"position\":2,\"ad_id\":\"\"}],\"feed\":[{\"position\":4,\"ad_id\":\"\"},{\"position\":9,\"ad_id\":\"\"},{\"position\":14,\"ad_id\":\"\"},{\"position\":19,\"ad_id\":\"\"}]}","order_num":7,"user_id":0,"user_id_edited":18721458,"published_at":null,"created_at":null,"updated_at":"2019-07-02 09:30:24"},{"id":309,"type":"web","project_id":1,"key":"web_zhichang","state":"published","is_system":0,"api":null,"name":"职场","mark":"none","description":"","ad_info":"{\"banner\":[{\"ad_id\":\"\",\"position\":2}],\"feed\":[{\"ad_id\":\"\",\"position\":4},{\"ad_id\":\"\",\"position\":9},{\"ad_id\":\"\",\"position\":14},{\"ad_id\":\"\",\"position\":19}]}","order_num":8,"user_id":0,"user_id_edited":2043739950,"published_at":null,"created_at":null,"updated_at":"2019-07-02 09:30:16"},{"id":325,"type":"web","project_id":1,"key":"innovate","state":"published","is_system":0,"api":null,"name":"创新","mark":"none","description":"品牌市场部频道","ad_info":"{\"banner\":[{\"position\":2,\"ad_id\":\"\"}],\"feed\":[{\"position\":4,\"ad_id\":\"\"},{\"position\":9,\"ad_id\":\"\"},{\"position\":14,\"ad_id\":\"\"},{\"position\":19,\"ad_id\":\"\"}]}","order_num":9,"user_id":132730,"user_id_edited":132730,"published_at":"2019-03-25 12:09:23","created_at":"2019-03-22 18:10:57","updated_at":"2019-04-26 16:30:04"},{"id":311,"type":"web","project_id":1,"key":"real_estate","state":"published","is_system":0,"api":null,"name":"房产","mark":"none","description":"","ad_info":"{\"banner\":[{\"ad_id\":\"\",\"position\":2}],\"feed\":[{\"ad_id\":\"\",\"position\":4},{\"ad_id\":\"\",\"position\":9},{\"ad_id\":\"\",\"position\":14},{\"ad_id\":\"\",\"position\":19}]}","order_num":325,"user_id":0,"user_id_edited":10103286,"published_at":null,"created_at":null,"updated_at":"2019-04-26 16:30:03"},{"id":312,"type":"web","project_id":1,"key":"other","state":"published","is_system":0,"api":null,"name":"其他","mark":"none","description":"","ad_info":"{\"banner\":[{\"ad_id\":\"\",\"position\":2}],\"feed\":[{\"ad_id\":\"\",\"position\":4},{\"ad_id\":\"\",\"position\":9},{\"ad_id\":\"\",\"position\":14},{\"ad_id\":\"\",\"position\":19}]}","order_num":329,"user_id":0,"user_id_edited":132730,"published_at":null,"created_at":null,"updated_at":"2019-04-26 16:30:01"}],"userInfo":null}</script>
+<script src="static.geetest.com/static/tools/gt.js"></script>
+<script src="//sta.36krcnd.com/36krx2018-front/static/runtime.c6b798bb.js" type="text/javascript"></script><script src="sta.36krcnd.com/36krx2018-front/static/app.9b6120b3.js" type="text/javascript"></script>
+</body>
+</html>

@@ -7,7 +7,18 @@ public class Staff {
     private String staffpassword;//登录密码
     private Integer role;//员工角色 1.会员2.管理员
     private String staffimg;//员工头像
+
     private String staffinfo;//员工格言
+
+    private String stafftype;
+
+    public String getStafftype() {
+        return stafftype;
+    }
+
+    public void setStafftype(String stafftype) {
+        this.stafftype = stafftype;
+    }
 
     public String getStaffimg() {
         return staffimg;

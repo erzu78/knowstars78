@@ -25,17 +25,23 @@
   </select>
   <select id="infoList" resultMap="BaseResultMap">
     select i.*,p.topicname topicname,ty.tname tname,s.staffname staffname from t_information i,t_staff s,info_type ty,t_topic p where i.topicid=p.topicid and i.authorid=s.sid and i.tyid=ty.tid
-    limit #{start},#{rows}
+    ORDER BY i.releasetime desc limit #{start},#{rows}
   </select>
   <select id="toZwww" resultMap="BaseResultMap">
     select i.*,p.topicname topicname,ty.tname tname,s.staffname staffname from t_information i,t_staff s,info_type ty,t_topic p where i.topicid=p.topicid and i.authorid=s.sid and i.tyid=ty.tid
-    and ty.tid=#{tid}
+    <if test="tid !=1">
+      and ty.tid=#{tid}
+    </if>
+    ORDER BY i.releasetime desc
     limit #{start},#{rows}
   </select>
   <select id="queryCount" resultType="long">
     select count(*) from t_information
   </select>
-
+  <select id="queryWzById" resultMap="BaseResultMap">
+    select i.*,s.staffname,s.staffimg,s.stafftype,s.staffinfo from t_information i,t_staff s
+where i.authorid =s.sid and i.infId=#{infid}
+  </select>
 
 
 
@@ -89,6 +95,9 @@
       <if test="subtitle != null" >
         subtitle,
       </if>
+      <if test="hot !=null">
+        hot
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="infid != null" >
@@ -118,6 +127,9 @@
       <if test="subtitle != null" >
         #{subtitle,jdbcType=VARCHAR},
       </if>
+      <if test="hot != null" >
+        #{hot,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.jk.pojo.Information" >
@@ -146,6 +158,9 @@
       </if>
       <if test="subtitle != null" >
         subtitle = #{subtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="hot !=null">
+        hot =#{hot,jdbcType=INTEGER},
       </if>
     </set>
     where infId = #{infid,jdbcType=INTEGER}

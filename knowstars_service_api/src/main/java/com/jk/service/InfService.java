@@ -47,4 +47,6 @@ public interface InfService {
     void upTy(@RequestBody Ty ty);
     @RequestMapping("/deleteAllTy")
     void deleteAllTy(@RequestParam(value="ids")String ids);
+    @RequestMapping("/queryWzById")
+    List<Information>  queryWzById(@RequestParam(value="infid")Integer infid);
 }

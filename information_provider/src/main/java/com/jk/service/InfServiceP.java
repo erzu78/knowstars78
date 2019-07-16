@@ -28,4 +28,5 @@ public interface InfServiceP {
     Ty queryTyById(Integer tid);
     void upTy(Ty ty);
     void deleteAllTy(String ids);
+    List<Information> queryWzById(Integer infid);
 }

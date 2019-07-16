@@ -24,4 +24,6 @@ public interface InformationMapper {
     void delAll(@Param("ids") String ids);
 
     List<Information> toZwww(@Param("start") Integer start, @Param("rows") Integer rows, @Param("tid") Integer tid);
+
+   List<Information>  queryWzById(Integer infid);
 }

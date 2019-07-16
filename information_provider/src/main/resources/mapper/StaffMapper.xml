@@ -8,6 +8,7 @@
     <result column="role" property="role" jdbcType="INTEGER" />
     <result column="staffimg" property="staffimg" jdbcType="VARCHAR" />
     <result column="staffinfo" property="staffinfo" jdbcType="VARCHAR" />
+    <result column="stafftype" property="stafftype" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     sid, staffname, staffpassword, role
