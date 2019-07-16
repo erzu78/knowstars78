@@ -24,4 +24,8 @@ public interface NewsFlashService {
     List<NewsFlash> queryNews();
 
     NewsFlash queryNewsFlashById(Integer flashid);
+
+    List<NewsFlash> queryNewsAll();
+
+    NewsFlash queryNewsFlashByIdPlusOne(Integer flashid);
 }

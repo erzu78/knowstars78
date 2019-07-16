@@ -24,7 +24,7 @@ public class NewsFlashControllerc {
 
      //查询快讯方法
     @RequestMapping("NewsFlashList")
-    public Map<String,Object> userList(@RequestParam(value="start") Integer start, @RequestParam(value="rows")Integer rows ) {
+    public Map<String,Object> NewsFlashList(@RequestParam(value="start") Integer start, @RequestParam(value="rows")Integer rows ) {
         List<NewsFlash> list= newsFlashServiceApi.NewsFlashList(start,rows);
         long count = newsFlashServiceApi.queryCount();
         Map<String, Object> map = new HashMap<>();
@@ -73,7 +73,7 @@ public class NewsFlashControllerc {
         return "/homePage/testMain";
     }
 
-    //查询前台首页快讯
+    //查询前台首页快讯(最新10条)
     @GetMapping("queryNews")
     public List<NewsFlash> queryNews(){
         List<NewsFlash> list = newsFlashServiceApi.queryNews();
@@ -82,7 +82,15 @@ public class NewsFlashControllerc {
 
 
 
-    //根据快讯标题查询对应的信息
+//查询前台首页快讯专栏(所有)
+    @GetMapping("queryNewsAll")
+    public List<NewsFlash> queryNewsAll(){
+        List<NewsFlash> list = newsFlashServiceApi.queryNewsAll();
+        return  list;
+    }
+
+
+    //根据快讯标题查询对应的信息(首页)
     @GetMapping("queryNewsFlashById")
         public NewsFlash queryNewsFlashById(Integer flashid){
 
@@ -90,6 +98,11 @@ public class NewsFlashControllerc {
     }
 
 
+    @GetMapping("queryNewsFlashByIdPlusOne")
+    public NewsFlash queryNewsFlashByIdPlusOne(Integer flashid){
+
+        return newsFlashServiceApi.queryNewsFlashByIdPlusOne(flashid);
+    }
 
 
 
