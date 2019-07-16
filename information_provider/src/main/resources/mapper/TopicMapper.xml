@@ -19,6 +19,7 @@
   </select>
   <select id="queryTopic" resultMap="BaseResultMap">
     select p.*,i.inftitle inftitle from t_topic p,t_information i where i.topicid=p.topicid group by p.topicname
+    ORDER BY tdate desc
   </select>
 
 

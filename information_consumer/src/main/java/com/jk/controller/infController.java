@@ -44,6 +44,7 @@ public class infController {
     //新增方法
     public void add(Information information){
        information.setAuthorid(2);
+       information.setHot(1);
         infServiceFeign.add(information);
     }
     @RequestMapping("/queryInfoById")
@@ -58,6 +59,7 @@ public class infController {
     //修改方法
     public void upInfo(Information information){
         information.setAuthorid(2);
+        information.setHot(1);
         infServiceFeign.upInfo(information);
     }
     @RequestMapping("/deleteAllInfo")
@@ -100,6 +102,8 @@ public class infController {
     @RequestMapping("/toZwww")
     @ResponseBody
     public List<Information> toZwww(@RequestParam(value="start") Integer start, @RequestParam(value="rows")Integer rows,@RequestParam(value="tid")Integer tid){
+        System.out.println(start);
+        System.out.println(rows);
         System.out.println(tid);
         return  infServiceFeign.toZwww(start,rows,tid);
     }
@@ -155,5 +159,12 @@ public class infController {
     //批量删除
     public void deleteAllTy(@RequestParam(value="ids")String ids){
         infServiceFeign.deleteAllTy(ids);
+    }
+    @RequestMapping("/queryWzById")
+    @ResponseBody
+    public List<Information> queryWzById(@RequestParam(value="infid") Integer infid){
+
+        List<Information> in= infServiceFeign.queryWzById(infid);
+        return in;
     }
 }

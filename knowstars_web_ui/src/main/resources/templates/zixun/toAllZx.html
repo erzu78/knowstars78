@@ -499,13 +499,13 @@
                             crossDomain: true,
                             type: 'post',
                             data:{
-                                start:1,
+                                start:0,
                                 rows:5,
                             },
                             success: function (data) {
 
                                 for (var i = 0; i < data.length; i++) {
-                        var html = "<div class=\"anchor-59244\"></div><div class=\"kr-flow-article-item\"><div class=\"kr-shadow-wrapper\"><div class=\"kr-shadow-wrapper-card\" style=\"width:720px;height:173px;top:-15px;left:-10px\"></div><div class=\"kr-shadow-content\"><div class=\"article-item-pic-wrapper\"><a href=\"/information/other\" class=\"article-item-channel\">"+data[i].tname+"</a><a class=\"article-item-pic\" href=\"/p/5225390\" target=\"_blank\" rel=\"noopener noreferrer\"><div class=\"kr-default-img-no-logo scaleBig\"><img src="+data[i].articleimg+" width=\"216\" height=\"143\"></div></a></div><div class=\"article-item-info clearfloat\"><p class=\"title-wrapper ellipsis-2\"><a class=\"article-item-title weight-bold\" href=\"/p/5225390\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].inftitle+"</a></p><a class=\"article-item-description ellipsis-2\" href=\"/p/5225390\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].subtitle+"</a><div class=\"kr-flow-bar\"><span class=\"kr-flow-bar-motif\">来自主题：<a href=\"/motif/413\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].topicname+"</a>|</span><a class=\"kr-flow-bar-author\" href=\"/user/93842\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].staffname+"</a><span class=\"kr-flow-bar-time\" style=\"float:right\"><i class=\"kr-flow-bar-time-icon\"></i>"+data[i].releasetime+"</span></div></div></div></div></div><br>";
+                        var html = "<div class=\"anchor-59244\"></div><div class=\"kr-flow-article-item\"><div class=\"kr-shadow-wrapper\"><div class=\"kr-shadow-wrapper-card\" style=\"width:720px;height:173px;top:-15px;left:-10px\"></div><div class=\"kr-shadow-content\"><div class=\"article-item-pic-wrapper\"><a href=\"/information/other\" class=\"article-item-channel\">"+data[i].tname+"</a><a class=\"article-item-pic\" onclick=\"toWz("+data[i].infid+")\" target=\"_blank\" rel=\"noopener noreferrer\"><div class=\"kr-default-img-no-logo scaleBig\"><img src="+data[i].articleimg+" width=\"216\" height=\"143\"></div></a></div><div class=\"article-item-info clearfloat\"><p class=\"title-wrapper ellipsis-2\"><a class=\"article-item-title weight-bold\" onclick=\"toWz("+data[i].infid+")\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].inftitle+"</a></p><a class=\"article-item-description ellipsis-2\" onclick=\"toWz("+data[i].infid+")\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].subtitle+"</a><div class=\"kr-flow-bar\"><span class=\"kr-flow-bar-motif\">来自主题：<a href=\"/motif/413\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].topicname+"</a>|</span><a class=\"kr-flow-bar-author\" href=\"/user/93842\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].staffname+"</a><span class=\"kr-flow-bar-time\" style=\"float:right\"><i class=\"kr-flow-bar-time-icon\"></i>"+data[i].releasetime+"</span></div></div></div></div></div><br>";
                         $("#div1").append(html);
                     }
 
@@ -523,7 +523,7 @@
                          },
                          success: function (data) {
                              for (var i = 0; i < data.length; i++) {
-                                 var html = "<div class=\"anchor-59244\"></div><div class=\"kr-flow-article-item\"><div class=\"kr-shadow-wrapper\"><div class=\"kr-shadow-wrapper-card\" style=\"width:720px;height:173px;top:-15px;left:-10px\"></div><div class=\"kr-shadow-content\"><div class=\"article-item-pic-wrapper\"><a href=\"/information/other\" class=\"article-item-channel\">"+data[i].tname+"</a><a class=\"article-item-pic\" href=\"/p/5225390\" target=\"_blank\" rel=\"noopener noreferrer\"><div class=\"kr-default-img-no-logo scaleBig\"><img src="+data[i].articleimg+" width=\"216\" height=\"143\"></div></a></div><div class=\"article-item-info clearfloat\"><p class=\"title-wrapper ellipsis-2\"><a class=\"article-item-title weight-bold\" href=\"/p/5225390\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].inftitle+"</a></p><a class=\"article-item-description ellipsis-2\" href=\"/p/5225390\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].subtitle+"</a><div class=\"kr-flow-bar\"><span class=\"kr-flow-bar-motif\">来自主题：<a href=\"/motif/413\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].topicname+"</a>|</span><a class=\"kr-flow-bar-author\" href=\"/user/93842\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].staffname+"</a><span class=\"kr-flow-bar-time\" style=\"float:right\"><i class=\"kr-flow-bar-time-icon\"></i>"+data[i].releasetime+"</span></div></div></div></div></div><br>";
+                                 var html = "<div class=\"anchor-59244\"></div><div class=\"kr-flow-article-item\"><div class=\"kr-shadow-wrapper\"><div class=\"kr-shadow-wrapper-card\" style=\"width:720px;height:173px;top:-15px;left:-10px\"></div><div class=\"kr-shadow-content\"><div class=\"article-item-pic-wrapper\"><a href=\"/information/other\" class=\"article-item-channel\">"+data[i].tname+"</a><a class=\"article-item-pic\"  onclick=\"toWz("+data[i].infid+")\" target=\"_blank\" rel=\"noopener noreferrer\"><div class=\"kr-default-img-no-logo scaleBig\"><img src="+data[i].articleimg+" width=\"216\" height=\"143\"></div></a></div><div class=\"article-item-info clearfloat\"><p class=\"title-wrapper ellipsis-2\"><a class=\"article-item-title weight-bold\" onclick=\"toWz("+data[i].infid+")\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].inftitle+"</a></p><a class=\"article-item-description ellipsis-2\" onclick=\"toWz("+data[i].infid+")\"  target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].subtitle+"</a><div class=\"kr-flow-bar\"><span class=\"kr-flow-bar-motif\">来自主题：<a href=\"/motif/413\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].topicname+"</a>|</span><a class=\"kr-flow-bar-author\" href=\"/user/93842\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].staffname+"</a><span class=\"kr-flow-bar-time\" style=\"float:right\"><i class=\"kr-flow-bar-time-icon\"></i>"+data[i].releasetime+"</span></div></div></div></div></div><br>";
                                  $("#div1").append(html);
                              }
 
@@ -545,19 +545,20 @@
                         })
                     }
                     function tc(tid){
+                     $("#div1").empty();
                         $.ajax({
                             url: "http://192.168.1.128:8013/toZwww",
                             crossDomain: true,
                             type: 'post',
                             data:{
-                                start:6,
-                                rows:10,
+                                start:0,
+                                rows:5,
                                 tid:tid,
                             },
                             success: function (data) {
                                 for (var i = 0; i < data.length; i++) {
-                                    var html = "<div class=\"anchor-59244\"></div><div class=\"kr-flow-article-item\"><div class=\"kr-shadow-wrapper\"><div class=\"kr-shadow-wrapper-card\" style=\"width:720px;height:173px;top:-15px;left:-10px\"></div><div class=\"kr-shadow-content\"><div class=\"article-item-pic-wrapper\"><a href=\"/information/other\" class=\"article-item-channel\">"+data[i].tname+"</a><a class=\"article-item-pic\" href=\"/p/5225390\" target=\"_blank\" rel=\"noopener noreferrer\"><div class=\"kr-default-img-no-logo scaleBig\"><img src="+data[i].articleimg+" width=\"216\" height=\"143\"></div></a></div><div class=\"article-item-info clearfloat\"><p class=\"title-wrapper ellipsis-2\"><a class=\"article-item-title weight-bold\" href=\"/p/5225390\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].inftitle+"</a></p><a class=\"article-item-description ellipsis-2\" href=\"/p/5225390\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].subtitle+"</a><div class=\"kr-flow-bar\"><span class=\"kr-flow-bar-motif\">来自主题：<a href=\"/motif/413\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].topicname+"</a>|</span><a class=\"kr-flow-bar-author\" href=\"/user/93842\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].staffname+"</a><span class=\"kr-flow-bar-time\" style=\"float:right\"><i class=\"kr-flow-bar-time-icon\"></i>"+data[i].releasetime+"</span></div></div></div></div></div><br>";
-                                    $("#div1").html(html);
+                                 var html = "<div class=\"anchor-59244\"></div><div class=\"kr-flow-article-item\"><div class=\"kr-shadow-wrapper\"><div class=\"kr-shadow-wrapper-card\" style=\"width:720px;height:173px;top:-15px;left:-10px\"></div><div class=\"kr-shadow-content\"><div class=\"article-item-pic-wrapper\"><a href=\"/information/other\" class=\"article-item-channel\">"+data[i].tname+"</a><a class=\"article-item-pic\"  onclick=\"toWz("+data[i].infid+")\" target=\"_blank\" rel=\"noopener noreferrer\"><div class=\"kr-default-img-no-logo scaleBig\"><img src="+data[i].articleimg+" width=\"216\" height=\"143\"></div></a></div><div class=\"article-item-info clearfloat\"><p class=\"title-wrapper ellipsis-2\"><a class=\"article-item-title weight-bold\"  onclick=\"toWz("+data[i].infid+")\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].inftitle+"</a></p><a class=\"article-item-description ellipsis-2\"onclick=\"toWz("+data[i].infid+")\"  target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].subtitle+"</a><div class=\"kr-flow-bar\"><span class=\"kr-flow-bar-motif\">来自主题：<a href=\"/motif/413\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].topicname+"</a>|</span><a class=\"kr-flow-bar-author\" href=\"/user/93842\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].staffname+"</a><span class=\"kr-flow-bar-time\" style=\"float:right\"><i class=\"kr-flow-bar-time-icon\"></i>"+data[i].releasetime+"</span></div></div></div></div></div><br>";
+                                    $("#div1").append(html);
                                 }
 
                             }
@@ -590,6 +591,9 @@
                                }
                            }
                        })
+                   }
+                   function toWz(infid){
+                       location.href="toWz?infid="+infid;
                    }
                    </script>
 <script src="https://static.geetest.com/static/tools/gt.js"></script>
