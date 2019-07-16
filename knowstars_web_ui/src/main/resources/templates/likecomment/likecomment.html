@@ -69,16 +69,39 @@
         <span id="zhanCount"></span>
     </div>
 
-    <div class="praise" style="float: left">
+    <div class="praise" style="float: right">
         <span id="prai" onclick="opShou()"><img src="img/aa.png"/></span>
         <span id="shouCount"></span>
     </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
     <div>
-        <textarea class="form-control" rows="3" id="pinglun"></textarea>
-        <input type="button" value="发布评论" onclick="addPing()">
-        <textarea class="form-control" name="pingContent" rows="3" id="pingContent" onclick="queryPing()"></textarea>
+        <div style="font-size: 30px;font-weight: bold">
+            <center>
+            //参与评论
+            </center>
+        <textarea class="form-control" id="pingId" rows="8"></textarea>
+            <button type="button" class="btn btn-warning" onclick="addComment()">发布评论</button>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div style="font-weight: bold">
+    <table id="pingData" width="100%"></table>
+        </div>
     </div>
-
+    <a href="">回复</a>
 </div>
 
 <!--动态点赞结束-->
@@ -89,7 +112,7 @@
     $(function(){
         queryZhan();
         queryShou();
-        queryPing();
+        queryComment();
     })
 
     //查询点赞数量
@@ -117,7 +140,7 @@
         });
     }
 
-    //查询评论
+    /*//查询评论
     queryPing = function(){
         var infId = 99;
 
@@ -153,7 +176,62 @@
             }
         });
 
+    }*/
+
+
+    queryComment = function(){
+        var infId = 6788;
+
+        $.ajax({
+            url:"http://192.168.1.118:8000/queryComment",
+            type:'get',
+            data:{infId:infId},
+            success:function(data){
+                var pingData = "";
+                for(var i = 0;i<data.length;i++){
+                    pingData+="<tr>\n" +
+                        "\t\t<td rowspan=\"2\">"+
+                        "<img src='"+data[i].userImg+"' width='30px' height='30px'>"+
+                        "</td>\n" +
+                        "\t\t<td>"+data[i].userName+"</td>\n" +
+                        "\t</tr>\n" +
+                        "\t<tr>\n" +
+                        "\t\t<td>"+data[i].pingInfo+"</td>\n" +
+                        "\t</tr>";
+                }
+
+                $("#pingData").html(pingData);
+
+
+            },
+            error:function(){
+                bootbox.alert("失败");
+            }
+        });
     }
+
+
+    //评论操作
+    addComment = function(){
+        var sp=$("#pingId").val();
+        $.ajax({
+            url:"http://192.168.1.118:8000/addComment",
+            type:'get',
+            data:{infId:6788,sp:sp},
+            success:function(){
+                $("#pingId").val("");
+                queryComment();
+            },
+            error:function(){
+                bootbox.alert("失败");
+            }
+        });
+
+    }
+
+
+
+
     //操作点赞
     opZhan = function(){
 
