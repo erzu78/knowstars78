@@ -41,9 +41,9 @@
   </delete>
 
 
-<select  id="queryNewsAll" resultMap="BaseResultMap">
-  SELECT  * FROM  t_newsflash
-</select>
+  <select  id="queryNewsAll" resultMap="BaseResultMap">
+    SELECT  * FROM  t_newsflash
+  </select>
 
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
@@ -116,7 +116,7 @@
 
   <select  id="NewsQueryAll" resultMap="BaseResultMap">
 
-SELECT  * FROM  t_newsflash ORDER  BY   flashinfo DESC
+    SELECT  * FROM  t_newsflash ORDER  BY   flashinfo DESC
   </select>
 
 
@@ -139,7 +139,7 @@ SELECT  * FROM  t_newsflash ORDER  BY   flashinfo DESC
 
 
   <select  id="queryNewsFlashByIdPlusOne"     resultMap="BaseResultMap" >
-  SELECT * FROM  t_newsflash WHERE  flashid=#{flashid}+1
+    SELECT MAX(flashid) from t_newsflash  where  flashid in  (SELECT flashid FROM t_newsflash where flashid &lt;#{flashid})
   </select>
 
 </mapper>

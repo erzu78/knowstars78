@@ -50,6 +50,11 @@ public class LocationHref {
 
 
 
+
+
+
+
+
     //跳转首页 快讯专栏
     @RequestMapping("/toNewsFlashAll")
 
@@ -58,14 +63,6 @@ public class LocationHref {
         return "/NewsFlash/NewsFlashAll";
     }
 
-
-    //跳转首页 快讯专栏
-    @RequestMapping("/toCalendar")
-
-    public String toCalendar(){
-
-        return "/calendar/showCalendar";
-    }
 
 
 
