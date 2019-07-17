@@ -5,6 +5,7 @@ import com.jk.pojo.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -37,7 +38,7 @@ public interface LoginMapper {
     @Select("select count(*) from t_staff where staffname=#{staffname}")
     Integer findStaffByName(String staffname);
 
-    @Insert("insert into t_staff(staffname,staffpassword) values(#{staffname},#{staffpassword})")
+    @Insert("insert into t_staff(staffname,staffpassword,role) values(#{staffname},#{staffpassword},0)")
     void addLoginStaff(Staff loginstaff);
 
     List<User> findStaff(Integer start, Integer pageSize);
@@ -47,4 +48,7 @@ public interface LoginMapper {
 
     @Select("select uid from t_user where username=#{username}")
     User finduserByUserName(String username);
+
+    @Update("update t_staff set role=1 where sid=#{sid}")
+    void updaterole(String sid);
 }

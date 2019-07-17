@@ -6,7 +6,7 @@ spring:
     name: zy-provider
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.1.139:3306/knowstars78?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://192.168.1.199:3306/knowstars78?useUnicode=true&characterEncoding=utf-8
     username: erzhu
     password: 123
 

@@ -34,4 +34,7 @@ public interface LoginService  {
 
     @RequestMapping("finduserByUserName")
     User finduserByUserName(@RequestParam("username") String username);
+
+    @RequestMapping("updaterole")
+    void updaterole(@RequestParam("sid") String sid);
 }

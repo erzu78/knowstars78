@@ -10,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 public class LoginController {
@@ -127,5 +125,14 @@ public class LoginController {
         User list=loginService.finduserByUserName(username);
         return list;
     }
+
+    //设置作者
+    @RequestMapping("updaterole")
+    public void updaterole(@RequestParam("sid") String sid){
+        loginService.updaterole(sid);
+
+    }
+
+
 
 }
