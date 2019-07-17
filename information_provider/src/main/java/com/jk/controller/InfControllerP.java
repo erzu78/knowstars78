@@ -117,5 +117,35 @@ public class InfControllerP implements InfService {
         return infServiceP.queryWzById(infid);
     }
 
+    @Override
+    public Integer queryCc(Integer infid) {
+        return infServiceP.queryCc(infid);
+    }
+
+    @Override
+    public List<Information> queryClo(Integer infid) {
+        return infServiceP.queryClo(infid);
+    }
+
+    @Override
+    public List<Information> queryXa(Integer infid) {
+        return infServiceP.queryXa(infid);
+    }
+
+    @Override
+    public List<Information> queryAllWz(Integer infid) {
+        return infServiceP.queryAllWz(infid);
+    }
+
+    @Override
+    public List<Information> queryAllWzBySid(Integer sid) {
+        return infServiceP.queryAllWzBySid(sid);
+    }
+
+    @Override
+    public Integer queryCountById(Integer sid) {
+        return infServiceP.queryCountById(sid);
+    }
+
 
 }

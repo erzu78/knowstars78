@@ -29,4 +29,10 @@ public interface InfServiceP {
     void upTy(Ty ty);
     void deleteAllTy(String ids);
     List<Information> queryWzById(Integer infid);
+    Integer queryCc(Integer infid);
+    List<Information> queryClo(Integer infid);
+    List<Information> queryXa(Integer infid);
+    List<Information> queryAllWz(Integer infid);
+    List<Information> queryAllWzBySid(Integer sid);
+    Integer queryCountById(Integer sid);
 }

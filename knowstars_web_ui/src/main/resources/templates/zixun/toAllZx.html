@@ -495,7 +495,7 @@
                         zz();
                         ff();
                         $.ajax({
-                            url: "http://192.168.1.128:8013/toZww",
+                            url: "http://192.168.1.137:8013/toZww",
                             crossDomain: true,
                             type: 'post',
                             data:{
@@ -514,7 +514,7 @@
         })
                  $('#div2').click(function () {
                      $.ajax({
-                         url: "http://192.168.1.128:8013/toZww",
+                         url: "http://192.168.1.137:8013/toZww",
                          crossDomain: true,
                          type: 'post',
                          data:{
@@ -533,7 +533,7 @@
                     });
                     function ss(){
                         $.ajax({
-                            url: "http://192.168.1.128:8013/queryTy",
+                            url: "http://192.168.1.137:8013/queryTy",
                             crossDomain: true,
                             type: 'post',
                             success: function (data) {
@@ -547,7 +547,7 @@
                     function tc(tid){
                      $("#div1").empty();
                         $.ajax({
-                            url: "http://192.168.1.128:8013/toZwww",
+                            url: "http://192.168.1.137:8013/toZwww",
                             crossDomain: true,
                             type: 'post',
                             data:{
@@ -567,12 +567,12 @@
                     }
                     function zz(){
                         $.ajax({
-                            url: "http://192.168.1.128:8013/queryStaff",
+                            url: "http://192.168.1.137:8013/queryStaff",
                             crossDomain: true,
                             type: 'post',
                             success: function (data) {
                          for(var i=0;i<data.length;i++){
-                                    var html="<div class=\"hot-author-item clearfloat\"><a class=\"hot-author-pic\" href=\"/user/1104\" target=\"_blank\" rel=\"noopener noreferrer\"><div class=\"kr-default-img-no-logo scaleBig\"><img src="+data[i].staffimg+" width=\"42\" height=\"42\"></div></a><div class=\"hot-author-info\"><a class=\"hot-author-name weight-bold ellipsis-1\" href=\"/user/1104\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].staffname+"</a><div class=\"hot-author-description ellipsis-3\">"+data[i].staffinfo+"</div></div></div>";
+                                    var html="<div class=\"hot-author-item clearfloat\"><a class=\"hot-author-pic\" onclick=\"toAllWz("+data[i].sid+")\" target=\"_blank\" rel=\"noopener noreferrer\"><div class=\"kr-default-img-no-logo scaleBig\"><img src="+data[i].staffimg+" width=\"42\" height=\"42\"></div></a><div class=\"hot-author-info\"><a class=\"hot-author-name weight-bold ellipsis-1\" onclick=\"toAllWz("+data[i].sid+")\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].staffname+"</a><div class=\"hot-author-description ellipsis-3\">"+data[i].staffinfo+"</div></div></div>";
                                     $("#div5").append(html);
                                 }
                             }
@@ -581,7 +581,7 @@
                     }
                    function ff() {
                        $.ajax({
-                           url: "http://192.168.1.128:8013/queryTopic",
+                           url: "http://192.168.1.137:8013/queryTopic",
                            crossDomain: true,
                            type: 'post',
                            success: function (data) {
@@ -594,6 +594,9 @@
                    }
                    function toWz(infid){
                        location.href="toWz?infid="+infid;
+                   }
+                   function toAllWz(sid){
+                       location.href="toAllWzz?sid="+sid;
                    }
                    </script>
 <script src="https://static.geetest.com/static/tools/gt.js"></script>

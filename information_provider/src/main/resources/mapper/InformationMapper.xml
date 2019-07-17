@@ -42,9 +42,29 @@
     select i.*,s.staffname,s.staffimg,s.stafftype,s.staffinfo from t_information i,t_staff s
 where i.authorid =s.sid and i.infId=#{infid}
   </select>
+  <select id="queryCc" resultType="java.lang.Integer">
+    select count(*) from t_information t,t_staff s where t.authorid=s.sid and s.sid=(select s.sid from t_information i,t_staff s
+where i.authorid =s.sid and i.infId=#{infid})
+  </select>
 
-
-
+  <select id="queryClo" resultMap="BaseResultMap">
+    select t.* from t_information t,t_staff s where t.authorid=s.sid and s.sid=(select s.sid from t_information i,t_staff s
+where i.authorid =s.sid and i.infId=#{infid}) ORDER BY releasetime DESC limit 0,3;
+  </select>
+  <select id="queryXa" resultMap="BaseResultMap">
+    select * from t_information where infid =(select max(infid) from t_information where infid
+    in(select infid from t_information where infid &lt;#{infid}))
+  </select>
+  <select id="queryAllWzBySid" resultMap="BaseResultMap">
+    select * from t_information i,t_staff s where i.authorid=s.sid and s.sid=#{sid}
+  </select>
+  <select id="queryAllWz" resultMap="BaseResultMap">
+    select * from t_information i,t_staff s where i.authorid=
+(select authorid from t_information where infid=#{infid}) and i.authorid=s.sid
+  </select>
+  <select id="queryCountById" resultType="java.lang.Integer">
+     select count(*) from t_information i,t_staff s where i.authorid=s.sid and s.sid=#{sid}
+  </select>
 
   <delete id="delAll">
     delete from t_information
