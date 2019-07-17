@@ -20,8 +20,11 @@ public class ziXun {
     public String updDialogInfo(){
         return "zixun/toUpInfo";
     }
+
     @RequestMapping("/toAllZx")
-    public String toAllZx(){
+    public String toAllZx(Integer a, Model model){
+        System.out.println(a);
+        model.addAttribute("zId",a);
         return "zixun/toAllZx";
     }
 }
