@@ -38,5 +38,6 @@ public interface NewsFlashMapper {
 
     List<NewsFlash> queryNewsAll();
 
+
     NewsFlash queryNewsFlashByIdPlusOne(@Param("flashid")Integer flashid);
 }

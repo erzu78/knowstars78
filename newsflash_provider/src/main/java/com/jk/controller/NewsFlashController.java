@@ -76,6 +76,7 @@ public class NewsFlashController  implements NewsFlashServiceApi {
 
     @Override
     public NewsFlash queryNewsFlashByIdPlusOne(@PathVariable(value="flashid")Integer flashid) {
+
         return newsFlashService.queryNewsFlashByIdPlusOne(flashid);
     }
 

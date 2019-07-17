@@ -138,6 +138,9 @@
   </select>
 
 
+
+
+
   <select  id="queryNewsFlashByIdPlusOne"     resultMap="BaseResultMap" >
     SELECT MAX(flashid) from t_newsflash  where  flashid in  (SELECT flashid FROM t_newsflash where flashid &lt;#{flashid})
   </select>
