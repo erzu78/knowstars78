@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @description: TODO
  * @date 2019/7/16 001621:04
  */
-@Document(indexName = "t_information",type = "action")
+@Document(indexName = "information",type = "action")
 public class Infor implements Serializable {
     private static final long serialVersionUID = -825750076828665665L;
     @Id
