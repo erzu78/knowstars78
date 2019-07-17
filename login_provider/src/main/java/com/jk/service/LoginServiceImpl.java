@@ -96,4 +96,12 @@ public class LoginServiceImpl implements LoginService {
         User list=loginMapper.finduserByUserName(username);
         return list;
     }
+
+
+    @RequestMapping("updaterole")
+    @Override
+    public void updaterole(String sid) {
+       loginMapper.updaterole(sid);
+
+    }
 }
