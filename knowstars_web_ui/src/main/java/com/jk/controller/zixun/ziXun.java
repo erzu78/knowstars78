@@ -50,4 +50,17 @@ public class ziXun {
         model.addAttribute("infid",infid);
         return "zixun/toWz";
     }
+    @RequestMapping("toAllWz")
+    public String toAllWz(@RequestParam Integer infid,Model model){
+        System.out.println(infid);
+        model.addAttribute("infid",infid);
+        return "zixun/toAllWz";
+    }
+    @RequestMapping("toAllWzz")
+    public String toAllWzz(@RequestParam Integer sid,Model model){
+        System.out.println(sid);
+        model.addAttribute("sid",sid);
+        return "zixun/toAllWz";
+    }
+
 }

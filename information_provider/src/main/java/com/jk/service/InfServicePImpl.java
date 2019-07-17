@@ -120,4 +120,35 @@ public class InfServicePImpl implements InfServiceP {
         return infMapper.queryWzById(infid);
     }
 
+    @Override
+    public Integer queryCc(Integer infid) {
+        return infMapper.queryCc(infid);
+    }
+
+    @Override
+    public List<Information> queryClo(Integer infid) {
+        return infMapper.queryClo(infid);
+    }
+
+    @Override
+    public List<Information> queryXa(Integer infid) {
+        return infMapper.queryXa(infid);
+    }
+
+    @Override
+    public List<Information> queryAllWz(Integer infid) {
+        return infMapper.queryAllWz(infid);
+    }
+
+    @Override
+    public List<Information> queryAllWzBySid(Integer sid) {
+        return infMapper.queryAllWzBySid(sid);
+    }
+
+    @Override
+    public Integer queryCountById(Integer sid) {
+        return infMapper.queryCountById(sid);
+    }
+
+
 }

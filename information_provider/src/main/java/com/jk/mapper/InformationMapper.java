@@ -26,4 +26,15 @@ public interface InformationMapper {
     List<Information> toZwww(@Param("start") Integer start, @Param("rows") Integer rows, @Param("tid") Integer tid);
 
    List<Information>  queryWzById(Integer infid);
+
+    Integer queryCc(Integer infid);
+    List<Information> queryClo(Integer infid);
+
+    List<Information> queryXa(Integer infid);
+
+    List<Information> queryAllWz(Integer infid);
+
+    List<Information> queryAllWzBySid(Integer sid);
+
+    Integer queryCountById(Integer sid);
 }

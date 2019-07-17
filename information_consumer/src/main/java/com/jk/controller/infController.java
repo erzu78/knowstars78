@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -166,5 +167,41 @@ public class infController {
 
         List<Information> in= infServiceFeign.queryWzById(infid);
         return in;
+    }
+    @RequestMapping("/queryCc")
+    @ResponseBody
+    public Integer queryCc(@RequestParam(value="infid") Integer infid){
+        System.out.println(infid);
+        Integer dd= infServiceFeign.queryCc(infid);
+        System.out.println(dd);
+        return dd;
+    }
+    @RequestMapping("/queryClo")
+    @ResponseBody
+    public List<Information> queryClo(@RequestParam(value="infid") Integer infid){
+         return infServiceFeign.queryClo(infid);
+    }
+    @RequestMapping("/queryXa")
+    @ResponseBody
+    public List<Information> queryXa(@RequestParam(value="infid") Integer infid){
+        return infServiceFeign.queryXa(infid);
+    }
+    @RequestMapping("queryAllWz")
+    @ResponseBody
+    public List<Information> queryAllWz(@RequestParam(value="infid") Integer infid){
+         return infServiceFeign.queryAllWz(infid);
+    }
+    @RequestMapping("queryAllWzBySid")
+    @ResponseBody
+    public List<Information> queryAllWzBySid(@RequestParam(value="sid") Integer sid){
+        return infServiceFeign.queryAllWzBySid(sid);
+    }
+    @RequestMapping("queryCountById")
+    @ResponseBody
+    public Integer queryCountById(@RequestParam(value="sid") Integer sid){
+        System.out.println(sid);
+        Integer dd= infServiceFeign.queryCountById(sid);
+        System.out.println(dd);
+        return dd;
     }
 }

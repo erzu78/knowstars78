@@ -49,4 +49,16 @@ public interface InfService {
     void deleteAllTy(@RequestParam(value="ids")String ids);
     @RequestMapping("/queryWzById")
     List<Information>  queryWzById(@RequestParam(value="infid")Integer infid);
+    @RequestMapping("/queryCc")
+    Integer queryCc(@RequestParam(value="infid")Integer infid);
+    @RequestMapping("/queryClo")
+    List<Information> queryClo(@RequestParam(value="infid")Integer infid);
+    @RequestMapping("/queryXa")
+    List<Information> queryXa(@RequestParam(value="infid")Integer infid);
+    @RequestMapping("/queryAllWz")
+    List<Information> queryAllWz(@RequestParam(value="infid")Integer infid);
+    @RequestMapping("queryAllWzBySid")
+    List<Information> queryAllWzBySid(@RequestParam(value="sid")Integer sid);
+    @RequestMapping("queryCountById")
+    Integer queryCountById(@RequestParam(value="sid")Integer sid);
 }
