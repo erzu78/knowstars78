@@ -99,7 +99,8 @@ public class NewsFlashControllerc {
 
 
     @GetMapping("queryNewsFlashByIdPlusOne")
-    public NewsFlash queryNewsFlashByIdPlusOne(Integer flashid){
+    public NewsFlash queryNewsFlashByIdPlusOne(@PathVariable(value="flashid")Integer flashid){
+
 
         return newsFlashServiceApi.queryNewsFlashByIdPlusOne(flashid);
     }

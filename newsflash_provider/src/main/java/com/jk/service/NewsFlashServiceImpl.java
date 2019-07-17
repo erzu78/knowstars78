@@ -84,8 +84,12 @@ public class NewsFlashServiceImpl  implements NewsFlashService {
         return newsFlashMapper.queryNewsAll();
     }
 
+
+
+
     @Override
     public NewsFlash queryNewsFlashByIdPlusOne(Integer flashid) {
+        System.out.println(flashid);
         return newsFlashMapper.queryNewsFlashByIdPlusOne(flashid);
     }
 

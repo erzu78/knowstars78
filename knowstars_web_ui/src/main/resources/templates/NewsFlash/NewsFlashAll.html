@@ -470,9 +470,9 @@
                 // commonality(data);
                 var     AboutNews = "";
                 for (var i = 0 ; i < data.length ;i++){
-                    AboutNews +='<div class="newsflash-item"><a class="item-title" rel="noopener noreferrer" target="_blank" href="/newsflashes/175579">快讯标题：&nbsp;&nbsp;&nbsp;<font  color="red">'+data[i].flashtitle+'</font></a>' +
-                        '<div class="item-other"><span class="time">发布于：'+data[i].creattime+'</span><div class="wechat"><div class="share-code"></div></div></div>' +
-                        '<div  class="item-desc">'+data[i].flashinfo+'<br><br><a class="link" rel="noopener noreferrer nofollow" target="_blank" ></a></div></div></div></div>';
+                    AboutNews +='<div class="newsflash-item"><p class="item-title" rel="noopener noreferrer" target="_blank">快讯标题：&nbsp;&nbsp;&nbsp;<font  color="red">'+data[i].flashtitle+'</font></p>' +
+                        '<div class="item-other"><span class="time">&nbsp;&nbsp;&nbsp;&nbsp;发布于：&nbsp;&nbsp;&nbsp;&nbsp;'+data[i].creattime+'</span><div class="wechat"><div class="share-code"></div></div></div>' +
+                        '<div  class="item-desc"  >&nbsp;&nbsp;&nbsp;&nbsp;'+data[i].flashinfo+'<br><br><a class="link" rel="noopener noreferrer nofollow" target="_blank" ></a></div></div></div></div>';
                 }
 
                 $("#NewsAllId").html(AboutNews);
