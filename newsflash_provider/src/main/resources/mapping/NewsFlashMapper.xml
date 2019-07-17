@@ -41,7 +41,9 @@
   </delete>
 
 
-
+<select  id="queryNewsAll" resultMap="BaseResultMap">
+  SELECT  * FROM  t_newsflash
+</select>
 
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
@@ -135,5 +137,9 @@ SELECT  * FROM  t_newsflash ORDER  BY   flashinfo DESC
     SELECT * FROM  t_newsflash WHERE  flashid=#{flashid}
   </select>
 
+
+  <select  id="queryNewsFlashByIdPlusOne"     resultMap="BaseResultMap" >
+  SELECT * FROM  t_newsflash WHERE  flashid=#{flashid}+1
+  </select>
 
 </mapper>

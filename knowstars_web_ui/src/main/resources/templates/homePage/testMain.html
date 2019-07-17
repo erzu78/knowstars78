@@ -426,11 +426,16 @@
         <div class="kr-layout-main clearfloat">
             <div class="main-left"><div class="kr-sider ">
                 <a href="/" class="go-home clearfloat">
-                    <div class="logo"></div>
+                   <!-- <div class="logo"></div>-->
                 </a>
                 <div class="kr-sider-shadow-wrapper clearfloat">
-                    <div class="line"></div>
+                   <!-- <div class="line"></div>-->
                     <ul class="kr-channel-nav"id="tabs">
+                        <li class="channel-item">
+                            <div class="sub-title">
+                          <img src="homePagePicture/11.png" height="38px">
+                            </div>
+                        </li>
                         <li class="channel-item">
                             <div class="sub-title">
                                 <a class="name weight-bold active" href="/">首页</a>
@@ -468,10 +473,11 @@
                                     <div class="triangle"></div>
                         </div>-->
                     </ul>
+
                     <div class="kr-search-entry clearfloat">
                         <div class="search-button">
-                            <span class="search-icon"></span>
-                            <span class="search-text weight-bold">搜索</span>
+                            <a class="name weight-bold " href="/video">搜索</a>
+                           <!-- <span class="search-text weight-bold">搜索</span>-->
                         </div>
                     </div>
 
@@ -987,18 +993,16 @@
 
     var ip="http://192.168.1.234";
 
-    var ip="http://192.168.1.234";
-
-    $(function(){
+        $(function(){
         queryNews();
     })
 
-    function queryNews(){
-        $.ajax({
+            function queryNews(){
+            $.ajax({
             url:ip+":8011/queryNews",
             type:'get',
             success:function(data){
-               // alert(data)
+                // alert(data)
                 // commonality(data);
                 var     AboutNews = "";
                 for (var i = 0 ; i < data.length ;i++){
@@ -1012,6 +1016,9 @@
             }
         });
     }
+
+
+
 </script>
 </body>
 </html>

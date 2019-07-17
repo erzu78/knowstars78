@@ -40,6 +40,36 @@ public class Information implements Serializable{
 
     private String staffname;//作者名字业务字段
 
+    private String stafftype;//作者类型关联子段
+
+    private String staffinfo;//文章内容关联字段
+
+    private String staffimg;
+
+    public String getStaffimg() {
+        return staffimg;
+    }
+
+    public void setStaffimg(String staffimg) {
+        this.staffimg = staffimg;
+    }
+
+    public String getStaffinfo() {
+        return staffinfo;
+    }
+
+    public void setStaffinfo(String staffinfo) {
+        this.staffinfo = staffinfo;
+    }
+
+    public String getStafftype() {
+        return stafftype;
+    }
+
+    public void setStafftype(String stafftype) {
+        this.stafftype = stafftype;
+    }
+
     public String getTname() {
         return tname;
     }

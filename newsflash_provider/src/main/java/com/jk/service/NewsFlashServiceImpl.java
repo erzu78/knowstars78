@@ -42,7 +42,9 @@ public class NewsFlashServiceImpl  implements NewsFlashService {
         Date date = new Date();
 
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
         newsFlash.setCreattime(df.format(date));
+
         System.out.println(df.format(date));
         newsFlashMapper.insert(newsFlash);
     }
@@ -75,6 +77,16 @@ public class NewsFlashServiceImpl  implements NewsFlashService {
     @Override
     public NewsFlash queryNewsFlashById(Integer flashid) {
         return newsFlashMapper.queryNewsFlashById(flashid);
+    }
+
+    @Override
+    public List<NewsFlash> queryNewsAll() {
+        return newsFlashMapper.queryNewsAll();
+    }
+
+    @Override
+    public NewsFlash queryNewsFlashByIdPlusOne(Integer flashid) {
+        return newsFlashMapper.queryNewsFlashByIdPlusOne(flashid);
     }
 
 

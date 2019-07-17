@@ -115,4 +115,9 @@ public class InfServicePImpl implements InfServiceP {
         tyMapper.deleteAllTy(ids);
     }
 
+    @Override
+    public  List<Information> queryWzById(Integer infid) {
+        return infMapper.queryWzById(infid);
+    }
+
 }
