@@ -16,10 +16,7 @@ import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Administrator
@@ -44,7 +41,7 @@ public class EsController {
         Client client = elasticsearchTemplate.getClient();
 
         //创建es查询对象 相当于jdbc中创建preparestatement类似
-        SearchRequestBuilder searchRequestBuilder = client.prepareSearch("t_information").setTypes("action");
+        SearchRequestBuilder searchRequestBuilder = client.prepareSearch("information").setTypes("action");
         //为当前查询添加where条件
         if(inftitle!=null&&inftitle!=""){
             //为当前查询添加where条件
