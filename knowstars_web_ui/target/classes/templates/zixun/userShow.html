@@ -101,11 +101,7 @@
                 {field: 'inftitle', title: '大标题', width: 30},
                 {field: 'staffname', title: '作者名称', width: 30},
                 {field: 'releasetime', title: '发布时间', width: 30},
-                {
-                    field: 'articleinformation', title: '文章内容', width: 30,
-
-                },
-
+                {field: 'articleinformation', title: '文章内容', width: 30},
                 {field: 'articleimg', title: '文章封面', width: 30,
                     formatter: function (value, row, index) {
                         return "<img src='"+row.articleimg+"' width='100px' height='80px'>"
@@ -217,32 +213,6 @@
                         // return false;  //dialog不关闭
                     }
                 }
-            }
-        });
-        $.ajax({
-            url:"http://192.168.1.128:8013/queryTy",
-            type:'post',
-            success:function(data){
-               for(var i=0;i<data.length;i++){
-                   var html="<option value='"+data[i].tid+"'>"+data[i].tname+"</option>";
-                  $("#tyid").append(html);
-               }
-            },
-            error:function(){
-                bootbox.alert("失败");
-            }
-        });
-        $.ajax({
-            url:"http://192.168.1.128:8013/queryTopic",
-            type:'post',
-            success:function(data){
-                for(var i=0;i<data.length;i++){
-                    var html="<option value='"+data[i].topicid+"'>"+data[i].topicname+"</option>";
-                    $("#topicid").append(html);
-                }
-            },
-            error:function(){
-                bootbox.alert("失败");
             }
         });
     }

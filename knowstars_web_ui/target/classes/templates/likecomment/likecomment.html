@@ -76,6 +76,7 @@
     <div>
         <textarea class="form-control" rows="3" id="pinglun"></textarea>
         <input type="button" value="发布评论" onclick="addPing()">
+
         <textarea class="form-control" name="pingContent" rows="3" id="pingContent" onclick="queryPing()"></textarea>
     </div>
 
@@ -116,17 +117,14 @@
             }
         });
     }
-
     //查询评论
     queryPing = function(){
         var infId = 99;
-
         $.ajax({
             url:"http://192.168.1.118:8000/queryPing",
             type:'get',
             data:{infId:infId},
             success:function(data){
-               alert(ai)
 
                 $("#pingContent").html(data.pingContent);
 
@@ -145,7 +143,6 @@
             data:{infId:99,sp:sp},
             success:function(){
                 alert(sp)
-
                 queryPing();
             },
             error:function(){
@@ -162,7 +159,6 @@
             type:'post',
             data:{infId:99},
             success:function(){
-
                 queryZhan();
             },
             error:function(){
