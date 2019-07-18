@@ -98,13 +98,21 @@ public class NewsFlashControllerc {
     }
 
 
-    @GetMapping("queryNewsFlashByIdPlusOne")
-    public NewsFlash queryNewsFlashByIdPlusOne(@PathVariable(value="flashid")Integer flashid){
+    @GetMapping("/queryNewsFlashByIdPlusOne")
+    public NewsFlash queryNewsFlashByIdPlusOne(@RequestParam(value="flashid")Integer flashid){
 
 
         return newsFlashServiceApi.queryNewsFlashByIdPlusOne(flashid);
     }
 
+
+
+
+    @GetMapping("/queryNext")
+
+    public List<NewsFlash> queryNext( Integer flashid){
+        return newsFlashServiceApi.queryNext(flashid);
+    }
 
 
 

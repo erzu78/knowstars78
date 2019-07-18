@@ -31,4 +31,6 @@ public interface NewsFlashService {
 
 
     NewsFlash queryNewsFlashByIdPlusOne(Integer flashid);
+
+    List<NewsFlash> queryNext(Integer flashid);
 }

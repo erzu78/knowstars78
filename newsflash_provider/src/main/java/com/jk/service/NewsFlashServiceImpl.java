@@ -93,5 +93,10 @@ public class NewsFlashServiceImpl  implements NewsFlashService {
         return newsFlashMapper.queryNewsFlashByIdPlusOne(flashid);
     }
 
+    @Override
+    public List<NewsFlash> queryNext(Integer flashid) {
+        return newsFlashMapper.queryNext(flashid);
+    }
+
 
 }
