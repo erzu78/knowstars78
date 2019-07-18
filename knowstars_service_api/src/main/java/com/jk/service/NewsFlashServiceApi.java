@@ -29,7 +29,9 @@ public interface NewsFlashServiceApi {
     @GetMapping(value = "/queryNewsAll")
     List<NewsFlash> queryNewsAll();
     @GetMapping("/queryNewsFlashByIdPlusOne/{flashid}")
-    NewsFlash queryNewsFlashByIdPlusOne(@PathVariable(value="flashid")Integer flashid);
+    NewsFlash queryNewsFlashByIdPlusOne(@RequestParam(value="flashid")Integer flashid);
+    @GetMapping(value = "/queryNext")
+    List<NewsFlash> queryNext(@PathVariable(value="flashid")Integer flashid);
 
     /*@RequestMapping("/NewsFlashList")
     long queryCount();*/
