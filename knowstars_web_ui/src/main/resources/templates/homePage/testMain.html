@@ -441,7 +441,8 @@
                                 <a class="name weight-bold active" href="/">首页</a>
                             </div>
                         </li>
-                        <li class="channel-item">
+                        <li class="channel-item" >
+                            <div id="zixun">
                             <div class="sub-title">
                                 <a class="name weight-bold " href="/toNewsFlashAll">快讯</a>
                             </div>
@@ -453,16 +454,18 @@
                             </div>
                             <div class="sub-list open">
                                 <ul class="sub-list-right">
-                                    <li class="sub-item"><a class="">城市</a></li>
+                                    <li class="sub-item">
+                                        <a href="/information/web_news" class="">体育</a>
+                                    </li>
                                 </ul>
 
                                 <ul class="sub-list-left">
-                                    <li class="sub-item">
-                                        <a href="/information/web_news" class="">最新</a>
-                                    </li>
+                                    <li class="sub-item"><a class="">城市</a></li>
                                 </ul>
                             </div>
+                            </div>
                         </li>
+
                         <li class="channel-item">
                             <div class="sub-title">
                                 <a class="name weight-bold " href="/video">视频</a>
@@ -1087,7 +1090,9 @@
             }
         })
         tabs();
+        zixun();
     })
+
     function tabs(){
         $.ajax({
             type:"post",
@@ -1098,7 +1103,7 @@
                     if (msg[i].tabsname != null ) {
                         th.innerHTML += " <li class=\"channel-item\">\n" +
                             "           <div class=\"sub-title\">\n" +
-                            "             <a class=\"name weight-bold \" href=\"queryImg2\" target=\"_target\" rel=\"noopener noreferrer\">" + msg[i].tabsname + "\n" +
+                            "             <a class=\"name weight-bold \" href=\"\" target=\"_target\" rel=\"noopener noreferrer\">" + msg[i].tabsname + "\n" +
                             "             </a>\n" +
                             "           </div>\n" +
                             "         </li>"
@@ -1108,6 +1113,42 @@
             }
         })
     }
+  function zixun(){
+      $.ajax({
+          type:"post",
+          url:"http://localhost:8085/queryZiXun",
+          success:function(msg){
+              th=document.getElementById("zixun");
+              //写到了这一行
+              for(var i=0;i<msg.length;i+=2) {
+                  if (msg[i].tname != null ) {
+                      th.innerHTML += " <div class=\"sub-list open\">\n" +
+                          "                                <ul class=\"sub-list-right\">\n" +
+                          "                                    <li class=\"sub-item\">\n" +
+                          "    <a  class=\"\" href=\"toAllZx?a="+msg[i].tid+"\">"+msg[i].tname+"</a>\n" +
+                          "                                    </li>\n" +
+                          "                                </ul>\n" +
+                          "\n" +
+                          "                                <ul class=\"sub-list-left\">\n" +
+                          "                                    <li class=\"sub-item\"><a class=\"\" href=\"toAllZx?a="+msg[i+1].tid+"\" >"+msg[i+1].tname+"</a></li>\n" +
+                          "                                </ul>\n" +
+                          "                            </div>"
+                  }
+              }
+          }
+      })
+  }
+
+   /*function nb(a){
+       $.ajax({
+           type:"post",
+           url:"toAllZx",
+           /!*data:a,*!/
+           success:function(msg){
+
+           }
+       })
+   }*/
 
     var ip="http://192.168.1.234";
 
