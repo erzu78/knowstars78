@@ -29,7 +29,7 @@ public class ziXun {
     @RequestMapping("/tz")
     public String tz(@RequestParam("tid") Integer tid,Model model){
         model.addAttribute("tid",tid);
-        return "zixun/tz";
+        return "zixun/toAllZxx";
     }
     @RequestMapping("/toTy")
     public String toTy(){
@@ -62,5 +62,14 @@ public class ziXun {
         model.addAttribute("sid",sid);
         return "zixun/toAllWz";
     }
-
+    @RequestMapping("toTopicWz")
+    public String toTopicWz(@RequestParam Integer topicid,Model model){
+        System.out.println(topicid);
+        model.addAttribute("topicid",topicid);
+        return "zixun/toTopicWz";
+    }
+    @RequestMapping("toAllTopic")
+    public String toAllTopic(){
+        return "zixun/AllTopic";
+    }
 }

@@ -147,5 +147,20 @@ public class InfControllerP implements InfService {
         return infServiceP.queryCountById(sid);
     }
 
+    @Override
+    public List<Ty> queryTyy(Integer start, Integer rows) {
+        return infServiceP.queryTyy(start,rows);
+    }
+
+    @Override
+    public List<Information> queryTopicWz(Integer topicid) {
+        return infServiceP.queryTopicWz(topicid);
+    }
+
+    @Override
+    public List<Topic> queryTopicByTid(Integer tid) {
+        return infServiceP.queryTopicByTid(tid);
+    }
+
 
 }

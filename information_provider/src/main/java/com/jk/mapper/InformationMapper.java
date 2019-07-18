@@ -37,4 +37,6 @@ public interface InformationMapper {
     List<Information> queryAllWzBySid(Integer sid);
 
     Integer queryCountById(Integer sid);
+
+    List<Information> queryTopicWz(Integer topicid);
 }

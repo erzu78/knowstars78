@@ -204,4 +204,19 @@ public class infController {
         System.out.println(dd);
         return dd;
     }
+    @RequestMapping("queryTyy")
+    @ResponseBody
+    public List<Ty> queryTyy(@RequestParam(value="start") Integer start, @RequestParam(value="rows")Integer rows){
+        return infServiceFeign.queryTyy(start,rows);
+    }
+    @RequestMapping("queryTopicWz")
+    @ResponseBody
+    public List<Information> queryTopicWz(@RequestParam(value="topicid") Integer topicid){
+          return infServiceFeign.queryTopicWz(topicid);
+    }
+    @RequestMapping("queryTopicByTid")
+    @ResponseBody
+    public List<Topic> queryTopicByTid(@RequestParam(value="tid") Integer tid){
+        return infServiceFeign.queryTopicByTid(tid);
+    }
 }

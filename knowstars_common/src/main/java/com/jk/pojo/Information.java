@@ -46,6 +46,16 @@ public class Information implements Serializable{
 
     private String staffimg;
 
+    private String topicimg;
+
+    public String getTopicimg() {
+        return topicimg;
+    }
+
+    public void setTopicimg(String topicimg) {
+        this.topicimg = topicimg;
+    }
+
     public String getStaffimg() {
         return staffimg;
     }

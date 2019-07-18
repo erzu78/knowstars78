@@ -150,5 +150,20 @@ public class InfServicePImpl implements InfServiceP {
         return infMapper.queryCountById(sid);
     }
 
+    @Override
+    public List<Ty> queryTyy(Integer start, Integer rows) {
+        return tyMapper.queryTyy(start,rows);
+    }
+
+    @Override
+    public List<Information> queryTopicWz(Integer topicid) {
+        return infMapper.queryTopicWz(topicid);
+    }
+
+    @Override
+    public List<Topic> queryTopicByTid(Integer tid) {
+        return topicMapper.queryTopicByTid(tid);
+    }
+
 
 }

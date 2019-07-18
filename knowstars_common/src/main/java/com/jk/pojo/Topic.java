@@ -11,6 +11,16 @@ public class Topic {
 
     private String inftitle;
 
+    private Integer infid;
+
+    public Integer getInfid() {
+        return infid;
+    }
+
+    public void setInfid(Integer infid) {
+        this.infid = infid;
+    }
+
     public String getInftitle() {
         return inftitle;
     }

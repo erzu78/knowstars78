@@ -35,4 +35,8 @@ public interface InfServiceP {
     List<Information> queryAllWz(Integer infid);
     List<Information> queryAllWzBySid(Integer sid);
     Integer queryCountById(Integer sid);
+    List<Ty> queryTyy(Integer start, Integer rows);
+    List<Information> queryTopicWz(Integer topicid);
+
+    List<Topic> queryTopicByTid(Integer tid);
 }

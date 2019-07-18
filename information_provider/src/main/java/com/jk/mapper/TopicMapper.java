@@ -1,5 +1,6 @@
 package com.jk.mapper;
 
+import com.jk.pojo.Information;
 import com.jk.pojo.Topic;
 
 import java.util.List;
@@ -18,4 +19,6 @@ public interface TopicMapper {
     int updateByPrimaryKey(Topic record);
 
     List<Topic> queryTopic();
+
+    List<Topic> queryTopicByTid(Integer tid);
 }

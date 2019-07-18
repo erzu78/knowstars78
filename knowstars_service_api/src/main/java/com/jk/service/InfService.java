@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface InfService {
-
     @GetMapping(value = "/infoList")
     List<Information> InfoList(@RequestParam(value="start") Integer start, @RequestParam(value="rows")Integer rows);
     @GetMapping(value = "/queryCount")
@@ -61,4 +60,10 @@ public interface InfService {
     List<Information> queryAllWzBySid(@RequestParam(value="sid")Integer sid);
     @RequestMapping("queryCountById")
     Integer queryCountById(@RequestParam(value="sid")Integer sid);
+    @RequestMapping("queryTyy")
+    List<Ty> queryTyy(@RequestParam(value="start") Integer start, @RequestParam(value="rows")Integer rows);
+    @RequestMapping("queryTopicWz")
+    List<Information> queryTopicWz(@RequestParam(value="topicid")Integer topicid);
+    @RequestMapping("queryTopicByTid")
+    List<Topic> queryTopicByTid(@RequestParam(value="tid")Integer tid);
 }

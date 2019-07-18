@@ -55,9 +55,20 @@ where i.authorid =s.sid and i.infId=#{infid}) ORDER BY releasetime DESC limit 0,
     select * from t_information where infid =(select max(infid) from t_information where infid
     in(select infid from t_information where infid &lt;#{infid}))
   </select>
+
   <select id="queryAllWzBySid" resultMap="BaseResultMap">
-    select * from t_information i,t_staff s where i.authorid=s.sid and s.sid=#{sid}
+    select * from t_information i,t_staff s where i.authorid=s.sid and s.sid=#{sid} ORDER BY i.releasetime DESC
+
   </select>
+  <select id="queryTopicWz" resultMap="BaseResultMap">
+    select i.*,t.topicname,t.topicimg topicimg from t_information i,t_topic t where
+    i.topicid=t.topicid and t.topicid=#{topicid}
+  </select>
+
+
+
+
+
   <select id="queryAllWz" resultMap="BaseResultMap">
     select * from t_information i,t_staff s where i.authorid=
 (select authorid from t_information where infid=#{infid}) and i.authorid=s.sid

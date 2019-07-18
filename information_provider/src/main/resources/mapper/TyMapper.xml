@@ -15,7 +15,7 @@
     where tid = #{tid,jdbcType=INTEGER}
   </select>
   <select id="queryTy" resultMap="BaseResultMap">
-    select * from info_type
+    select * from info_type where tid !=12 and tid!=1
   </select>
   <select id="tyList" resultMap="BaseResultMap">
      select * from info_type limit #{start},#{rows}
@@ -24,7 +24,9 @@
     select count(* ) from info_type
   </select>
 
-
+  <select id="queryTyy" resultMap="BaseResultMap">
+    select * from info_type limit #{start},#{rows}
+  </select>
   <delete id="deleteAllTy">
     delete from info_type
     where tid in (${ids})

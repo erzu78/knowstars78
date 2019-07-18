@@ -27,4 +27,6 @@ public interface TyMapper {
     void addTy(Ty ty);
 
     void deleteAllTy(@Param("ids") String ids);
+
+    List<Ty> queryTyy(@Param("start") Integer start, @Param("rows") Integer rows);
 }
