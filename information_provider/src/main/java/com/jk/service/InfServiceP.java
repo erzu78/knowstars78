@@ -37,6 +37,14 @@ public interface InfServiceP {
     Integer queryCountById(Integer sid);
     List<Ty> queryTyy(Integer start, Integer rows);
     List<Information> queryTopicWz(Integer topicid);
-
     List<Topic> queryTopicByTid(Integer tid);
+    List<Topic> topicList(Integer start, Integer rows);
+    long queryTopicCount();
+    void addTopic(Topic topic);
+    Topic queryTopicById(Integer topicid);
+    void upTopic(Topic topic);
+
+    void deleteTopic(Integer topicid);
+
+    void deleteAllTopic(String ids);
 }

@@ -66,4 +66,18 @@ public interface InfService {
     List<Information> queryTopicWz(@RequestParam(value="topicid")Integer topicid);
     @RequestMapping("queryTopicByTid")
     List<Topic> queryTopicByTid(@RequestParam(value="tid")Integer tid);
+    @GetMapping(value = "/topicList")
+    List<Topic> topicList(@RequestParam(value="start") Integer start, @RequestParam(value="rows")Integer rows);
+    @GetMapping(value = "/queryTopicCount")
+    long queryTopicCount();
+    @PostMapping("/addTopic")
+    void addTopic(@RequestBody Topic topic);
+    @RequestMapping("/queryTopicById")
+    Topic queryTopicById(@RequestParam(value="topicid")Integer topicid);
+    @RequestMapping("upTopic")
+    void upTopic(@RequestBody Topic topic);
+    @RequestMapping("/deleteTopic")
+    void deleteTopic(@RequestParam(value="topicid")Integer topicid);
+    @RequestMapping("/deleteAllTopic")
+    void deleteAllTopic(@RequestParam(value="ids")String ids);
 }
