@@ -8,10 +8,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.support.atomic.RedisAtomicLong;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 public class LikeController {
@@ -32,7 +29,7 @@ public class LikeController {
     @RequestMapping("zizi")
     public void incr(String infId) {
 
-        Integer userId = 34;
+        Integer userId = 99;
         String inId = (String) redisTemplate.opsForValue().get("userZhan"+userId+infId);
 
         if(inId!=null){
@@ -48,7 +45,30 @@ public class LikeController {
         }
 
     }
+    /**
+     * 操作评论点赞
+     * @param pingId
+     * @return
+     */
+    @RequestMapping("pingLike")
+    public void pingLike(String pingId) {
 
+        Integer userId = 99;
+        String piId = (String) redisTemplate.opsForValue().get("userpZhan"+userId+pingId);
+
+        if(piId!=null){
+
+            redisTemplate.boundValueOps("pingZhan"+pingId).increment(-1);
+
+            redisTemplate.delete("userpZhan"+userId+pingId);
+
+        } else{
+            RedisAtomicLong entityIdCounter = new RedisAtomicLong("pingZhan"+pingId, redisTemplate.getConnectionFactory());
+            entityIdCounter.getAndIncrement();
+            redisTemplate.opsForValue().set("userpZhan"+userId+pingId,pingId);
+        }
+
+    }
     /**
      * 查询点赞
      * @param infId
@@ -57,7 +77,7 @@ public class LikeController {
     @GetMapping("queryZhan")
     public HashMap<String,String> queryZhan(String infId){
 
-        Integer userId = 34;
+        Integer userId = 99;
 
         String zhanCount = (String) redisTemplate.opsForValue().get("infzhan"+infId);
         String inId = (String) redisTemplate.opsForValue().get("userZhan"+userId+infId);
@@ -77,7 +97,7 @@ public class LikeController {
     @RequestMapping("opShou")
     public void opShou(@RequestParam("infId") String infId) {
 
-        Integer userId = 34;
+        Integer userId = 99;
         String inId = (String) redisTemplate.opsForValue().get("userShou"+userId+infId);
 
         if(inId!=null){
@@ -112,7 +132,7 @@ public class LikeController {
     @GetMapping("queryShou")
     public HashMap<String,String> queryShou(String infId){
 
-        Integer userId = 34;
+        Integer userId = 99;
 
         String shouCount = (String) redisTemplate.opsForValue().get("infshou"+infId);
         String inId = (String) redisTemplate.opsForValue().get("userShou"+userId+infId);
@@ -134,7 +154,7 @@ public class LikeController {
      *//*
     @GetMapping("queryPing")
     public HashMap<String,String> queryPing(String infId){
-        Integer userId = 34;
+        Integer userId = 99;
         String pingContent = (String) redisTemplate.opsForValue().get("ping"+userId+infId);
         HashMap<String,String> map = new HashMap<>();
         map.put("pingContent",pingContent);
@@ -148,7 +168,7 @@ public class LikeController {
     @RequestMapping("addPing")
     public void addPing(String infId , String sp) {
 
-        Integer userId = 34;
+        Integer userId = 99;
         String inId = (String) redisTemplate.opsForValue().get("ping"+userId+infId);
 
         if(inId!=null){
@@ -170,7 +190,7 @@ public class LikeController {
 
     @GetMapping("queryComment")
     public List<HashMap<String, Object>> queryComment(String infId) {
-
+        Integer userId = 99;
         List<Object> commentIds = redisTemplate.opsForList().range("ids"+infId,0,999999999);
 
         List<HashMap<String, Object>> commentList = new ArrayList<>();
@@ -178,6 +198,9 @@ public class LikeController {
         for (int i = 0; i < commentIds.size(); i++) {
             String str = (String) commentIds.get(i);
             HashMap<String,Object> map = (HashMap<String, Object>) redisTemplate.opsForHash().entries("comment"+infId+str);
+            map.put("likeCount",redisTemplate.opsForValue().get("pingZhan"+map.get("pingId")));
+            String piId = (String) redisTemplate.opsForValue().get("userpZhan"+userId+map.get("pingId"));
+            map.put("piId",piId);
             commentList.add(map);
         }
         return commentList;
@@ -186,11 +209,14 @@ public class LikeController {
 
     @GetMapping("addComment")
     public void addComment(String infId,String sp){
-
-        String userName = "战神";
-        String userImg = "http://gaokangle.oss-cn-beijing.aliyuncs.com/gaoakngle/1563243571310.png?Expires=1564425173&OSSAccessKeyId=LTAIVgOSeiYLY2E5&Signature=EbAiR0%2BmxEV%2BtDfp493QQ7otLGY%3D";
+        Integer userId = 99;
+        String userName = "赵大傻逼";
+        String userImg = "http://gaokangle.oss-cn-beijing.aliyuncs.com/gaoakngle/1563163101336.png?Expires=1564344703&OSSAccessKeyId=LTAIVgOSeiYLY2E5&Signature=CxK6PYCRialzS1U%2Fh2jMqShKF7M%3D";
 
         HashMap<String,String> pingMap = new HashMap<>();
+        String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+        pingMap.put("userId",userId.toString());
+        pingMap.put("pingId",uuid);
         pingMap.put("pingInfo",sp);
         pingMap.put("userImg",userImg);
         pingMap.put("userName",userName);
