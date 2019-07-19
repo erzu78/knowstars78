@@ -7,9 +7,36 @@ public class Ping {
 
     private String pingId;
     private String pingInfo;
+    private Integer userId;
     private String userImg;
     private String userName;
+    private String likeCount;
+    private String piId;
     private HashMap<String,String> pingMap;
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getPiId() {
+        return piId;
+    }
+
+    public void setPiId(String piId) {
+        this.piId = piId;
+    }
+
+    public String getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(String likeCount) {
+        this.likeCount = likeCount;
+    }
 
     public HashMap<String, String> getPingMap() {
         return pingMap;
