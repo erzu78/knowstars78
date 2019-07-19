@@ -176,11 +176,13 @@ public class infController {
         System.out.println(dd);
         return dd;
     }
+    //查找进几条
     @RequestMapping("/queryClo")
     @ResponseBody
     public List<Information> queryClo(@RequestParam(value="infid") Integer infid){
          return infServiceFeign.queryClo(infid);
     }
+    //下一篇
     @RequestMapping("/queryXa")
     @ResponseBody
     public List<Information> queryXa(@RequestParam(value="infid") Integer infid){
@@ -218,5 +220,48 @@ public class infController {
     @ResponseBody
     public List<Topic> queryTopicByTid(@RequestParam(value="tid") Integer tid){
         return infServiceFeign.queryTopicByTid(tid);
+    }
+    @RequestMapping("/topicList")
+    @ResponseBody
+    //分页查询资讯列表
+    public Map<String,Object> topicList(@RequestParam(value="start") Integer start, @RequestParam(value="rows")Integer rows ) {
+        List<Topic> list= infServiceFeign.topicList(start,rows);
+        long count = infServiceFeign.queryTopicCount();
+        Map<String, Object> map = new HashMap<>();
+        map.put("total", count);
+        map.put("rows",list);
+        return map;
+    }
+    @PostMapping ("/addTopic")
+    @ResponseBody
+    //新增方法
+    public void addTy(Topic topic){
+        infServiceFeign.addTopic(topic);
+    }
+    //修改回显
+    @RequestMapping("/queryTopicById")
+    @ResponseBody
+    //修改回显
+    public Topic queryTopicById(@RequestParam(value="topicid") Integer tid){
+        return infServiceFeign.queryTopicById(tid);
+    }
+    @RequestMapping("upTopic")
+    @ResponseBody
+    public void upTopic(Topic topic){
+        infServiceFeign.upTopic(topic);
+    }
+    @RequestMapping("/deleteTopic")
+    @ResponseBody
+    //删除种类方法
+    public void deleteTopic(@RequestParam(value="topicid") Integer topicid){
+
+        infServiceFeign.deleteTopic(topicid);
+    }
+    @RequestMapping("/deleteAllTopic")
+    @ResponseBody
+    //删除种类方法
+    public void deleteAllTopic(@RequestParam(value="ids") String ids){
+
+        infServiceFeign.deleteAllTopic(ids);
     }
 }

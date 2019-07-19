@@ -75,4 +75,18 @@ public class ziXun {
     public String toAllTopic(){
         return "zixun/AllTopic";
     }
+    //后台主题管理
+    @RequestMapping("toTopic")
+    public String toTopic(){
+         return "zixun/toTopic";
+    }
+    @RequestMapping("addDialogTopic")
+    public String addDialogTopic(){
+        return "zixun/toAddTopic";
+    }
+    @RequestMapping("updDialogTopic")
+    public String updDialogTopic(){
+         return "zixun/toUpTopic";
+    }
+
 }

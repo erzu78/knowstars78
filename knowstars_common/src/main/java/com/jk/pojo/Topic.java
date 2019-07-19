@@ -13,6 +13,16 @@ public class Topic {
 
     private Integer infid;
 
+    private String releasetime;//发布时间
+
+    public String getReleasetime() {
+        return releasetime;
+    }
+
+    public void setReleasetime(String releasetime) {
+        this.releasetime = releasetime;
+    }
+
     public Integer getInfid() {
         return infid;
     }
@@ -30,8 +40,6 @@ public class Topic {
     }
 
     private Integer tcount;
-
-    private String tdate;
 
     public Integer getTopicid() {
         return topicid;
@@ -65,11 +73,5 @@ public class Topic {
         this.tcount = tcount;
     }
 
-    public String getTdate() {
-        return tdate;
-    }
 
-    public void setTdate(String tdate) {
-        this.tdate = tdate;
-    }
 }

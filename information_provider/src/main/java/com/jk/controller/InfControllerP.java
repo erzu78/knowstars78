@@ -162,5 +162,40 @@ public class InfControllerP implements InfService {
         return infServiceP.queryTopicByTid(tid);
     }
 
+    @Override
+    public List<Topic> topicList(Integer start, Integer rows) {
+        return infServiceP.topicList(start,rows);
+    }
+
+    @Override
+    public long queryTopicCount() {
+        return infServiceP.queryTopicCount();
+    }
+
+    @Override
+    public void addTopic(Topic topic) {
+        infServiceP.addTopic(topic);
+    }
+
+    @Override
+    public Topic queryTopicById(Integer topicid) {
+        return infServiceP.queryTopicById(topicid);
+    }
+
+    @Override
+    public void upTopic(Topic topic) {
+        infServiceP.upTopic(topic);
+    }
+
+    @Override
+    public void deleteTopic(Integer topicid) {
+        infServiceP.deleteTopic(topicid);
+    }
+
+    @Override
+    public void deleteAllTopic(String ids) {
+        infServiceP.deleteAllTopic(ids);
+    }
+
 
 }

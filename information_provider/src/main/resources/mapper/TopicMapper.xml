@@ -6,10 +6,9 @@
     <result column="topicname" property="topicname" jdbcType="VARCHAR" />
     <result column="topicimg" property="topicimg" jdbcType="VARCHAR" />
     <result column="tcount" property="tcount" jdbcType="INTEGER" />
-    <result column="tdate" property="tdate" jdbcType="DATE" />
   </resultMap>
   <sql id="Base_Column_List" >
-    topicid, topicname, topicimg, tcount, tdate
+    topicid, topicname, topicimg, tcount
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -18,14 +17,18 @@
     where topicid = #{topicid,jdbcType=INTEGER}
   </select>
   <select id="queryTopic" resultMap="BaseResultMap">
-   select p.*,i.inftitle inftitle ,i.infid from t_topic p,t_information i where i.topicid=p.topicid and i.tyid=12 group by p.topicname
-    ORDER BY tdate desc
+   select p.*,i.inftitle inftitle ,i.infid ,i.releasetime from t_topic p,t_information i where i.topicid=p.topicid and i.tyid=12 group by p.topicname
+    ORDER BY releasetime  desc
   </select>
   <select id="queryTopicByTid" resultMap="BaseResultMap">
     select * from t_topic where topicid in (select i.topicid from t_information i,info_type t where i.tyid=t.tid and tid=#{tid})
   </select>
-
-
+  <select id="topicList" resultMap="BaseResultMap">
+    select * from t_topic limit #{start},#{rows}
+  </select>
+  <select id="queryTopicCount" resultType="long">
+    select count(*) from t_topic
+  </select>
 
 
 
@@ -35,10 +38,10 @@
     where topicid = #{topicid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.jk.pojo.Topic" >
-    insert into t_topic (topicid, topicname, topicimg, 
-      tcount, tdate)
-    values (#{topicid,jdbcType=INTEGER}, #{topicname,jdbcType=VARCHAR}, #{topicimg,jdbcType=VARCHAR}, 
-      #{tcount,jdbcType=INTEGER}, #{tdate,jdbcType=DATE})
+    insert into t_topic ( topicname, topicimg,
+      tcount)
+    values ( #{topicname,jdbcType=VARCHAR}, #{topicimg,jdbcType=VARCHAR},
+      #{tcount,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.jk.pojo.Topic" >
     insert into t_topic
@@ -55,9 +58,6 @@
       <if test="tcount != null" >
         tcount,
       </if>
-      <if test="tdate != null" >
-        tdate,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="topicid != null" >
@@ -72,9 +72,6 @@
       <if test="tcount != null" >
         #{tcount,jdbcType=INTEGER},
       </if>
-      <if test="tdate != null" >
-        #{tdate,jdbcType=DATE},
-      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.jk.pojo.Topic" >
@@ -87,20 +84,24 @@
         topicimg = #{topicimg,jdbcType=VARCHAR},
       </if>
       <if test="tcount != null" >
-        tcount = #{tcount,jdbcType=INTEGER},
-      </if>
-      <if test="tdate != null" >
-        tdate = #{tdate,jdbcType=DATE},
+        tcount = #{tcount,jdbcType=INTEGER}
       </if>
     </set>
     where topicid = #{topicid,jdbcType=INTEGER}
   </update>
+  <delete id="deleteAllTopic">
+    delete from t_topic
+    where topicid in (${ids})
+  </delete>
+
+
+
+
   <update id="updateByPrimaryKey" parameterType="com.jk.pojo.Topic" >
     update t_topic
     set topicname = #{topicname,jdbcType=VARCHAR},
       topicimg = #{topicimg,jdbcType=VARCHAR},
-      tcount = #{tcount,jdbcType=INTEGER},
-      tdate = #{tdate,jdbcType=DATE}
+      tcount = #{tcount,jdbcType=INTEGER}
     where topicid = #{topicid,jdbcType=INTEGER}
   </update>
 </mapper>

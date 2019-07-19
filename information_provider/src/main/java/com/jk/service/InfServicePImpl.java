@@ -165,5 +165,40 @@ public class InfServicePImpl implements InfServiceP {
         return topicMapper.queryTopicByTid(tid);
     }
 
+    @Override
+    public List<Topic> topicList(Integer start, Integer rows) {
+        return topicMapper.topicList(start,rows);
+    }
+
+    @Override
+    public long queryTopicCount() {
+        return topicMapper.queryTopicCount();
+    }
+
+    @Override
+    public void addTopic(Topic topic) {
+        topicMapper.insert(topic);
+    }
+
+    @Override
+    public Topic queryTopicById(Integer topicid) {
+        return topicMapper.selectByPrimaryKey(topicid);
+    }
+
+    @Override
+    public void upTopic(Topic topic) {
+        topicMapper.updateByPrimaryKey(topic);
+    }
+
+    @Override
+    public void deleteTopic(Integer topicid) {
+        topicMapper.deleteByPrimaryKey(topicid);
+    }
+
+    @Override
+    public void deleteAllTopic(String ids) {
+        topicMapper. deleteAllTopic(ids);
+    }
+
 
 }
