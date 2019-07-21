@@ -456,10 +456,8 @@
                         <div class="sub-title"><a class="name weight-bold " href="javascript:toHomePage()">首页</a></div>
                     </li><li class="channel-item">
                         <div class="sub-title"><a class="name weight-bold " href="javascript:toNewsFlashAll()">快讯</a></div>
-                    </li><li class="channel-item">
-                        <div class="sub-list "><ul class="sub-list-right">
-                        <li class="sub-item"><a href="https://36kr.com/information/web_recommend" class="">推荐</a></li>
-                        <li class="sub-item">
+                    </li><li class="channel-item"><div class="sub-list "><ul class="sub-list-right">
+                        <li class="sub-item"><a href="https://36kr.com/information/web_recommend" class="">推荐</a></li><li class="sub-item">
                         <a href="https://36kr.com/information/travel" class="">汽车</a></li><li class="sub-item">
                         <a href="https://36kr.com/information/enterpriseservice" class="">企服</a></li><li class="sub-item">
                         <a href="https://36kr.com/information/web_zhichang" class="">职场</a></li><li class="sub-item"><a class="">城市</a>
@@ -522,9 +520,9 @@
 
                                     <div class="col-lg-4 " >
                                         <!--<img src="./36氪_让一部分人先看到未来_files/oi8rg1khm1lfqk0a!480" alt="">-->
-                                        <input type="hidden" id="touxs"  name="userheads" />
-                                        <img src="" id="toux" name="userheads" width="60px" height="60px">
-                                        <input type="hidden" id="testimg"  name="userhead" />
+                                        <input type="hidden" id="touxs" name="userheads" />
+                                        <img src="" id="toux"  width="60px" height="60px">
+                                        <input type="hidden" id="testimg" name="userhead" />
                                         <input type="file" class="projectfile" name="imgg" id="headImg" >
                                     </div>
                                 </div>
@@ -658,8 +656,8 @@ var userId = 1;
             success:function(data){
 
                 $("#toux").attr("src",data.userhead);
-                $("#touxs").val(data.userhead);
 
+                $("#touxs").val(data.userhead);
                 $("#uidId").val(data.uid);
                 $("#usernameId").val(data.username);
                 $("#userintroId").val(data.userintro);
@@ -723,17 +721,12 @@ var userId = 1;
         })
         uploadImg();
     })
-//修改
-    function saveUser() {
 
-        var data = new FormData($("#userFormId")[0]);
+    function saveUser() {
         $.ajax({
             url:Myip+"/saveUser",
             type:'post',
-            data:data,
-            contentType: false, //不用用编码方式
-            processData: false, //不进行转换
-            cache: false, //不缓存页面
+            data:$("#userFormId").serialize(),
             success:function(data){
 
                 bootbox.alert("保存成功");
@@ -781,6 +774,7 @@ function uploadImg(url) {
       }*/
         $('#testimg').val(imgval);
         $('#touxs').val(imgval);
+
     });
 }
 //账号密码页面
@@ -792,24 +786,20 @@ function uploadImg(url) {
 function  toCollect() {
     location.href="toCollect"
 }
-
-
-    //首页
-function toHomePage() {
+//首页
+function  toHomePage() {
     location.href="toHomePage"
 }
 //快讯
-
-function toNewsFlashAll() {
+function  toNewsFlashAll() {
     location.href="toNewsFlashAll"
 }
-
-    //视频
-function toHomeVideo() {
+//视频
+function  toNewsFlashAll() {
     location.href="toHomeVideo"
 }
 //搜索
-function toSearch() {
+function  toSearch() {
     location.href="toSearch"
 }
 </script>
