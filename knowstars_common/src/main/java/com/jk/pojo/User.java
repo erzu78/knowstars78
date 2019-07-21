@@ -10,6 +10,7 @@ public class User {
     private String username;//用户名称
     private String password;//用户登陆密码
     private String userhead;//头像
+    private String userheads;//头像2
     private Integer usersex;//性别
 
     private String birthday;//生日
@@ -26,6 +27,14 @@ public class User {
     private Integer infid;//咨询id
     private String inftitle;//咨询标题
     private String articleimg;//文章封面
+
+    public String getUserheads() {
+        return userheads;
+    }
+
+    public void setUserheads(String userheads) {
+        this.userheads = userheads;
+    }
 
     public String getAccount() {
         return account;
@@ -153,5 +162,27 @@ public class User {
 
     public void setArticleimg(String articleimg) {
         this.articleimg = articleimg;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "uid=" + uid +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", userhead='" + userhead + '\'' +
+                ", usersex=" + usersex +
+                ", birthday='" + birthday + '\'' +
+                ", userintro='" + userintro + '\'' +
+                ", profession=" + profession +
+                ", trade=" + trade +
+                ", account='" + account + '\'' +
+                ", infuserId=" + infuserId +
+                ", infId=" + infId +
+                ", userId=" + userId +
+                ", infid=" + infid +
+                ", inftitle='" + inftitle + '\'' +
+                ", articleimg='" + articleimg + '\'' +
+                '}';
     }
 }
