@@ -1,5 +1,6 @@
 package com.jk.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.jk.pojo.Ping;
 import com.jk.pojo.User;
 import com.jk.service.LikeServiceFeign;
@@ -29,7 +30,10 @@ public class LikeController {
     @RequestMapping("zizi")
     public void incr(String infId) {
 
-        Integer userId = 99;
+        String userString = (String) redisTemplate.opsForValue().get("userjs");
+        User user =  JSONObject.parseObject(userString, User.class);
+        Integer userId = user.getUserId();
+
         String inId = (String) redisTemplate.opsForValue().get("userZhan"+userId+infId);
 
         if(inId!=null){
@@ -53,7 +57,10 @@ public class LikeController {
     @RequestMapping("pingLike")
     public void pingLike(String pingId) {
 
-        Integer userId = 99;
+        String userString = (String) redisTemplate.opsForValue().get("userjs");
+        User user =  JSONObject.parseObject(userString, User.class);
+        Integer userId = user.getUserId();
+
         String piId = (String) redisTemplate.opsForValue().get("userpZhan"+userId+pingId);
 
         if(piId!=null){
@@ -77,7 +84,9 @@ public class LikeController {
     @GetMapping("queryZhan")
     public HashMap<String,String> queryZhan(String infId){
 
-        Integer userId = 99;
+        String userString = (String) redisTemplate.opsForValue().get("userjs");
+        User user =  JSONObject.parseObject(userString, User.class);
+        Integer userId = user.getUserId();
 
         String zhanCount = (String) redisTemplate.opsForValue().get("infzhan"+infId);
         String inId = (String) redisTemplate.opsForValue().get("userZhan"+userId+infId);
@@ -97,7 +106,10 @@ public class LikeController {
     @RequestMapping("opShou")
     public void opShou(@RequestParam("infId") String infId) {
 
-        Integer userId = 99;
+        String userString = (String) redisTemplate.opsForValue().get("userjs");
+        User user =  JSONObject.parseObject(userString, User.class);
+        Integer userId = user.getUserId();
+
         String inId = (String) redisTemplate.opsForValue().get("userShou"+userId+infId);
 
         if(inId!=null){
@@ -132,7 +144,9 @@ public class LikeController {
     @GetMapping("queryShou")
     public HashMap<String,String> queryShou(String infId){
 
-        Integer userId = 99;
+        String userString = (String) redisTemplate.opsForValue().get("userjs");
+        User user =  JSONObject.parseObject(userString, User.class);
+        Integer userId = user.getUserId();
 
         String shouCount = (String) redisTemplate.opsForValue().get("infshou"+infId);
         String inId = (String) redisTemplate.opsForValue().get("userShou"+userId+infId);
@@ -190,7 +204,11 @@ public class LikeController {
 
     @GetMapping("queryComment")
     public List<HashMap<String, Object>> queryComment(String infId) {
-        Integer userId = 99;
+
+        String userString = (String) redisTemplate.opsForValue().get("userjs");
+        User user =  JSONObject.parseObject(userString, User.class);
+        Integer userId = user.getUserId();
+
         List<Object> commentIds = redisTemplate.opsForList().range("ids"+infId,0,999999999);
 
         List<HashMap<String, Object>> commentList = new ArrayList<>();
@@ -207,9 +225,13 @@ public class LikeController {
     }
     @GetMapping("addComment")
     public void addComment(String infId,String sp){
-        Integer userId = 99;
-        String userName = "赵大傻逼";
-        String userImg = "http://gaokangle.oss-cn-beijing.aliyuncs.com/gaoakngle/1563163101336.png?Expires=1564344703&OSSAccessKeyId=LTAIVgOSeiYLY2E5&Signature=CxK6PYCRialzS1U%2Fh2jMqShKF7M%3D";
+
+        String userString = (String) redisTemplate.opsForValue().get("userjs");
+        User user =  JSONObject.parseObject(userString, User.class);
+
+        Integer userId = user.getUserId();
+        String userName = user.getUsername();
+        String userImg = user.getUserhead();
 
         HashMap<String,String> pingMap = new HashMap<>();
         String uuid = UUID.randomUUID().toString().replaceAll("-", "");
@@ -232,9 +254,8 @@ public class LikeController {
     @RequestMapping("findLoginStatus")
     public User findLoginStatus(){
 
-        User user = new User();
-        //user.setUid(12313231);
-        //user.setUserhead("http://gaokangle.oss-cn-beijing.aliyuncs.com/gaoakngle/1563243820763.jpg?Expires=1564425417&OSSAccessKeyId=LTAIVgOSeiYLY2E5&Signature=cXOfV%2Fz6R%2Bt5f%2FSV1CTjBI7OD4o%3D");
+        String userString = (String) redisTemplate.opsForValue().get("userjs");
+        User user =  JSONObject.parseObject(userString, User.class);
 
         return user;
     }
