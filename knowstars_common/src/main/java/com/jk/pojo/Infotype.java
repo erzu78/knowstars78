@@ -19,6 +19,7 @@ public class Infotype implements Serializable{
         return tname;
     }
 
+
     public void setTname(String tname) {
         this.tname = tname == null ? null : tname.trim();
     }
