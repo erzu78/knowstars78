@@ -10,6 +10,8 @@ public class Img implements Serializable{
 
     private String tabsname;
 
+    private String url2;
+
     public Integer getId() {
         return id;
     }
@@ -32,5 +34,13 @@ public class Img implements Serializable{
 
     public void setTabsname(String tabsname) {
         this.tabsname = tabsname;
+    }
+
+    public String getUrl2() {
+        return url2;
+    }
+
+    public void setUrl2(String url2) {
+        this.url2 = url2;
     }
 }
