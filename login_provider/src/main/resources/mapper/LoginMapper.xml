@@ -11,6 +11,13 @@
 
     <select id="findStaff" resultType="com.jk.pojo.Staff">
         select * from t_staff
+         where staffstatus=0
+        limit #{start},#{pageSize}
+    </select>
+
+    <select id="findStaff2" resultType="com.jk.pojo.Staff">
+        select * from t_staff
+        where staffstatus=1
         limit #{start},#{pageSize}
     </select>
 
