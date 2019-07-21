@@ -52,23 +52,36 @@
 </div>
     资讯大标题：<input type="text" class="form-control" id="inftitle" name="inftitle" style="width: 300px"><br/>
     资讯小标题: <input type="text" class="form-control" id="subtitle" name="subtitle" style="width: 300px"><br/>
-    发布时间：  <input type="date" class="form-control" id="releasetime" style="width: 300px" name="releasetime"><br/>
+    <!--发布时间：  <input type="date" class="form-control" id="releasetime" style="width: 300px" name="releasetime"><br/>-->
     文章内容: <textarea name="articleinformation" id="articleinformation"></textarea><br/>
     资讯类型：<select id="tyid" name="tyid" class="form-control" style="width: 300px" >
               <option value="">全部</option>
-              <option value="1">最新</option>
+          <!--    <option value="1">最新</option>
               <option value="2">推荐</option>
               <option value="3">创投</option>
+              <option value="4">汽车</option>
+              <option value="5">科技</option>
+              <option value="6">企服</option>
+              <option value="7">生活</option>
+              <option value="8">职场</option>
+              <option value="9">创新</option>
+              <option value="10">房产</option>
+              <option value=11>其他</option>-->
 </select><br/>
     资讯主题：<select id="topicid" name="topicid" class="form-control" style="width: 300px" >
     <option value="">全部</option>
-    <option value="1">创投新闻</option>
-    <option value="2">未来地产</option>
+  <!--  <option value="1">手机厂商成长的烦恼</option>
+    <option value="2">智克分析</option>
+    <option value="3">焦点分析</option>
+    <option value="4">未来汽车</option>
+    <option value="5">神科技回复</option>
+    <option value="6">出海是门大生意</option>
+    <option value="7">最前线</option>-->
 </select><br/>
 </form>
 <script>
     UE.getEditor('articleinformation');
-    var ip = "http://192.168.1.128";
+    var ip = "http://192.168.1.137";
 
     $(function () {
         uploadImg();
@@ -96,9 +109,9 @@
             msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
 
         }).on('fileuploaded', function (event, data, previewId, index) {
-            alert(data.response.imngName);
+            /* alert(data.response.imngName);*/
 
-            var imgval = $('#articleimg').val();
+            var imgval = $('#topicimg').val();
 
             if (imgval == null || imgval == "" || imgval == undefined) {
                 imgval = data.response.imngName;
