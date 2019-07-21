@@ -200,5 +200,10 @@ public class InfServicePImpl implements InfServiceP {
         topicMapper. deleteAllTopic(ids);
     }
 
+    @Override
+    public List<Topic> queryTopicc() {
+        return topicMapper.queryTopicc();
+    }
+
 
 }

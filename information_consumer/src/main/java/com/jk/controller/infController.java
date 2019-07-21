@@ -8,16 +8,15 @@ import com.jk.pojo.Ty;
 import com.jk.service.InfService;
 import com.jk.service.InfServiceFeign;
 import com.jk.util.OSSClientUtil;
+import com.sun.xml.internal.ws.api.server.SDDocumentFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @RestController
 public class infController {
@@ -46,6 +45,8 @@ public class infController {
     public void add(Information information){
        information.setAuthorid(2);
        information.setHot(1);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        information.setReleasetime(sdf.format(new Date()));
         infServiceFeign.add(information);
     }
     @RequestMapping("/queryInfoById")
@@ -113,6 +114,11 @@ public class infController {
     //作者查询
     public List<Staff> queryStaff(){
         return  infServiceFeign.queryStaff();
+    }
+    @RequestMapping("/queryTopicc")
+    @ResponseBody
+    public List<Topic> queryTopicc(){
+        return infServiceFeign.queryTopicc();
     }
     @RequestMapping("/queryTopic")
     @ResponseBody

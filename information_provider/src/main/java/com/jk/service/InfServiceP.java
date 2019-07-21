@@ -47,4 +47,6 @@ public interface InfServiceP {
     void deleteTopic(Integer topicid);
 
     void deleteAllTopic(String ids);
+
+    List<Topic> queryTopicc();
 }
