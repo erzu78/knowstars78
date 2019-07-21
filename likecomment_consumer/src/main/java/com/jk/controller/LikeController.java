@@ -205,8 +205,6 @@ public class LikeController {
         }
         return commentList;
     }
-
-
     @GetMapping("addComment")
     public void addComment(String infId,String sp){
         Integer userId = 99;
@@ -230,6 +228,17 @@ public class LikeController {
         redisTemplate.opsForHash().putAll("comment"+infId+idsId,pingMap);
 
     }
+
+    @RequestMapping("findLoginStatus")
+    public User findLoginStatus(){
+
+        User user = new User();
+        //user.setUid(12313231);
+        //user.setUserhead("http://gaokangle.oss-cn-beijing.aliyuncs.com/gaoakngle/1563243820763.jpg?Expires=1564425417&OSSAccessKeyId=LTAIVgOSeiYLY2E5&Signature=cXOfV%2Fz6R%2Bt5f%2FSV1CTjBI7OD4o%3D");
+
+        return user;
+    }
+
 
 
 
