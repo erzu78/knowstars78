@@ -80,4 +80,6 @@ public interface InfService {
     void deleteTopic(@RequestParam(value="topicid")Integer topicid);
     @RequestMapping("/deleteAllTopic")
     void deleteAllTopic(@RequestParam(value="ids")String ids);
+    @RequestMapping("/queryTopicc")
+    List<Topic> queryTopicc();
 }
