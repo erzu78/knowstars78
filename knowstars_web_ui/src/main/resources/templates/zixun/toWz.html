@@ -620,7 +620,7 @@
 
         var infId = $("#aa").val();
         $.ajax({
-            url:"http://localhost:8000/queryZhan",
+            url:"http://192.168.1.118:8000/queryZhan",
             type:'get',
             data:{infId:infId},
             success:function(data){
@@ -683,7 +683,7 @@
         var infId = $("#aa").val();
 
         $.ajax({
-            url:"http://localhost:8000/queryComment",
+            url:"http://192.168.1.118:8000/queryComment",
             type:'get',
             data:{infId:infId},
             success:function(data){
@@ -751,7 +751,7 @@
         var sp=$("#pingId").val();
         var infId = $("#aa").val();
         $.ajax({
-            url:"http://localhost:8000/addComment",
+            url:"http://192.168.1.118:8000/addComment",
             type:'get',
             data:{infId:infId,sp:sp},
             success:function(){
@@ -772,7 +772,7 @@
     opZhan = function(){
         var infId = $("#aa").val();
         $.ajax({
-            url:"http://localhost:8000/zizi",
+            url:"http://192.168.1.118:8000/zizi",
             type:'post',
             data:{infId:infId},
             success:function(){
@@ -791,7 +791,7 @@
     pingLike = function(pingId){
 
         $.ajax({
-            url:"http://localhost:8000/pingLike",
+            url:"http://192.168.1.118:8000/pingLike",
             type:'post',
             data:{pingId:pingId},
             success:function(){
@@ -811,7 +811,7 @@
         var infId = $("#aa").val();
 
         $.ajax({
-            url:"http://localhost:8000/queryShou",
+            url:"http://192.168.1.118:8000/queryShou",
             type:'get',
             data:{infId:infId},
             success:function(data){
@@ -834,7 +834,7 @@
     opShou = function(){
         var infId = $("#aa").val();
         $.ajax({
-            url:"http://localhost:8000/opShou",
+            url:"http://192.168.1.118:8000/opShou",
             type:'post',
             data:{infId:infId},
             success:function(){
