@@ -5,13 +5,13 @@ import java.util.HashMap;
 //评论表
 public class Ping {
 
-    private String pingId;
-    private String pingInfo;
-    private Integer userId;
-    private String userImg;
-    private String userName;
-    private String likeCount;
-    private String piId;
+    private String pingId;//评论id
+    private String pingInfo;//评论内容
+    private Integer userId;//用户id
+    private String userImg;//用户头像
+    private String userName;//用户名字
+    private String likeCount;//点赞数量
+    private String piId;//评论id
     private HashMap<String,String> pingMap;
 
     public Integer getUserId() {
