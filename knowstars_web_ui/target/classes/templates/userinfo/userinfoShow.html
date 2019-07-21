@@ -453,11 +453,13 @@
                     <div class="line"></div>
                     <ul class="kr-channel-nav">
                         <li class="channel-item">
-                        <div class="sub-title"><a class="name weight-bold " href="https://36kr.com/">首页</a></div>
+                        <div class="sub-title"><a class="name weight-bold " href="javascript:toHomePage()">首页</a></div>
                     </li><li class="channel-item">
-                        <div class="sub-title"><a class="name weight-bold " href="https://36kr.com/newsflashes">快讯</a></div>
-                    </li><li class="channel-item"><div class="sub-title"><span class="open-icon close"></span><a class="name weight-bold " href="https://36kr.com/information/web_news">资讯</a></div><div class="sub-list "><ul class="sub-list-right">
-                        <li class="sub-item"><a href="https://36kr.com/information/web_recommend" class="">推荐</a></li><li class="sub-item">
+                        <div class="sub-title"><a class="name weight-bold " href="javascript:toNewsFlashAll()">快讯</a></div>
+                    </li><li class="channel-item">
+                        <div class="sub-list "><ul class="sub-list-right">
+                        <li class="sub-item"><a href="https://36kr.com/information/web_recommend" class="">推荐</a></li>
+                        <li class="sub-item">
                         <a href="https://36kr.com/information/travel" class="">汽车</a></li><li class="sub-item">
                         <a href="https://36kr.com/information/enterpriseservice" class="">企服</a></li><li class="sub-item">
                         <a href="https://36kr.com/information/web_zhichang" class="">职场</a></li><li class="sub-item"><a class="">城市</a>
@@ -466,7 +468,7 @@
                         <li class="sub-item"><a href="https://36kr.com/information/technology" class="">科技</a></li>
                         <li class="sub-item"><a href="https://36kr.com/information/happy_life" class="">生活</a></li>
                         <li class="sub-item"><a href="https://36kr.com/information/innovate" class="">创新</a></li></ul></div>
-                    </li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="https://36kr.com/video">视频</a></div>
+                    </li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="javascript:toHomeVideo()">视频</a></div>
                     </li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="https://36kr.com/topics">专题</a></div></li>
                         <li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="https://chuang.36kr.com/huodong#/report/recent" target="_target" rel="noopener noreferrer">活动</a></div></li><div class="local-list" style="display:none;top:;left:"><div class="local-column">
                         <li class="local-item"><a href="https://36kr.com/local/xian" class="">西安</a></li>
@@ -477,7 +479,7 @@
                         <li class="local-item"><a href="https://36kr.com/local/chongqing" class="">重庆</a></li>
                         <li class="local-item"><a href="https://36kr.com/local/zhejiang" class="">浙江</a></li>
                     </div><div class="triangle"></div></div></ul><div class="kr-search-entry clearfloat">
-                    <div class="search-button"><span class="search-icon"></span><span class="search-text weight-bold">搜索</span></div></div>
+                    <div class="search-button"><span class="search-icon"></span><span class="search-text weight-bold" onclick="toSearch()">搜索</span></div></div>
                     <a href="https://36kr.com/seek-report" class="seek-report" target="_blank" rel="noopener noreferrer nofollow">
                         <span class="seek-report-icon"></span><span class="seek-report-text">寻求报道</span></a><div><div class="i-want-contribution">
                     <span class="i-want-contribution-icon"></span><span class="i-want-contribution-text">我要投稿</span></div></div><a class="seek-finance-entry" href="http://vclub-36kr.mikecrm.com/r3yRAwz" target="_blank" rel="noopener noreferrer nofollow"><span class="seek-finance-entry-icon"></span>
@@ -502,7 +504,7 @@
                 <li><a href="https://36kr.com/subscribe?ktm_source=k
                 *963..6aike_pclandingpage" target="_blank" rel="noopener noreferrer">开氪</a></li>
                 <li><a href="https://36kr.com/organization" target="_blank" rel="noopener noreferrer">VClub投资机构</a></li>
-                <li><div class="kr-header-search-entry clearfloat"><div class="search-button"><span class="search-icon"></span><span class="search-text weight-bold">搜索</span></div></div>
+                <li><div class="kr-header-search-entry clearfloat"><div class="search-button"><span class="search-icon"></span><span class="search-text weight-bold" onclick="toSearch()">搜索</span></div></div>
                 </li></ul></div></div></div><div class="kr-layout-content">
             <div class="kr-usercenter">
             <div class="usercenter-main">
@@ -520,8 +522,9 @@
 
                                     <div class="col-lg-4 " >
                                         <!--<img src="./36氪_让一部分人先看到未来_files/oi8rg1khm1lfqk0a!480" alt="">-->
-                                        <img src="" id="toux"  width="60px" height="60px">
-                                        <input type="hidden" id="testimg" name="userhead" />
+                                        <input type="hidden" id="touxs"  name="userheads" />
+                                        <img src="" id="toux" name="userheads" width="60px" height="60px">
+                                        <input type="hidden" id="testimg"  name="userhead" />
                                         <input type="file" class="projectfile" name="imgg" id="headImg" >
                                     </div>
                                 </div>
@@ -641,7 +644,7 @@
 
 
 </body>
-<script>
+<script type="text/javascript">
 var Myip ="http://192.168.1.126:8087";
 
     $(function () {
@@ -655,6 +658,8 @@ var userId = 1;
             success:function(data){
 
                 $("#toux").attr("src",data.userhead);
+                $("#touxs").val(data.userhead);
+
                 $("#uidId").val(data.uid);
                 $("#usernameId").val(data.username);
                 $("#userintroId").val(data.userintro);
@@ -718,12 +723,17 @@ var userId = 1;
         })
         uploadImg();
     })
-
+//修改
     function saveUser() {
+
+        var data = new FormData($("#userFormId")[0]);
         $.ajax({
             url:Myip+"/saveUser",
             type:'post',
-            data:$("#userFormId").serialize(),
+            data:data,
+            contentType: false, //不用用编码方式
+            processData: false, //不进行转换
+            cache: false, //不缓存页面
             success:function(data){
 
                 bootbox.alert("保存成功");
@@ -770,6 +780,7 @@ function uploadImg(url) {
          imgval += ","+"http://<%= request.getServerName()%>:<%=request.getServerPort()%><%=request.getContextPath()%>/"+data.response;
       }*/
         $('#testimg').val(imgval);
+        $('#touxs').val(imgval);
     });
 }
 //账号密码页面
@@ -780,6 +791,26 @@ function uploadImg(url) {
 //我的收藏页面
 function  toCollect() {
     location.href="toCollect"
+}
+
+
+    //首页
+function toHomePage() {
+    location.href="toHomePage"
+}
+//快讯
+
+function toNewsFlashAll() {
+    location.href="toNewsFlashAll"
+}
+
+    //视频
+function toHomeVideo() {
+    location.href="toHomeVideo"
+}
+//搜索
+function toSearch() {
+    location.href="toSearch"
 }
 </script>
 

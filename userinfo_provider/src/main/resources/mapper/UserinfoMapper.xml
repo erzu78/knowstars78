@@ -7,7 +7,7 @@
     </select>
 
     <update id="saveUser">
-        UPDATE t_user SET username = #{username} , userhead = #{userhead} , usersex = #{usersex} ,
+        UPDATE t_user SET username = #{username} , userhead = #{userheads} , usersex = #{usersex} ,
         birthday = #{birthday} , userintro = #{userintro} , profession = #{profession} , trade = #{trade} WHERE
         uid = #{uid}
     </update>
