@@ -24,9 +24,7 @@ public class ziXun {
     }
 
     @RequestMapping("/toAllZx")
-    public String toAllZx(Integer a, Model model){
-        System.out.println(a);
-        model.addAttribute("zId",a);
+    public String toAllZx(){
         return "zixun/toAllZx";
     }
     @RequestMapping("/tz")

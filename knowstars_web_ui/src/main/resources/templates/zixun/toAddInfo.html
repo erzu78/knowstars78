@@ -52,7 +52,7 @@
 </div>
     资讯大标题：<input type="text" class="form-control" id="inftitle" name="inftitle" style="width: 300px"><br/>
     资讯小标题: <input type="text" class="form-control" id="subtitle" name="subtitle" style="width: 300px"><br/>
-    发布时间：  <input type="date" class="form-control" id="releasetime" style="width: 300px" name="releasetime"><br/>
+    <!--发布时间：  <input type="date" class="form-control" id="releasetime" style="width: 300px" name="releasetime"><br/>-->
     文章内容: <textarea name="articleinformation" id="articleinformation"></textarea><br/>
     资讯类型：<select id="tyid" name="tyid" class="form-control" style="width: 300px" >
               <option value="">全部</option>
@@ -81,7 +81,7 @@
 </form>
 <script>
     UE.getEditor('articleinformation');
-    var ip = "http://192.168.1.128";
+    var ip = "http://192.168.1.137";
 
     $(function () {
         uploadImg();
@@ -109,9 +109,9 @@
             msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
 
         }).on('fileuploaded', function (event, data, previewId, index) {
-           /* alert(data.response.imngName);*/
+            /* alert(data.response.imngName);*/
 
-            var imgval = $('#articleimg').val();
+            var imgval = $('#topicimg').val();
 
             if (imgval == null || imgval == "" || imgval == undefined) {
                 imgval = data.response.imngName;

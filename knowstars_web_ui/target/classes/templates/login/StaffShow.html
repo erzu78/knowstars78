@@ -73,24 +73,28 @@
             contentType:'application/x-www-form-urlencoded;charset=UTF-8',   //数据编码纯文本  offset=0&limit=5
             toolbar:'#tabToolBar',   //  工具定义位置
             columns:[
-                {field: 'sid', title: "用户id", width: 5},      //  列    field   代表是 后台  传过来的值
+                {field: 'sid', title: "id", width: 5},      //  列    field   代表是 后台  传过来的值
                 {field:'staffname',title:'名称',width:60},      //  列    field   代表是 后台  传过来的值
-                {field:'role',title:'角色',width:100,
+                {field:'role',title:'角色',width:70,
                     formatter:function(value,row,index){
-                    if(value==1){
-                        return "作者";
-                    }if(value==2){
-                        return "管理员";
+                        if(value==0){
+                            return "";
+                        }if(value==1){
+                            return "作者";
+                        }if(value==2){
+                            return "管理员";
                         }
-                }},      //  列    field   代表是 后台  传过来的值
+                }
+                },      //  列    field   代表是 后台  传过来的值
                  {field:'crud',title:'操作',width:100,
-                    formatter:function (value,row,index){
-                        return "<a href='javascript:delOne(&quot;"+row.uid+"&quot;)'>删除</a>  ";
-                    //<a href='javascript:editTable2(&quot;"+row.sid+"&quot;)'>修改</a>
-                    }
+                     formatter:function (value,row,index){
+                     if(row.role==0){
+                         return "<a href='javascript:updaterole(&quot;"+row.sid+"&quot;)'>设置作者</a>  ";
+                     }
+                     }
                 },
             ],
-//传递参数（*）
+            //传递参数（*）
             queryParams: function(params) {
 
                 var whereParams = {
@@ -120,17 +124,18 @@
     }
 
 
-    function delOne(uid){
+
+    function updaterole(sid){
         $.ajax({
-            url:ip+":8088/delOne",
+            url:ip+":8088/updaterole",
             type:'post',
-            data:{uid:uid},
+            data:{sid:sid},
             success:function(data){
-                bootbox.alert("删除成功");
+                bootbox.alert("成功");
                 $("#bootTab").bootstrapTable("refresh");
             },
             error:function(){
-                bootbox.alert("删除失败");
+                bootbox.alert("失败");
             }
         });
     }

@@ -197,5 +197,10 @@ public class InfControllerP implements InfService {
         infServiceP.deleteAllTopic(ids);
     }
 
+    @Override
+    public List<Topic> queryTopicc() {
+        return infServiceP.queryTopicc();
+    }
+
 
 }
