@@ -1,8 +1,10 @@
 package com.jk.controller;
 
 import com.jk.dao.ImgMapper;
+import com.jk.dao.InfotypeMapper;
 import com.jk.dao.TreeMapper;
 import com.jk.pojo.Img;
+import com.jk.pojo.Infotype;
 import com.jk.pojo.MenuTree;
 import com.jk.pojo.Tree;
 import com.jk.service.HomePageServiceApi;
@@ -20,6 +22,8 @@ public class HomePageController2 implements HomePageServiceApi {
     @Autowired
     private ImgMapper imgMapper;
     @Autowired
+    private InfotypeMapper infotypeMapper;
+    @Autowired
     private TreeMapper treeMapper;
     @RequestMapping("/queryImg")
     public List<Img> queryImg() {
@@ -31,6 +35,14 @@ public class HomePageController2 implements HomePageServiceApi {
     @RequestMapping("queryTree")
     public List<MenuTree> queryTree() {
         return treeMapper.queryTree();
+    }
+
+    @Override
+    @RequestMapping("/queryZiXun")
+    public List<Infotype> queryZiXun() {
+        System.out.println(999);
+        System.out.println(infotypeMapper.queryZiXun());
+        return infotypeMapper.queryZiXun();
     }
 
 
