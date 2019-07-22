@@ -37,7 +37,7 @@ public class LoginController {
             String userjs = JSON.toJSONString(userModel);
             System.out.println("loginuser = [" + userjs + "]");
             redisTemplate.opsForValue().set("userjs",userjs);
-            redisTemplate.expire("userjs",10000, TimeUnit.MILLISECONDS);			//设置一个key 过期时间是10s
+            redisTemplate.expire("userjs",600000, TimeUnit.MILLISECONDS);			//设置一个key 过期时间是10s
             return "1";
         }else{
             return "2";
