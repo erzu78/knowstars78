@@ -1,6 +1,7 @@
 package com.jk.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.jk.pojo.Information;
 import com.jk.pojo.Staff;
 import com.jk.pojo.Topic;
@@ -10,6 +11,7 @@ import com.jk.service.InfServiceFeign;
 import com.jk.util.OSSClientUtil;
 import com.sun.xml.internal.ws.api.server.SDDocumentFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,6 +22,8 @@ import java.util.*;
 
 @RestController
 public class infController {
+    @Autowired
+    private RedisTemplate redisTemplate;
     @Autowired
     private InfServiceFeign infServiceFeign;
     @RequestMapping("/infoList")
@@ -43,6 +47,8 @@ public class infController {
     @ResponseBody
     //新增方法
     public void add(Information information){
+       /* String userString = (String) redisTemplate.opsForValue().get("userjs");
+        User user =  JSONObject.parseObject(userString, User.class);*/
        information.setAuthorid(2);
        information.setHot(1);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

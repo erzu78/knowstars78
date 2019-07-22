@@ -39,6 +39,8 @@ public class LocationHref {
 
 
 
+
+
 //首页 快讯专栏  点击标题 跳转到对应的快讯内容（右下角）
     @RequestMapping("/toNewsFlashPage")
 
@@ -61,6 +63,15 @@ public class LocationHref {
     public String toNewsFlashAll(Integer newsAllid,Model model){
     model.addAttribute("newsAllid",newsAllid);
         return "/NewsFlash/NewsFlashAll";
+    }
+
+
+    //测试
+    @RequestMapping("/toTest")
+
+    public String toTest(){
+
+        return "/NewsFlash/testnews";
     }
 
 

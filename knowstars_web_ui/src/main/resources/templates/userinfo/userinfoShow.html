@@ -483,21 +483,18 @@
                     <span class="i-want-contribution-icon"></span><span class="i-want-contribution-text">我要投稿</span></div></div><a class="seek-finance-entry" href="http://vclub-36kr.mikecrm.com/r3yRAwz" target="_blank" rel="noopener noreferrer nofollow"><span class="seek-finance-entry-icon"></span>
                     <span class="seek-finance-entry-text">寻求融资</span></a></div></div></div><div class="main-right"><div class="kr-header ">
             <div class="kr-header-main"><div class="kr-header-content">
-                <div class="user-login" style="display: inline-block;"><img src="./36氪_让一部分人先看到未来_files/oi8rg1khm1lfqk0a!480" alt="" class="user-pic">
+                <div id="yDeng" class="user-login" style="display:none">
+                    <a href="toUserinfo"><img  id="userImg" src="https://static.36krcnd.com/v1/20181105/YfPuR3I-qGKsl3V5g1nfMA906f68a624074dbe88c3b3b768a3ff22" alt="" class="user-pic"/></a>
                     <div class="pull-down">
-           <a class="ellipsis-1 user-name" title="" href="toUserinfo" target="_blank" rel="noopener noreferrer">
-               个人资料
-           </a>
-           <a class="ellipsis-1 " title="账号设置" href="toAccPass" target="_blank" rel="noopener noreferrer">
-               账号设置
-           </a>
-                        <a class="ellipsis-1 " title="我的收藏" href="toCollect" target="_blank" rel="noopener noreferrer">
-                            我的收藏
-                        </a>
-                        <a class="ellipsis-1 " title="退出登录" target="_blank" rel="noopener noreferrer">退出登录</a></div></div><div class="kr-header-passport" style="display: none;">
-                <a class="login"><span>登录</span></a><a class="line">|</a>
-                <a class="resgister"><span>注册</span></a></div><ul class="business-line">
-                <li><a href="https://auto-time.36kr.com/" target="_blank" rel="noopener noreferrer">未来汽车日报</a>
+                        <a class="ellipsis-1" href="javaScript:exitUserLogin()" title="退出登录" target="_blank" rel="noopener noreferrer">退出登录</a>
+                    </div>
+                </div>
+
+                <div id="wDeng" class="kr-header-passport" style="display:inline-block">
+                    <a class="login" href="toUserLogin"><span>登录</span></a><a class="line">|</a><a class="resgister" href="toUserLogin"><span>注册</span></a>
+
+
+                </div><ul class="business-line"><li><a href="https://auto-time.36kr.com/" target="_blank" rel="noopener noreferrer">未来汽车日报</a>
                 </li><li><a href="https://36kr.com/ranking" target="_blank" rel="noopener noreferrer">氪榜</a></li>
                 <li><a href="https://36kr.com/subscribe?ktm_source=k
                 *963..6aike_pclandingpage" target="_blank" rel="noopener noreferrer">开氪</a></li>
@@ -646,8 +643,8 @@
 var Myip ="http://192.168.1.126:8087";
 
     $(function () {
-
-var userId = 1;
+        findLoginStatus();
+/*var userId = 1;
         $.ajax({
             url:Myip+"/findUserinfo",
             type:'post',
@@ -718,7 +715,7 @@ var userId = 1;
 
 
             }
-        })
+        })*/
         uploadImg();
     })
 
@@ -729,17 +726,115 @@ var userId = 1;
             data:$("#userFormId").serialize(),
             success:function(data){
 
-                bootbox.alert("保存成功");
+                alert("修改成功");
                 $("#userFormId").bootstrapTable('refresh');
 
             },
             error:function(){
-                bootbox.alert("ajax失败");
+                alert("修改失败");
             }
         });
     }
 
+findLoginStatus = function(){
 
+    $.ajax({
+        url:"http://192.168.1.118:8000/findLoginStatus",
+        type:'post',
+        success:function(data){
+            if(data.uid!=null&&data.uid!=""){
+                $("#wDeng").attr("style","display:none");
+                $("#yDeng").attr("style","display:inline-block");
+
+            }else{
+                $("#wDeng").attr("style","display:kinline-bloc");
+                $("#yDeng").attr("style","display:none");
+
+
+            }
+if(data.userhead!=""){
+    $("#userImg").attr("src",data.userhead);
+    $("#toux").attr("src",data.userhead);
+    $("#touxs").val(data.userhead);
+}else if(data.userhead==""){
+    $("#userImg").attr("src",data.userheads);
+                $("#toux").attr("src",data.userheads);
+
+                $("#touxs").val(data.userheads);
+            }
+
+            $("#uidId").val(data.uid);
+            $("#usernameId").val(data.username);
+            $("#userintroId").val(data.userintro);
+            $("#birthdayId").val(data.birthday);
+
+
+            if(data.profession==1){
+                $("#professionId").val(data.profession);
+            }
+            if(data.profession==2){
+                $("#professionId").val(data.profession);
+            }
+            if(data.profession==3){
+                $("#professionId").val(data.profession);
+            }
+            if(data.profession==4){
+                $("#professionId").val(data.profession);
+            }
+            if(data.profession==5){
+                $("#professionId").val(data.profession);
+            }
+            if(data.profession==6){
+                $("#professionId").val(data.profession);
+            }
+
+            if(data.trade==1){
+                $("#tradeId").val(data.trade);
+            }
+            if(data.trade==2){
+                $("#tradeId").val(data.trade);
+            }
+            if(data.trade==3){
+                $("#tradeId").val(data.trade);
+            }
+            if(data.trade==4){
+                $("#tradeId").val(data.trade);
+            }
+            if(data.trade==5){
+                $("#tradeId").val(data.trade);
+            }
+            if(data.trade==6){
+                $("#tradeId").val(data.trade);
+            }
+
+            if(data.usersex==1){
+
+                $("#radionan").prop("checked",true);
+
+            }
+            if(data.usersex==2){
+                $("#radionv").prop("checked",true);
+
+            }
+        },
+        error:function(){
+            bootbox.alert("查询用户登录状态失败");
+        }
+    });
+
+}
+exitUserLogin = function(){
+    $.ajax({
+        url:"http://192.168.1.118:8000/exitUserLogin",
+        type:'post',
+        success:function(){
+            findLoginStatus();
+        },
+        error:function(){
+            bootbox.alert("退出登录失败");
+        }
+    });
+}
 
 function uploadImg(url) {
     $('#headImg').fileinput({

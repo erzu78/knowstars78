@@ -177,9 +177,7 @@
                         $.ajax({
                             url: submitUrl,
                             type: 'post',
-
                             data: $("#addnewsflashform").serialize(),
-
                             success: function () {
                                 bootbox.alert("保存成功");
                                 $("#infData").bootstrapTable("refresh");
@@ -247,6 +245,12 @@
                             error:function(){
                                 bootbox.alert("ajax失败");
                             }
+
+
+
+
+
+
                         });
                     }
                 },

@@ -1,9 +1,11 @@
 package com.jk.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.jk.pojo.User;
 import com.jk.service.UserinfoServiceFeign;
 import com.jk.util.OSSClientUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,6 +26,8 @@ public class UserinfoController {
     @Autowired
     private UserinfoServiceFeign userinfoServiceFeign;
 
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     //个人信息查询
         @RequestMapping("findUserinfo")
@@ -47,7 +51,12 @@ public class UserinfoController {
     @PostMapping("saveUser")
     public void saveUser(User user){
 
-     userinfoServiceFeign.saveUser(user);
+        userinfoServiceFeign.saveUser(user);
+     if(user!=null){
+         String userinfo = JSON.toJSONString(user);
+         System.out.println("loginuser = [" + userinfo + "]");
+         redisTemplate.opsForValue().set("userjs",userinfo);
+     }
 
     }
 
@@ -91,4 +100,16 @@ public class UserinfoController {
         userinfoServiceFeign.cancelColl(infuserId);
 
     }
+
+
+    @RequestMapping("testRedis")
+    public void testRedis(){
+
+        redisTemplate.opsForValue().set("wowowowo1356413512","kkkkkkkkkkkk");
+
+    }
+
+
+
+
 }
