@@ -508,16 +508,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
     })
 
 
@@ -531,8 +521,7 @@
                 var     AboutNews = "";
                 for (var i = 0 ; i < data.length ;i++){
                     AboutNews +='<div class="newsflash-item"><div class="item-title" rel="noopener noreferrer" target="_blank"><font  color="black" size="5">'+data[i].flashtitle+'</font></div>' +
-                        '<div class="item-other"><span class="time">发布时间：&nbsp;&nbsp;&nbsp;'+data[i].creattime+'</span><div class="wechat"><div class="share-code"></div></div></div>' +
-                        '<div  class="item-desc"  >快讯内容：<font color="#6495ed">&nbsp;&nbsp;&nbsp;'+data[i].flashinfo+'</font><br><br><a class="link" rel="noopener noreferrer nofollow" target="_blank" ></a></div></div></div></div>';
+                        '<div class="item-other"><span class="time"><font color="#808080">'+data[i].creattime+'</font></span><div class="wechat"><div class="share-code"></div></div></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div  class="item-desc"  ><font color="#808080">'+data[i].flashinfo+'</font><br><br><a class="link" rel="noopener noreferrer nofollow" target="_blank" ></a></div></div></div></div>';
                 }
 
                 $("#NewsAllId").html(AboutNews);
@@ -555,7 +544,18 @@
 
 
 
-
+    exitUserLogin = function(){
+        $.ajax({
+            url:"http://192.168.1.118:8000/exitUserLogin",
+            type:'post',
+            success:function(){
+                findLoginStatus();
+            },
+            error:function(){
+                bootbox.alert("退出登录失败");
+            }
+        });
+    }
 
 
 

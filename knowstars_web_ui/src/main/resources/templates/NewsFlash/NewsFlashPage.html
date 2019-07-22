@@ -577,7 +577,18 @@
 
 
 
-
+    exitUserLogin = function(){
+        $.ajax({
+            url:"http://192.168.1.118:8000/exitUserLogin",
+            type:'post',
+            success:function(){
+                findLoginStatus();
+            },
+            error:function(){
+                bootbox.alert("退出登录失败");
+            }
+        });
+    }
 
 
 
