@@ -451,7 +451,7 @@
                             <div id="zixun">
                                 <div class="sub-title">
                                     <span class="open-icon "></span>
-                                    <a class="name weight-bold " href="information/web_news">资讯</a>
+                                    <a class="name weight-bold " href="toAllZx">资讯</a>
                                 </div>
                                 <div class="sub-list open">
                                     <ul class="sub-list-right">
@@ -469,7 +469,7 @@
 
                         <li class="channel-item">
                             <div class="sub-title">
-                                <a class="name weight-bold " href="/video">视频</a>
+                                <a class="name weight-bold " href="toHomeVideo">视频</a>
                             </div>
                         </li>
                         <li class="channel-item">
@@ -485,7 +485,7 @@
 
                     <div class="kr-search-entry clearfloat">
                         <div class="search-button">
-                            <a class="name weight-bold " href="/video">搜索</a>
+                            <a class="name weight-bold " href="toSearch">搜索</a>
                             <!-- <span class="search-text weight-bold">搜索</span>-->
                         </div>
                     </div>
@@ -1003,27 +1003,31 @@
         zixun();
         queryZz();
         zt();
-        findLoginStatus = function(){
-            $.ajax({
-                url:"http://192.168.1.118:8000/findLoginStatus",
-                type:'post',
-                success:function(data){
-                    if(data.uid!=null&&data.uid!=""){
-                        $("#wDeng").attr("style","display:none");
-                        $("#yDeng").attr("style","display:inline-block");
-                        $("#userImg").attr("src",data.userhead);
-                    }else{
-                        $("#wDeng").attr("style","display:kinline-bloc");
-                        $("#yDeng").attr("style","display:none");
-                    }
-                },
-                error:function(){
-                    bootbox.alert("查询用户登录状态失败");
-                }
-            });
-
-        }
+        findLoginStatus();
     })
+
+
+    findLoginStatus = function(){
+
+        $.ajax({
+            url:"http://192.168.1.118:8000/findLoginStatus",
+            type:'post',
+            success:function(data){
+                if(data.uid!=null&&data.uid!=""){
+                    $("#wDeng").attr("style","display:none");
+                    $("#yDeng").attr("style","display:inline-block");
+                    $("#userImg").attr("src",data.userhead);
+                }else{
+                    $("#wDeng").attr("style","display:kinline-bloc");
+                    $("#yDeng").attr("style","display:none");
+                }
+            },
+            error:function(){
+                bootbox.alert("查询用户登录状态失败");
+            }
+        });
+
+    }
 
     function tabs(){
         $.ajax({

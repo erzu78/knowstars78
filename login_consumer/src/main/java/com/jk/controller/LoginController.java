@@ -139,8 +139,13 @@ public class LoginController {
     //根据用户名查询用户id
     @RequestMapping("finduserByUserName")
     public User finduserByUserName(@RequestParam("username") String username){
-        User list=loginService.finduserByUserName(username);
-        return list;
+
+        User user=loginService.finduserByUserName(username);
+        String userjs = JSON.toJSONString(user);
+        redisTemplate.opsForValue().set("userjs",userjs);
+        redisTemplate.expire("userjs",600000, TimeUnit.MILLISECONDS);
+
+        return user;
     }
 
     //设置作者

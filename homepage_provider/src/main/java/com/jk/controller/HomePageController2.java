@@ -21,19 +21,10 @@ public class HomePageController2 implements HomePageServiceApi {
     @Autowired
     private TreeMapper treeMapper;
 
-    @Autowired
-    private InfotypeMapper infotypeMapper;
-
     @RequestMapping("queryImg")
     public List<Img> queryImg() {
         List<Img> gg = imgMapper.queryImg();
         return gg;
-    }
-    @Override
-    @RequestMapping("/queryZiXun")
-    public List<Infotype> queryZiXun() {
-        System.out.println(999);
-        return infotypeMapper.queryZiXun();
     }
 
 
