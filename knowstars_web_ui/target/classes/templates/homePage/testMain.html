@@ -1015,10 +1015,14 @@
         })
     }
     function zixun(){
+
+
         $.ajax({
             type:"post",
             url:"http://localhost:8085/queryZiXun",
             success:function(msg){
+
+
                 th=document.getElementById("zixun");
                 //写到了这一行
                 for(var i=0;i<msg.length;i+=2) {

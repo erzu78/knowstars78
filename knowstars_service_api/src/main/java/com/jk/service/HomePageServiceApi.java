@@ -1,6 +1,7 @@
 package com.jk.service;
 
 import com.jk.pojo.Img;
+import com.jk.pojo.Infotype;
 import com.jk.pojo.MenuTree;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,4 +12,6 @@ public interface HomePageServiceApi {
      public   List<Img> queryImg();
     @RequestMapping("/queryTree")
     public List<MenuTree> queryTree();
+    @RequestMapping("/queryZiXun")
+    public List<Infotype> queryZiXun();
 }

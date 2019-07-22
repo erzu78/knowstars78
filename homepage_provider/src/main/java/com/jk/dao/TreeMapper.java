@@ -19,4 +19,6 @@ public interface TreeMapper {
     int updateByPrimaryKey(Tree record);
 
     List<MenuTree> queryTree();
+
+
 }
