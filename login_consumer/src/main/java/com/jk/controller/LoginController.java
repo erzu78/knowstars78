@@ -72,7 +72,7 @@ public class LoginController {
     public String loginstaff(Staff loginstaff){
         Staff staffModel=loginService.loginstaff(loginstaff);
         if(staffModel!=null){
-            if(staffModel.getStaffstatus()!=0){
+            if(staffModel.getStaffstatus()!=1){
                 //将对象或者集合转换成json字符串
                 String staffjs = JSON.toJSONString(staffModel);
                 System.out.println("loginstaff = [" + staffjs + "]");
