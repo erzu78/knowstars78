@@ -937,6 +937,20 @@
 
 
 <script type="text/javascript">
+
+    exitUserLogin = function(){
+        $.ajax({
+            url:"http://192.168.1.118:8000/exitUserLogin",
+            type:'post',
+            success:function(){
+                findLoginStatus();
+            },
+            error:function(){
+                bootbox.alert("退出登录失败");
+            }
+        });
+    }
+
     $(function(){
         $.ajax({
             type:"post",
@@ -960,7 +974,6 @@
         tabs();
         zixun();
         findLoginStatus = function(){
-
             $.ajax({
                 url:"http://192.168.1.118:8000/findLoginStatus",
                 type:'post',
@@ -996,7 +1009,6 @@
                             "             </a>\n" +
                             "           </div>\n" +
                             "         </li>"
-
                     }
                 }
             }
