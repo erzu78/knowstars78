@@ -274,6 +274,13 @@ public class LikeController {
 
     }
 
+    @RequestMapping("exitUserLogin")
+    public void exitUserLogin(){
+
+        redisTemplate.delete("userjs");
+
+    }
+
 
 
 
