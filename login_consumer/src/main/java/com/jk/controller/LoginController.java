@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 public class LoginController {
@@ -36,6 +37,7 @@ public class LoginController {
             String userjs = JSON.toJSONString(userModel);
             System.out.println("loginuser = [" + userjs + "]");
             redisTemplate.opsForValue().set("userjs",userjs);
+            redisTemplate.expire("userjs",600000, TimeUnit.MILLISECONDS);			//设置一个key 过期时间是10s
             return "1";
         }else{
             return "2";

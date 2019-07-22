@@ -86,8 +86,8 @@
                     field: 'crud', title: '修改', width: 100,
                     formatter: function (value, row, index) {
 
-                        var content = "<a href='javascript:del(&quot;" + row.videoId + "&quot;)' class='easyui-linkbutton' iconCls:'icon-cancel'>删除</a>";
-                        /*content += "  |   <a href='javascript:update(&quot;" + row.videoId + "&quot;)'>修改</a>";*/
+                        var content = "<button type='button' class='btn btn-danger' onclick='del("+row.videoId+")'>删除</button>";
+                       /* content += "  |   <a href='javascript:update(&quot;" + row.videoId + "&quot;)'>修改</a>";*/
                         return content;
 
                     }

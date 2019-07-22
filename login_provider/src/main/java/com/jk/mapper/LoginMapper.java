@@ -15,7 +15,7 @@ public interface LoginMapper {
 
 
 
-    @Select("select * from t_user where username=#{username} and password=#{password}")
+    @Select("SELECT * FROM  t_user tu  WHERE tu.username = #{username} AND tu.password = #{password} ")
     User findUserByNamePWD(User loginuser);
 
     @Select("select count(*) from t_user where username=#{username}")
