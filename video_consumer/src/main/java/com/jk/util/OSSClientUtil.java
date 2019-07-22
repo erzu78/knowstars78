@@ -19,7 +19,6 @@ public class OSSClientUtil implements Serializable {
 
 
     private String endpoint = "oss-cn-beijing.aliyuncs.com";
-    // accessKey
     private String accessKeyId = "LTAIVgOSeiYLY2E5";
     private String accessKeySecret = "Nu8oj1b40KwDyG8xncKmsJzJAKMXSq";
     // 空间
