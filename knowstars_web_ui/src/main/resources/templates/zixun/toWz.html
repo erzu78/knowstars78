@@ -759,7 +759,7 @@
                 queryComment();
             },
             error:function(){
-                bootbox.alert("评论操作失败");
+                location.href="toUserLogin";
             }
         });
 
@@ -780,7 +780,7 @@
                 queryZhan();
             },
             error:function(){
-                bootbox.alert("操作点赞失败");
+                location.href="toUserLogin";
             }
         });
 
@@ -799,7 +799,7 @@
                 queryComment();
             },
             error:function(){
-                bootbox.alert("操作评论的点赞失败");
+                location.href="toUserLogin";
             }
         });
 
@@ -841,7 +841,7 @@
                 queryShou();
             },
             error:function(){
-                bootbox.alert("收藏操作失败");
+                location.href="toUserLogin";
             }
         });
 
