@@ -2,6 +2,7 @@ package com.jk.controller;
 
 import com.jk.pojo.Img;
 import com.jk.pojo.Infotype;
+import com.jk.pojo.Infotype;
 import com.jk.pojo.MenuTree;
 import com.jk.service.HomePageService;
 import com.jk.util.TreeNoteUtil;
@@ -20,10 +21,10 @@ public class HomePageControllerCon {
     @ResponseBody
     public List<Img>  queryImg(){
         List<Img> ilist= homePageService.queryImg();
-        System.out.println(ilist);
+       /* System.out.println(ilist);*/
         return ilist;
     }
-    @RequestMapping("queryTabs")
+   @RequestMapping("/queryTabs")
     @ResponseBody
     public List<Img> queryTabs(){
         List<Img> ilist= homePageService.queryImg();
@@ -34,6 +35,7 @@ public class HomePageControllerCon {
     public String  queryImg1(){
         return "homePage/testMain";
     }
+
     @RequestMapping("queryImg2")
     public String  queryImg2(){
         return "homePage/pagelov3";
@@ -49,11 +51,10 @@ public class HomePageControllerCon {
     @RequestMapping("queryTree")
     @ResponseBody
     public List<MenuTree> getTreeAll(){
-
         List<MenuTree> list = homePageService.queryTree();
         list =  TreeNoteUtil.getFatherNode(list);
-
         return list;
+
     }
 
 

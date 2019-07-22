@@ -87,7 +87,7 @@
                     formatter: function (value, row, index) {
 
                         var content = "<a href='javascript:del(&quot;" + row.videoId + "&quot;)' class='easyui-linkbutton' iconCls:'icon-cancel'>删除</a>";
-                        content += "  |   <a href='javascript:update(&quot;" + row.videoId + "&quot;)'>修改</a>";
+                        /*content += "  |   <a href='javascript:update(&quot;" + row.videoId + "&quot;)'>修改</a>";*/
                         return content;
 
                     }
@@ -208,6 +208,7 @@
                             data:$("#updateVideoForm").serialize(),
                             success:function(data){
                                 bootbox.alert("保存成功");
+
                                 $("#bootTab").bootstrapTable('refresh');
                             },
                             error:function(){
