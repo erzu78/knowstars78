@@ -6,9 +6,9 @@ spring:
   application:
     name: zy-consumer
   redis:
-    host: localhost
+    host: 192.168.1.106
     port: 6379
-    #password:
+    password: 123456
 
 eureka:
   client:

@@ -46,7 +46,7 @@
 </body>
 <script type="text/javascript">
 
-    var ip="http://192.168.1.120";
+    var ip="http://192.168.1.121";
 
     $(function () {
         $("#bootTab").bootstrapTable({
@@ -75,9 +75,13 @@
                     }
                 },
                 {field: 'headline', title: '大标题', width: 100},      //  列    field   代表是 后台  传过来的值
-                {field: 'issuer', title: '发布人', width: 100},
+                {field: 'staffname', title: '发布人', width: 100},
                 {field: 'introduction', title: '介绍', width: 100},
                 {field: 'issueTime', title: '发布时间', width: 100, sortable: true},
+                {field: 'videoImg', title: '视频封面', width: 30,
+                    formatter: function (value, row, index) {
+                        return "<img src='"+row.videoImg+"' width='100px' height='80px'>"
+                    }},
                 {
                     field: 'crud', title: '修改', width: 100,
                     formatter: function (value, row, index) {

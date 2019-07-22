@@ -51,11 +51,11 @@
     var ip="http://192.168.1.142";
 
     $(function(){
-        findStaff();
+        findStaff2();
     })
-    function findStaff(){
+    function findStaff2(){
         $("#bootTab").bootstrapTable({
-            url:ip+":8088/findStaff",
+            url:ip+":8088/findStaff2",
             method:"post",
             striped: false,  	// 斑马线效果     默认false
             //只允许选中一行
@@ -75,23 +75,10 @@
             columns:[
                 {field: 'sid', title: "id", width: 5},      //  列    field   代表是 后台  传过来的值
                 {field:'staffname',title:'名称',width:60},      //  列    field   代表是 后台  传过来的值
-                {field:'role',title:'角色',width:70,
-                    formatter:function(value,row,index){
-                        if(value==0){
-                            return "";
-                        }if(value==1){
-                            return "作者";
-                        }if(value==2){
-                            return "管理员";
-                        }
-                }
-                },      //  列    field   代表是 后台  传过来的值
-                 {field:'crud',title:'操作',width:100,
-                     formatter:function (value,row,index){
-                     if(row.role==0){
-                         return "<a href='javascript:updaterole(&quot;"+row.sid+"&quot;)'>设置作者</a>  ";
-                     }
-                     }
+                {field:'crud',title:'操作',width:100,
+                    formatter:function (value,row,index){
+                            return "<a href='javascript:yeshenhe(&quot;"+row.sid+"&quot;)'>审核通过</a>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<a href='javascript:deleteStaffOne(&quot;"+row.sid+"&quot;)'>驳回审核</a>";
+                    }
                 },
             ],
             //传递参数（*）
@@ -123,11 +110,25 @@
         });
     }
 
+function yeshenhe(sid){
+    $.ajax({
+        url:ip+":8088/yeshenhe",
+        type:'post',
+        data:{sid:sid},
+        success:function(data){
+            bootbox.alert("成功");
+            $("#bootTab").bootstrapTable("refresh");
+        },
+        error:function(){
+            bootbox.alert("失败");
+        }
+    });
+}
 
 
-    function updaterole(sid){
+    function deleteStaffOne(sid){
         $.ajax({
-            url:ip+":8088/updaterole",
+            url:ip+":8088/deleteStaffOne",
             type:'post',
             data:{sid:sid},
             success:function(data){

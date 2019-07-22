@@ -20,8 +20,7 @@ import java.util.List;
 public class UserinfoServiceImpl implements UserinfoService{
 
     @Autowired
-    private UserinfoMapper userinfoMapper
-            ;
+    private UserinfoMapper userinfoMapper;
 
 
     @Override

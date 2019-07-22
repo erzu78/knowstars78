@@ -32,9 +32,24 @@ public interface LoginService  {
     @RequestMapping("findStaff")
     HashMap<String, Object> findStaff(@RequestParam("start") Integer start, @RequestParam("pageSize") Integer pageSize);
 
+    @RequestMapping("findStaff2")
+    HashMap<String, Object> findStaff2(@RequestParam("start") Integer start, @RequestParam("pageSize") Integer pageSize);
+
     @RequestMapping("finduserByUserName")
     User finduserByUserName(@RequestParam("username") String username);
 
     @RequestMapping("updaterole")
     void updaterole(@RequestParam("sid") String sid);
+
+    @RequestMapping("yeshenhe")
+    void yeshenhe(@RequestParam("sid") String sid);
+
+    @RequestMapping("deleteStaffOne")
+    void deleteStaffOne(@RequestParam("sid") String sid);
+
+    @RequestMapping("findStaffById")
+    Staff findStaffById(@RequestParam("staffname") String staffname);
+
+    @RequestMapping("updateStaff")
+    void updateStaff(@RequestBody Staff staff);
 }

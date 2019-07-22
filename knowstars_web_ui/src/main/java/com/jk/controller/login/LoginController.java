@@ -18,6 +18,12 @@ public class LoginController {
         return "login/StaffShow";
     }
 
+    //跳转员工查询页面
+    @RequestMapping("toStaffShow2")
+    public String toStaffShow2(){
+        return "login/StaffShow2";
+    }
+
     //跳转用户登录页面
     @RequestMapping("toUserLogin")
     public String toUserLogin(){
@@ -46,6 +52,12 @@ public class LoginController {
     @RequestMapping("touserinfo")
     public String touserinfo(){
         return "userinfo/userinfoShow";
+    }
+
+    //跳转新增管理人员页面
+    @RequestMapping("toaddStaffDialog")
+    public String toaddStaffDialog(){
+        return "login/addStaffDialog";
     }
 
 

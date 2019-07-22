@@ -75,6 +75,18 @@
             columns:[
                 {field: 'sid', title: "id", width: 5},      //  列    field   代表是 后台  传过来的值
                 {field:'staffname',title:'名称',width:60},      //  列    field   代表是 后台  传过来的值
+                {field:'staffimg',title:'头像',width:60,
+                    formatter:function(value,index,row){
+                        value=value?value:'';
+                        var length=value.length;
+                        if(length&&length>7){
+                            length=30;
+                        }
+                        return"<span title ='"+value+"'>"+value.substring(7,length)+"..."+"</span>"
+                    }
+                },      //  列    field   代表是 后台  传过来的值
+                {field:'staffinfo',title:'简介',width:60},      //  列    field   代表是 后台  传过来的值
+                {field:'stafftype',title:'作者等级',width:60},      //  列    field   代表是 后台  传过来的值
                 {field:'role',title:'角色',width:70,
                     formatter:function(value,row,index){
                         if(value==0){

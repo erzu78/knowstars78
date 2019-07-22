@@ -6,10 +6,13 @@ import com.jk.pojo.Staff;
 import com.jk.pojo.User;
 import com.jk.service.LoginService;
 import com.jk.util.HttpClient;
+import com.jk.util.OSSClientUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.*;
 
 @RestController
@@ -67,11 +70,15 @@ public class LoginController {
     public String loginstaff(Staff loginstaff){
         Staff staffModel=loginService.loginstaff(loginstaff);
         if(staffModel!=null){
-            //将对象或者集合转换成json字符串
-            String staffjs = JSON.toJSONString(staffModel);
-            System.out.println("loginstaff = [" + staffjs + "]");
-            redisTemplate.opsForValue().set("staffjs",staffjs);
-            return "1";
+            if(staffModel.getStaffstatus()!=0){
+                //将对象或者集合转换成json字符串
+                String staffjs = JSON.toJSONString(staffModel);
+                System.out.println("loginstaff = [" + staffjs + "]");
+                redisTemplate.opsForValue().set("staffjs",staffjs);
+                return "1";
+            }else{
+                return "3";
+            }
         }else{
             return "2";
         }
@@ -84,12 +91,20 @@ public class LoginController {
         return str;
     }
 
-    //员工查询页面
+    //员工查询审核
     @RequestMapping("findStaff")
     public HashMap<String,Object> findStaff(@RequestParam("start") Integer start, @RequestParam("pageSize") Integer pageSize){
         HashMap<String,Object> hashMap=loginService.findStaff(start,pageSize);
         return hashMap;
     }
+
+    //员工查询未审核
+    @RequestMapping("findStaff2")
+    public HashMap<String,Object> findStaff2(@RequestParam("start") Integer start, @RequestParam("pageSize") Integer pageSize){
+        HashMap<String,Object> hashMap=loginService.findStaff2(start,pageSize);
+        return hashMap;
+    }
+
 
     /**
      *手机验证码
@@ -132,6 +147,59 @@ public class LoginController {
         loginService.updaterole(sid);
 
     }
+
+
+    //审核通过
+    @RequestMapping("yeshenhe")
+    public void yeshenhe(@RequestParam("sid") String sid){
+        loginService.yeshenhe(sid);
+
+    }
+
+    //审核未通过||删除
+    @RequestMapping("deleteStaffOne")
+    public void deleteStaffOne(@RequestParam("sid") String sid){
+        loginService.deleteStaffOne(sid);
+
+    }
+
+    //回显注册信息
+    @RequestMapping("findStaffById")
+    public Staff findStaffById(@RequestParam("staffname") String staffname){
+        Staff staff=loginService.findStaffById(staffname);
+        return staff;
+    }
+
+    //修改管理人员
+    @RequestMapping("updateStaff")
+    public void updateStaff(Staff staff){
+        loginService.updateStaff(staff);
+    }
+
+
+    /**
+     * OSS阿里云上传图片
+     */
+    @RequestMapping("updaloadImg")
+    @ResponseBody
+    public HashMap<String, Object> uploadImg(MultipartFile imgg) throws IOException {
+        if (imgg == null || imgg.getSize() <= 0) {
+
+            throw new IOException("file不能为空");
+        }
+        OSSClientUtil ossClient = new OSSClientUtil();
+        String name = ossClient.uploadImg2Oss(imgg);
+        String imgUrl = ossClient.getImgUrl(name);
+        String[] split = imgUrl.split("\\?");
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("imngName", split[0]);
+
+        return (HashMap<String, Object>) map;
+    }
+
+
+
 
 
 
