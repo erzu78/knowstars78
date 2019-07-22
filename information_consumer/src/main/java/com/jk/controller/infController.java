@@ -26,17 +26,49 @@ public class infController {
     private RedisTemplate redisTemplate;
     @Autowired
     private InfServiceFeign infServiceFeign;
+
     @RequestMapping("/infoList")
     @ResponseBody
     //分页查询资讯列表
-    public Map<String,Object> userList(@RequestParam(value="start") Integer start, @RequestParam(value="rows")Integer rows ) {
-        List<Information> list= infServiceFeign.InfoList(start,rows);
+    public Map<String, Object> userList(@RequestParam(value = "start") Integer start, @RequestParam(value = "rows") Integer rows) {
+        List<Information> list = infServiceFeign.InfoList(start, rows);
         long count = infServiceFeign.queryCount();
         Map<String, Object> map = new HashMap<>();
         map.put("total", count);
-        map.put("rows",list);
+        map.put("rows", list);
         return map;
     }
+    //我的资讯
+    @RequestMapping("/MyInfoList")
+    @ResponseBody
+    //分页查询资讯列表
+    public Map<String, Object> MyInfoList(@RequestParam(value = "start") Integer start, @RequestParam(value = "rows") Integer rows) {
+        String staffString = (String) redisTemplate.opsForValue().get("staffjs");
+        Staff staff = JSONObject.parseObject(staffString, Staff.class);
+
+        List<Information> list = infServiceFeign.MyInfoList(start, rows,staff.getSid());
+        long count = infServiceFeign.queryCountt(staff.getSid());
+        Map<String, Object> map = new HashMap<>();
+        map.put("total", count);
+        map.put("rows", list);
+        return map;
+    }
+    @RequestMapping("toSaa")
+    public String toSa() {
+        String staffString = (String) redisTemplate.opsForValue().get("staffjs");
+    /*    Staff staff = JSONObject.parseObject(staffString, Staff.class);*/
+        return  staffString;
+    }
+
+
+
+
+
+
+
+
+
+
     @RequestMapping("/deleteInfo")
     @ResponseBody
     //删除方法
@@ -47,10 +79,10 @@ public class infController {
     @ResponseBody
     //新增方法
     public void add(Information information){
-   /*  String staffString = (String) redisTemplate.opsForValue().get("staffjs");
+   String staffString = (String) redisTemplate.opsForValue().get("staffjs");
         Staff staff =  JSONObject.parseObject(staffString, Staff.class);
-        System.out.println(staff.getSid());*/
-       information.setAuthorid(2);
+        System.out.println(staff.getSid());
+       information.setAuthorid(staff.getSid());
         information.setHot(1);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         information.setReleasetime(sdf.format(new Date()));

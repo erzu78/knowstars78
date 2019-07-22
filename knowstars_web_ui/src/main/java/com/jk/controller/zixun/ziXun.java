@@ -42,6 +42,7 @@ public class ziXun {
 
         return "zixun/toAddTy";
     }
+
     @RequestMapping("updDialogTy")
     public String updDialogTy(){
         return "zixun/toUpTy";
@@ -86,5 +87,9 @@ public class ziXun {
     public String updDialogTopic(){
          return "zixun/toUpTopic";
     }
-
+    //我的资讯
+    @RequestMapping("toMyInfo")
+    public String toMyInfo(){
+        return "zixun/toMyInfo";
+    }
 }
