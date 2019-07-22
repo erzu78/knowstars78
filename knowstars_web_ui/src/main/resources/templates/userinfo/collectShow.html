@@ -484,30 +484,6 @@
 
 $(function(){
     findLoginStatus();
-   /* var userId = 1;*/
-    /*$.ajax({
-        url:Myip+"/findCollect",
-        type:'post',
-        dataType:'json',
-        data:{userid:userId},
-        success:function(data){
-
-            for (var i=0;i< data.length;i++) {
-                /!*$("#imgId").attr("src",data[i].articleimg);
-                $("#titleId").html(data[i].inftitle);*!/
-var htmlDiv="<section class=\"news-item\"><div class=\"news-item-left news-item-inner-box\"><a class=\"pic\"  target=\"_blank\" rel=\"noopener noreferrer\"  href='javascript:toWz("+data[i].infId+")' ><img alt=\"\"  src=\""+data[i].articleimg+"\"></a></div><div class=\"news-item-right news-item-inner-box\"><div class=\"news-item-right-inner\"><div class=\"news-item-right-inner-section width-common\"><p class=\"item-title-box ellipsis-2\"><a class=\"title\" target=\"_blank\" rel=\"noopener noreferrer\"   href='javascript:toWz("+data[i].infId+")' >"+data[i].inftitle+"</a></p><p class=\"item-brief-box ellipsis-2\"><span class=\"brief\"></span></p></div><div class=\"news-item-right-inner-bottom width-common\"><span class=\"news-item-enty-type\">文章</span><div class=\"del float-right\"><a href='javascript:cancelColl("+data[i].infuserId+"),reload1()'>取消收藏</a></div><span class=\"time float-right\"></span></div></div></div></section>"
-                $("#divCollId").append(htmlDiv);
-            }
-
-
-
-        },
-        error:function(){
-
-
-        }
-    })*/
-
 })
 
     findLoginStatus = function(){
@@ -523,19 +499,44 @@ var htmlDiv="<section class=\"news-item\"><div class=\"news-item-left news-item-
                 }else{
                     $("#wDeng").attr("style","display:kinline-bloc");
                     $("#yDeng").attr("style","display:none");
-                    for (var i=0;i< data.length;i++) {
-                        /*$("#imgId").attr("src",data[i].articleimg);
-                        $("#titleId").html(data[i].inftitle);*/
-               var htmlDiv="<section class=\"news-item\"><div class=\"news-item-left news-item-inner-box\"><a class=\"pic\"  target=\"_blank\" rel=\"noopener noreferrer\"  href='javascript:toWz("+data[i].infId+")' ><img alt=\"\"  src=\""+data[i].articleimg+"\"></a></div><div class=\"news-item-right news-item-inner-box\"><div class=\"news-item-right-inner\"><div class=\"news-item-right-inner-section width-common\"><p class=\"item-title-box ellipsis-2\"><a class=\"title\" target=\"_blank\" rel=\"noopener noreferrer\"   href='javascript:toWz("+data[i].infId+")' >"+data[i].inftitle+"</a></p><p class=\"item-brief-box ellipsis-2\"><span class=\"brief\"></span></p></div><div class=\"news-item-right-inner-bottom width-common\"><span class=\"news-item-enty-type\">文章</span><div class=\"del float-right\"><a href='javascript:cancelColl("+data[i].infuserId+"),reload1()'>取消收藏</a></div><span class=\"time float-right\"></span></div></div></div></section>";
-                        $("#divCollId").append(htmlDiv);
-                    }
                 }
+
+                    collect(data.uid);
+
+
             },
             error:function(){
                 bootbox.alert("查询用户登录状态失败");
             }
         });
 
+    }
+
+    //收藏
+    function collect(userId){
+        $.ajax({
+            url:Myip+"/findCollect",
+            type:'post',
+            dataType:'json',
+            data:{userid:userId},
+            success:function(data){
+
+                for (var i=0;i< data.length;i++) {
+
+
+    var htmlDiv="<section class=\"news-item\"><div class=\"news-item-left news-item-inner-box\"><a class=\"pic\"  target=\"_blank\" rel=\"noopener noreferrer\"  href='javascript:toWz("+data[i].infId+")' ><img alt=\"\"  src=\""+data[i].articleimg+"\"></a></div><div class=\"news-item-right news-item-inner-box\"><div class=\"news-item-right-inner\"><div class=\"news-item-right-inner-section width-common\"><p class=\"item-title-box ellipsis-2\"><a class=\"title\" target=\"_blank\" rel=\"noopener noreferrer\"   href='javascript:toWz("+data[i].infId+")' >"+data[i].inftitle+"</a></p><p class=\"item-brief-box ellipsis-2\"><span class=\"brief\"></span></p></div><div class=\"news-item-right-inner-bottom width-common\"><span class=\"news-item-enty-type\">文章</span><div class=\"del float-right\"><a href='javascript:cancelColl("+data[i].infuserId+"),reload1()'>取消收藏</a></div><span class=\"time float-right\"></span></div></div></div></section>"
+                    $("#divCollId").append(htmlDiv);
+
+                }
+
+
+
+            },
+            error:function(){
+
+
+            }
+        })
     }
 
     exitUserLogin = function(){

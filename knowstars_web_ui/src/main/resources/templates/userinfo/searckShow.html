@@ -499,29 +499,33 @@
 
     function searchOnc(){
 
-        var  inftitle = $("#inftitleId").val();
-
-        $.ajax({
-            url:Myip+"/queryInf",
-            type:'get',
-            dataType:'json',
-            data:{inftitle:inftitle},
-            success:function(data){
-                var searchDiv="";
-                for (var i=0;i< data.length;i++) {
-
-
-
-                    searchDiv+="<div class=\"anchor-59244\"></div><div class=\"kr-flow-article-item\"><div class=\"kr-shadow-wrapper\"><div class=\"kr-shadow-wrapper-card\" style=\"width:720px;height:173px;top:-15px;left:-10px\"></div><div class=\"kr-shadow-content\"><div class=\"article-item-pic-wrapper\"><a href=\"/information/other\" class=\"article-item-channel\">"+data[i].tname+"</a><a class=\"article-item-pic\" onclick=\"toWz("+data[i].id+")\" target=\"_blank\" rel=\"noopener noreferrer\"><div class=\"kr-default-img-no-logo scaleBig\"><img src="+data[i].articleimg+" width=\"216\" height=\"143\"></div></a></div><div class=\"article-item-info clearfloat\"><p class=\"title-wrapper ellipsis-2\"><a class=\"article-item-title weight-bold\" onclick=\"toWz("+data[i].id+")\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].inftitle+"</a></p><a class=\"article-item-description ellipsis-2\" onclick=\"toWz("+data[i].id+")\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].subtitle+"</a><div class=\"kr-flow-bar\"><span class=\"kr-flow-bar-motif\">来自主题：<a href=\"/motif/413\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].topicname+"</a>|</span><a class=\"kr-flow-bar-author\" href=\"/user/93842\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].staffname+"</a><span class=\"kr-flow-bar-time\" style=\"float:right\"><i class=\"kr-flow-bar-time-icon\"></i>"+data[i].releasetime+"</span></div></div></div></div></div><br>";
-                    $("#searchdivId").html(searchDiv);
-                }
-
-            },
-            error:function(){
+        var   inftitle= $("#inftitleId").val();
+if(inftitle==""){
+    alert("请输入查询条件");
+}else{
+    $.ajax({
+        url:Myip+"/queryInf",
+        type:'get',
+        dataType:'json',
+        data:{inftitle:inftitle},
+        success:function(data){
+            var searchDiv="";
+            for (var i=0;i< data.length;i++) {
 
 
+
+                searchDiv+="<div class=\"anchor-59244\"></div><div class=\"kr-flow-article-item\"><div class=\"kr-shadow-wrapper\"><div class=\"kr-shadow-wrapper-card\" style=\"width:720px;height:173px;top:-15px;left:-10px\"></div><div class=\"kr-shadow-content\"><div class=\"article-item-pic-wrapper\"><a href=\"/information/other\" class=\"article-item-channel\">"+data[i].tname+"</a><a class=\"article-item-pic\" onclick=\"toWz("+data[i].id+")\" target=\"_blank\" rel=\"noopener noreferrer\"><div class=\"kr-default-img-no-logo scaleBig\"><img src="+data[i].articleimg+" width=\"216\" height=\"143\"></div></a></div><div class=\"article-item-info clearfloat\"><p class=\"title-wrapper ellipsis-2\"><a class=\"article-item-title weight-bold\" onclick=\"toWz("+data[i].id+")\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].inftitle+"</a></p><a class=\"article-item-description ellipsis-2\" onclick=\"toWz("+data[i].id+")\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].subtitle+"</a><div class=\"kr-flow-bar\"><span class=\"kr-flow-bar-motif\">来自主题：<a href=\"/motif/413\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].topicname+"</a>|</span><a class=\"kr-flow-bar-author\" href=\"/user/93842\" target=\"_blank\" rel=\"noopener noreferrer\">"+data[i].staffname+"</a><span class=\"kr-flow-bar-time\" style=\"float:right\"><i class=\"kr-flow-bar-time-icon\"></i>"+data[i].releasetime+"</span></div></div></div></div></div><br>";
+                $("#searchdivId").html(searchDiv);
             }
-        })
+
+        },
+        error:function(){
+
+
+        }
+    })
+}
+
     }
     function toWz(infid){
         location.href="toWz?infid="+infid;
