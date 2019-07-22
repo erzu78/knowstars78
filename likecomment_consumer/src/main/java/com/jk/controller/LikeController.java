@@ -32,7 +32,7 @@ public class LikeController {
 
         String userString = (String) redisTemplate.opsForValue().get("userjs");
         User user =  JSONObject.parseObject(userString, User.class);
-        Integer userId = user.getUserId();
+        Integer userId = user.getUid();
 
         String inId = (String) redisTemplate.opsForValue().get("userZhan"+userId+infId);
 
@@ -59,7 +59,7 @@ public class LikeController {
 
         String userString = (String) redisTemplate.opsForValue().get("userjs");
         User user =  JSONObject.parseObject(userString, User.class);
-        Integer userId = user.getUserId();
+        Integer userId = user.getUid();
 
         String piId = (String) redisTemplate.opsForValue().get("userpZhan"+userId+pingId);
 
@@ -86,7 +86,10 @@ public class LikeController {
 
         String userString = (String) redisTemplate.opsForValue().get("userjs");
         User user =  JSONObject.parseObject(userString, User.class);
-        Integer userId = user.getUserId();
+        Integer userId = null;
+        if(user!=null){
+            userId=user.getUid();
+        }
 
         String zhanCount = (String) redisTemplate.opsForValue().get("infzhan"+infId);
         String inId = (String) redisTemplate.opsForValue().get("userZhan"+userId+infId);
@@ -108,7 +111,7 @@ public class LikeController {
 
         String userString = (String) redisTemplate.opsForValue().get("userjs");
         User user =  JSONObject.parseObject(userString, User.class);
-        Integer userId = user.getUserId();
+        Integer userId = user.getUid();
 
         String inId = (String) redisTemplate.opsForValue().get("userShou"+userId+infId);
 
@@ -146,7 +149,10 @@ public class LikeController {
 
         String userString = (String) redisTemplate.opsForValue().get("userjs");
         User user =  JSONObject.parseObject(userString, User.class);
-        Integer userId = user.getUserId();
+        Integer userId = null;
+        if(user!=null){
+            userId=user.getUid();
+        }
 
         String shouCount = (String) redisTemplate.opsForValue().get("infshou"+infId);
         String inId = (String) redisTemplate.opsForValue().get("userShou"+userId+infId);
@@ -207,7 +213,10 @@ public class LikeController {
 
         String userString = (String) redisTemplate.opsForValue().get("userjs");
         User user =  JSONObject.parseObject(userString, User.class);
-        Integer userId = user.getUserId();
+        Integer userId = null;
+        if(user!=null){
+            userId=user.getUid();
+        }
 
         List<Object> commentIds = redisTemplate.opsForList().range("ids"+infId,0,999999999);
 
@@ -229,7 +238,7 @@ public class LikeController {
         String userString = (String) redisTemplate.opsForValue().get("userjs");
         User user =  JSONObject.parseObject(userString, User.class);
 
-        Integer userId = user.getUserId();
+        Integer userId = user.getUid();
         String userName = user.getUsername();
         String userImg = user.getUserhead();
 
@@ -257,7 +266,19 @@ public class LikeController {
         String userString = (String) redisTemplate.opsForValue().get("userjs");
         User user =  JSONObject.parseObject(userString, User.class);
 
-        return user;
+        if(user!=null){
+            return user;
+        }else{
+            return null;
+        }
+
+    }
+
+    @RequestMapping("exitUserLogin")
+    public void exitUserLogin(){
+
+        redisTemplate.delete("userjs");
+
     }
 
 
