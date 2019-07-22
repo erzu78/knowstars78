@@ -511,21 +511,22 @@
                 <div class="kr-header ">
                     <div class="kr-header-main">
                         <div class="kr-header-content">
-                            <div class="user-login" style="display:none">
-                                <img src="https://static.36krcnd.com/v1/20181105/YfPuR3I-qGKsl3V5g1nfMA906f68a624074dbe88c3b3b768a3ff22" alt="" class="user-pic"/>
+
+
+                            <div id="yDeng" class="user-login" style="display:none">
+                                <a href="toUserinfo"><img  id="userImg" src="https://static.36krcnd.com/v1/20181105/YfPuR3I-qGKsl3V5g1nfMA906f68a624074dbe88c3b3b768a3ff22" alt="" class="user-pic"/></a>
                                 <div class="pull-down">
-                                    <a class="ellipsis-1 user-name" title="" href="/usercenter/basicinfo" target="_blank" rel="noopener noreferrer"></a>
-                                    <a class="ellipsis-1 " title="账号设置" href="/usercenter/account-password" target="_blank" rel="noopener noreferrer">账号设置</a>
-                                    <a class="ellipsis-1 " title="我的收藏" href="/usercenter/favorite" target="_blank" rel="noopener noreferrer">我的收藏</a>
-                                    <a class="ellipsis-1 " title="退出登录" target="_blank" rel="noopener noreferrer">退出登录</a>
+                                    <a class="ellipsis-1" href="javaScript:exitUserLogin()" title="退出登录" target="_blank" rel="noopener noreferrer">退出登录</a>
                                 </div>
                             </div>
-                            <div class="kr-header-passport" style="display:inline-block">
-                                <a class="login">
-                                    <span>登录</span></a>
-                                <a class="line">|</a>
-                                <a class="resgister"><span>注册</span></a>
+
+                            <div id="wDeng" class="kr-header-passport" style="display:inline-block">
+                                <a class="login" href="toUserLogin"><span>登录</span></a><a class="line">|</a><a class="resgister" href="toUserLogin"><span>注册</span></a>
                             </div>
+
+
+
+
                             <ul class="business-line">
                                 <li>
                                     <a href="https://auto-time.36kr.com" target="_blank" rel="noopener noreferrer">未来汽车日报</a>
@@ -958,6 +959,27 @@
         })
         tabs();
         zixun();
+        findLoginStatus = function(){
+
+            $.ajax({
+                url:"http://192.168.1.118:8000/findLoginStatus",
+                type:'post',
+                success:function(data){
+                    if(data.uid!=null&&data.uid!=""){
+                        $("#wDeng").attr("style","display:none");
+                        $("#yDeng").attr("style","display:inline-block");
+                        $("#userImg").attr("src",data.userhead);
+                    }else{
+                        $("#wDeng").attr("style","display:kinline-bloc");
+                        $("#yDeng").attr("style","display:none");
+                    }
+                },
+                error:function(){
+                    bootbox.alert("查询用户登录状态失败");
+                }
+            });
+
+        }
     })
 
     function tabs(){
