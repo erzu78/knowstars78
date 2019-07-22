@@ -52,7 +52,7 @@
         <option value="3">其他</option>
     </select>-->
 
-    <button type="button" class="btn btn-warning" onclick="dialogInfo('addDialogInfo','http://192.168.1.128:8013/addInfo','添加资讯')">添加资讯</button>
+    <button type="button" class="btn btn-warning" onclick="dialogInfo('addDialogInfo','http://192.168.1.137:8013/addInfo','添加资讯')">添加资讯</button>
     <button type="button" class="btn btn-primary" onclick="delAll()">批量删除</button>
 </div>
 
@@ -73,7 +73,7 @@
 
     queryInf = function () {
         $("#infData").bootstrapTable({
-            url: "http://192.168.1.128:8013/infoList",
+            url: "http://192.168.1.137:8013/infoList",
             method: "post",
             striped: true,  // 斑马线效果     默认false
             //只允许选中一行
@@ -101,7 +101,20 @@
                 {field: 'inftitle', title: '大标题', width: 30},
                 {field: 'staffname', title: '作者名称', width: 30},
                 {field: 'releasetime', title: '发布时间', width: 30},
-                {field: 'articleinformation', title: '文章内容', width: 30},
+                {
+                    field: 'articleinformation', title: '文章内容', width: 30,
+                       formatter:function(value, row, index){
+                           var str=row.articleinformation;
+                           str = str.replace(/</g,'&lt;');
+                           str = str.replace(/>/g,'&gt;');
+                           if(str.length>10){
+                               str=str.substring(0,10)+".........."
+                           }
+
+                          return str;
+                       }
+                },
+
                 {field: 'articleimg', title: '文章封面', width: 30,
                     formatter: function (value, row, index) {
                         return "<img src='"+row.articleimg+"' width='100px' height='80px'>"
@@ -163,7 +176,7 @@
         var ids = temp.substr(1);
         if(confirm("您确定删除这"+count+"信息吗?")){
             $.ajax({
-                url:"http://192.168.1.128:8013/deleteAllInfo",
+                url:"http://192.168.1.137:8013/deleteAllInfo",
                 type:'post',
                 data:{ids:ids},
                 success:function(){
@@ -213,6 +226,32 @@
                         // return false;  //dialog不关闭
                     }
                 }
+            }
+        });
+        $.ajax({
+            url:"http://192.168.1.137:8013/queryTy",
+            type:'post',
+            success:function(data){
+               for(var i=0;i<data.length;i++){
+                   var html="<option value='"+data[i].tid+"'>"+data[i].tname+"</option>";
+                  $("#tyid").append(html);
+               }
+            },
+            error:function(){
+                bootbox.alert("失败");
+            }
+        });
+        $.ajax({
+            url:"http://192.168.1.137:8013/queryTopicc",
+            type:'post',
+            success:function(data){
+                for(var i=0;i<data.length;i++){
+                    var html="<option value='"+data[i].topicid+"'>"+data[i].topicname+"</option>";
+                    $("#topicid").append(html);
+                }
+            },
+            error:function(){
+                bootbox.alert("失败");
             }
         });
     }
@@ -274,7 +313,7 @@
         });
 
         $.ajax({
-            url:"http://192.168.1.128:8013/queryInfoById",
+            url:"http://192.168.1.137:8013/queryInfoById",
             type:'post',
             data:{infid:infid},
             success:function(data){
@@ -306,14 +345,14 @@
 
     upInfo = function(infid){
 
-        dialogCurr('updDialogInfo','http://192.168.1.128:8013/upInfo',"修改",infid);
+        dialogCurr('updDialogInfo','http://192.168.1.137:8013/upInfo',"修改",infid);
 
     }
 
     deleteInfo = function (infid) {
 
             $.ajax({
-                url:"http://192.168.1.128:8013/deleteInfo",
+                url:"http://192.168.1.137:8013/deleteInfo",
                 type:'post',
                 data:{infid:infid},
                 success:function(){

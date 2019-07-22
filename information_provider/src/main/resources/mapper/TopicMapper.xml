@@ -20,6 +20,9 @@
    select p.*,i.inftitle inftitle ,i.infid ,i.releasetime from t_topic p,t_information i where i.topicid=p.topicid and i.tyid=12 group by p.topicname
     ORDER BY releasetime  desc
   </select>
+  <select id="queryTopicc" resultMap="BaseResultMap">
+    select * from t_topic
+  </select>
   <select id="queryTopicByTid" resultMap="BaseResultMap">
     select * from t_topic where topicid in (select i.topicid from t_information i,info_type t where i.tyid=t.tid and tid=#{tid})
   </select>
@@ -93,10 +96,6 @@
     delete from t_topic
     where topicid in (${ids})
   </delete>
-
-
-
-
   <update id="updateByPrimaryKey" parameterType="com.jk.pojo.Topic" >
     update t_topic
     set topicname = #{topicname,jdbcType=VARCHAR},

@@ -17,7 +17,7 @@ import java.util.Map;
  * @title: UserinfoController
  * @projectName knowstars78
  * @description: TODO
- * @date 2019/7/9 000917:57
+ * @date 2019/7/9 000917:57user
  */
 @RestController
 public class UserinfoController {
@@ -46,7 +46,9 @@ public class UserinfoController {
     //个人信息修改
     @PostMapping("saveUser")
     public void saveUser(User user){
-        userinfoServiceFeign.saveUser(user);
+
+     userinfoServiceFeign.saveUser(user);
+
     }
 
     /**

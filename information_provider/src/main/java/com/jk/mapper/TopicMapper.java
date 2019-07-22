@@ -28,4 +28,5 @@ public interface TopicMapper {
     long queryTopicCount();
 
     void deleteAllTopic(@Param("ids")String ids);
+    List<Topic> queryTopicc();
 }

@@ -83,8 +83,20 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public HashMap<String, Object> findStaff(Integer start, Integer pageSize) {
         HashMap<String,Object> hashMap=new HashMap<>();
-        List<User> list=loginMapper.findStaff(start,pageSize);
+        List<Staff> list=loginMapper.findStaff(start,pageSize);
         Long UserSum=loginMapper.StaffSum();
+        hashMap.put("rows",list);
+        hashMap.put("total",UserSum);
+        return hashMap;
+    }
+
+
+    @RequestMapping("findStaff2")
+    @Override
+    public HashMap<String, Object> findStaff2(Integer start, Integer pageSize) {
+        HashMap<String,Object> hashMap=new HashMap<>();
+        List<Staff> list=loginMapper.findStaff2(start,pageSize);
+        Long UserSum=loginMapper.StaffSum2();
         hashMap.put("rows",list);
         hashMap.put("total",UserSum);
         return hashMap;
@@ -103,5 +115,30 @@ public class LoginServiceImpl implements LoginService {
     public void updaterole(String sid) {
        loginMapper.updaterole(sid);
 
+    }
+
+    @RequestMapping("yeshenhe")
+    @Override
+    public void yeshenhe(String sid) {
+        loginMapper.yeshenhe(sid);
+    }
+
+    @RequestMapping("deleteStaffOne")
+    @Override
+    public void deleteStaffOne(String sid) {
+        loginMapper.deleteStaffOne(sid);
+    }
+
+    @RequestMapping("findStaffById")
+    @Override
+    public Staff findStaffById(String staffname) {
+        Staff staff=loginMapper.findStaffById(staffname);
+        return staff;
+    }
+
+    @RequestMapping("updateStaff")
+    @Override
+    public void updateStaff(@RequestBody Staff staff) {
+        loginMapper.updateStaff(staff);
     }
 }
