@@ -47,10 +47,11 @@ public class infController {
     @ResponseBody
     //新增方法
     public void add(Information information){
-       /* String userString = (String) redisTemplate.opsForValue().get("userjs");
-        User user =  JSONObject.parseObject(userString, User.class);*/
+   /*  String staffString = (String) redisTemplate.opsForValue().get("staffjs");
+        Staff staff =  JSONObject.parseObject(staffString, Staff.class);
+        System.out.println(staff.getSid());*/
        information.setAuthorid(2);
-       information.setHot(1);
+        information.setHot(1);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         information.setReleasetime(sdf.format(new Date()));
         infServiceFeign.add(information);
