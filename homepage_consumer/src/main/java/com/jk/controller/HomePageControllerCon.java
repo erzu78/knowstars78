@@ -1,12 +1,12 @@
 package com.jk.controller;
 
-import com.jk.pojo.Img;
+import com.alibaba.fastjson.JSONObject;
+import com.jk.pojo.*;
 import com.jk.pojo.Infotype;
-import com.jk.pojo.Infotype;
-import com.jk.pojo.MenuTree;
 import com.jk.service.HomePageService;
 import com.jk.util.TreeNoteUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,6 +15,10 @@ import java.util.List;
 
 @Controller
 public class HomePageControllerCon {
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
     @Autowired
     private HomePageService homePageService;
     @RequestMapping("queryImg")
@@ -54,6 +58,23 @@ public class HomePageControllerCon {
         List<MenuTree> list = homePageService.queryTree();
         list =  TreeNoteUtil.getFatherNode(list);
         return list;
+
+    }
+
+
+    @RequestMapping("queryLoginById")
+    @ResponseBody
+    public Staff queryLoginById(){
+
+        String staffString = (String) redisTemplate.opsForValue().get("staffjs");
+        Staff staff = JSONObject.parseObject(staffString, Staff.class);
+
+        if(staff!=null){
+            return staff;
+        }else{
+            return null;
+        }
+
 
     }
 
