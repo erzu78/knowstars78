@@ -137,13 +137,13 @@
             return ;
         }
         var adduser=$("#addFF").serialize();
+
         $.ajax({
             url:ip+":8088/addLoginUser",
             type:'post',
             data:adduser,
             success:function(data){
 
-                finduserByUserName(username2);
                 //alert(username2)
                 if(data==1){
                     bootbox.alert("" +
@@ -153,7 +153,7 @@
                 }else{
                     //alert(data)
                     bootbox.alert("注册成功");
-                    location.href="touserinfo";
+                    finduserByUserName(username2);
                 }
 
                 $("#bootTab").bootstrapTable('refresh');
@@ -188,13 +188,13 @@
 
 
              function  finduserByUserName(username2){
+
                      $.ajax({
                          url:ip+":8088/finduserByUserName",
                          type:'post',
                          data:{username:username2},
                          success:function(data){
-                             //alert(data.uid)
-                             //alert("成功");
+                             location.href="touserinfo";
                          },
                          error:function(){
                             alert("失败");

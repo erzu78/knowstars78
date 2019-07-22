@@ -483,32 +483,31 @@
     $(function(){
         queryNewsAll();
 
-
-        findLoginStatus = function(){
-
-            $.ajax({
-                url:"http://192.168.1.118:8000/findLoginStatus",
-                type:'post',
-                success:function(data){
-                    if(data.uid!=null&&data.uid!=""){
-                        $("#wDeng").attr("style","display:none");
-                        $("#yDeng").attr("style","display:inline-block");
-                        $("#userImg").attr("src",data.userhead);
-                    }else{
-                        $("#wDeng").attr("style","display:kinline-bloc");
-                        $("#yDeng").attr("style","display:none");
-                    }
-                },
-                error:function(){
-                    bootbox.alert("查询用户登录状态失败");
-                }
-            });
-
-        }
-
-
+        findLoginStatus();
 
     })
+
+    findLoginStatus = function(){
+
+        $.ajax({
+            url:"http://192.168.1.118:8000/findLoginStatus",
+            type:'post',
+            success:function(data){
+                if(data.uid!=null&&data.uid!=""){
+                    $("#wDeng").attr("style","display:none");
+                    $("#yDeng").attr("style","display:inline-block");
+                    $("#userImg").attr("src",data.userhead);
+                }else{
+                    $("#wDeng").attr("style","display:kinline-bloc");
+                    $("#yDeng").attr("style","display:none");
+                }
+            },
+            error:function(){
+                bootbox.alert("查询用户登录状态失败");
+            }
+        });
+
+    }
 
 
     function queryNewsAll(){

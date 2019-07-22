@@ -9,5 +9,5 @@ public class KnowstarsWebUiApplication {
     public static void main(String[] args) {
         SpringApplication.run(KnowstarsWebUiApplication.class, args);
     }
-
 }
+
