@@ -726,12 +726,12 @@ var Myip ="http://192.168.1.126:8087";
             data:$("#userFormId").serialize(),
             success:function(data){
 
-                bootbox.alert("保存成功");
+                alert("修改成功");
                 $("#userFormId").bootstrapTable('refresh');
 
             },
             error:function(){
-                bootbox.alert("ajax失败");
+                alert("修改失败");
             }
         });
     }
@@ -745,17 +745,24 @@ findLoginStatus = function(){
             if(data.uid!=null&&data.uid!=""){
                 $("#wDeng").attr("style","display:none");
                 $("#yDeng").attr("style","display:inline-block");
-                $("#userImg").attr("src",data.userhead);
+
             }else{
                 $("#wDeng").attr("style","display:kinline-bloc");
                 $("#yDeng").attr("style","display:none");
 
 
             }
+if(data.userhead!=""){
+    $("#userImg").attr("src",data.userhead);
+    $("#toux").attr("src",data.userhead);
+    $("#touxs").val(data.userhead);
+}else if(data.userhead==""){
+    $("#userImg").attr("src",data.userheads);
+                $("#toux").attr("src",data.userheads);
 
-            $("#toux").attr("src",data.userhead);
+                $("#touxs").val(data.userheads);
+            }
 
-            $("#touxs").val(data.userhead);
             $("#uidId").val(data.uid);
             $("#usernameId").val(data.username);
             $("#userintroId").val(data.userintro);
