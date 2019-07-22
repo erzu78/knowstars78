@@ -16,7 +16,8 @@ public class Video {
     /*Staff表中的字段*/
     private Integer sid;
     private String staffname;//登录名
-
+    private String staffimg;//员工头像
+    private String staffinfo;//员工格言
 
     public Integer getVideoId() {
         return videoId;
@@ -96,5 +97,21 @@ public class Video {
 
     public void setStaffId(Integer staffId) {
         this.staffId = staffId;
+    }
+
+    public String getStaffimg() {
+        return staffimg;
+    }
+
+    public void setStaffimg(String staffimg) {
+        this.staffimg = staffimg;
+    }
+
+    public String getStaffinfo() {
+        return staffinfo;
+    }
+
+    public void setStaffinfo(String staffinfo) {
+        this.staffinfo = staffinfo;
     }
 }

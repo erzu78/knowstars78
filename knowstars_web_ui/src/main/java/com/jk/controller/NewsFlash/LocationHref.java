@@ -39,7 +39,7 @@ public class LocationHref {
 
 
 
-//首页 快讯专栏  点击标题 跳转到对应的快讯内容
+//首页 快讯专栏  点击标题 跳转到对应的快讯内容（右下角）
     @RequestMapping("/toNewsFlashPage")
 
     public String toNewsFlashPage(Integer newsid, Model model){

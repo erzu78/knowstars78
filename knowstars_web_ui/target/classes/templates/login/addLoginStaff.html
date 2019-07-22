@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>管理人员注册</title>
     <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
     <meta name="author" content="Vincent Garreau" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" media="screen" href="../css/login.css">
+    <link rel="stylesheet" media="screen" href="../css/login2.css">
 
     <!-- 引入bootstrap的css -->
-    <link  href="../js/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="../js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- 引入bootstrap-treeview的css -->
-    <link  href="../js/treeview/bootstrap-treeview.min.css" rel="stylesheet" >
+    <link href="../js/treeview/bootstrap-treeview.min.css" rel="stylesheet">
     <!-- 引入bootstrap-addTabs的css -->
-    <link  href="../js/addTabs/addTabs.css" rel="stylesheet" >
+    <link href="../js/addTabs/addTabs.css" rel="stylesheet">
     <!-- 引入bootstrap-table的css -->
-    <link  href="../js/table/bootstrap-table.min.css" rel="stylesheet" >
+    <link href="../js/table/bootstrap-table.min.css" rel="stylesheet">
     <!-- 引入fileinput的css -->
-    <link type="text/css" rel="stylesheet" href="../js/fileinput/css/fileinput.min.css" />
+    <link type="text/css" rel="stylesheet" href="../js/fileinput/css/fileinput.min.css"/>
+
+
+
     <!-- 引入jquery -->
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <!-- 引入my97 -->
@@ -37,6 +40,9 @@
     <script type="text/javascript" src="../js/fileinput/js/fileinput.min.js"></script>
     <!--  引入fileinput的js -->
     <script type="text/javascript" src="../js/fileinput/js/locales/zh.js"></script>
+
+
+
     <script type="text/javascript" src="../js/fileinput/themes/fa/theme.js"></script>
 
     <!--头部样式-->
@@ -49,7 +55,7 @@
     <div class="center">
         <ul>
             <li class="logoTop">
-                knowstar酷炫的登录页面
+               登陆后台管理系统
             </li>
         </ul>
     </div>
@@ -142,6 +148,7 @@
             type:'post',
             data:adduser,
             success:function(data){
+
                 if(data==1){
                     bootbox.alert("" +
                         "&nbsp;<br>" +
@@ -149,8 +156,8 @@
                         "已经存在相同用户名");
                 }else{
                     //alert(data)
-                    bootbox.alert("保存成功");
-                    location.href="touserinfo";
+                    //bootbox.alert("11111保存成功");
+                    addstaffdialog(staffname2);
                 }
 
                 $("#bootTab").bootstrapTable('refresh');
@@ -182,6 +189,90 @@
             }
         })
     }
+
+
+
+    function  addstaffdialog(staffname2){
+       dialog("toaddStaffDialog",ip+":8088/updateStaff","完善信息",staffname2);
+    }
+
+
+    /*
+  	*发送ajax请求获取jsp页面内容
+  	*/
+    function getJspHtml(urlStr) {
+        var jspHtml = "";
+        // async  (默认: true) 默认设置下，所有请求均为异步请求。如果需要发送同步请求，请将此选项设置为 false。
+        //注意，同步请求将锁住浏览器，用户其它操作必须等待请求完成才可以执行。
+        $.ajax({
+            url: urlStr,
+            type: 'get',
+            //同步的ajax
+            async: false,
+            success: function (data) {
+                jspHtml = data;
+            },
+            error: function () {
+                bootbox.alert("ajax失败");
+            }
+        });
+        return jspHtml;
+    }
+
+    //员工个人信息 弹框
+    function  dialog(HTMLurl,submitUrl,title,staffname2){
+
+        var dialog = bootbox.dialog({
+            title: title,
+            message: getJspHtml(HTMLurl),   //调用方法
+            buttons: {
+                "save": {
+                    label: '保存',
+                    //自定义样式
+                    className: "btn-success",
+                    callback: function () {
+                        $.ajax({
+                            url: submitUrl,
+                            type: 'post',
+                            data: $("#updateStaffform").serialize(),
+                            success: function () {
+                                //bootbox.alert("。。保存成功");
+                                //location.reload();
+                            },
+                            error: function () {
+                                bootbox.alert("。。。失败");
+                            }
+                        });
+                    }
+                },
+                "unSave": {
+                    label: '取消',
+                    //自定义样式
+                    className: "btn-info",
+                    callback: function () {
+                        // return false;  //dialog不关闭
+                    }
+                }
+            }
+        });
+
+        $.ajax({
+            url:ip+":8088/findStaffById",
+            type:'post',
+            data:{staffname:staffname2},
+            success:function(data){
+
+                $("#testSt").val(data.sid);
+            },
+            error:function(){
+                bootbox.alert("回显失败");
+            }
+        });
+
+    }
+
+
+
 
 
 </script>
