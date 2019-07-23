@@ -5,7 +5,7 @@ spring:
   application:
     name: homepage-consumer
   redis:
-    host: 192.168.1.134
+    host: 192.168.1.120
     port: 6379
     password: 123456
 
