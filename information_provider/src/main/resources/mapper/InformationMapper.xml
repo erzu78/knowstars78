@@ -65,8 +65,13 @@ where i.authorid =s.sid and i.infId=#{infid}) ORDER BY releasetime DESC limit 0,
     i.topicid=t.topicid and t.topicid=#{topicid}
   </select>
 
-
-
+  <select id="MyInfoList" resultMap="BaseResultMap">
+select i.*,p.topicname topicname,ty.tname tname,s.staffname staffname from t_information i,t_staff s,info_type ty,t_topic p where i.topicid=p.topicid and i.authorid=s.sid and i.tyid=ty.tid  and i.authorid=#{sid}
+    ORDER BY i.releasetime desc limit #{start},#{rows}
+  </select>
+  <select id="queryCountt" resultType="long">
+    select count(*) from t_information where authorid=#{sid}
+  </select>
 
 
   <select id="queryAllWz" resultMap="BaseResultMap">

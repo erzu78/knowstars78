@@ -82,4 +82,8 @@ public interface InfService {
     void deleteAllTopic(@RequestParam(value="ids")String ids);
     @RequestMapping("/queryTopicc")
     List<Topic> queryTopicc();
+    @RequestMapping("/MyInfoList")
+    List<Information> MyInfoList(@RequestParam(value="start")Integer start, @RequestParam(value="rows") Integer rows, @RequestParam(value="sid") Integer sid);
+    @RequestMapping("/queryCountt")
+    long queryCountt(@RequestParam(value="sid")Integer sid);
 }
