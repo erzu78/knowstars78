@@ -438,7 +438,7 @@
                         </li>
                         <li class="channel-item">
                             <div class="sub-title">
-                                <a class="name weight-bold active" href="/">首页</a>
+                                <a class="name weight-bold active">首页</a>
                             </div>
                         </li>
                         <li class="channel-item">
@@ -959,7 +959,7 @@
 
     function queryNews(){
         $.ajax({
-            url:ip+":8011/queryNews",
+            url:"http://192.168.1.234:8011/queryNews",
             type:'get',
             success:function(data){
                 // alert(data)
@@ -972,7 +972,7 @@
                 $("#NewsId").html(AboutNews);
             },
             error:function(){
-                alert("失败");
+                alert("123失败");
             }
         });
     }
