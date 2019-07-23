@@ -37,7 +37,7 @@ public class LoginController {
             String userjs = JSON.toJSONString(userModel);
             System.out.println("loginuser = [" + userjs + "]");
             redisTemplate.opsForValue().set("userjs",userjs);
-            redisTemplate.expire("userjs",600000, TimeUnit.MILLISECONDS);			//设置一个key 过期时间是10s
+            redisTemplate.expire("userjs",3600000, TimeUnit.MILLISECONDS);			//设置一个key 过期时间是10s
             return "1";
         }else{
             return "2";
@@ -77,6 +77,7 @@ public class LoginController {
                 String staffjs = JSON.toJSONString(staffModel);
                 System.out.println("loginstaff = [" + staffjs + "]");
                 redisTemplate.opsForValue().set("staffjs",staffjs);
+                redisTemplate.expire("userjs",3600000, TimeUnit.MILLISECONDS);
                 return "1";
             }else{
                 return "3";
@@ -120,9 +121,9 @@ public class LoginController {
         int newcode = (int)(Math.random()*899999)+100000;
         Map<String, Object> hashMap = new HashMap<>();
         hashMap.put("mobile",phoneName);
-        hashMap.put("tpl_id","172959");
+        hashMap.put("tpl_id","174287");
         hashMap.put("tpl_value","%23code%23%3D"+newcode);
-        hashMap.put("key","4dbca76f9b8d9e635c52c4dae4b9cac6");
+        hashMap.put("key","19454a42897b67ed0324537fb65bed10");
 
         try {
             String s = HttpClient.sendGet("http://v.juhe.cn/sms/send", hashMap);
@@ -143,7 +144,7 @@ public class LoginController {
         User user=loginService.finduserByUserName(username);
         String userjs = JSON.toJSONString(user);
         redisTemplate.opsForValue().set("userjs",userjs);
-        redisTemplate.expire("userjs",600000, TimeUnit.MILLISECONDS);
+        redisTemplate.expire("userjs",3600000, TimeUnit.MILLISECONDS);
 
         return user;
     }
