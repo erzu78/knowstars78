@@ -43,4 +43,15 @@ public interface VideoMapper {
 
     @Select("select * from T_VIDEO v,T_STAFF s where v.staffId = s.sid and s.role = 1 limit 5")
     List<Video> queryLunBo();
+
+    @Update("update T_VIDEO set recommend = 1 where videoId = #{rid}")
+    void updateRecommend(Integer rid);
+
+    @Update("update T_VIDEO set recommend = 2 where videoId = #{rid}")
+    void updateRecommendNo(Integer rid);
+
+    @Select("select * from T_VIDEO v,T_STAFF s where v.staffId = s.sid and s.role = 1 and v.recommend = 1")
+    List<Video> queryRecommendVideo();
+
+
 }

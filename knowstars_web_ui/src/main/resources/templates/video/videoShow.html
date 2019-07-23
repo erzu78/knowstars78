@@ -46,7 +46,7 @@
 </body>
 <script type="text/javascript">
 
-    var ip="http://192.168.1.112";
+    var ip="http://192.168.1.117";
 
     $(function () {
         $("#bootTab").bootstrapTable({
@@ -86,9 +86,18 @@
                     field: 'crud', title: '修改', width: 100,
                     formatter: function (value, row, index) {
 
-                        var content = "<button type='button' class='btn btn-danger' onclick='del("+row.videoId+")'>删除</button>";
-                       /* content += "  |   <a href='javascript:update(&quot;" + row.videoId + "&quot;)'>修改</a>";*/
-                        return content;
+                        if (row.recommend == 1){
+                            var content = "<button type='button' class='btn btn-danger' onclick='del("+row.videoId+")'>删除</button>";
+                            content += "  |  <button type='button' class='btn btn-danger' onclick='updateRecommendNo("+row.videoId+")'>取消此推荐</button>";
+                            /* content += "  |   <a href='javascript:update(&quot;" + row.videoId + "&quot;)'>修改</a>";*/
+                            return content;
+                        }else  {
+                            var content = "<button type='button' class='btn btn-danger' onclick='del("+row.videoId+")'>删除</button>";
+                            content += "  |  <button type='button' class='btn btn-danger' onclick='updateRecommend("+row.videoId+")'>设置为推荐</button>";
+                            /* content += "  |   <a href='javascript:update(&quot;" + row.videoId + "&quot;)'>修改</a>";*/
+                            return content;
+                        }
+
 
                     }
                 },
@@ -261,16 +270,51 @@
             data:{vid:id},
             success:function(){
 
-                alert("恭喜你删除成功");
+              //  alert("恭喜你删除成功");
                 $('#bootTab').bootstrapTable('refresh');
             },
             error:function(){
 
-                alert("抱歉,删除失败")
+               // alert("抱歉,删除失败")
+            }
+        })
+    }
+
+    //修改 推荐状态为是
+    function updateRecommend(id){
+        $.ajax({
+            url:ip+":8083/updateRecommend",
+            type:"post",
+            data:{rid:id},
+            success:function(){
+
+             //   alert("恭喜你设置成功");
+                $('#bootTab').bootstrapTable('refresh');
+            },
+            error:function(){
+
+               // alert("抱歉,删除设置失败")
             }
         })
     }
 
 
+    //修改 推荐状态为否
+    function updateRecommendNo(id){
+        $.ajax({
+            url:ip+":8083/updateRecommendNo",
+            type:"post",
+            data:{rid:id},
+            success:function(){
+
+              //  alert("恭喜你取消成功");
+                $('#bootTab').bootstrapTable('refresh');
+            },
+            error:function(){
+
+               // alert("抱歉,删除取消失败")
+            }
+        })
+    }
 </script>
 </html>

@@ -108,7 +108,7 @@
 <script src="../js/app.js"></script>
 <script>
 
-    var ip="http://192.168.1.142";
+    var ip="http://192.168.1.128";
 
 
     function changeImg(){
@@ -128,7 +128,7 @@
 
     function login(){
         $.ajax({
-            url:ip+":8088/loginstaff",
+            url:"http://192.168.1.128:8088/loginstaff",
             type:"post",
             //crossDomain: true,
             data:$("#loginff").serialize(),
