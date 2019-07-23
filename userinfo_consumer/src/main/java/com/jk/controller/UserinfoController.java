@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Administrator
@@ -44,6 +45,7 @@ public class UserinfoController {
     @PostMapping("updatePass")
     public void updatePass(User user){
         userinfoServiceFeign.updatePass(user);
+
     }
 
 
@@ -56,6 +58,7 @@ public class UserinfoController {
          String userinfo = JSON.toJSONString(user);
          System.out.println("loginuser = [" + userinfo + "]");
          redisTemplate.opsForValue().set("userjs",userinfo);
+         redisTemplate.expire("userjs",600000, TimeUnit.MILLISECONDS);
      }
 
     }

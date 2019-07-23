@@ -91,5 +91,23 @@ public class VideoServiceImpl implements VideoService {
         return videoMapper.queryLunBo();
     }
 
+    @Override
+    @PostMapping("updateRecommend/{rid}")
+    public void updateRecommend(@PathVariable("rid") Integer rid) {
+        videoMapper.updateRecommend(rid);
+    }
+
+    @Override
+    @PostMapping("updateRecommendNo/{rid}")
+    public void updateRecommendNo(Integer rid) {
+        videoMapper.updateRecommendNo(rid);
+    }
+
+    @Override
+    @GetMapping("queryRecommendVideo")
+    public List<Video> queryRecommendVideo() {
+        return videoMapper.queryRecommendVideo();
+    }
+
 
 }

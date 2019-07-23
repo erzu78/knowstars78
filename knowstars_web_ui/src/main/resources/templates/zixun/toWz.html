@@ -21,7 +21,7 @@
     <meta name="applicable-device" content="pc,mobile"/>
     <meta name="format-detection" content="telephone=no"/><meta name="keywords" content="创业,互联网创业,互联网创业项目">
     <meta name="description" content="36氪为您提供创业资讯、科技新闻、投融资对接、股权投资、极速融资等创业服务，致力成为创业者可以依赖的创业服务平台，为创业者提供最好的产品和服务。">
-    <title data-react-helmet="true">孙正义和愿景基金的三年大考_36氪</title>
+    <title ></title>
     <link href="sta.36krcnd.com/36krx2018-front/static/app.3d4278b5.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="sta.36krcnd.com/36krx2018-front/static/article.4f466c20.css"><link href="36kr.com/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon"/>
     <link href="sta.36krcnd.com/36krx2018-front/static/app.3d4278b5.css" rel="stylesheet" />
@@ -466,6 +466,7 @@
                 infid:$("#aa").val(),
             },
             success: function (data) {
+                document.title=data[0].inftitle;
                 $("#span1").html(data[0].inftitle);
                 $("#span2").html(data[0].staffname);
                 $("#span3").html(data[0].releasetime);
@@ -531,7 +532,7 @@
         location.href="toAllWz?infid="+infid;
     }
 </script>
-<div id="app"><div class="kr-article-box" data-reactroot=""><div class="box-kr-article-new-y"><div class="kr-layout"><div class="kr-layout-main clearfloat"><div class="main-left"><div class="kr-sider "><a href="/" class="go-home clearfloat"><div class="logo"></div></a><div class="kr-sider-shadow-wrapper clearfloat"><div class="line"></div><ul class="kr-channel-nav"><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="toHomePage">首页</a></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="toNewsFlashAll">快讯</a></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="toAllZx">资讯</a></div><div class="sub-list "><ul class="sub-list-right"><li class="sub-item"><a href="/information/web_recommend" class="">推荐</a></li><li class="sub-item"><a href="/information/travel" class="">汽车</a></li><li class="sub-item"><a href="/information/enterpriseservice" class="">企服</a></li><li class="sub-item"><a href="/information/web_zhichang" class="">职场</a></li><li class="sub-item"><a class="">城市</a></li></ul><ul class="sub-list-left"><li class="sub-item"><a href="/information/web_news" class="">最新</a></li><li class="sub-item"><a href="/information/contact" class="">创投</a><span class="hot"></span></li><li class="sub-item"><a href="/information/technology" class="">科技</a></li><li class="sub-item"><a href="/information/happy_life" class="">生活</a></li><li class="sub-item"><a href="/information/innovate" class="">创新</a></li></ul></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="toHomeVideo">视频</a></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="/topics">专题</a></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="https://chuang.36kr.com/huodong#/report/recent" target="_target" rel="noopener noreferrer">活动</a></div></li><div class="local-list" style="display:none;top:;left:"><div class="triangle"></div></div></ul><div class="kr-search-entry clearfloat"><div class="search-button"><span class="search-icon"></span><span class="search-text weight-bold">搜索</span></div></div><a href="/seek-report" class="seek-report" target="_blank" rel="noopener noreferrer nofollow"><span class="seek-report-icon"></span><span class="seek-report-text">寻求报道</span></a><div><div class="i-want-contribution"><span class="i-want-contribution-icon"></span><span class="i-want-contribution-text">我要投稿</span></div></div><a class="seek-finance-entry" href="http://vclub-36kr.mikecrm.com/r3yRAwz " target="_blank" rel="noopener noreferrer nofollow"><span class="seek-finance-entry-icon"></span><span class="seek-finance-entry-text">寻求融资</span></a></div></div></div><div class="main-right"><div class="kr-header "><div class="kr-header-main"><div class="kr-header-content">
+<div id="app"><div class="kr-article-box" data-reactroot=""><div class="box-kr-article-new-y"><div class="kr-layout"><div class="kr-layout-main clearfloat"><div class="main-left"><div class="kr-sider "><a href="/" class="go-home clearfloat"><div class="logo"></div></a><div class="kr-sider-shadow-wrapper clearfloat"><div class="line"></div><ul class="kr-channel-nav"><li class="channel-item"><div class="sub-title"><img src="homePagePicture/11.png" height="38px"><a class="name weight-bold " href="toHomePage">首页</a></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="toNewsFlashAll">快讯</a></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="toAllZx">资讯</a></div><div class="sub-list "><ul class="sub-list-right"><li class="sub-item"><a href="/information/web_recommend" class="">推荐</a></li><li class="sub-item"><a href="/information/travel" class="">汽车</a></li><li class="sub-item"><a href="/information/enterpriseservice" class="">企服</a></li><li class="sub-item"><a href="/information/web_zhichang" class="">职场</a></li><li class="sub-item"><a class="">城市</a></li></ul><ul class="sub-list-left"><li class="sub-item"><a href="/information/web_news" class="">最新</a></li><li class="sub-item"><a href="/information/contact" class="">创投</a><span class="hot"></span></li><li class="sub-item"><a href="/information/technology" class="">科技</a></li><li class="sub-item"><a href="/information/happy_life" class="">生活</a></li><li class="sub-item"><a href="/information/innovate" class="">创新</a></li></ul></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="toHomeVideo">视频</a></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="/topics">专题</a></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="https://chuang.36kr.com/huodong#/report/recent" target="_target" rel="noopener noreferrer">活动</a></div></li><div class="local-list" style="display:none;top:;left:"><div class="triangle"></div></div></ul><div class="kr-search-entry clearfloat"><div class="search-button"><span class="search-icon"></span><span class="search-text weight-bold">搜索</span></div></div><a href="/seek-report" class="seek-report" target="_blank" rel="noopener noreferrer nofollow"><span class="seek-report-icon"></span><span class="seek-report-text">寻求报道</span></a><div><div class="i-want-contribution"><span class="i-want-contribution-icon"></span><span class="i-want-contribution-text">我要投稿</span></div></div><a class="seek-finance-entry" href="http://vclub-36kr.mikecrm.com/r3yRAwz " target="_blank" rel="noopener noreferrer nofollow"><span class="seek-finance-entry-icon"></span><span class="seek-finance-entry-text">寻求融资</span></a></div></div></div><div class="main-right"><div class="kr-header "><div class="kr-header-main"><div class="kr-header-content">
 
 
     <div id="yDeng" class="user-login" style="display:none">
@@ -759,7 +760,7 @@
                 queryComment();
             },
             error:function(){
-                bootbox.alert("评论操作失败");
+                location.href="toUserLogin";
             }
         });
 
@@ -780,7 +781,7 @@
                 queryZhan();
             },
             error:function(){
-                bootbox.alert("操作点赞失败");
+                location.href="toUserLogin";
             }
         });
 
@@ -799,7 +800,7 @@
                 queryComment();
             },
             error:function(){
-                bootbox.alert("操作评论的点赞失败");
+                location.href="toUserLogin";
             }
         });
 
@@ -841,7 +842,7 @@
                 queryShou();
             },
             error:function(){
-                bootbox.alert("收藏操作失败");
+                location.href="toUserLogin";
             }
         });
 

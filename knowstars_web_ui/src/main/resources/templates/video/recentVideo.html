@@ -436,35 +436,12 @@
 </body>
 <script>
 
-    var ip="http://192.168.1.112";
+    var ip="http://192.168.1.117";
 
     $(function(){
         querySingleVideo();
 
-
-        //登陆时用的方法
-        findLoginStatus = function(){
-
-            $.ajax({
-                url:"http://192.168.1.118:8000/findLoginStatus",
-                type:'post',
-                success:function(data){
-                    if(data.uid!=null&&data.uid!=""){
-                        $("#wDeng").attr("style","display:none");
-                        $("#yDeng").attr("style","display:inline-block");
-                        $("#userImg").attr("src",data.userhead);
-                    }else{
-                        $("#wDeng").attr("style","display:kinline-bloc");
-                        $("#yDeng").attr("style","display:none");
-                    }
-                },
-                error:function(){
-                    bootbox.alert("查询用户登录状态失败");
-                }
-            });
-
-        }
-
+        findLoginStatus();
     })
 
     function querySingleVideo() {
@@ -486,6 +463,29 @@
         })
     }
 
+
+    //登陆时用的方法
+    findLoginStatus = function(){
+
+        $.ajax({
+            url:"http://192.168.1.118:8000/findLoginStatus",
+            type:'post',
+            success:function(data){
+                if(data.uid!=null&&data.uid!=""){
+                    $("#wDeng").attr("style","display:none");
+                    $("#yDeng").attr("style","display:inline-block");
+                    $("#userImg").attr("src",data.userhead);
+                }else{
+                    $("#wDeng").attr("style","display:kinline-bloc");
+                    $("#yDeng").attr("style","display:none");
+                }
+            },
+            error:function(){
+                bootbox.alert("查询用户登录状态失败");
+            }
+        });
+
+    }
 
     //退出登录
     exitUserLogin = function(){

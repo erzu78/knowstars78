@@ -39,4 +39,8 @@ public interface InformationMapper {
     Integer queryCountById(Integer sid);
 
     List<Information> queryTopicWz(Integer topicid);
+
+    List<Information> MyInfoList(@Param("start") Integer start, @Param("rows") Integer rows, @Param("sid") Integer sid);
+
+    long queryCountt(Integer sid);
 }

@@ -12,6 +12,7 @@ public class Video {
      private String videoImg;        //视频封面图片
      private String videoNews;       //视频
      private Integer staffId;        //连接staff表的外键
+     private Integer recommend;      //是否设置为推荐 1代表 是 2 代表否
 
     /*Staff表中的字段*/
     private Integer sid;
@@ -113,5 +114,13 @@ public class Video {
 
     public void setStaffinfo(String staffinfo) {
         this.staffinfo = staffinfo;
+    }
+
+    public Integer getRecommend() {
+        return recommend;
+    }
+
+    public void setRecommend(Integer recommend) {
+        this.recommend = recommend;
     }
 }
