@@ -72,7 +72,12 @@ select i.*,p.topicname topicname,ty.tname tname,s.staffname staffname from t_inf
   <select id="queryCountt" resultType="long">
     select count(*) from t_information where authorid=#{sid}
   </select>
-
+  <update id="qxR">
+    update t_information set hot=2 where infid=#{infid}
+  </update>
+  <update id="toR">
+    update t_information set hot=1 where infid=#{infid}
+  </update>
 
   <select id="queryAllWz" resultMap="BaseResultMap">
     select * from t_information i,t_staff s where i.authorid=

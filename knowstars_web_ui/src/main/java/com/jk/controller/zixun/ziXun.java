@@ -85,7 +85,8 @@ public class ziXun {
     }
     @RequestMapping("updDialogTopic")
     public String updDialogTopic(){
-         return "zixun/toUpTopic";
+
+        return "zixun/toUpTopic";
     }
     //我的资讯
     @RequestMapping("toMyInfo")

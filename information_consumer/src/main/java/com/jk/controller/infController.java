@@ -309,4 +309,16 @@ public class infController {
 
         infServiceFeign.deleteAllTopic(ids);
     }
+    @RequestMapping("/qxR")
+    @ResponseBody
+    //修改方法
+    public void qxR(@RequestParam(value="infid") Integer infid){
+        infServiceFeign.qxR(infid);
+    }
+    @RequestMapping("/toR")
+    @ResponseBody
+    //修改方法
+    public void toR(@RequestParam(value="infid") Integer infid){
+        infServiceFeign.toR(infid);
+    }
 }

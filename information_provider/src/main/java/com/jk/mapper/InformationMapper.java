@@ -43,4 +43,8 @@ public interface InformationMapper {
     List<Information> MyInfoList(@Param("start") Integer start, @Param("rows") Integer rows, @Param("sid") Integer sid);
 
     long queryCountt(Integer sid);
+
+    void qxR(Integer infid);
+
+    void toR(Integer infid);
 }

@@ -86,4 +86,8 @@ public interface InfService {
     List<Information> MyInfoList(@RequestParam(value="start")Integer start, @RequestParam(value="rows") Integer rows, @RequestParam(value="sid") Integer sid);
     @RequestMapping("/queryCountt")
     long queryCountt(@RequestParam(value="sid")Integer sid);
+    @RequestMapping("/qxR")
+    void qxR(@RequestParam(value="infid")Integer infid);
+    @RequestMapping("/toR")
+    void toR(@RequestParam(value="infid")Integer infid);
 }

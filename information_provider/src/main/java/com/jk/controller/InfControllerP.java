@@ -212,5 +212,15 @@ public class InfControllerP implements InfService {
         return infServiceP.queryCountt(sid);
     }
 
+    @Override
+    public void qxR(Integer infid) {
+        infServiceP.qxR(infid);
+    }
+
+    @Override
+    public void toR(Integer infid) {
+        infServiceP.toR(infid);
+    }
+
 
 }
