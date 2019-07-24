@@ -61,7 +61,10 @@ public class HomePageControllerCon {
 
     }
 
-
+    /**
+     * 查询员工登录状态
+     * @return
+     */
     @RequestMapping("queryLoginById")
     @ResponseBody
     public Staff queryLoginById(){
@@ -78,6 +81,17 @@ public class HomePageControllerCon {
 
     }
 
+
+    /**
+     * 退出登录
+     */
+    @RequestMapping("logOutStaff")
+    @ResponseBody
+    public void logOutStaff(){
+
+        redisTemplate.delete("staffjs");
+
+    }
 
 
 

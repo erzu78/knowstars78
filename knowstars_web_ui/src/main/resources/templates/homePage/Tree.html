@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width"/>
-    <title>BootstrapTable分页</title>
+    <title>KnowStars后台管理</title>
 
     <!-- 引入bootstrap的css -->
     <link href="../js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -35,6 +35,7 @@
     <script type="text/javascript" src="../js/fileinput/js/fileinput.min.js"></script>
     <!--  引入fileinput的js -->
     <script type="text/javascript" src="../js/fileinput/js/locales/zh.js"></script>
+
 
     <script type="text/javascript" src="../js/fileinput/themes/fa/theme.js"></script>
 
@@ -80,9 +81,24 @@
 
             <!-- 右边的    导航 按钮 -->
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="toStaffLogin">登录</a></li>
+                <li>
+                    <a href="#" id="ygName"></a>
+                </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" id="staRole" aria-expanded="false"></a>
+                    <a href="#" id="staRole"></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#">||||</a>
+                </li>
+
+                <li>
+                    <a href="toStaffLogin">登录</a>
+                </li>
+                <li class="dropdown">
+                    <a href="javaScript:logOutStaff()">注销</a>
+                </li>
+                <li class="dropdown">
+                    <a href="toHomePage">去前台</a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -186,30 +202,53 @@
                 alert("查询树失败");
             }
         })
-    })
 
 
+        $.ajax({
+            url:"http://localhost:8085/queryLoginById",
+            type:"post",
+            success:function(data){
 
-    $.ajax({
-        url:"http://localhost:8085/queryLoginById",
-        type:"post",
-        success:function(data){
+                if(data!=null&&data!=""){
 
-            if(data!=null&&data!=""){
-                if(data.role==1){
-                    $("#staRole").html("作者");
-                }else if(data.role==2){
-                    $("#staRole").html("管理员");
+                    $("#ygName").html(data.staffname);
+
+                    if(data.role==1){
+                        $("#staRole").html("作者");
+                    }else if(data.role==2){
+                        $("#staRole").html("管理员");
+                    }
+                }else{
+                    location.href="toStaffLogin";
                 }
-            }else{
-                location.href="toStaffLogin";
-            }
 
-        },
-        error:function(){
-            alert("失败")
-        }
+            },
+            error:function(){
+                alert("失败")
+            }
+        })
+
     })
+
+
+
+
+
+
+    logOutStaff = function(){
+        $.ajax({
+            url:"http://localhost:8085/logOutStaff",
+            type:"post",
+            success:function(){
+                location.reload();
+            },
+            error:function(){
+                alert("失败")
+            }
+        })
+    }
+
+
 </script>
 
 </html>
