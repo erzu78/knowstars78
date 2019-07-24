@@ -117,7 +117,7 @@
         var infId = 99;
 
         $.ajax({
-            url:"http://192.168.1.118:8000/queryZhan",
+            url:"http://192.168.1.123:8000/queryZhan",
             type:'get',
             data:{infId:infId},
             success:function(data){
@@ -141,7 +141,7 @@
         var infId = 99;
 
         $.ajax({
-            url:"http://192.168.1.118:8000/queryPing",
+            url:"http://192.168.1.123:8000/queryPing",
             type:'get',
             data:{infId:infId},
             success:function(data){
@@ -159,7 +159,7 @@
     addPing = function(){
         var sp=$("#pinglun").val();
         $.ajax({
-            url:"http://192.168.1.118:8000/addPing",
+            url:"http://192.168.1.123:8000/addPing",
             type:'post',
             data:{infId:99,sp:sp},
             success:function(){
@@ -179,7 +179,7 @@
         var infId = 6788;
 
         $.ajax({
-            url:"http://192.168.1.118:8000/queryComment",
+            url:"http://192.168.1.123:8000/queryComment",
             type:'get',
             data:{infId:infId},
             success:function(data){
@@ -211,7 +211,7 @@
     addComment = function(){
         var sp=$("#pingId").val();
         $.ajax({
-            url:"http://192.168.1.118:8000/addComment",
+            url:"http://192.168.1.123:8000/addComment",
             type:'get',
             data:{infId:6788,sp:sp},
             success:function(){
@@ -232,7 +232,7 @@
     opZhan = function(){
 
         $.ajax({
-            url:"http://192.168.1.118:8000/zizi",
+            url:"http://192.168.1.123:8000/zizi",
             type:'post',
             data:{infId:99},
             success:function(){
@@ -255,7 +255,7 @@
         var infId = 99;
 
         $.ajax({
-            url:"http://192.168.1.118:8000/queryShou",
+            url:"http://192.168.1.123:8000/queryShou",
             type:'get',
             data:{infId:infId},
             success:function(data){
@@ -278,7 +278,7 @@
     opShou = function(){
 
         $.ajax({
-            url:"http://192.168.1.118:8000/opShou",
+            url:"http://192.168.1.123:8000/opShou",
             type:'post',
             data:{infId:99},
             success:function(){

@@ -538,7 +538,7 @@ if(inftitle==""){
     findLoginStatus = function(){
 
         $.ajax({
-            url:"http://192.168.1.118:8000/findLoginStatus",
+            url:"http://192.168.1.123:8000/findLoginStatus",
             type:'post',
             success:function(data){
                 if(data.uid!=null&&data.uid!=""){
@@ -558,7 +558,7 @@ if(inftitle==""){
     }
     exitUserLogin = function(){
         $.ajax({
-            url:"http://192.168.1.118:8000/exitUserLogin",
+            url:"http://192.168.1.123:8000/exitUserLogin",
             type:'post',
             success:function(){
                 findLoginStatus();

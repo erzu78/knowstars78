@@ -621,7 +621,7 @@
 
         var infId = $("#aa").val();
         $.ajax({
-            url:"http://192.168.1.118:8000/queryZhan",
+            url:"http://192.168.1.123:8000/queryZhan",
             type:'get',
             data:{infId:infId},
             success:function(data){
@@ -646,7 +646,7 @@
         var infId = 99;
 
         $.ajax({
-            url:"http://192.168.1.118:8000/queryPing",
+            url:"http://192.168.1.123:8000/queryPing",
             type:'get',
             data:{infId:infId},
             success:function(data){
@@ -664,7 +664,7 @@
     addPing = function(){
         var sp=$("#pinglun").val();
         $.ajax({
-            url:"http://192.168.1.118:8000/addPing",
+            url:"http://192.168.1.123:8000/addPing",
             type:'post',
             data:{infId:99,sp:sp},
             success:function(){
@@ -684,7 +684,7 @@
         var infId = $("#aa").val();
 
         $.ajax({
-            url:"http://192.168.1.118:8000/queryComment",
+            url:"http://192.168.1.123:8000/queryComment",
             type:'get',
             data:{infId:infId},
             success:function(data){
@@ -752,7 +752,7 @@
         var sp=$("#pingId").val();
         var infId = $("#aa").val();
         $.ajax({
-            url:"http://192.168.1.118:8000/addComment",
+            url:"http://192.168.1.123:8000/addComment",
             type:'get',
             data:{infId:infId,sp:sp},
             success:function(){
@@ -773,7 +773,7 @@
     opZhan = function(){
         var infId = $("#aa").val();
         $.ajax({
-            url:"http://192.168.1.118:8000/zizi",
+            url:"http://192.168.1.123:8000/zizi",
             type:'post',
             data:{infId:infId},
             success:function(){
@@ -792,7 +792,7 @@
     pingLike = function(pingId){
 
         $.ajax({
-            url:"http://192.168.1.118:8000/pingLike",
+            url:"http://192.168.1.123:8000/pingLike",
             type:'post',
             data:{pingId:pingId},
             success:function(){
@@ -812,7 +812,7 @@
         var infId = $("#aa").val();
 
         $.ajax({
-            url:"http://192.168.1.118:8000/queryShou",
+            url:"http://192.168.1.123:8000/queryShou",
             type:'get',
             data:{infId:infId},
             success:function(data){
@@ -835,7 +835,7 @@
     opShou = function(){
         var infId = $("#aa").val();
         $.ajax({
-            url:"http://192.168.1.118:8000/opShou",
+            url:"http://192.168.1.123:8000/opShou",
             type:'post',
             data:{infId:infId},
             success:function(){
@@ -857,7 +857,7 @@
     findLoginStatus = function(){
 
         $.ajax({
-            url:"http://192.168.1.118:8000/findLoginStatus",
+            url:"http://192.168.1.123:8000/findLoginStatus",
             type:'post',
             success:function(data){
                 if(data.uid!=null&&data.uid!=""){
@@ -878,7 +878,7 @@
     //退出登录
     exitUserLogin = function(){
         $.ajax({
-            url:"http://192.168.1.118:8000/exitUserLogin",
+            url:"http://192.168.1.123:8000/exitUserLogin",
             type:'post',
             success:function(){
                 findLoginStatus();
