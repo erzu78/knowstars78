@@ -49,4 +49,13 @@ public interface VideoService {
 
     @GetMapping("queryLunBo")
     List<Video> queryLunBo();
+
+    @PostMapping("updateRecommend/{rid}")
+    void updateRecommend(@PathVariable("rid") Integer rid);
+
+    @PostMapping("updateRecommendNo/{rid}")
+    void updateRecommendNo(@PathVariable("rid") Integer rid);
+
+    @GetMapping("queryRecommendVideo")
+    List<Video> queryRecommendVideo();
 }

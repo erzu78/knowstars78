@@ -49,4 +49,12 @@ public interface InfServiceP {
     void deleteAllTopic(String ids);
 
     List<Topic> queryTopicc();
+
+    List<Information> MyInfoList(Integer start, Integer rows, Integer sid);
+
+    long queryCountt(Integer sid);
+
+    void qxR(Integer infid);
+
+    void toR(Integer infid);
 }

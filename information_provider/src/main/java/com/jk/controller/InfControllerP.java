@@ -202,5 +202,25 @@ public class InfControllerP implements InfService {
         return infServiceP.queryTopicc();
     }
 
+    @Override
+    public List<Information> MyInfoList(Integer start, Integer rows, Integer sid) {
+        return infServiceP.MyInfoList(start,rows,sid);
+    }
+
+    @Override
+    public long queryCountt(Integer sid) {
+        return infServiceP.queryCountt(sid);
+    }
+
+    @Override
+    public void qxR(Integer infid) {
+        infServiceP.qxR(infid);
+    }
+
+    @Override
+    public void toR(Integer infid) {
+        infServiceP.toR(infid);
+    }
+
 
 }

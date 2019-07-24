@@ -65,7 +65,7 @@
 </div>
 <div class="login-page">
     <div class="login-content"   style="height: 452px">
-        <div class="login-tit">用户注册</div>
+        <div class="login-tit">注册</div>
 
         <form id="addFF">
             <div class="login-input">
@@ -73,7 +73,7 @@
                 <input type="hidden"  id="spancode2" >
             </div>
             <div class="login-input">
-                <input type="text"  name="staffpassword"  id="password2" placeholder="请输入密码">
+                <input type="password"  name="staffpassword"  id="password2" placeholder="请输入密码">
             </div>
             <div class="login-input">
                 <input type="text"  name="phoneName" id="phoneId" placeholder="请输入手机号">
@@ -121,7 +121,7 @@
 <script src="../js/app.js"></script>
 <script>
 
-    var ip="http://192.168.1.142";
+    var ip="http://192.168.1.128";
 
     function toStaffLogin(){
         location.href=ip+":8280/toStaffLogin";
@@ -158,9 +158,9 @@
                     //alert(data)
                     //bootbox.alert("11111保存成功");
                     addstaffdialog(staffname2);
+
                 }
 
-                $("#bootTab").bootstrapTable('refresh');
             },
             error:function(){
                 bootbox.alert("注册失败");
@@ -236,6 +236,8 @@
                             type: 'post',
                             data: $("#updateStaffform").serialize(),
                             success: function () {
+                                location.href="toStaffLogin";
+                                alert("您的账户正在审核")
                                 //bootbox.alert("。。保存成功");
                                 //location.reload();
                             },

@@ -122,11 +122,35 @@
                 {field: 'tname', title: '文章类型', width: 30},
                 {field: 'topicname', title: '文章主题', width: 30},
                 {field: 'subtitle', title: '二级标题', width: 30},
+                {field: 'hot', title: '是否热门', width: 30,
+                    formatter:
+                        function(value,row,index){
+                           var a="";
+                           if(row.hot==1){
+                               a+="是";
+                           }
+                           else if(row.hot==2){
+                               a+="否";
+                           }
+                           return a;
+                        }
+
+                },
                 {field: '', title: '操作', width: 30,formatter:
                     function(value,row,index){
-                        return "<button type='button' class='btn btn-info' onclick='upInfo("+row.infid+")'>修改</button>  " +
-                            "    <button type='button' class='btn btn-danger' onclick='deleteInfo("+row.infid+")'>删除</button>";
+                    var b="";
+                b+="<button type='button' class='btn btn-info' onclick='upInfo("+row.infid+")'>修改</button>  " +
+                            "    <button type='button' class='btn btn-danger' onclick='deleteInfo("+row.infid+")'>删除</button>"
+                       if(row.hot==1){
+                            b+="<button type='button' class='btn btn-danger' onclick='qxR("+row.infid+")'>取消</button>";
+                       }
+                       else if(row.hot==2){
+                           b+="<button type='button' class='btn btn-info' onclick='toR("+row.infid+")'>热门</button>";
+                       }
+
+                        return b;
                     }
+
                 },
 
             ],
@@ -403,6 +427,36 @@
             name[i].checked =!name[i].checked;
 
         }
+
+    }
+    function qxR(infid){
+        $.ajax({
+            url:"http://192.168.1.137:8013/qxR",
+            type:'post',
+            data:{infid:infid},
+            success:function(){
+                bootbox.alert("设置成功");
+                $("#infData").bootstrapTable("refresh");
+            },
+            error:function(){
+                bootbox.alert("失败");
+            }
+        });
+
+    }
+    function toR(infid){
+        $.ajax({
+            url:"http://192.168.1.137:8013/toR",
+            type:'post',
+            data:{infid:infid},
+            success:function(){
+                bootbox.alert("设置成功");
+                $("#infData").bootstrapTable("refresh");
+            },
+            error:function(){
+                bootbox.alert("失败");
+            }
+        });
 
     }
 

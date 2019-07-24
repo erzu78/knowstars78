@@ -4,6 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.net.URL;
+import java.net.URLConnection;
+
 @Controller
 public class VideoController {
 
@@ -50,10 +53,9 @@ public class VideoController {
           return "video/authorVideo";
     }
 
-    //去轮播图展示页面 测试
-    @RequestMapping("toLunBo")
-    public String toLunBo(){
-        return "video/test";
+    @RequestMapping("toAuthorVideo2")
+    public String toAuthorVideo2(){
+          return "video/authorVideo2";
     }
 
 

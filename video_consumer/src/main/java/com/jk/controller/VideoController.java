@@ -116,5 +116,20 @@ public class VideoController {
                     return videoServiceFeign.queryLunBo();
                 }
 
+                //修改推荐状态为是
+                @PostMapping("updateRecommend")
+                public void updateRecommend(Integer rid){
+                    videoServiceFeign.updateRecommend(rid);
+                }
+                 // 修改推荐状态为否
+                 @PostMapping("updateRecommendNo")
+                 public void updateRecommendNo(Integer rid){
+                     videoServiceFeign.updateRecommendNo(rid);
+                 }
+                 //前台首页查询推荐视频
+                 @GetMapping("queryRecommendVideo")
+                 public List<Video> queryRecommendVideo(){
+                     return videoServiceFeign.queryRecommendVideo();
+                 }
 
 }

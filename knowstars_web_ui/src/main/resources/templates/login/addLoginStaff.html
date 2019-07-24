@@ -73,7 +73,7 @@
                 <input type="hidden"  id="spancode2" >
             </div>
             <div class="login-input">
-                <input type="text"  name="staffpassword"  id="password2" placeholder="请输入密码">
+                <input type="password"  name="staffpassword"  id="password2" placeholder="请输入密码">
             </div>
             <div class="login-input">
                 <input type="text"  name="phoneName" id="phoneId" placeholder="请输入手机号">
@@ -158,9 +158,9 @@
                     //alert(data)
                     //bootbox.alert("11111保存成功");
                     addstaffdialog(staffname2);
+
                 }
 
-                $("#bootTab").bootstrapTable('refresh');
             },
             error:function(){
                 bootbox.alert("注册失败");
@@ -236,6 +236,8 @@
                             type: 'post',
                             data: $("#updateStaffform").serialize(),
                             success: function () {
+                                location.href="toStaffLogin";
+                                alert("您的账户正在审核")
                                 //bootbox.alert("。。保存成功");
                                 //location.reload();
                             },

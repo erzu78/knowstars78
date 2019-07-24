@@ -438,7 +438,7 @@
                         </li>
                         <li class="channel-item">
                             <div class="sub-title">
-                                <a class="name weight-bold active" href="/">首页</a>
+                                <a class="name weight-bold active">首页</a>
                             </div>
                         </li>
                         <li class="channel-item">
@@ -455,13 +455,13 @@
                                 </div>
                                 <div class="sub-list open">
                                     <ul class="sub-list-right">
-                                        <li class="sub-item">
+                                      <!--  <li class="sub-item">
                                             <a href="/information/web_news" class="">体育</a>
-                                        </li>
+                                        </li>-->
                                     </ul>
 
                                     <ul class="sub-list-left">
-                                        <li class="sub-item"><a class="">城市</a></li>
+                                      <!--  <li class="sub-item"><a class="">城市</a></li>-->
                                     </ul>
                                 </div>
                             </div>
@@ -757,28 +757,13 @@
                                     <div class="flow-item-video-recommend">
                                         <div class="video-recommend-title">
                                             <span class="name weight-bold">视频推荐</span>
-                                            <a class="see-more" href="/video" target="_blank" rel="noopener noreferrer">查看更多</a>
+                                            <a class="see-more" href="toHomeVideo" target="_blank" rel="noopener noreferrer">查看更多</a>
                                         </div>
-                                        <ul class="video-recommend-list">
-                                            <li class="video-recommend-item">
-                                                <div class="kr-shadow-wrapper">
-                                                    <div class="kr-shadow-wrapper-card" style="width:177px;height:202px;top:-10px;left:-10px"></div>
-                                                    <div class="kr-shadow-content">
-                                                        <a href="/video/49551" target="_blank" rel="noopener noreferrer">
-                                                            <div class="video-recommend-item-pic">
-                                                                <div class="kr-default-img-no-logo scaleBig"></div>
-                                                                <span class="video-recommend-item-icon"></span>
-                                                                <span class="video-recommend-item-time">1:12</span>
-                                                            </div>
-                                                            <div class="video-recommend-item-title" href="/video/49551">
-                                                                <p class="ellipsis-3 weight-bold">OPPO的折叠屏要来了？全新商标Enco曝光</p>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="video-recommend-item"><div class="kr-shadow-wrapper"><div class="kr-shadow-wrapper-card" style="width:177px;height:202px;top:-10px;left:-10px"></div><div class="kr-shadow-content"><a href="/video/49360" target="_blank" rel="noopener noreferrer"><div class="video-recommend-item-pic"><div class="kr-default-img-no-logo scaleBig"></div><span class="video-recommend-item-icon"></span><span class="video-recommend-item-time">2:03</span></div><div class="video-recommend-item-title" href="/video/49360"><p class="ellipsis-3 weight-bold">轻便通勤滑板车：电力驱动一键折叠，比传统电动车小10倍</p></div></a></div></div></li>
-                                            <li class="video-recommend-item"><div class="kr-shadow-wrapper"><div class="kr-shadow-wrapper-card" style="width:177px;height:202px;top:-10px;left:-10px"></div><div class="kr-shadow-content"><a href="/video/49514" target="_blank" rel="noopener noreferrer"><div class="video-recommend-item-pic"><div class="kr-default-img-no-logo scaleBig"></div><span class="video-recommend-item-icon"></span></div><div class="video-recommend-item-title" href="/video/49514"><p class="ellipsis-3 weight-bold">以次充好：江淮汽车收1.7亿“天价罚单”，股价4年跌超7成</p></div></a></div></div></li>
+                                        <ul class="video-recommend-list" id="tjId">
+
+
+
+
                                         </ul>
                                     </div>
                                 </div>
@@ -941,12 +926,12 @@
                         th.innerHTML += " <div class=\"sub-list open\">\n" +
                             "                                <ul class=\"sub-list-right\">\n" +
                             "                                    <li class=\"sub-item\">\n" +
-                            "    <a  class=\"\" href=\"toAllZx?a="+msg[i].tid+"\">"+msg[i].tname+"</a>\n" +
+                            "    <a  class=\"\" href=\"tz?tid="+msg[i].tid+"\">"+msg[i].tname+"</a>\n" +
                             "                                    </li>\n" +
                             "                                </ul>\n" +
                             "\n" +
                             "                                <ul class=\"sub-list-left\">\n" +
-                            "                                    <li class=\"sub-item\"><a class=\"\" href=\"toAllZx?a="+msg[i+1].tid+"\" >"+msg[i+1].tname+"</a></li>\n" +
+                            "                                    <li class=\"sub-item\"><a class=\"\" href=\"tz?tid="+msg[i+1].tid+"\" >"+msg[i+1].tname+"</a></li>\n" +
                             "                                </ul>\n" +
                             "                            </div>"
                     }
@@ -974,7 +959,7 @@
 
     function queryNews(){
         $.ajax({
-            url:ip+":8011/queryNews",
+            url:"http://192.168.1.234:8011/queryNews",
             type:'get',
             success:function(data){
                 // alert(data)
@@ -987,7 +972,7 @@
                 $("#NewsId").html(AboutNews);
             },
             error:function(){
-                alert("失败");
+                alert("123失败");
             }
         });
     }
@@ -1033,6 +1018,55 @@
         location.href="toTopicWz?topicid="+topicid;
 
     }
+
+
+</script>
+
+<script>
+
+    var ip="http://192.168.1.117";
+
+    $(function(){
+        queryRecommendVideo();
+    })
+
+    //查询前台首页推荐视频
+    function queryRecommendVideo() {
+        $.ajax({
+            url:ip+":8083/queryRecommendVideo",
+            type:"get",
+            success:function(data){
+
+                RecommendData="";
+                for (var i=0;i < data.length; i++){
+                    RecommendData +='<li class="video-recommend-item">\n' +
+                        '                                <div class="kr-shadow-wrapper">\n' +
+                        '                                    <div class="kr-shadow-wrapper-card" style="width:177px;height:202px;top:-10px;left:-10px"></div>\n' +
+                        '                                    <div class="kr-shadow-content">\n' +
+                        '                                        <a href="toSingleVideo?viId='+data[i].videoId+'" target="_blank" rel="noopener noreferrer">\n' +
+                        '                                            <div class="video-recommend-item-pic">\n' +
+                        '                                                <div class="kr-default-img-no-logo scaleBig"><img class="course-cover" src="'+data[i].videoImg+'" alt="'+data[i].headline+'"></div>\n' +
+                        '                                                <span class="video-recommend-item-icon"></span>\n' +
+                        '                                                <span class="video-recommend-item-time">6:18</span>\n' +
+                        '                                            </div>\n' +
+                        '                                            <div class="video-recommend-item-title" href="/video/49551">\n' +
+                        '                                                <p class="ellipsis-3 weight-bold">'+data[i].headline+'</p>\n' +
+                        '                                            </div>\n' +
+                        '                                        </a>\n' +
+                        '                                    </div>\n' +
+                        '                                </div>\n' +
+                        '                            </li>';
+
+                    $("#tjId").html(RecommendData);
+                }
+
+            },
+            error:function(){
+                alert("失败啦");
+            }
+        })
+    }
+
 </script>
 </body>
 </html>

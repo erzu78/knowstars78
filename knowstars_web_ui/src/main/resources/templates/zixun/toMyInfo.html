@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width"/>
@@ -73,7 +74,7 @@
 
     queryInf = function () {
         $("#infData").bootstrapTable({
-            url: "http://192.168.1.137:8013/infoList",
+            url: "http://192.168.1.137:8013/MyInfoList",
             method: "post",
             striped: true,  // 斑马线效果     默认false
             //只允许选中一行
@@ -103,16 +104,16 @@
                 {field: 'releasetime', title: '发布时间', width: 30},
                 {
                     field: 'articleinformation', title: '文章内容', width: 30,
-                       formatter:function(value, row, index){
-                           var str=row.articleinformation;
-                           str = str.replace(/</g,'&lt;');
-                           str = str.replace(/>/g,'&gt;');
-                           if(str.length>10){
-                               str=str.substring(0,10)+".........."
-                           }
+                    formatter:function(value, row, index){
+                        var str=row.articleinformation;
+                        str = str.replace(/</g,'&lt;');
+                        str = str.replace(/>/g,'&gt;');
+                        if(str.length>10){
+                            str=str.substring(0,10)+".........."
+                        }
 
-                          return str;
-                       }
+                        return str;
+                    }
                 },
 
                 {field: 'articleimg', title: '文章封面', width: 30,
@@ -122,35 +123,11 @@
                 {field: 'tname', title: '文章类型', width: 30},
                 {field: 'topicname', title: '文章主题', width: 30},
                 {field: 'subtitle', title: '二级标题', width: 30},
-                {field: 'hot', title: '是否热门', width: 30,
-                    formatter:
-                        function(value,row,index){
-                           var a="";
-                           if(row.hot==1){
-                               a+="是";
-                           }
-                           else if(row.hot==2){
-                               a+="否";
-                           }
-                           return a;
-                        }
-
-                },
                 {field: '', title: '操作', width: 30,formatter:
                     function(value,row,index){
-                    var b="";
-                b+="<button type='button' class='btn btn-info' onclick='upInfo("+row.infid+")'>修改</button>  " +
-                            "    <button type='button' class='btn btn-danger' onclick='deleteInfo("+row.infid+")'>删除</button>"
-                       if(row.hot==1){
-                            b+="<button type='button' class='btn btn-danger' onclick='qxR("+row.infid+")'>取消</button>";
-                       }
-                       else if(row.hot==2){
-                           b+="<button type='button' class='btn btn-info' onclick='toR("+row.infid+")'>热门</button>";
-                       }
-
-                        return b;
+                        return "<button type='button' class='btn btn-info' onclick='upInfo("+row.infid+")'>修改</button>  " +
+                            "    <button type='button' class='btn btn-danger' onclick='deleteInfo("+row.infid+")'>删除</button>";
                     }
-
                 },
 
             ],
@@ -164,7 +141,7 @@
                     "rows": params.limit,
                     "start": params.offset,
 
-                  /*  "doc_identity": $("#doc_identity").val(),*/
+                    /*  "doc_identity": $("#doc_identity").val(),*/
 
                 }
                 return whereParams;
@@ -256,10 +233,10 @@
             url:"http://192.168.1.137:8013/queryTy",
             type:'post',
             success:function(data){
-               for(var i=0;i<data.length;i++){
-                   var html="<option value='"+data[i].tid+"'>"+data[i].tname+"</option>";
-                  $("#tyid").append(html);
-               }
+                for(var i=0;i<data.length;i++){
+                    var html="<option value='"+data[i].tid+"'>"+data[i].tname+"</option>";
+                    $("#tyid").append(html);
+                }
             },
             error:function(){
                 bootbox.alert("失败");
@@ -375,33 +352,33 @@
 
     deleteInfo = function (infid) {
 
-            $.ajax({
-                url:"http://192.168.1.137:8013/deleteInfo",
-                type:'post',
-                data:{infid:infid},
-                success:function(){
-                    bootbox.alert("删除成功");
-                    $("#infData").bootstrapTable("refresh");
-                },
-                error:function(){
-                    bootbox.alert("失败");
-                }
-            });
+        $.ajax({
+            url:"http://192.168.1.137:8013/deleteInfo",
+            type:'post',
+            data:{infid:infid},
+            success:function(){
+                bootbox.alert("删除成功");
+                $("#infData").bootstrapTable("refresh");
+            },
+            error:function(){
+                bootbox.alert("失败");
+            }
+        });
 
     }
 
     exportDoctor = function() {
-       /* $.ajax({
-            url: "exportDoctor",
-            type: 'post',
-            data: {},
-            success: function () {
-                //$("#infData").bootstrapTable("refresh");
-            },
-            error: function () {
-                bootbox.alert("失败");
-            }
-        });*/
+        /* $.ajax({
+             url: "exportDoctor",
+             type: 'post',
+             data: {},
+             success: function () {
+                 //$("#infData").bootstrapTable("refresh");
+             },
+             error: function () {
+                 bootbox.alert("失败");
+             }
+         });*/
 
         location.href="exportDoctor";
     }
@@ -427,36 +404,6 @@
             name[i].checked =!name[i].checked;
 
         }
-
-    }
-    function qxR(infid){
-        $.ajax({
-            url:"http://192.168.1.137:8013/qxR",
-            type:'post',
-            data:{infid:infid},
-            success:function(){
-                bootbox.alert("设置成功");
-                $("#infData").bootstrapTable("refresh");
-            },
-            error:function(){
-                bootbox.alert("失败");
-            }
-        });
-
-    }
-    function toR(infid){
-        $.ajax({
-            url:"http://192.168.1.137:8013/toR",
-            type:'post',
-            data:{infid:infid},
-            success:function(){
-                bootbox.alert("设置成功");
-                $("#infData").bootstrapTable("refresh");
-            },
-            error:function(){
-                bootbox.alert("失败");
-            }
-        });
 
     }
 

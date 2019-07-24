@@ -38,7 +38,7 @@ public interface LoginMapper {
     @Select("select count(*) from t_staff where staffname=#{staffname}")
     Integer findStaffByName(String staffname);
 
-    @Insert("insert into t_staff(staffname,staffpassword,role,staffstatus) values(#{staffname},#{staffpassword},0,0)")
+    @Insert("insert into t_staff(staffname,staffpassword,role,staffstatus) values(#{staffname},#{staffpassword},0,1)")
     void addLoginStaff(Staff loginstaff);
 
     List<Staff> findStaff(Integer start, Integer pageSize);

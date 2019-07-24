@@ -12,7 +12,7 @@ public class Staff {
 
     private String stafftype;//作者等级
 
-    private Integer staffstatus;//审核状态 0.未通过1.已通过
+    private Integer staffstatus;//审核状态 0.通过1.未通过
 
     public Integer getStaffstatus() {
         return staffstatus;

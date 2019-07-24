@@ -205,5 +205,25 @@ public class InfServicePImpl implements InfServiceP {
         return topicMapper.queryTopicc();
     }
 
+    @Override
+    public List<Information> MyInfoList(Integer start, Integer rows, Integer sid) {
+        return infMapper.MyInfoList(start,rows,sid);
+    }
+
+    @Override
+    public long queryCountt(Integer sid) {
+        return infMapper.queryCountt(sid);
+    }
+
+    @Override
+    public void qxR(Integer infid) {
+        infMapper.qxR(infid);
+    }
+
+    @Override
+    public void toR(Integer infid) {
+        infMapper.toR(infid);
+    }
+
 
 }

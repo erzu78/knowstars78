@@ -80,9 +80,9 @@
 
             <!-- 右边的    导航 按钮 -->
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="tostaffLogin">登录</a></li>
+                <li><a href="toStaffLogin">登录</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" id="staRole" aria-expanded="false"><span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" id="staRole" aria-expanded="false"></a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -144,36 +144,70 @@
                         //addTabs方法  add() 添加tab  close()关闭tab  closeAll() 关闭全部tab
                         //alert(node.url);
                         if(null !=  node.url){
-                            $.addtabs.add({
-                                id:node.id,
-                                title:node.text,
-                                url:node.url,
-                            })
+
+                            if($("#staRole").html()!="管理员"){
+                                if(node.url=="toMain"){
+                                    $.addtabs.add({
+                                        id:node.id,
+                                        title:node.text,
+                                        url:node.url,
+                                    })
+                                }else if(node.url=="toMyInfo"){
+                                    $.addtabs.add({
+                                        id:node.id,
+                                        title:node.text,
+                                        url:node.url,
+                                    })
+                                }else if(node.url=="toVideoShow"){
+                                    $.addtabs.add({
+                                        id:node.id,
+                                        title:node.text,
+                                        url:node.url,
+                                    })
+                                }else{
+                                    alert("您没有权限");
+                                }
+
+                            }else{
+                                $.addtabs.add({
+                                    id:node.id,
+                                    title:node.text,
+                                    url:node.url,
+                                })
+                            }
+
                         }
                     }
+
                 })
             },error : function (){
                 alert("查询树失败");
             }
         })
     })
-    /*$.ajax({
-        url:"http://localhost:8085/queryTreeByPid",
-        xhrFields: {
-            withCredentials: true
-        },
+
+
+
+    $.ajax({
+        url:"http://localhost:8085/queryLoginById",
         type:"post",
         success:function(data){
-            if(data.role==1){
-                $("#staRole").html("管理员");
+
+            if(data!=null){
+                if(data.role==1){
+                    $("#staRole").html("作者");
+                }else if(data.role==2){
+                    $("#staRole").html("管理员");
+                }
             }else{
-                $("#staRole").html("客服");
+                location.href="toUserLogin";
             }
+
         },
         error:function(){
             alert("失败")
         }
-    })*/
+    })
 </script>
 
 </html>
