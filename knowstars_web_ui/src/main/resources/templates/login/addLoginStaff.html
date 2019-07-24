@@ -193,7 +193,7 @@
 
 
     function  addstaffdialog(staffname2){
-       dialog("toaddStaff",ip+":8088/updateStaff","完善信息",staffname2);
+       dialog("toaddStaffDialog",ip+":8088/updateStaff","完善信息",staffname2);
     }
 
 
@@ -213,7 +213,7 @@
                 jspHtml = data;
             },
             error: function () {
-                bootbox.alert("ajax失败");
+                bootbox.alert("ajax失败00");
             }
         });
         return jspHtml;
