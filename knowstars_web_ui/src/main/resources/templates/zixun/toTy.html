@@ -73,7 +73,7 @@
 
     queryInf = function () {
         $("#tyData").bootstrapTable({
-            url: "http://192.168.1.128:8013/tyList",
+            url: "http://192.168.1.137:8013/tyList",
             method: "post",
             striped: true,  // 斑马线效果     默认false
             //只允许选中一行
@@ -164,7 +164,7 @@
         var ids = temp.substr(1);
         if(confirm("您确定删除这"+count+"信息吗?")){
             $.ajax({
-                url:"http://192.168.1.128:8013/deleteAllTy",
+                url:"http://192.168.1.137:8013/deleteAllTy",
                 type:'post',
                 data:{ids:ids},
                 success:function(){
@@ -276,7 +276,7 @@
         });
 
         $.ajax({
-            url:"http://192.168.1.128:8013/queryTyById",
+            url:"http://192.168.1.137:8013/queryTyById",
             type:'post',
             data:{tid:tid},
             success:function(data){
@@ -309,7 +309,7 @@
 
     upTy = function(tid){
 
-        dialogCurr('updDialogTy','http://192.168.1.128:8013/upTy',"修改",tid);
+        dialogCurr('updDialogTy','http://192.168.1.137:8013/upTy',"修改",tid);
 
     }
 
