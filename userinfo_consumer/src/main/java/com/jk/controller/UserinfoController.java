@@ -55,8 +55,11 @@ public class UserinfoController {
 
         userinfoServiceFeign.saveUser(user);
      if(user!=null){
+
+         user.setUserhead(user.getUserheads());
+
          String userinfo = JSON.toJSONString(user);
-         System.out.println("loginuser = [" + userinfo + "]");
+
          redisTemplate.opsForValue().set("userjs",userinfo);
          redisTemplate.expire("userjs",600000, TimeUnit.MILLISECONDS);
      }

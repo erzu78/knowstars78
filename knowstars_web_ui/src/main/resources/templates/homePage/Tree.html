@@ -145,7 +145,7 @@
                         //alert(node.url);
                         if(null !=  node.url){
 
-                            if($("#staRole").html()!="管理员"){
+                            if($("#staRole").html()=="作者"){
                                 if(node.url=="toMain"){
                                     $.addtabs.add({
                                         id:node.id,
@@ -168,12 +168,14 @@
                                     alert("您没有权限");
                                 }
 
-                            }else{
+                            }else if($("#staRole").html()=="管理员"){
                                 $.addtabs.add({
                                     id:node.id,
                                     title:node.text,
                                     url:node.url,
                                 })
+                            }else{
+                                alert("您没有权限");
                             }
 
                         }
@@ -193,14 +195,14 @@
         type:"post",
         success:function(data){
 
-            if(data!=null){
+            if(data!=null&&data!=""){
                 if(data.role==1){
                     $("#staRole").html("作者");
                 }else if(data.role==2){
                     $("#staRole").html("管理员");
                 }
             }else{
-                location.href="toUserLogin";
+                location.href="toStaffLogin";
             }
 
         },
