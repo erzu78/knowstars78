@@ -449,16 +449,16 @@
                <div class="main-left"><div class="kr-sider ">
                    <a href="/" class="go-home clearfloat"><div class="logo"></div></a><div class="kr-sider-shadow-wrapper clearfloat"><div class="line"></div><ul class="kr-channel-nav"><li class="channel-item"><div class="sub-title">
                    <img src="homePagePicture/11.png" height="38px">
-                   <a class="name weight-bold " onclick="toSy()">首页</a></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " onclick="toKx()">快讯</a></div></li><li class="channel-item"><div class="sub-title"><span class="open-icon "></span><a class="name weight-bold active" href="toAllZx">资讯</a></div><div class="sub-list open"><ul class="sub-list-right" id="ul1"><!--<li class="sub-item"><a href="/information/web_recommend" class="">推荐</a></li>
+                   <a class="name weight-bold " onclick="toSy()">首页</a></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " onclick="toKx()">快讯</a></div></li><li class="channel-item"><div id="zixun"><div class="sub-title"><span class="open-icon "></span><a class="name weight-bold active" href="toAllZx">资讯</a></div><div class="sub-list open"><ul class="sub-list-right" ><!--<li class="sub-item"><a href="/information/web_recommend" class="">推荐</a></li>
                    <li class="sub-item"><a href="/information/travel" class="">汽车</a></li>
                    <li class="sub-item"><a href="/information/enterpriseservice" class="">企服</a></li>
                    <li class="sub-item"><a href="/information/web_zhichang" class="">职场</a></li>
                    <li class="sub-item"><a class="">城市</a></li>--></ul>
 
-                   <ul class="sub-list-left" id="ul2"><!--<li class="sub-item"><a href="/information/web_news" class="active">最新</a></li>
+                   <ul class="sub-list-left" ><!--<li class="sub-item"><a href="/information/web_news" class="active">最新</a></li>
                    <li class="sub-item"><a href="/information/contact" class="">创投</a><span class="hot"></span></li>
                    <li class="sub-item"><a href="/information/technology" class="">科技</a></li><li class="sub-item"><a href="/information/happy_life" class="">生活</a></li>
-                   <li class="sub-item"><a href="/information/innovate" class="">创新</a></li>--></ul></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " onclick="toVideo()">视频</a></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="/topics">专题</a></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="https://chuang.36kr.com/huodong#/report/recent" target="_target" rel="noopener noreferrer">活动</a></div></li><div class="local-list" style="display:none;top:;left:"><div class="triangle"></div></div></ul><div class="kr-search-entry clearfloat"><div class="search-button"><span class="search-icon"></span><a href="toSearch"><span class="search-text weight-bold">搜索</span></a></div></div><a href="toSearch" class="seek-report" target="_blank" rel="noopener noreferrer nofollow"><span class="seek-report-icon"></span><span class="seek-report-text">寻求报道</span></a><div><div class="i-want-contribution"><span class="i-want-contribution-icon"></span><span class="i-want-contribution-text">我要投稿</span></div></div><a class="seek-finance-entry" href="http://vclub-36kr.mikecrm.com/r3yRAwz " target="_blank" rel="noopener noreferrer nofollow"><span class="seek-finance-entry-icon"></span><span class="seek-finance-entry-text">寻求融资</span></a></div></div></div><div class="main-right"><div class="kr-header "><div class="kr-header-main">
+                   <li class="sub-item"><a href="/information/innovate" class="">创新</a></li>--></ul></div></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " onclick="toVideo()">视频</a></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="/topics">专题</a></div></li><li class="channel-item"><div class="sub-title"><a class="name weight-bold " href="https://chuang.36kr.com/huodong#/report/recent" target="_target" rel="noopener noreferrer">活动</a></div></li><div class="local-list" style="display:none;top:;left:"><div class="triangle"></div></div></ul><div class="kr-search-entry clearfloat"><div class="search-button"><span class="search-icon"></span><a href="toSearch"><span class="search-text weight-bold">搜索</span></a></div></div><a href="toSearch" class="seek-report" target="_blank" rel="noopener noreferrer nofollow"><span class="seek-report-icon"></span><span class="seek-report-text">寻求报道</span></a><div><div class="i-want-contribution"><span class="i-want-contribution-icon"></span><span class="i-want-contribution-text">我要投稿</span></div></div><a class="seek-finance-entry" href="http://vclub-36kr.mikecrm.com/r3yRAwz " target="_blank" rel="noopener noreferrer nofollow"><span class="seek-finance-entry-icon"></span><span class="seek-finance-entry-text">寻求融资</span></a></div></div></div><div class="main-right"><div class="kr-header "><div class="kr-header-main">
     <div class="kr-header-content">
 
 
@@ -528,9 +528,10 @@
                         ss();
                         zz();
                         ff();
-                        sss();
-                        ssss();
+                        /*sss();
+                        ssss();*/
                         tcc();
+                        zixun();
                         findLoginStatus();
                     $.ajax({
                             url: "http://192.168.1.137:8013/toZww",
@@ -584,7 +585,36 @@
                             }
                         })
                     }
-                    function sss(){
+                    function zixun(){
+
+
+                        $.ajax({
+                            type:"post",
+                            url:"http://192.168.1.137:8013/queryTy",
+                            success:function(msg){
+
+
+                                th=document.getElementById("zixun");
+                                //写到了这一行
+                                for(var i=0;i<msg.length;i+=2) {
+                                    if (msg[i].tname != null ) {
+                                        th.innerHTML += " <div class=\"sub-list open\">\n" +
+                                            "                                <ul class=\"sub-list-right\">\n" +
+                                            "                                    <li class=\"sub-item\">\n" +
+                                            "    <a  class=\"\" href=\"tz?tid="+msg[i].tid+"\">"+msg[i].tname+"</a>\n" +
+                                            "                                    </li>\n" +
+                                            "                                </ul>\n" +
+                                            "\n" +
+                                            "                                <ul class=\"sub-list-left\">\n" +
+                                            "                                    <li class=\"sub-item\"><a class=\"\" href=\"tz?tid="+msg[i+1].tid+"\" >"+msg[i+1].tname+"</a></li>\n" +
+                                            "                                </ul>\n" +
+                                            "                            </div>"
+                                    }
+                                }
+                            }
+                        })
+                    }
+                    /*function sss(){
                         $.ajax({
                             url: "http://192.168.1.137:8013/queryTyy",
                             crossDomain: true,
@@ -621,7 +651,8 @@
                             }
                         })
 
-                    }
+                    }*/
+
                     function tc(tid){
                      $("#div1").empty();
                         $.ajax({
