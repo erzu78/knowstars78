@@ -124,7 +124,7 @@
     var ip="http://192.168.1.128";
 
     function toStaffLogin(){
-        location.href=ip+":8280/toStaffLogin";
+        location.href="toStaffLogin";
     }
 
 
@@ -193,7 +193,7 @@
 
 
     function  addstaffdialog(staffname2){
-       dialog("toaddStaffDialog",ip+":8088/updateStaff","完善信息",staffname2);
+       dialog("toaddStaff",ip+":8088/updateStaff","完善信息",staffname2);
     }
 
 

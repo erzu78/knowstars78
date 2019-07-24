@@ -195,13 +195,14 @@ public class LoginController {
 
             throw new IOException("file不能为空");
         }
+
         OSSClientUtil ossClient = new OSSClientUtil();
         String name = ossClient.uploadImg2Oss(imgg);
         String imgUrl = ossClient.getImgUrl(name);
-        String[] split = imgUrl.split("\\?");
+        //String[] split = imgUrl.split("\\?");
 
         Map<String, Object> map = new HashMap<>();
-        map.put("imngName", split[0]);
+        map.put("imngName", imgUrl);
 
         return (HashMap<String, Object>) map;
     }
